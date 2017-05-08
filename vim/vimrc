@@ -1,0 +1,188 @@
+"============================================================
+" dein
+"============================================================
+if &compatible
+    set nocompatible
+endif
+
+set runtimepath+=/home/ssfdust/.vim/bundle/repos/github.com/Shougo/dein.vim
+
+call dein#begin('/home/ssfdust/.vim/bundle/')
+call dein#add('Shougo/dein.vim')
+call dein#add('altercation/vim-colors-solarized')
+call dein#add('bling/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+call dein#add('majutsushi/tagbar')
+call dein#add('rking/ag.vim')
+call dein#add('peterhoeg/vim-qml')
+call dein#add('scrooloose/syntastic')
+call dein#add('scrooloose/nerdtree')
+call dein#add('mhinz/vim-hugefile')
+call dein#add('myint/syntastic-extras')
+call dein#add('SirVer/ultisnips')
+call dein#add('Shougo/vimshell')
+call dein#add('othree/html5.vim', {
+            \ 'on_ft':['html','php', 'css', 'js'],
+            \})
+call dein#add('Valloric/YouCompleteMe', {
+            \ 'build':'python ./install.py --system-libclang --all'})
+call dein#add('honza/vim-snippets')
+call dein#add('2072/PHP-Indenting-for-VIm')
+call dein#add('jeaye/color_coded', {
+            \ 'lazy': 1,
+            \ 'build':
+            \'cmake . -DDOWNLOAD_CLANG=0 -DLLVM_CONFIG=/usr/bin/llvm-config && make && make install',
+            \ 'on_ft': ['c', 'cpp', 'objc', 'objcpp'],
+            \})
+
+call dein#end()
+
+
+"----------------------------------                      dein
+
+
+"============================================================
+" Main Option
+"============================================================
+filetype plugin indent on
+syntax enable
+set ignorecase smartcase
+"filetype on
+"filetype plugin on
+"filetype indent on
+set backspace=indent,eol,start
+let g:c_syntax_for_h = 1
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set encoding=utf-8
+set shellslash
+set formatoptions=cqmM
+set cindent
+set guifont=monofur\ for\ Powerline\ 13
+set guifontwide=Hiragino\ Sans\ GB\ W3\ 12
+
+
+"----------------------------------             Daily Option
+
+"===========================================================
+"Specific settings for airline
+"===========================================================
+set laststatus=2
+set nocompatible
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+"----------------------------------             vim-airline 
+
+"============================================================
+"Looking(Tagbar/FileExplorer)
+"============================================================
+
+let g:tagbar_vertical = 25
+let g:tagbar_left  = 1
+let g:tagbar_width = 25
+set guioptions-=T
+nmap <F8> :TagbarToggle<CR>
+nmap <F9> :NERDTree<CR>
+nmap <F10> :M4ShowPreview<CR>
+
+"----------------------------------             Lookinng 
+
+"============================================================
+" C/C++/YCM/clang 
+"============================================================
+if !exists("g:c_project_name")
+    let g:c_project_name = ""
+endif
+
+set completeopt=longest,menu
+function AddCFuncList()
+	set dictionary+=/home/tt/.vim/dict/c.txt
+	set complete-=k complete+=k
+endfunction
+function CComplier()
+	exe ":ccl"
+	exe ":update"
+	if expand("%:e") == "c"
+			let source = expand("%:p")
+	endif
+	let CurrentFileName=expand("%")
+	let FileNameC=substitute(expand("%d"), ".c$", "", "")
+    call system("clang " . "-o " . expand("%:p:r") . " " . expand("%p"))
+endfunction
+map <C-F9> :call CComplier()<CR>
+
+command -nargs=* CBinExecute :silent exec "!urxvt -e zsh -c 'time ".expand("%:p:r")." <args>".";read -n 1' &>/dev/null" | redraw!
+command -nargs=* CProExecute :silent exec "!urxvt -e zsh -c ' ". expand("%:h") ."/".g:c_project_name." <args>".";read -n 1' &>/dev/null" | redraw!
+
+" YCM/Clang
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_show_diagnostics_ui = 0
+
+"----------------------------------            C/C++
+
+"============================================================
+" LaTex Suite
+"============================================================
+
+set grepprg=grep\ -nH\ $*
+" 'OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+let g:tex_flavor='latex'
+" this is mostly a matter of taste. but LaTeX looks good with just a bit
+" of indentation.
+" TIP: if you write your \label's as \label{fig:something}, then if you
+" type in \ref{fig: and press <C-n> you will automatically cycle through
+" all the figure labels. Very useful!
+set iskeyword+=:
+
+"----------------------------------            LaTeX
+
+"============================================================
+" UtilSnippet
+"============================================================
+
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-z>"
+
+"----------------------------------            UtilSnippet
+
+"============================================================
+" syntastic
+"============================================================
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_c_checkers = ['check']
+let g:syntastic_cpp_checkers = ['check']
+let g:syntastic_make_checkers = ['gnumake']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--select=F,C9 --max-complexity=25'
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_enable_balloons = 1
+"let g:syntastic_debug_file = '~/log/syntastic_log'
+
+"----------------------------------            syntastic
+
+
+"============================================================
+" solarized_options 
+"============================================================
+let g:solarized_termtrans  =  0
+let g:solarized_termcolors =  256
+colorscheme solarized
+set ballooneval
+set background=dark
+
+"----------------------------------            solarized_options

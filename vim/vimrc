@@ -9,6 +9,7 @@ set runtimepath+=/home/ssfdust/.vim/bundle/repos/github.com/Shougo/dein.vim
 
 call dein#begin('/home/ssfdust/.vim/bundle/')
 call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('bling/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
@@ -17,13 +18,15 @@ call dein#add('rking/ag.vim')
 call dein#add('peterhoeg/vim-qml')
 call dein#add('scrooloose/syntastic')
 call dein#add('scrooloose/nerdtree')
+call dein#add('iamcco/markdown-preview.vim', {
+            \ 'lazy': 1,
+            \ 'on_ft': ['markdown'],
+            \})
 call dein#add('mhinz/vim-hugefile')
 call dein#add('myint/syntastic-extras')
 call dein#add('SirVer/ultisnips')
 call dein#add('Shougo/vimshell')
-call dein#add('othree/html5.vim', {
-            \ 'on_ft':['html','php', 'css', 'js'],
-            \})
+call dein#add('othree/html5.vim')
 call dein#add('Valloric/YouCompleteMe', {
             \ 'build':'python ./install.py --system-libclang --all'})
 call dein#add('honza/vim-snippets')
@@ -186,3 +189,23 @@ set ballooneval
 set background=dark
 
 "----------------------------------            solarized_options
+
+
+"============================================================
+" VimShell options
+"============================================================
+let g:vimshell_split_command="below 10split"
+let g:vimshell_prompt = $USER."@RedLotus▶"
+" let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
+let g:vimshell_right_prompt = 'strftime("%H:%M")'
+let g:vimshell_user_prompt =
+\ 'escape(fnamemodify(getcwd(), ":~"), "\\[]()?! ")." "'
+
+"----------------------------------            VimShell options
+
+
+"============================================================
+" VimShell options
+"============================================================
+let g:mkdp_path_to_chrome = "firefox"
+let g:mkdp_refresh_slow = 0

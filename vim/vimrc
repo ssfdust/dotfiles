@@ -70,7 +70,7 @@ set guifontwide=Hiragino\ Sans\ GB\ W3\ 12
 "----------------------------------             Daily Option
 
 "===========================================================
-"Specific settings for airline
+" Specific settings for airline
 "===========================================================
 set laststatus=2
 set nocompatible
@@ -94,7 +94,7 @@ nmap <F10> :M4ShowPreview<CR>
 "----------------------------------             Lookinng 
 
 "============================================================
-" C/C++/YCM/clang 
+" C/C++/YCM/clang Completion
 "============================================================
 if !exists("g:c_project_name")
     let g:c_project_name = ""
@@ -123,6 +123,11 @@ command -nargs=* CProExecute :silent exec "!urxvt -e zsh -c ' ". expand("%:h") .
 " YCM/Clang
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 0
+
+" Completion for brackets
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {<CR>}<ESC>$%o
 
 "----------------------------------            C/C++
 
@@ -205,7 +210,9 @@ let g:vimshell_user_prompt =
 
 
 "============================================================
-" VimShell options
+" Markdown Preview options
 "============================================================
 let g:mkdp_path_to_chrome = "firefox"
 let g:mkdp_refresh_slow = 0
+
+"----------------------------------            Markdown Preview options

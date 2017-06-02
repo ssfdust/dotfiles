@@ -187,6 +187,8 @@ let g:syntastic_enable_balloons = 1
 "============================================================
 let g:solarized_termtrans  =  0
 let g:solarized_termcolors =  256
+let g:solarized_contrast="low"    "default value is normal
+let g:solarized_hitrail=1    "default value is 0
 colorscheme solarized
 set ballooneval
 set background=dark

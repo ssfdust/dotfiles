@@ -11,6 +11,7 @@ call dein#begin('/home/ssfdust/.vim/bundle/')
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 call dein#add('altercation/vim-colors-solarized')
+call dein#add('lifepillar/vim-solarized8')
 call dein#add('bling/vim-airline')
 call dein#add('cohama/lexima.vim')
 call dein#add('vim-airline/vim-airline-themes')
@@ -123,9 +124,57 @@ command -nargs=* CBinExecute :silent exec "!urxvt -e zsh -c 'time ".expand("%:p:
 command -nargs=* CProExecute :silent exec "!urxvt -e zsh -c ' ". expand("%:h") ."/".g:c_project_name." <args>".";read -n 1' &>/dev/null" | redraw!
 
 " YCM/Clang
+
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 0
+let g:ycm_error_symbol='✖'
+let g:ycm_warning_symbol='⚠ '
+let g:ycm_cache_omnifunc=0
+let g:ycm_complete_in_strings=1
+let g:ycm_complete_in_comments=1
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_collect_identifiers_from_comments_and_strings=0
+let g:ycm_semantic_triggers =  {
+          \ 'c' : ['->', '.'],
+          \ 'objc' : ['->', '.'],
+          \ 'ocaml' : ['.', '#'],
+          \ 'cpp,objcpp' : ['->', '.', '::'],
+          \ 'perl' : ['->'],
+          \ 'php' : ['->', '::', '(', 'use ', 'namespace ', '\'],
+          \ 'cs,java,typescript,d,python,perl6,scala,vb,elixir,go' : ['.', 're!(?=[a-zA-Z]{3,4})'],
+          \ 'html': ['<', '"', '</', ' '],
+          \ 'vim' : ['re![_a-za-z]+[_\w]*\.'],
+          \ 'ruby' : ['.', '::'],
+          \ 'lua' : ['.', ':'],
+          \ 'erlang' : [':'],
+          \ 'haskell' : ['.', 're!.'],
+          \ 'scss,css': [ 're!^\s{2,4}', 're!:\s+' ],
+\ }
 
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifun
+
+" Key bindings
+autocmd FileType c,cpp,python,go,javascript,rust
+            \   nnoremap <LocalLeader>gd :YcmCompleter GoTo<CR>
+autocmd FileType c,cpp,python,rust,javascript,typescript
+            \   nnoremap <LocalLeader>gD :YcmCompleter GetDoc<CR>
+autocmd FileType c,cpp
+            \   nnoremap <LocalLeader>gi :YcmCompleter GoToInclude<CR>
+autocmd FileType javascript,python,typescript
+            \   nnoremap <LocalLeader>gr :YcmCompleter GoToReferences<CR>
+autocmd FileType c,cpp,javascript,typescript
+            \   nnoremap <LocalLeader>gt :YcmCompleter GetType<CR>
+autocmd FileType c,cpp
+            \   nnoremap <LocalLeader>gp :YcmCompleter GetParent<CR>
 
 "----------------------------------            C/C++
 
@@ -185,11 +234,15 @@ let g:syntastic_enable_balloons = 1
 "============================================================
 " solarized_options 
 "============================================================
-let g:solarized_termtrans  =  0
-let g:solarized_termcolors =  256
-colorscheme solarized
-set ballooneval
-set background=dark
+"let g:solarized_termtrans  =  0
+"let g:solarized_termcolors =  256
+"colorscheme solarized
+"set ballooneval
+"set background=dark
+colorscheme solarized8_dark
+let g:solarized_termtrans = 1
+let g:solarized_statusline = "low"
+let g:solarized_term_italics = 1
 
 "----------------------------------            solarized_options
 

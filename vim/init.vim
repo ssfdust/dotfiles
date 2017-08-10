@@ -31,9 +31,13 @@ if has('python3')
 endif
 let g:clang2_placeholder_next = ''
 let g:clang2_placeholder_prev = ''
+
+set termguicolors
+let g:spacevim_colorscheme = 'NeoSolarized'
+
 let g:spacevim_custom_plugins = [
-            \ ['posva/vim-vue'],
-            \ ['Quramy/tsuquyomi'],
-            \ ['Quramy/tsuquyomi-vue'],
-            \ ['sandersn/vue-ts-plugin']
-            \ ]
+    \ ['Quramy/tsuquyomi', {'on_ft': 'vue','lazy': 1}],
+    \ ['posva/vim-vue', {'on_ft': 'vue'}],
+    \ ['Quramy/tsuquyomi-vue', {'on_ft':'vue'}]
+    \ ]
+

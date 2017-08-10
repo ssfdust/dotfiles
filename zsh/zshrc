@@ -32,10 +32,10 @@ alias switch_ap="sudo systemctl stop create_ap_1 && sudo systemctl start create_
 CASE_SENSITIVE="true"
 
 # Uncomment this to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="false"
 
 # Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=3
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -81,6 +81,7 @@ export EDITOR='vim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 

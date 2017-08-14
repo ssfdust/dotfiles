@@ -18,6 +18,7 @@ call SpaceVim#layers#load('lang#haskell')
 call SpaceVim#layers#load('lang#elixir')
 call SpaceVim#layers#load('tools#screensaver')
 call SpaceVim#layers#load('shell')   
+let g:spacevim_guifont = 'MonofurForPowerline\ Nerd\ Font:h14'
 let g:spacevim_enable_vimfiler_welcome = 1
 let g:spacevim_enable_debug = 1
 let g:deoplete#auto_complete_delay = 150
@@ -35,5 +36,11 @@ let g:spacevim_custom_plugins = [
             \ ['posva/vim-vue'],
             \ ['Quramy/tsuquyomi'],
             \ ['Quramy/tsuquyomi-vue'],
-            \ ['sandersn/vue-ts-plugin']
+            \ ['sandersn/vue-ts-plugin'],
+            \ ['iamcco/mathjax-support-for-mkdp'],
+            \ ['iamcco/markdown-preview.vim']
             \ ]
+
+" let vimfiler change Vim current directory when editing file
+let g:vimfiler_enable_auto_cd = 1
+let g:vimfiler_ignore_pattern = ['^\.']

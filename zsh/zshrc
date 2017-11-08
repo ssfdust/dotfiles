@@ -8,7 +8,7 @@ export WP_THEME=/srv/http/blog/wp-content/themes/
 #export WINEPREFIX=$HOME/.wine32
 export TERM=xterm-256color
 export PATH=$PATH:/home/ssfdust/.config/composer/vendor/bin
-remoteip=45.32.76.50
+remoteip=45.77.39.107
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -64,7 +64,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode systemd colorize archlinux docker pyenv python common-aliases history-substring-search history git themes github textmate zsh-syntax-highlighting virtualenv)
+plugins=(vi-mode systemd colorize zsh_reload cp archlinux docker pyenv python common-aliases history-substring-search history git themes github textmate zsh-syntax-highlighting virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,8 +93,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
 ## Prompt Variable
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 ## VCS Variable
 POWERLEVEL9K_SHOW_CHANGESET=true
@@ -104,7 +104,6 @@ POWERLEVEL9K_TIME_FORMAT="%F %T"
 POWERLEVEL9K_STATUS_VERBOSE=false
 
 ## Customizing Prompt Segments
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs dir_writable)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir dir_writable newline history vcs pyenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode time virtualenv)
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n"
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%K{white}%F{black} %h %f%k%F{white}%f "

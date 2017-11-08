@@ -64,7 +64,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode systemd colorize zsh_reload cp archlinux docker pyenv python common-aliases history-substring-search history git themes github textmate zsh-syntax-highlighting virtualenv)
+plugins=(vi-mode systemd colorize zsh_reload cp archlinux docker pyenv python common-aliases history-substring-search history git themes github textmate virtualenv zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,7 +79,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 #else
 #  export EDITOR='mvim'
 #fi
-export EDITOR='vim'
+export EDITOR='nvim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 

@@ -29,6 +29,8 @@ fi
 # Custom alias command
 alias minecraft="java -jar /home/ssfdust/Game/minecraft/HMCL-2.2.9.jar"
 alias switch_ap="sudo systemctl stop create_ap_1 && sudo systemctl start create_ap"
+alias dzps="fuck"
+alias snmp="smart-npm"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -64,7 +66,25 @@ HIST_STAMPS="mm/dd/yyyy"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode systemd colorize zsh_reload cp archlinux docker pyenv python common-aliases history-substring-search history git themes github textmate zsh-syntax-highlighting virtualenv)
+plugins=(vi-mode
+         systemd
+         colorize
+         zsh_reload
+         cp
+         archlinux
+         docker
+         pyenv
+         python
+         common-aliases
+         history-substring-search
+         history
+         git
+         themes
+         github
+         textmate
+         tmux
+         zsh-syntax-highlighting
+         virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 

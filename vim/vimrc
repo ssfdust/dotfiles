@@ -38,7 +38,11 @@ let g:spacevim_statusline_separator = 'slant'
 let g:clang2_placeholder_next = ''
 let g:clang2_placeholder_prev = ''
 let g:neomake_python_flake8_maker = {
-    \ 'args': ['--ignore=E221,E241,E272,E251,W702,E203,E201,E202,E302,W291',  '--format=default'],
+    \ 'args': [
+    \ '--ignore=E221,E241,E272,E251,W702,E203,E201,E202,E302,W291,E712',
+    \ '--format=default',
+    \ '--max-line-length=84'
+    \ ],
     \ 'errorformat':
         \ '%E%f:%l: could not compile,%-Z%p^,' .
         \ '%A%f:%l:%c: %t%n %m,' .
@@ -64,3 +68,4 @@ let g:licenses_authors_name = 'RedLotus <ssfdust@gmail.com>'
 " let vimfiler change Vim current directory when editing file
 let g:vimfiler_enable_auto_cd = 1
 let g:vimfiler_ignore_pattern = ['^\.']
+" autocmd FileType c,cpp,python,vue nested :Tagbar

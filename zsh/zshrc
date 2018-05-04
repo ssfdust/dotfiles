@@ -127,3 +127,5 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir dir_writable newline history vcs pyenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode time virtualenv)
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n"
+# [[ $TERM != "screen" ]] && exec tmux
+if [ "$TMUX" = "" ]; then tmux; fi

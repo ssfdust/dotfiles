@@ -3,15 +3,17 @@ let g:spacevim_enable_debug = 1
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 let g:spacevim_realtime_leader_guide = 1
 call SpaceVim#layers#load('lang#go')
+call SpaceVim#layers#load('lang#go')
 call SpaceVim#layers#load('lang#php')
 call SpaceVim#layers#load('lang#c')
 call SpaceVim#layers#load('incsearch')
+call SpaceVim#layers#load('tags')
 call SpaceVim#layers#load('lang#lua')
 call SpaceVim#layers#load('lang#perl')
 call SpaceVim#layers#load('lang#swig')
 call SpaceVim#layers#load('lang#rust')
 call SpaceVim#layers#load('lang#java')
-call SpaceVim#layers#load('lang#javascript')
+"call SpaceVim#layers#load('lang#javascript')
 call SpaceVim#layers#load('lang#vim')
 call SpaceVim#layers#load('lang#python')
 call SpaceVim#layers#load('lang#xml')
@@ -27,6 +29,7 @@ let g:spacevim_enable_tabline_filetype_icon = 1
 let g:spacevim_enable_os_fileformat_icon = 1
 let g:spacevim_buffer_index_type = 1
 let g:neomake_vim_enabled_makers = ['vimlint', 'vint']
+let g:deoplete#sources#jedi#debug_server = '/tmp/nvim.log'
 if has('python3')
     let g:ctrlp_map = ''
     nnoremap <silent> <C-p> :Denite file_rec<CR>
@@ -40,9 +43,14 @@ let g:spacevim_custom_plugins = [
             \ ['Quramy/tsuquyomi-vue'],
             \ ['sandersn/vue-ts-plugin'],
             \ ['iamcco/mathjax-support-for-mkdp'],
-            \ ['iamcco/markdown-preview.vim']
+            \ ['iamcco/markdown-preview.vim'],
+            \ ['antoyo/vim-licenses']
             \ ]
 
+" licence settings
+let g:licenses_copyright_holders_name = 'RedLotus <ssfdust@gmail.com>'
+let g:licenses_authors_name = 'RedLotus <ssfdust@gmail.com>'
+let g:licenses_default_commands = ['gpl', 'mit']
 " let vimfiler change Vim current directory when editing file
 let g:vimfiler_enable_auto_cd = 1
 let g:vimfiler_ignore_pattern = ['^\.']

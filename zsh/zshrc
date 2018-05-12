@@ -8,7 +8,7 @@ export WP_THEME=/srv/http/blog/wp-content/themes/
 #export WINEPREFIX=$HOME/.wine32
 export TERM=xterm-256color
 export PATH=$PATH:/home/ssfdust/.config/composer/vendor/bin
-remoteip=45.77.39.107
+remoteip=45.76.106.238
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -64,7 +64,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode systemd colorize zsh_reload cp archlinux docker pyenv python common-aliases history-substring-search history git themes github textmate virtualenv zsh-syntax-highlighting)
+plugins=(vi-mode systemd colorize zsh_reload cp archlinux docker python common-aliases history-substring-search history git themes github textmate arch_update virtualenv zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

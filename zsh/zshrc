@@ -83,6 +83,8 @@ plugins=(vi-mode
          github
          textmate
          tmux
+         zsh-completions
+         zsh-autosuggestions
          zsh-syntax-highlighting
          virtualenv)
 

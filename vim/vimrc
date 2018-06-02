@@ -22,7 +22,7 @@ call SpaceVim#layers#load('lang#haskell')
 call SpaceVim#layers#load('lang#elixir')
 call SpaceVim#layers#load('tools#screensaver')
 call SpaceVim#layers#load('shell')   
-call SpaceVim#layers#load('tags')   
+call SpaceVim#layers#load('git')   
 call SpaceVim#layers#load('checkers')   
 let g:spacevim_guifont = 'MonofurForPowerline\ Nerd\ Font:h14'
 let g:spacevim_enable_vimfiler_welcome = 1
@@ -41,6 +41,17 @@ let g:spacevim_colorscheme = 'onedark'
 let g:spacevim_statusline_separator = 'slant'
 let g:clang2_placeholder_next = ''
 let g:clang2_placeholder_prev = ''
+
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+  set termguicolors
+endif
 let g:neomake_python_flake8_maker = {
     \ 'args': [
     \ '--ignore=E221,E241,E272,E251,W702,E203,E201,E202,E302,W291,E712',
@@ -63,7 +74,8 @@ let g:spacevim_custom_plugins = [
             \ ['iamcco/mathjax-support-for-mkdp'],
             \ ['iamcco/markdown-preview.vim'],
             \ ['antoyo/vim-licenses'],
-            \ ['Glench/Vim-Jinja2-Syntax']
+            \ ['Glench/Vim-Jinja2-Syntax'],
+            \ ['tpope/vim-obsession']
             \ ]
 
 " licence settings

@@ -126,8 +126,8 @@ POWERLEVEL9K_TIME_FORMAT="%F %T"
 POWERLEVEL9K_STATUS_VERBOSE=false
 
 ## Customizing Prompt Segments
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context disk_usage dir dir_writable newline vcs pyenv)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode virtualenv load ram)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context disk_usage ram dir dir_writable newline vcs pyenv)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode virtualenv)
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n"
 # [[ $TERM != "screen" ]] && exec tmux
 if [ "$TMUX" = "" ]; then tmux; fi

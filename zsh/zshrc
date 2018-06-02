@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh configuration.
 POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LINUX_ICON='\uf300'
+POWERLEVEL9K_LINUX_ICON='\uf303'
 ZSH=~/.oh-my-zsh/
 eval $(thefuck --alias)
 export WP_THEME=/srv/http/blog/wp-content/themes/
@@ -127,7 +127,7 @@ POWERLEVEL9K_STATUS_VERBOSE=false
 
 ## Customizing Prompt Segments
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir dir_writable newline history vcs pyenv)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode time virtualenv)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode virtualenv)
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n"
 # [[ $TERM != "screen" ]] && exec tmux
 if [ "$TMUX" = "" ]; then tmux; fi

@@ -1,6 +1,7 @@
 # POWERLEVEL9K MUST BE AT THE VERY FIRST
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_LINUX_ICON='\uf303'
+ZSH_TMUX_AUTOSTART=true
 # Path to your oh-my-zsh configuration.
 ZSH=~/.oh-my-zsh/
 
@@ -131,4 +132,3 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context disk_usage dir_writable newli
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode virtualenv)
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n"
 # [[ $TERM != "screen" ]] && exec tmux
-if [ "$TMUX" = "" ]; then tmux; fi

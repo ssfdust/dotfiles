@@ -41,6 +41,7 @@ func! custom#before() abort
 endf
 
 func! custom#after() abort
-  let g:bootstrap_after_test = 1
+  " fix bugs for python-neovim
+  call deoplete#custom#option('num_processes', 1)
 endf
 

@@ -1,0 +1,113 @@
+#=============================================================================
+# init.toml --- SpaceVim config
+# Copyright (c) 2018 RedLotus
+# Author: RedLotus < ssfdust@gmail.com >
+#=============================================================================
+
+# SpaceVim options {{{
+[options]
+    default_indent = 4
+    buffer_index_type = 1
+    enable_debug = 1
+    enable_ale = 0
+    enable_vimfiler_filetypeicon = 1
+    enable_vimfiler_welcome = 0
+    line_on_the_fly = 0
+    realtime_leader_guide = 1
+    enable_tabline_filetype_icon = 1
+    enable_os_fileformat_icon = 1
+    statusline_separator = 'slant'
+    github_username = 'ssfdust'
+    auto_disable_touchpad = 0
+    colorscheme = 'onedark'
+    guifont = 'MonofurForPowerline\ Nerd\ Font:h14'
+    enable_tabline_filetype_icon = true
+    bootstrap_before = "custom#before"
+    bootstrap_after = "custom#after"
+# }}}
+
+# SpaceVim layer config {{{
+[[layers]]
+name = 'denite'
+[[layers]]
+name = 'checkers'
+[[layers]]
+name = 'git'
+[[layers]]
+name = 'VersionControl'
+[[layers]]
+name = 'lang#go'
+[[layers]]
+name = 'lang#json'
+[[layers]]
+name = 'lang#java'
+[[layers]]
+name = 'lang#c'
+[[layers]]
+name = 'tags'
+[[layers]]
+name = 'lang#toml'
+[[layers]]
+name = 'lang#lua'
+[[layers]]
+name = 'lang#php'
+[[layers]]
+name = 'lang#python'
+[[layers]]
+name = 'lang#vim'
+[[layers]]
+name = 'colorscheme'
+[[layers]]
+name = 'autocomplete'
+auto-completion-return-key-behavior = "complete"
+auto-completion-tab-key-behavior = "smart"
+[[layers]]
+name = 'lang#markdown'
+enableWcwidth = 1
+listItemIndent = 1
+[[layers]]
+name = 'shell'
+default_position = 'top'
+default_height = 30
+# }}}
+
+
+[[custom_plugins]]
+name = 'tomlion/vim-solidity'
+merged = 0
+
+[[custom_plugins]]
+name = 'posva/vim-vue'
+merged = 0
+
+[[custom_plugins]]
+name = 'Quramy/tsuquyomi'
+merged = 0
+
+[[custom_plugins]]
+name = 'Quramy/tsuquyomi-vue'
+merged = 0
+
+[[custom_plugins]]
+name = 'sandersn/vue-ts-plugin'
+merged = 0
+
+[[custom_plugins]]
+name = 'iamcco/mathjax-support-for-mkdp'
+merged = 0
+
+[[custom_plugins]]
+name = 'iamcco/markdown-preview.vim'
+merged = 0
+
+[[custom_plugins]]
+name = 'antoyo/vim-licenses'
+merged = 0
+
+[[custom_plugins]]
+name = 'Glench/Vim-Jinja2-Syntax'
+merged = 0
+
+[[custom_plugins]]
+name = 'tpope/vim-obsession'
+merged = 0

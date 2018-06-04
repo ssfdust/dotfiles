@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=$(dirname "$0")
+BASEDIR=$(cd `dirname "$0"`;pwd)
 echo "$BASEDIR"
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

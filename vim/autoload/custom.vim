@@ -6,17 +6,17 @@ func! custom#before() abort
   let g:deoplete#auto_complete_delay = 150
   let g:deoplete#sources#jedi#debug_server = '/tmp/nvim.log'
 
-  if has('python3')
-      let g:ctrlp_map = ''
-      nnoremap <silent> <C-p> :Denite file_rec<CR>
-  endif
+  " if has('python3')
+      " let g:ctrlp_map = ''
+      " nnoremap <silent> <C-p> :Denite file_rec<CR>
+  " endif
   if (has("nvim"))
     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
   let g:neomake_python_flake8_maker = {
       \ 'args': [
-      \ '--ignore=E221,E241,E272,E251,W702,E203,E201,E202,E302,W291,E712',
+      \ '--ignore=E221,E241,E272,E251,W702,E203,E201,E202,E302,W291,E712,W504',
       \ '--format=default',
       \ '--max-line-length=110'
       \ ],

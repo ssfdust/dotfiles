@@ -1,15 +1,13 @@
 func! custom#before() abort
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
   let g:clang2_placeholder_next = ''
   let g:clang2_placeholder_prev = ''
+  let g:table_mode_corner='|'
 
   let g:neomake_vim_enabled_makers = ['vimlint', 'vint']
   let g:deoplete#auto_complete_delay = 150
   let g:deoplete#sources#jedi#debug_server = '/tmp/nvim.log'
 
-  " if has('python3')
-      " let g:ctrlp_map = ''
-      " nnoremap <silent> <C-p> :Denite file_rec<CR>
-  " endif
   if (has("nvim"))
     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -36,12 +34,15 @@ func! custom#before() abort
   let g:vimfiler_enable_auto_cd = 1
   let g:vimfiler_ignore_pattern = ['^\.']
 
+  let g:deoplete#sources#jedi#extra_path = ['/home/ssfdust/workspace/lazuli/']
   " autocmd
-  autocmd VimEnter,TabNewEntered * VimFilerExplorer
+  autocmd VimEnter * VimFilerExplorer
+
+  " set sys.path for lazuli project
 endf
 
 func! custom#after() abort
   " fix bugs for python-neovim
-  call deoplete#custom#option('num_processes', 1)
+  " call deoplete#custom#option('num_processes', 1)
 endf
 

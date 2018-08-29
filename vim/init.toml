@@ -7,6 +7,8 @@
 # SpaceVim options {{{
 [options]
     default_indent = 4
+    plugin_manager_processes = 16
+    plugin_manager_max_processes = 16
     buffer_index_type = 1
     enable_debug = 1
     enable_ale = 0
@@ -46,11 +48,9 @@ name = 'lang#c'
 [[layers]]
 name = 'tags'
 [[layers]]
+name = 'lang#markdown'
+[[layers]]
 name = 'lang#toml'
-[[layers]]
-name = 'lang#lua'
-[[layers]]
-name = 'lang#php'
 [[layers]]
 name = 'lang#python'
 [[layers]]
@@ -67,7 +67,7 @@ enableWcwidth = 1
 listItemIndent = 1
 [[layers]]
 name = 'shell'
-default_position = 'top'
+default_position = 'bottom'
 default_height = 30
 # }}}
 
@@ -93,14 +93,6 @@ name = 'sandersn/vue-ts-plugin'
 merged = 0
 
 [[custom_plugins]]
-name = 'iamcco/mathjax-support-for-mkdp'
-merged = 0
-
-[[custom_plugins]]
-name = 'iamcco/markdown-preview.vim'
-merged = 0
-
-[[custom_plugins]]
 name = 'antoyo/vim-licenses'
 merged = 0
 
@@ -110,4 +102,12 @@ merged = 0
 
 [[custom_plugins]]
 name = 'tpope/vim-obsession'
+merged = 0
+
+[[custom_plugins]]
+name = 'dhruvasagar/vim-table-mode'
+merged = 0
+
+[[custom_plugins]]
+name = "vim-scripts/dbext.vim"
 merged = 0

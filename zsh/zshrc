@@ -1,7 +1,7 @@
 # POWERLEVEL9K MUST BE AT THE VERY FIRST
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_LINUX_ICON='\uf303'
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=false
 # Path to your oh-my-zsh configuration.
 ZSH=~/.oh-my-zsh/
 

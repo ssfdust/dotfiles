@@ -38,11 +38,11 @@ func! custom#before() abort
   let g:vimfiler_enable_auto_cd = 1
   let g:vimfiler_ignore_pattern = ['^\.']
 
-  let g:deoplete#sources#jedi#extra_path = ['/home/ssfdust/workspace/lazuli/']
   " autocmd
   autocmd VimEnter * VimFilerExplorer
 
   " set sys.path for lazuli project
+  " let g:deoplete#sources#jedi#extra_path = ['/home/ssfdust/workspace/lazuli/']
 endf
 
 func! custom#after() abort

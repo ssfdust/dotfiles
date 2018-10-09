@@ -1,7 +1,24 @@
-# POWERLEVEL9K MUST BE AT THE VERY FIRST
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LINUX_ICON='\uf303'
-ZSH_TMUX_AUTOSTART=false
+# P9K MUST BE AT THE VERY FIRST
+P9K_MODE='nerdfont-complete'
+P9K_LINUX_ICON='\uf302'
+P9K_DIR_SHORTEN_LENGTH=2
+
+## Prompt Variable
+P9K_PROMPT_ON_NEWLINE=false
+P9K_PROMPT_ADD_NEWLINE=false
+P9K_RPROMPT_ON_NEWLINE=true
+## VCS Variable
+P9K_VCS_SHOW_CHANGESET=true
+P9K_VCS_CHANGESET_HASH_LENGTH=6
+## Other Variable
+P9K_TIME_FORMAT="%F %T"
+P9K_STATUS_VERBOSE=false
+
+## Customizing Prompt Segments
+P9K_LEFT_PROMPT_ELEMENTS=(os_icon context disk_usage dir_writable newline dir vcs pyenv)
+P9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode virtualenv)
+P9K_MULTILINE_FIRST_PROMPT_PREFIX_ICON="\n"
+
 # Path to your oh-my-zsh configuration.
 ZSH=~/.oh-my-zsh/
 
@@ -118,20 +135,3 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-
-## Prompt Variable
-POWERLEVEL9K_PROMPT_ON_NEWLINE=false
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-## VCS Variable
-POWERLEVEL9K_SHOW_CHANGESET=true
-POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
-## Other Variable
-POWERLEVEL9K_TIME_FORMAT="%F %T"
-POWERLEVEL9K_STATUS_VERBOSE=false
-
-## Customizing Prompt Segments
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context disk_usage dir_writable newline dir vcs pyenv)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode virtualenv)
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\n"

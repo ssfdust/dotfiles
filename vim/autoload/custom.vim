@@ -41,6 +41,9 @@ func! custom#before() abort
   " autocmd
   autocmd VimEnter * VimFilerExplorer
 
+  " enable gutentags advanced command
+  let g:gutentags_define_advanced_commands = 1
+
   " set sys.path for lazuli project
   " let g:deoplete#sources#jedi#extra_path = ['/home/ssfdust/workspace/lazuli/']
 endf

@@ -117,6 +117,10 @@ export GOPATH="$HOME/Programming/development/go"
 
 remoteip=45.76.106.238
 
+# Prefer vi-mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
 # # Preferred editor for local and remote sessions
 #if [[ -n $SSH_CONNECTION ]]; then
 #  export EDITOR='vim'

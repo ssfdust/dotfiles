@@ -6,7 +6,6 @@ func! custom#before() abort
 
   let g:neomake_vim_enabled_makers = ['vimlint', 'vint']
   let g:deoplete#auto_complete_delay = 150
-  let g:deoplete#sources#jedi#debug_server = '/tmp/nvim.log'
 
   " if has('python3')
       " let g:ctrlp_map = ''
@@ -39,7 +38,7 @@ func! custom#before() abort
   let g:vimfiler_ignore_pattern = ['^\.']
 
   " autocmd
-  autocmd VimEnter * VimFilerExplorer
+  " autocmd VimEnter * VimFilerExplorer
 
   " enable gutentags advanced command
   let g:gutentags_define_advanced_commands = 1
@@ -50,6 +49,8 @@ endf
 
 func! custom#after() abort
   " fix bugs for python-neovim
+  let g:deoplete#sources#jedi#show_docstring = 1
+  set completeopt+=preview
   " call deoplete#custom#option('num_processes', 1)
 endf
 

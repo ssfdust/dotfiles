@@ -6,6 +6,8 @@ func! custom#before() abort
 
   let g:neomake_vim_enabled_makers = ['vimlint', 'vint']
   let g:deoplete#auto_complete_delay = 150
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
 
   " if has('python3')
       " let g:ctrlp_map = ''

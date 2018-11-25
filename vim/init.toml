@@ -21,7 +21,7 @@
     statusline_separator = 'slant'
     github_username = 'ssfdust'
     auto_disable_touchpad = 0
-    colorscheme = 'onedark'
+    colorscheme = 'gruvbox'
     guifont = 'MonofurForPowerline\ Nerd\ Font:h14'
     enable_tabline_filetype_icon = true
     bootstrap_before = "custom#before"

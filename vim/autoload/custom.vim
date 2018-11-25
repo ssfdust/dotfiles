@@ -50,7 +50,8 @@ func! custom#after() abort
   let g:deoplete#sources#jedi#show_docstring = 0
   highlight Normal guibg=NONE ctermbg=NONE
   highlight NonText guibg=NONE ctermbg=NONE
-  highlight EndOfBuffer guibg=None ctermbg=None
+  highlight EndOfBuffer guibg=NONE ctermbg=NONE
+  highlight CursorLine guibg=NONE ctermbg=NONE
   " call deoplete#custom#option('num_processes', 1)
 endf
 

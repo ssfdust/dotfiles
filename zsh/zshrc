@@ -111,9 +111,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$PATH:/home/ssfdust/.config/composer/vendor/bin
 export GOPATH="$HOME/Programming/development/go"
+export PATH=$GOPATH/bin:$HOME/bin:/usr/local/bin:$PATH
+export MAKEFLAGS="-j$(nproc)"
 
 remoteip=45.76.106.238
 

@@ -31,6 +31,9 @@ func! custom#before() abort
       \ }
   let g:neomake_python_enabled_makers = ['flake8']
 
+  " set my own snippet directory
+  let g:neosnippet#snippets_directory = ['/home/ssfdust/dotfiles/snippets/']
+
   let g:licenses_copyright_holders_name = 'RedLotus <ssfdust@gmail.com>'
   let g:licenses_authors_name = 'RedLotus <ssfdust@gmail.com>'
   let g:licenses_default_commands = ['gpl', 'mit']
@@ -52,7 +55,7 @@ endf
 func! custom#after() abort
   " fix bugs for python-neovim
   let g:deoplete#sources#jedi#show_docstring = 1
-  set completeopt+=preview
+  " set completeopt+=preview
   " call deoplete#custom#option('num_processes', 1)
 endf
 

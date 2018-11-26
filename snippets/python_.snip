@@ -1,0 +1,61 @@
+snippet     mdchoice
+abbr        var = MyModelChoiceField
+options     head
+    ${1:varibale} = MyModelChoiceField(label='${2:label}', empty_label='暂无数据',
+                              queryset=EncodeItemDetail.objects.filter(item_id='${0:item_id}'),
+                              to_field_name='item_value')
+
+snippet     zf_bh
+abbr        zf_bh = forms
+options     head
+    zf_bh = forms.ModelChoiceField(label='罪犯编号',
+                                   queryset=DaPrisoner.objects.using('jyplatform').all(),
+                                   widget=autocomplete.ModelSelect2(url='daprisoner-autocomplete')
+                                   )
+
+snippet     mdchfied
+abbr        models.CharField
+options     head
+    models.CharField('${1:label}', max_length=${2:length}, blank=True, null=True)
+
+snippet     mdtxfied
+abbr        models.TextField
+options     head
+    models.TextField('${1:label}', blank=True, null=True)
+
+snippet     mddfied
+abbr        models.TextField
+options     head
+    models.DateField('${1:label}', blank=True, null=True)
+
+snippet     qhfore
+abbr        QuHuaForeignKey
+options     head
+    models.ForeignKey(EncodeQuHua, on_delete=models.PROTECT, verbose_name='${0:label}', blank=True, null=True,
+                     related_name='+')
+
+snippet     classAdmin
+abbr        class ...Admin()
+options     head
+	class ${1:classname}(admin.ModelAdmin):  # ${0:name}
+		list_display = ('zf_bh', 'gydw', ${2:column})  # 列表显示列
+		list_filter = ('gydw', )  # 过滤器
+		search_fields = ('zf_bh',)  # 搜索字段
+		autocomplete_fields = [${5:column}]
+		form = ${6:form}
+
+		def get_queryset(self, request):
+			qs = super($1, self).get_queryset(request)
+			if request.user.is_superuser:
+				return qs
+			return qs.filter(gydw=request.user.police.department)
+
+		def save_model(self, request, obj, form, change):
+			arr = obj.zf_bh.split('/')
+			obj.zf_bh = arr[0]
+			obj.jy_user_id = request.user.police.jy_user_id
+			obj.gydw = arr[2]
+			super().save_model(request, obj, form, change)
+	
+	
+

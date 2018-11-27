@@ -92,12 +92,12 @@ plugins=(vi-mode
          pyenv
          python
          common-aliases
+         arch_update
          history-substring-search
          history
          git
          themes
          github
-         textmate
          tmux
          golang
          thefuck

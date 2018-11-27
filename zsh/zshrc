@@ -113,7 +113,8 @@ source $ZSH/oh-my-zsh.sh
 
 export GOPATH="$HOME/Programming/development/go"
 export PATH=$GOPATH/bin:$HOME/bin:/usr/local/bin:$PATH
-export MAKEFLAGS="-j$(nproc)"
+export PYTHON_HOST_PROG='/usr/bin/python2'
+export PYTHON3_HOST_PROG='/usr/bin/python3'
 
 remoteip=45.76.106.238
 

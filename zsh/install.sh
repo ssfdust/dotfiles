@@ -13,4 +13,5 @@ git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/p
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 basepath=$(cd `dirname $0`; pwd)
+install -D $basepath/plugins/arch_update/arch_update.plugin.zsh $HOME/.oh-my-zsh/custom/plugins/arch_update/arch_update.plugin.zsh
 ln -sf $basepath/zshrc $HOME/.zshrc

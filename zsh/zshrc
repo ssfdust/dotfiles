@@ -101,6 +101,7 @@ plugins=(vi-mode
          tmux
          golang
          thefuck
+         arch_update
          zsh_reload
          zsh-completions
          zsh-autosuggestions

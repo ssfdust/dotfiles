@@ -4,7 +4,7 @@ func! custom#before() abort
   let g:clang2_placeholder_prev = ''
   let g:table_mode_corner='|'
 
-  let g:neomake_vim_enabled_makers = ['vimlint', 'vint']
+  let g:neomake_vim_enabled_makers = ['vint']
   let g:deoplete#auto_complete_delay = 150
   " let g:python_host_prog = '/usr/bin/python2'
   " let g:python3_host_prog = '/usr/bin/python3'
@@ -30,6 +30,12 @@ func! custom#before() abort
   " set my own snippet directory
   let g:neosnippet#snippets_directory = ['/home/ssfdust/dotfiles/snippets/']
 
+  let g:neomake_rust_enabled_makers = ['rustc']
+  let g:LanguageClient_rootMarkers = ['.root', 'project.*']
+
+  " for rust-racer
+  let g:racer_cmd = '/usr/bin/racer'
+
   let g:licenses_copyright_holders_name = 'RedLotus <ssfdust@gmail.com>'
   let g:licenses_authors_name = 'RedLotus <ssfdust@gmail.com>'
   let g:licenses_default_commands = ['gpl', 'mit']
@@ -49,13 +55,11 @@ func! custom#before() abort
 endf
 
 func! custom#after() abort
-  " fix bugs for python-neovim
   " set completeopt+=preview
   let g:deoplete#sources#jedi#show_docstring = 0
   " highlight Normal guibg=NONE ctermbg=NONE
   " highlight NonText guibg=NONE ctermbg=NONE
   " highlight EndOfBuffer guibg=NONE ctermbg=NONE
   " highlight CursorLine guibg=NONE ctermbg=NONE
-  " call deoplete#custom#option('num_processes', 1)
 endf
 

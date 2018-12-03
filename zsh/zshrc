@@ -89,7 +89,6 @@ plugins=(vi-mode
          cp
          archlinux
          docker
-         pyenv
          python
          common-aliases
          arch_update
@@ -100,7 +99,9 @@ plugins=(vi-mode
          github
          tmux
          golang
+         rust
          thefuck
+         arch_update
          zsh_reload
          zsh-completions
          zsh-autosuggestions
@@ -112,7 +113,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export GOPATH="$HOME/Programming/development/go"
-export PATH=$GOPATH/bin:$HOME/bin:/usr/local/bin:$PATH
+export CARGO_HOME="$HOME/Programming/packages/cargo"
+export RUST_HOME="$HOME/Programming/packages/rust"
+export PATH=$HOME/.rvm/bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/bin:$PATH
 export PYTHON_HOST_PROG='/usr/bin/python2'
 export PYTHON3_HOST_PROG='/usr/bin/python3'
 

@@ -38,6 +38,12 @@ name = 'git'
 [[layers]]
 name = 'VersionControl'
 [[layers]]
+  name = "lsp"
+  filetypes = [
+    "rust",
+    "vue"
+  ]
+[[layers]]
 name = 'lang#go'
 [[layers]]
 name = 'lang#json'
@@ -55,8 +61,8 @@ name = 'lang#toml'
 name = 'lang#python'
 [[layers]]
 name = 'lang#vim'
-[[layers]]
-name = 'lang#rust'
+# [[layers]]
+# name = 'lang#rust'
 [[layers]]
 name = 'colorscheme'
 [[layers]]

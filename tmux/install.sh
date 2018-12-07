@@ -10,10 +10,10 @@ if [[ -d "$HOME/.tmux/plugins/tmux-powerline" ]];then
     bash ~/.tmux/plugins/tmux-powerline/generate_rc.sh
     cp -f "$BASEDIR/ssfdust.sh" ~/.tmux/plugins/tmux-powerline/themes/
     cp -f "$BASEDIR/rainbarf.conf" ~/.rainbarf.conf
-    sudo cpan -i App::rainbarf
     mv -f ~/.tmux-powerlinerc.default ~/.tmux-powerlinerc
     sed 's/\(TMUX_POWERLINE_THEME="\)default/\1ssfdust/g' -i ~/.tmux-powerlinerc
     sed 's/\(TMUX_POWERLINE_SEG_WEATHER_LOCATION="\)/\12137082/g' -i ~/.tmux-powerlinerc
+    sed 's/\(iface\)=\$(.*/\1=\$(\/bin\/cat \/proc\/net\/route | \/usr\/bin\/awk '"'"'{if(\$2 == "00000000" \&\& NR >1) print \$1}'"'"')/' ~/.tmux/plugins/tmux-powerline/segments/ifstat_sys.sh -i
 else
     echo "please enter the tmux mode and install the plugins via C-A + I(大写的I, Capital I)"
     echo "then run the script again"

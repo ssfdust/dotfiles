@@ -57,8 +57,8 @@ name = 'tags'
 name = 'lang#markdown'
 [[layers]]
 name = 'lang#toml'
-[[layers]]
-name = 'lang#python'
+# [[layers]]
+# name = 'lang#python'
 [[layers]]
 name = 'lang#vim'
 # [[layers]]

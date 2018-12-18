@@ -11,10 +11,10 @@
     plugin_manager_max_processes = 16
     buffer_index_type = 1
     enable_debug = 1
+    lint_on_the_fly = 1
     enable_ale = 0
     enable_vimfiler_filetypeicon = 1
     enable_vimfiler_welcome = 0
-    line_on_the_fly = 0
     realtime_leader_guide = 1
     enable_tabline_filetype_icon = 1
     enable_os_fileformat_icon = 1
@@ -26,13 +26,16 @@
     enable_tabline_filetype_icon = true
     bootstrap_before = "custom#before"
     bootstrap_after = "custom#after"
+    # project_rooter_automatically = 0
+
 # }}}
 
 # SpaceVim layer config {{{
 [[layers]]
-name = 'denite'
+    name = 'denite'
 [[layers]]
-name = 'checkers'
+    name = 'checkers'
+    lint_on_the_fly = true
 [[layers]]
 name = 'git'
 [[layers]]
@@ -57,8 +60,8 @@ name = 'tags'
 name = 'lang#markdown'
 [[layers]]
 name = 'lang#toml'
-# [[layers]]
-# name = 'lang#python'
+[[layers]]
+name = 'lang#python'
 [[layers]]
 name = 'lang#vim'
 # [[layers]]

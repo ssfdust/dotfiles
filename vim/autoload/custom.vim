@@ -39,7 +39,7 @@ func! custom#before() abort
 
   let g:licenses_copyright_holders_name = 'RedLotus <ssfdust@gmail.com>'
   let g:licenses_authors_name = 'RedLotus <ssfdust@gmail.com>'
-  let g:licenses_default_commands = ['gpl', 'mit']
+  let g:licenses_default_commands = ['gpl', 'mit', 'lgpl']
 
   " let vimfiler change Vim current directory when editing file
   let g:vimfiler_enable_auto_cd = 1

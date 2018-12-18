@@ -27,6 +27,7 @@ func! custom#before() abort
       \ }
   let g:neomake_python_enabled_makers = ['flake8']
 
+
   " set my own snippet directory
   let g:neosnippet#snippets_directory = ['/home/ssfdust/dotfiles/snippets/']
 

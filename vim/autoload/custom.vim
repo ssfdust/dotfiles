@@ -15,7 +15,7 @@ func! custom#before() abort
   " endif
   let g:neomake_python_flake8_maker = {
       \ 'args': [
-      \ '--ignore=E221,E241,E272,E251,W702,E203,E201,E202,E302,W291,E712,W504,W605',
+      \ '--ignore=E128,E126,E221,E241,E272,E127,E251,W702,E203,E201,E202,E302,W291,E712,W504,W605',
       \ '--format=default',
       \ '--max-line-length=125'
       \ ],

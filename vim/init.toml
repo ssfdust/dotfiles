@@ -26,7 +26,7 @@
     enable_tabline_filetype_icon = true
     bootstrap_before = "custom#before"
     bootstrap_after = "custom#after"
-    # project_rooter_automatically = 0
+    project_rooter_automatically = 1
 
 # }}}
 
@@ -120,5 +120,5 @@ name = 'dhruvasagar/vim-table-mode'
 merged = 0
 
 [[custom_plugins]]
-name = "vim-scripts/dbext.vim"
+name = "tpope/vim-dadbod"
 merged = 0

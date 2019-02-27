@@ -41,9 +41,9 @@ fi
 # Custom alias command
 alias pipurl="sed -i \"s/org/doubanio.com/\" Pipfile "
 alias switch_ap="sudo systemctl stop create_ap_1 && sudo systemctl start create_ap"
-alias snmp="smart-npm"
 alias nvr="nvr --remote-tab"
 alias dzps="fuck"
+alias neofetch="neofetch --ascii_colors 33 33"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -106,6 +106,7 @@ plugins=(vi-mode
          zsh-completions
          zsh-autosuggestions
          zsh-syntax-highlighting
+         pipenv
          virtualenv)
 
 source $ZSH/oh-my-zsh.sh
@@ -142,3 +143,4 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+zsh-pipenv-shell-activate

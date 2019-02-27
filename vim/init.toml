@@ -22,7 +22,7 @@
     github_username = 'ssfdust'
     auto_disable_touchpad = 0
     colorscheme = 'onedark'
-    guifont = 'MonofurForPowerline\ Nerd\ Font:h14'
+    guifont = 'DejaVuSansMono\ Nerd\ Font\ Mono:h14'
     enable_tabline_filetype_icon = true
     bootstrap_before = "custom#before"
     bootstrap_after = "custom#after"
@@ -57,6 +57,10 @@ name = 'lang#c'
 [[layers]]
 name = 'tags'
 [[layers]]
+name = "debug"
+[[layers]]
+name = 'chinese'
+[[layers]]
 name = 'lang#markdown'
 [[layers]]
 name = 'lang#toml'
@@ -64,8 +68,6 @@ name = 'lang#toml'
 name = 'lang#python'
 [[layers]]
 name = 'lang#vim'
-# [[layers]]
-# name = 'lang#rust'
 [[layers]]
 name = 'colorscheme'
 [[layers]]
@@ -86,22 +88,6 @@ default_height = 30
 [[custom_plugins]]
 name = 'tomlion/vim-solidity'
 merged = 0
-
-# [[custom_plugins]]
-# name = 'posva/vim-vue'
-# merged = 0
-#
-# [[custom_plugins]]
-# name = 'Quramy/tsuquyomi'
-# merged = 0
-#
-# [[custom_plugins]]
-# name = 'Quramy/tsuquyomi-vue'
-# merged = 0
-#
-# [[custom_plugins]]
-# name = 'sandersn/vue-ts-plugin'
-# merged = 0
 
 [[custom_plugins]]
 name = 'antoyo/vim-licenses'

@@ -15,7 +15,7 @@ func! custom#before() abort
   " endif
   let g:neomake_python_flake8_maker = {
       \ 'args': [
-      \ '--ignore=E221,E241,E272,E251,W702,E203,E201,E202,E302,W291,E712,W504,W605',
+      \ '--ignore=E711,E128,E126,E221,E241,E272,E127,E251,W702,E203,E201,E202,E302,W291,E712,W504,W605',
       \ '--format=default',
       \ '--max-line-length=125'
       \ ],
@@ -51,16 +51,16 @@ func! custom#before() abort
   " enable gutentags advanced command
   let g:gutentags_define_advanced_commands = 1
 
-  " set sys.path for lazuli project
-  " let g:deoplete#sources#jedi#extra_path = ['/home/ssfdust/workspace/lazuli/']
 endf
 
 func! custom#after() abort
-  " set completeopt+=preview
   let g:deoplete#sources#jedi#show_docstring = 0
   " highlight Normal guibg=NONE ctermbg=NONE
   " highlight NonText guibg=NONE ctermbg=NONE
   " highlight EndOfBuffer guibg=NONE ctermbg=NONE
   " highlight CursorLine guibg=NONE ctermbg=NONE
+  " set sys.path for project
+  let g:deoplete#sources#jedi#python_path = '/home/ssfdust/.local/share/virtualenvs/megalithOA-zSUnPLHT/bin/python3.7'
+  let g:deoplete#sources#jedi#extra_path = ['/home/ssfdust/Programming/development/megalithOA']
 endf
 

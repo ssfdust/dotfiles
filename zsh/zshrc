@@ -116,7 +116,7 @@ source $ZSH/oh-my-zsh.sh
 export GOPATH="$HOME/Programming/development/go"
 export CARGO_HOME="$HOME/Programming/packages/cargo"
 export RUST_HOME="$HOME/Programming/packages/rust"
-export PATH=$HOME/.rvm/bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.bin:$HOME/.rvm/bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/bin:$PATH
 export PYTHON_HOST_PROG='/usr/bin/python2'
 export PYTHON3_HOST_PROG='/usr/bin/python3'
 

@@ -8,6 +8,7 @@
 [options]
     default_indent = 4
     plugin_manager_processes = 16
+    filemanager = 'defx'
     plugin_manager_max_processes = 16
     buffer_index_type = 1
     enable_debug = 1

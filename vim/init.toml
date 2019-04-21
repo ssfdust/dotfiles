@@ -28,6 +28,7 @@
     bootstrap_before = "custom#before"
     bootstrap_after = "custom#after"
     project_rooter_automatically = 1
+    filemanager = "defx"
 
 # }}}
 
@@ -45,7 +46,8 @@ name = 'VersionControl'
   name = "lsp"
   filetypes = [
     "rust",
-    "vue"
+    "vue",
+    "python"
   ]
 [[layers]]
 name = 'lang#go'

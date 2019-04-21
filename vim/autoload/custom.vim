@@ -1,10 +1,9 @@
 func! custom#before() abort
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
   let g:clang2_placeholder_next = ''
   let g:clang2_placeholder_prev = ''
   let g:table_mode_corner='|'
 
-  let g:neomake_vim_enabled_makers = ['vint']
+  let g:LanguageClient_settingsPath = '~/.SpaceVim.d/settings.json'
   let g:deoplete#auto_complete_delay = 150
   let g:neosnippet#enable_complete_done = 0
   " let g:python_host_prog = '/usr/bin/python2'
@@ -14,19 +13,19 @@ func! custom#before() abort
       " let g:ctrlp_map = ''
       " nnoremap <silent> <C-p> :Denite file_rec<CR>
   " endif
-  let g:neomake_python_flake8_maker = {
-      \ 'args': [
-      \ '--ignore=E711,E128,E126,E221,E241,E272,E127,E251,W702,E203,E201,E202,E302,W291,E712,W504,W605',
-      \ '--format=default',
-      \ '--max-line-length=125'
-      \ ],
-      \ 'errorformat':
-          \ '%E%f:%l: could not compile,%-Z%p^,' .
-          \ '%A%f:%l:%c: %t%n %m,' .
-          \ '%A%f:%l: %t%n %m,' .
-          \ '%-G%.%#',
-      \ }
-  let g:neomake_python_enabled_makers = ['flake8']
+  " let g:neomake_python_flake8_maker = {
+  "     \ 'args': [
+  "     \ '--ignore=E711,E128,E126,E221,E241,E272,E127,E251,W702,E203,E201,E202,E302,W291,E712,W504,W605',
+  "     \ '--format=default',
+  "     \ '--max-line-length=125'
+  "     \ ],
+  "     \ 'errorformat':
+  "         \ '%E%f:%l: could not compile,%-Z%p^,' .
+  "         \ '%A%f:%l:%c: %t%n %m,' .
+  "         \ '%A%f:%l: %t%n %m,' .
+  "         \ '%-G%.%#',
+  "     \ }
+  " let g:neomake_python_enabled_makers = ['']
 
 
   " set my own snippet directory
@@ -56,12 +55,13 @@ endf
 
 func! custom#after() abort
   let g:deoplete#sources#jedi#show_docstring = 0
+  nmap <F4> :call LanguageClient#textDocument_formatting()<CR>
   " highlight Normal guibg=NONE ctermbg=NONE
   " highlight NonText guibg=NONE ctermbg=NONE
   " highlight EndOfBuffer guibg=NONE ctermbg=NONE
   " highlight CursorLine guibg=NONE ctermbg=NONE
   " set sys.path for project
-  let g:deoplete#sources#jedi#python_path = '/home/ssfdust/.local/share/virtualenvs/megalithOA-zSUnPLHT/bin/python3.7'
-  let g:deoplete#sources#jedi#extra_path = ['/home/ssfdust/Programming/development/megalithOA']
+  " let g:deoplete#sources#jedi#python_path = '/home/ssfdust/.cache/pypoetry/virtualenvs/flask-rest-api-example-py3.7/bin/python3'
+  " let g:deoplete#sources#jedi#extra_path = ['/home/ssfdust/Programming/development/example/app/']
 endf
 

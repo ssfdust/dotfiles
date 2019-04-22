@@ -25,7 +25,7 @@ func! custom#before() abort
   "         \ '%A%f:%l: %t%n %m,' .
   "         \ '%-G%.%#',
   "     \ }
-  " let g:neomake_python_enabled_makers = ['']
+  " let g:neomake_python_enabled_makers = ['flake8']
 
 
   " set my own snippet directory
@@ -54,6 +54,8 @@ func! custom#before() abort
 endf
 
 func! custom#after() abort
+  let g:_spacevim_mappings_space.f.c = {'name' : '+Defx path operation'}
+  call SpaceVim#mapping#space#def('nnoremap', ['f', 'c', 'c'], 'Defx `expand("%:p:h")` -search=`expand("%:p")`', 'To Current File Path', 1)
   let g:deoplete#sources#jedi#show_docstring = 0
   nmap <F4> :call LanguageClient#textDocument_formatting()<CR>
   " highlight Normal guibg=NONE ctermbg=NONE

@@ -14,6 +14,7 @@
     enable_debug = 1
     lint_on_the_fly = 1
     enable_ale = 0
+    project_rooter_patterns = ['app.py', '.git']
     enable_vimfiler_filetypeicon = 1
     enable_vimfiler_welcome = 0
     realtime_leader_guide = 1
@@ -46,17 +47,17 @@ name = 'VersionControl'
   name = "lsp"
   filetypes = [
     "rust",
-    "vue",
-    "python"
+    "python",
+    "vue"
   ]
-[[layers]]
-name = 'lang#go'
+# [[layers]]
+# name = 'lang#go'
 [[layers]]
 name = 'lang#json'
-[[layers]]
-name = 'lang#java'
-[[layers]]
-name = 'lang#c'
+# [[layers]]
+# name = 'lang#java'
+# [[layers]]
+# name = 'lang#c'
 [[layers]]
 name = 'tags'
 [[layers]]
@@ -110,4 +111,8 @@ merged = 0
 
 [[custom_plugins]]
 name = "tpope/vim-dadbod"
+merged = 0
+
+[[custom_plugins]]
+name = 'gisphm/vim-gitignore'
 merged = 0

@@ -10,3 +10,6 @@
 [submodule "zsh/plugins/zsh-completions"]
 	path = zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "zsh/themes/powerlevel9k"]
+	path = zsh/themes/powerlevel9k
+	url = https://github.com/bhilburn/powerlevel9k.git

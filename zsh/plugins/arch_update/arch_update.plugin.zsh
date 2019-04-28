@@ -15,9 +15,9 @@ bb_clean() {
     read answer
     if [[ $answer =~ "[Yy]" && -d ~/Update_pkg ]]; then 
         for dir in ~/Update_pkg/*/; do
-            pushd $dir
-            git clean -xfd
-            popd
+            pushd $dir > /dev/null
+            git clean -xfd > /dev/null
+            popd > /dev/null
         done
     fi
 }

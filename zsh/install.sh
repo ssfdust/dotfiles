@@ -7,11 +7,12 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]];then
     exit
 fi
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+# git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-completions.git ~/.oh-my-zsh/custom/plugins/zsh-completions
+# git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 basepath=$(cd `dirname $0`; pwd)
-install -D $basepath/plugins/arch_update/arch_update.plugin.zsh $HOME/.oh-my-zsh/custom/plugins/arch_update/arch_update.plugin.zsh
 ln -sf $basepath/zshrc $HOME/.zshrc
+ln -sf $basepath/plugins $HOME/.oh-my-zsh/custom/plugins
+ln -sf $basepath/themes $HOME/.oh-my-zsh/custom/themes

@@ -14,7 +14,7 @@
     enable_debug = 1
     lint_on_the_fly = 1
     enable_ale = 0
-    project_rooter_patterns = ['app.py', '.git']
+    update_retry_cnt = 3
     enable_vimfiler_filetypeicon = 1
     enable_vimfiler_welcome = 0
     realtime_leader_guide = 1
@@ -24,95 +24,73 @@
     github_username = 'ssfdust'
     auto_disable_touchpad = 0
     colorscheme = 'onedark'
-    guifont = 'DejaVuSansMono\ Nerd\ Font\ Mono:h14'
     enable_tabline_filetype_icon = true
     bootstrap_before = "custom#before"
     bootstrap_after = "custom#after"
     project_rooter_automatically = 1
-    filemanager = "defx"
 
 # }}}
 
-# SpaceVim layer config {{{
+# # SpaceVim layer config {{{
 [[layers]]
     name = 'denite'
 [[layers]]
     name = 'checkers'
     show_cursor_error = false
 [[layers]]
-name = 'git'
+    name = 'git'
 [[layers]]
-name = 'VersionControl'
+    name = 'VersionControl'
 [[layers]]
-  name = "lsp"
-  filetypes = [
-    "rust",
-    "python",
-    "vue"
-  ]
-# [[layers]]
-# name = 'lang#go'
+    name = "lsp"
+    filetypes = [
+        "rust",
+        "python",
+        "vue"
+    ]
 [[layers]]
-name = 'lang#json'
-# [[layers]]
-# name = 'lang#java'
-# [[layers]]
-# name = 'lang#c'
+    name = 'cscope'
 [[layers]]
-name = 'tags'
+    name = 'lang#json'
 [[layers]]
-name = "debug"
+    name = 'tags'
 [[layers]]
-name = 'chinese'
+    name = "debug"
 [[layers]]
-name = 'lang#markdown'
+    name = 'chinese'
 [[layers]]
-name = 'lang#toml'
+    name = 'lang#markdown'
 [[layers]]
-name = 'lang#python'
+    name = 'lang#toml'
 [[layers]]
-name = 'lang#vim'
+    name = 'lang#sql'
 [[layers]]
-name = 'colorscheme'
+    name = 'lang#python'
 [[layers]]
-name = 'autocomplete'
-auto-completion-return-key-behavior = "complete"
-auto-completion-tab-key-behavior = "smart"
+    name = 'lang#vim'
 [[layers]]
-name = 'lang#markdown'
-enableWcwidth = 1
-listItemIndent = 1
+    name = 'colorscheme'
 [[layers]]
-name = 'shell'
-default_position = 'bottom'
-default_height = 30
-# }}}
+    name = 'autocomplete'
+    auto-completion-return-key-behavior = "complete"
+    auto-completion-tab-key-behavior = "smart"
+[[layers]]
+    name = 'lang#markdown'
+    enableWcwidth = 1
+    listItemIndent = 1
+[[layers]]
+    name = 'shell'
+    default_position = 'bottom'
+    default_height = 30
+# # }}}
 
 
 [[custom_plugins]]
-name = 'tomlion/vim-solidity'
-merged = 0
-
+    name = 'antoyo/vim-licenses'
+    merged = 0
 [[custom_plugins]]
-name = 'antoyo/vim-licenses'
-merged = 0
-
+    name = 'tpope/vim-obsession'
+    merged = 0
 [[custom_plugins]]
-name = 'Glench/Vim-Jinja2-Syntax'
-merged = 0
-
-[[custom_plugins]]
-name = 'tpope/vim-obsession'
-merged = 0
-
-[[custom_plugins]]
-name = 'dhruvasagar/vim-table-mode'
-merged = 0
-
-[[custom_plugins]]
-name = "tpope/vim-dadbod"
-merged = 0
-
-[[custom_plugins]]
-name = 'gisphm/vim-gitignore'
-merged = 0
+    name = 'gisphm/vim-gitignore'
+    merged = 0

@@ -86,24 +86,24 @@ tabspaces: 8
 font:
   # Normal (roman) font face
   normal:
-    family: DejaVuSansMono Nerd Font Mono
+    family: Hack Nerd Font
     # The `style` can be specified to pick a specific face.
-    style: Book
+    style: Regular
 
   # Bold font face
   bold:
-    family: DejaVuSansMono Nerd Font Mono
+    family: Hack Nerd Font
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
   italic:
-    family: DejaVuSansMono Nerd Font Mono
+    family: Hack Nerd Font
     # The `style` can be specified to pick a specific face.
-    style: Oblique
+    style: Italic
 
   # Point size
-  size: 12
+  size: 11
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -125,7 +125,7 @@ font:
   # scale_with_dpi: false
 
 # Display the time it takes to redraw each frame.
-render_timer: false
+debug.render_timer: false
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true

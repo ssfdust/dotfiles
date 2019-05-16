@@ -13,3 +13,6 @@
 [submodule "zsh/themes/powerlevel9k"]
 	path = zsh/themes/powerlevel9k
 	url = https://github.com/bhilburn/powerlevel9k.git
+[submodule "conky/conky-weather"]
+	path = conky/conky-weather
+	url = https://github.com/kuiba1949/conky-weather.git

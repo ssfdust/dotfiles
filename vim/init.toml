@@ -28,7 +28,6 @@
     bootstrap_before = "custom#before"
     bootstrap_after = "custom#after"
     project_rooter_automatically = 1
-
 # }}}
 
 # # SpaceVim layer config {{{
@@ -49,7 +48,7 @@
         "vue"
     ]
 [[layers]]
-    name = 'cscope'
+    name = 'lang#ruby'
 [[layers]]
     name = 'lang#json'
 [[layers]]
@@ -82,6 +81,8 @@
     name = 'shell'
     default_position = 'bottom'
     default_height = 30
+[[layers]]
+    name="lang#latex"
 # # }}}
 
 

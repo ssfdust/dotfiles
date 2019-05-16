@@ -1,6 +1,7 @@
 func! custom#before() abort
   let g:LanguageClient_settingsPath = '~/.SpaceVim.d/settings.json'
   let g:neosnippet#enable_complete_done = 0
+  let g:vim_markdown_folding_style_pythonic = 1
 
   " for rust-racer
   let g:licenses_copyright_holders_name = 'RedLotus <ssfdust@gmail.com>'

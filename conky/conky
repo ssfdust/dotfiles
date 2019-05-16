@@ -1,0 +1,94 @@
+conky.config = {
+
+-------------------------------------
+--  Generic Settings
+-------------------------------------
+background=true,
+update_interval=1,
+double_buffer=true,
+no_buffers=true,
+imlib_cache_size=10,
+
+draw_shades=false,
+draw_outline=false,
+draw_borders=false,
+draw_graph_borders=false,
+default_graph_height=26,
+default_graph_width=80,
+show_graph_scale=false,
+show_graph_range=false,
+
+
+-------------------------------------
+--  Window Specifications
+-------------------------------------
+gap_x=1124,
+gap_y=0,
+minimum_height=408,
+minimum_width=292,
+own_window=true,
+own_window_type="normal",
+own_window_transparent=true,
+own_window_hints="undecorated,below,sticky,skip_taskbar,skip_pager",
+border_inner_margin=0,
+border_outer_margin=0,
+--alignment="middle_middle",
+--own_window_argb_visual=true,
+--own_window_argb_value=0,
+
+
+-------------------------------------
+--  Text Settings
+-------------------------------------
+use_xft=true,
+xftalpha=1,
+font="Droid Sans:size=8",
+text_buffer_size=256,
+override_utf8_locale=true,
+
+short_units=true,
+short_units=true,
+pad_percents=2,
+top_name_width=7,
+
+
+-------------------------------------
+--  Color Scheme
+-------------------------------------
+default_color="2C2C2C",
+color1="2C2C2C",
+color2="2C2C2C",
+color3="FFFFFF",
+color4="6598CB",
+color5="666666",
+color6="CB6565",
+color7="DDDDDD",
+
+
+-------------------------------------
+--  City ID
+-------------------------------------
+template7="1886760",
+
+
+-------------------------------------
+--  Locale (e.g. "es_ES.UTF-8")
+--  Leave empty for default
+-------------------------------------
+template9=""
+
+}
+
+
+---------------------------------------------------
+---------------------------------------------------
+
+
+conky.text = [[
+\
+${voffset 15}${font Droid Sans Mono :size=22}${alignc}${color1}${time %H:%M}${font}${color}
+${voffset 4}${font Hiragino Sans GB:size=10}${alignc}${color2}${execi 300 date +%Y年%m月%d日}，${execi 300 jq -r '.current.lunar' ~/.cache/weather.json}${font}${color}
+${voffset 4}${font Hiragino Sans GB:size=10}${alignc}${color2}${execi 300 jq -r '.current.shizhai' ~/.cache/weather.json}${font}${color}
+${image ~/.harmattan-assets/misc/Zukitwo/God-Mode/top-bg-a.png -p 0,0 -s 320x81}\
+${image ~/.cache/weather.png -p 0,81 -s 294x330}\
+]]

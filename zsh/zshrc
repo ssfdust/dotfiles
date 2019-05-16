@@ -14,7 +14,7 @@ P9K_TIME_FORMAT="%F %T"
 P9K_STATUS_VERBOSE=false
 
 ## Customizing Prompt Segments
-P9K_LEFT_PROMPT_ELEMENTS=(os_icon context disk_usage dir_writable newline dir vcs pyenv)
+P9K_LEFT_PROMPT_ELEMENTS=(os_icon context disk_usage dir_writable newline dir vcs)
 P9K_RIGHT_PROMPT_ELEMENTS=(status anaconda vi_mode virtualenv)
 P9K_MULTILINE_FIRST_PROMPT_PREFIX_ICON="\n"
 

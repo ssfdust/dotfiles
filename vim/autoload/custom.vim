@@ -3,7 +3,6 @@ func! custom#before() abort
   let g:neosnippet#enable_complete_done = 0
   let g:vim_markdown_folding_style_pythonic = 1
 
-  " for rust-racer
   let g:licenses_copyright_holders_name = 'RedLotus <ssfdust@gmail.com>'
   let g:licenses_authors_name = 'RedLotus <ssfdust@gmail.com>'
   let g:licenses_default_commands = ['gpl', 'mit', 'lgpl']

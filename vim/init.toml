@@ -95,3 +95,6 @@
 [[custom_plugins]]
     name = 'gisphm/vim-gitignore'
     merged = 0
+[[custom_plugins]]
+    name = 'alfredodeza/pytest.vim'
+    merged = 0

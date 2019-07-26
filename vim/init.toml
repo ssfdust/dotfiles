@@ -28,6 +28,8 @@
     bootstrap_before = "custom#before"
     bootstrap_after = "custom#after"
     project_rooter_automatically = 1
+    disabled_plugins = ["denite.nvim"]
+
 # }}}
 
 # # SpaceVim layer config {{{
@@ -98,3 +100,11 @@
 [[custom_plugins]]
     name = 'alfredodeza/pytest.vim'
     merged = 0
+[[custom_plugins]]
+    name = 'pseewald/vim-anyfold'
+    merged = 0
+[[custom_plugins]]
+    name = "SpaceVim/denite.nvim"
+    merged = false
+    loadconf = true
+

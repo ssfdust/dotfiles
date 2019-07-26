@@ -9,5 +9,7 @@ func! custom#before() abort
 endf
 
 func! custom#after() abort
+  autocmd Filetype python AnyFoldActivate
+  set foldlevel=99
   nmap <F4> :call LanguageClient#textDocument_formatting()<CR>
 endf

@@ -43,9 +43,7 @@
 [[layers]]
     name = "lsp"
     filetypes = [
-        "rust",
         "python",
-        "vue"
     ]
 [[layers]]
     name = 'lang#ruby'

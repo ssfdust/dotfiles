@@ -34,17 +34,6 @@ else
 	ZSH_THEME="dst"
 fi
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Custom alias command
-alias pipurl="sed -i \"s/org/doubanio.com/\" Pipfile "
-alias switch_ap="sudo systemctl stop create_ap_1 && sudo systemctl start create_ap"
-alias nvr="nvr --remote-tab"
-alias dzps="fuck"
-alias neofetch="neofetch --ascii_colors 33 33"
-
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
@@ -126,6 +115,18 @@ remoteip=45.76.106.238
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Custom alias command
+alias pipurl="sed -i \"s/org/doubanio.com/\" Pipfile "
+alias switch_ap="sudo systemctl stop create_ap_1 && sudo systemctl start create_ap"
+alias nvr="nvr --remote-tab"
+alias dzps="fuck"
+alias neofetch="neofetch --ascii_colors 33 33"
+alias ls="exa"
+
 # # Preferred editor for local and remote sessions
 #if [[ -n $SSH_CONNECTION ]]; then
 #  export EDITOR='vim'
@@ -142,4 +143,4 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/.poetry/bin"
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.local/bin/"

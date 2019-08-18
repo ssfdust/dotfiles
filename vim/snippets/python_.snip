@@ -18,8 +18,8 @@ options		head
 
 		${3:column}  
 
-		def __init__(self, ${4:keys}, **kwargs):
-			db.Model.__init__(self, $4, **kwargs)
+		def __init__(self, **kwargs):
+			db.Model.__init__(self, **kwargs)
 
 		def __repr__(self):  # pragma: nocover
 			return '<$1({name!r})>'.format(name=self.name)

@@ -1,0 +1,22 @@
+patch:
+  switcher:
+    abbreviate_options: true
+    caption: 〔切换〕
+    fold_options: true
+    save_options:
+      - full_shape
+      - ascii_punct
+      - simplification
+      - extended_charset
+
+  schema_list:                                           # 激活的输入方案选单，这里只保留朙月拼音・简化字
+    - schema: luna_pinyin_simp
+
+  ascii_composer:
+    switch_key:
+      Caps_Lock: noop
+      Control_L: noop
+      Control_R: noop
+      Eisu_toggle: clear
+      Shift_L: commit_code
+      Shift_R: commit_code

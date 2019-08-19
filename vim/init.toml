@@ -50,17 +50,11 @@
         "vue"
     ]
 [[layers]]
-    name = 'lang#ruby'
-[[layers]]
-    name = 'lang#json'
-[[layers]]
-    name = 'tags'
-[[layers]]
     name = "debug"
 [[layers]]
-    name = 'chinese'
-[[layers]]
-    name = 'lang#markdown'
+    name = 'autocomplete'
+    auto-completion-return-key-behavior = "complete"
+    auto-completion-tab-key-behavior = "smart"
 [[layers]]
     name = 'lang#toml'
 [[layers]]
@@ -70,21 +64,17 @@
 [[layers]]
     name = 'lang#vim'
 [[layers]]
-    name = 'colorscheme'
-[[layers]]
-    name = 'autocomplete'
-    auto-completion-return-key-behavior = "complete"
-    auto-completion-tab-key-behavior = "smart"
+    name = 'lang#json'
 [[layers]]
     name = 'lang#markdown'
     enableWcwidth = 1
     listItemIndent = 1
 [[layers]]
+    name = 'colorscheme'
+[[layers]]
     name = 'shell'
     default_position = 'bottom'
     default_height = 30
-[[layers]]
-    name="lang#latex"
 # # }}}
 
 

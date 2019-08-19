@@ -46,24 +46,15 @@ options		head
 		}
 	)
 
+snippet     dbcol
+abbr        db.Column() item ...
+options     head
+	db.Column(db.${1:filed_type}, doc='${2:document}')
+
 snippet		routeclass
 abbr		@ns.route() class ...
 options		head
 	@ns.route('${1:path}')
 	class ${2:name}(Resource):
 		@jwt_required
-		@ns.doc(
-			security='apikey',
-			params=${3:fields},
-			description="${4:description}"
-		)
-		@ns.response(code=404, description='资源不存在')
-		@ns.response(code=405, description='方法不允许')
-		@ns.response(code=403, description='禁止访问')
-		@ns.response(code=401, description='无权限访问')
-		@ns.response(${5:schema}, description='${6:schema_desc}')
-		def ${7:method}(self${8:, args}):
-			'''
-			${9:summary}
-			'''
-			${0:pass}
+        ${0:pass}

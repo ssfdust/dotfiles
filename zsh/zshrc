@@ -29,7 +29,7 @@ export TERM="xterm-256color"
 if [[ $(tty) == \/dev\/tty[0-9]* ]]; then
 	ZSH_THEME="duellj"
 elif [[ $TERM == "xterm-256color" || $TERM == "screen-256color" ]]; then
-	ZSH_THEME="powerlevel9k/powerlevel9k"
+	ZSH_THEME="powerlevel10k/powerlevel10k"
 else
 	ZSH_THEME="dst"
 fi
@@ -144,3 +144,6 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local/bin/"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh

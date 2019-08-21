@@ -19,3 +19,6 @@
 [submodule "firefox/photon-australis"]
 	path = firefox/photon-australis
 	url = https://github.com/wilfredwee/photon-australis.git
+[submodule "powerlevel10k"]
+	path = zsh/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git

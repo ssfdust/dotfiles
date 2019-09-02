@@ -86,9 +86,9 @@ tabspaces: 8
 font:
   # Normal (roman) font face
   normal:
-    family: Hack Nerd Font
+    family: MesloLGS Nerd Font Mono
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: RegularForPowerline
 
   # Bold font face
   bold:
@@ -115,7 +115,7 @@ font:
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
-    x: 0
+    x: -1
     y: 0
 
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI

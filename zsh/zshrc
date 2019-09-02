@@ -96,7 +96,8 @@ plugins=(vi-mode
          zsh-autosuggestions
          zsh-syntax-highlighting
          pipenv
-         virtualenv)
+         virtualenv
+         invoke)
 
 source $ZSH/oh-my-zsh.sh
 

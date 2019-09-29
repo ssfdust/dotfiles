@@ -9,5 +9,51 @@
                 "enabled": false
             }
         }
+    },
+    "vls": {
+        "enabled": true,
+        "languageId": "vue",
+        "scopes": [
+            "text.html.vue"
+        ],
+        "syntaxes": [
+            "Packages/Vue Syntax Highlight/vue.tmLanguage"
+        ]
+    },
+    "initializationOptions": {
+        "config": {
+            "vetur": {
+                "validation": {
+                    "template": true,
+                    "style": true,
+                    "script": true
+                },
+                "completion": {
+                    "autoImport": false,
+                    "useScaffoldSnippets": false
+                },
+                "format": {
+                    "defaultFormatter": {
+                        "js": "prettier",
+                        "ts": "prettier"
+                    },
+                    "defaultFormatterOptions": {},
+                    "scriptInitialIndent": false,
+                    "styleInitialIndent": false
+                }
+            },
+            "css": {},
+            "html": {
+                "suggest": {}
+            },
+            "javascript": {
+                "format": {}
+            },
+            "typescript": {
+                "format": {}
+            },
+            "emmet": {},
+            "stylusSupremacy": {}
+        }
     }
 }

@@ -14,11 +14,7 @@ bb_clean() {
     echo "Do you want to clean Update_pkg directoy?[y/N]"
     read answer
     if [[ $answer =~ "[Yy]" && -d ~/Update_pkg ]]; then 
-        for dir in ~/Update_pkg/*/; do
-            pushd $dir > /dev/null
-            git clean -xfd > /dev/null
-            popd > /dev/null
-        done
+        rm -rf ~/Update_pkg/*
     fi
 }
 

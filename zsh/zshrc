@@ -146,5 +146,10 @@ export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local/bin/"
 
+# virtualenvwrapper workon home
+export WORKON_HOME="/Development/.cache/virtualenv"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+source ~/.local/bin/virtualenvwrapper.sh

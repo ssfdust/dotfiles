@@ -5,6 +5,12 @@
             "pyflakes": {
                 "enabled": false
             },
+            "flake8": {
+                "enabled": true
+            },
+            "flake8_lint": {
+                "enabled": true
+            },
             "pydocstyle": {
                 "enabled": false
             }

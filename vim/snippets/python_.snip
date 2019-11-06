@@ -14,15 +14,13 @@ options		head
 		"""
 		${2:desc}
 		"""
+
 		__tablename__ = "${0:tablename}"
 
 		${3:column}  
 
-		def __init__(self, **kwargs):
-			db.Model.__init__(self, **kwargs)
-
-		def __repr__(self):  # pragma: nocover
-			return '<$1({name!r})>'.format(name=self.name)
+		def __repr__(self):
+			return self.name
 
 snippet		fieldstr
 abbr		fields.Str(...)

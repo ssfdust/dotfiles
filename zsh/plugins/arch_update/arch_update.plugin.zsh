@@ -20,7 +20,8 @@ bb_clean() {
 
 bb_update() {
     bb_clean
-    sudo bb-wrapper -Syyu --aur --build-dir ~/Update_pkg
+    sudo bb-wrapper -Sy
+    sudo bb-wrapper -Su --aur --build-dir ~/Update_pkg
 }
 
 _pacman_get_command () {

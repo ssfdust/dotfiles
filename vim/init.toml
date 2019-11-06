@@ -37,7 +37,7 @@
     name = 'denite'
 [[layers]]
     name = 'checkers'
-    show_cursor_error = false
+    show_cursor_error = true
 [[layers]]
     name = 'git'
 [[layers]]
@@ -51,6 +51,7 @@
     ]
     [layers.override_cmd]
     vue = ['vls', '--stdio']
+    python = ['pyls', '--log-file', '/tmp/pyls.log', '-vvv']
     javascript = ['vls', '--stdio']
 [[layers]]
     name = "debug"

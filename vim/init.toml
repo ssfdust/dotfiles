@@ -47,7 +47,8 @@
     filetypes = [
         "python",
         "vue",
-        "javascript"
+        "javascript",
+        "rust"
     ]
     [layers.override_cmd]
     vue = ['vls', '--stdio']

@@ -6,13 +6,23 @@
                 "enabled": false
             },
             "flake8": {
-                "enabled": true
+                "enabled": false
             },
             "flake8_lint": {
-                "enabled": true
+                "enabled": false
             },
             "pydocstyle": {
                 "enabled": false
+            },
+            "pylint": {
+                "enabled": true
+            },
+            "pyls_mypy": {
+                "enabled": true,
+                "live_mode": false
+            },
+            "pyls_black": {
+                "enabled": true
             }
         }
     },

@@ -28,11 +28,9 @@ ZSH=~/.oh-my-zsh/
 export TERM="xterm-256color"
 if [[ $(tty) == \/dev\/tty[0-9]* ]]; then
 	ZSH_THEME="duellj"
-elif [[ $TERM == "xterm-256color" || $TERM == "screen-256color" ]]; then
-	ZSH_THEME="powerlevel10k/powerlevel10k"
-else
-	ZSH_THEME="dst"
 fi
+# elif [[ $TERM == "xterm-256color" || $TERM == "screen-256color" ]]; then
+#     ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
@@ -121,7 +119,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Custom alias command
-alias pipurl="sed -i \"s/org/doubanio.com/\" Pipfile "
 alias switch_ap="sudo systemctl stop create_ap_1 && sudo systemctl start create_ap"
 alias nvr="nvr --remote-tab"
 alias dzps="fuck"
@@ -150,6 +147,7 @@ export PATH="$PATH:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local
 export WORKON_HOME="/Development/.cache/virtualenv"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+eval "$(starship init zsh)"
 
-source ~/.local/bin/virtualenvwrapper.sh
+source "$HOME/.local/bin/virtualenvwrapper.sh"

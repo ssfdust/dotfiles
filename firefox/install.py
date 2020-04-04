@@ -1,6 +1,11 @@
 #!/bin/env python3
 from pathlib import Path
 import configparser
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+logger.warning("开始检查")
 
 def parserini(configpath):
     """处理配置文件"""
@@ -40,7 +45,9 @@ def readcss():
 
 def main():
     profile = get_profile_path()
+    logger.warning(f"配置文件路径位于{profile}")
     csspath = parserini(profile).joinpath('userChrome.css')
+    logger.warning(f"css配置文件路径位于{csspath}")
     with open(csspath, 'w') as f:
         for line in readcss():
             f.write(line)

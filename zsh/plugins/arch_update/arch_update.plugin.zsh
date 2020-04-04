@@ -10,16 +10,13 @@ bb_ins() {
     sudo bb-wrapper -S $@ --aur --build-dir ~/Update_pkg
 }
 
-bb_clean() {
-    echo "Do you want to clean Update_pkg directoy?[y/N]"
-    read answer
-    if [[ $answer =~ "[Yy]" && -d ~/Update_pkg ]]; then 
-        rm -rf ~/Update_pkg/*
-    fi
-}
-
 bb_update() {
-    bb_clean
+    if [ -d "$HOME/Update_pkg/dropbox/pkg" ]; then
+        rm -rf "$HOME/Update_pkg/dropbox/pkg"
+    fi
+    if [ -d "$HOME/Update_pkg/dropbox/src" ]; then
+        rm -rf "$HOME/Update_pkg/dropbox/src"
+    fi
     sudo bb-wrapper -Sy
     sudo bb-wrapper -Su --aur --build-dir ~/Update_pkg
 }

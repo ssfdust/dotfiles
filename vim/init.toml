@@ -9,6 +9,7 @@
     default_indent = 4
     plugin_manager_processes = 16
     filemanager = 'defx'
+    autocomplete_method = "coc"
     plugin_manager_max_processes = 16
     buffer_index_type = 1
     enable_debug = 1
@@ -40,6 +41,7 @@
     show_cursor_error = true
 [[layers]]
     name = 'git'
+    git-plugin = "fugitive"
 [[layers]]
     name = 'VersionControl'
 [[layers]]

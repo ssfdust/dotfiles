@@ -21,5 +21,6 @@ func! custom#after() abort
       au FileType python let b:delimitMate_nesting_quotes = ['`', "'", '"']
   aug END
   set foldlevel=99
-  nmap <F4> :call LanguageClient#textDocument_formatting()<CR>
+  nmap <F4> <Plug>(coc-format)
+  nmap <F4> <Plug>(coc-references)
 endf

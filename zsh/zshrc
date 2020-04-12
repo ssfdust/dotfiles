@@ -136,6 +136,8 @@ export EDITOR='nvim'
 # export ARCHFLAGS="-arch x86_64"
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
+export GTAGSLABEL=pygments
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"

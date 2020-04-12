@@ -40,6 +40,9 @@
     name = 'checkers'
     show_cursor_error = true
 [[layers]]
+    name = 'gtags'
+    gtagslabel = "pygments"
+[[layers]]
     name = 'git'
     git-plugin = "fugitive"
 [[layers]]

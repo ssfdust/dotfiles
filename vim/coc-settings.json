@@ -1,0 +1,4 @@
+{
+    "python.jediEnabled": false,
+    "python.formatting.provider": "black"
+}

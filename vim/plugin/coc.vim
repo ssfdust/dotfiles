@@ -10,9 +10,9 @@ call coc#config('coc.preferences', {
 let s:coc_extensions = [
 			\ 'coc-dictionary',
 			\ 'coc-json',
-			\ 'coc-ultisnips',
+			\ 'coc-neosnippet',
 			\ 'coc-tag',
-            \ 'coc-pyright',
+            \ 'coc-python',
 			\]
 
 for extension in s:coc_extensions

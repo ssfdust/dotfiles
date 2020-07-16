@@ -100,13 +100,23 @@
     name = 'gisphm/vim-gitignore'
     merged = 0
 [[custom_plugins]]
-    name = 'alfredodeza/pytest.vim'
+    name = 'ssfdust/pytest.vim'
     merged = 0
 [[custom_plugins]]
     name = 'pseewald/vim-anyfold'
     merged = 0
 [[custom_plugins]]
     name = 'fisadev/vim-isort'
+    merged = 0
+[[custom_plugins]]
+    name = 'heavenshell/vim-pydocstring'
+    build = "make install"
+    merged = 0
+[[custom_plugins]]
+    name = 'ludovicchabant/vim-gutentags'
+    merged = 0
+[[custom_plugins]]
+    name = 'mgedmin/python-imports.vim'
     merged = 0
 # [[custom_plugins]]
     # name = "SpaceVim/denite.nvim"

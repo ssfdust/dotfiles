@@ -23,7 +23,6 @@ if dein#load_state('/home/ssfdust/.local/share/dein')
     call dein#add('tpope/vim-fugitive')
     call dein#add('plasticboy/vim-markdown')
     call dein#add('preservim/nerdcommenter')
-    call dein#add('mgedmin/python-imports.vim')
     call dein#add('heavenshell/vim-pydocstring')
     call dein#add('ssfdust/pytest.vim')
     call dein#add('gisphm/vim-gitignore')
@@ -35,7 +34,14 @@ if dein#load_state('/home/ssfdust/.local/share/dein')
     call dein#add('mhinz/vim-startify')
     call dein#add('dyng/ctrlsf.vim')
     call dein#add('easymotion/vim-easymotion')
-    call dein#add('pseewald/vim-anyfold')
+    call dein#add('Shougo/neosnippet.vim')
+    call dein#add('chr4/nginx.vim')
+    call dein#add('ludovicchabant/vim-gutentags')
+    call dein#add('terryma/vim-multiple-cursors')
+    call dein#add('tmhedberg/SimpylFold')
+    call dein#add('Konfekt/FastFold')
+    call dein#add('mattn/webapi-vim')
+    " call dein#add('mattn/pasteubuntu-vim')
 
     " Required:
     call dein#end()
@@ -55,6 +61,7 @@ filetype plugin indent on
 "
 set termguicolors
 set expandtab
+set foldmethod=manual
 set ts=4
 set sw=4
 set nu
@@ -66,6 +73,8 @@ function! s:list_commits()
     let git = 'G'. git[1:]
     return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. git .' show ". matchstr(v:val, "^\\x\\+") }')
 endfunction
+
+let g:coc_global_extensions = ['coc-python', 'coc-neosnippet', 'coc-explorer', 'coc-tag']
 
 let g:neosnippet#enable_complete_done = 0
 let g:NERDCompactSexyComs = 1
@@ -100,6 +109,14 @@ let g:tmuxline_separators = {
             \ 'space': ' ',
             \ }
 
+let g:airline#extensions#gutentags#enabled = 1
+
+let g:markdown_folding = 1
+
+let g:vimsyn_folding = 'af'
+
+let g:javaScript_fold = 1
+let g:sh_fold_enabled= 7
 
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python'
@@ -112,9 +129,12 @@ let g:startify_lists = [
             \ { 'header': ['   Sessions'],       'type': 'sessions' },
             \ ]
 
+nmap <leader>fvd :tabe $MYVIMRC<CR>
+vmap <leader>ss <Plug>CtrlSFVwordPath
+nmap <leader>ss <Plug>CtrlSFPrompt
+
 imap <C-s> <ESC>:w<CR>i
 nmap <C-s> :w<CR>
-nmap <leader>ss :FlyGrep<CR>
 nmap <leader>w <Plug>(choosewin)
 nmap <F3> :exe 'CocCommand explorer --toggle --position right --sources=buffer+,file+ '
             \ . (stridx(expand('%:p'), getcwd()) < 0? expand('%:p:h'): getcwd()) <CR><CR>
@@ -136,9 +156,16 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+smap <C-j>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-j>     <Plug>(neosnippet_expand_target)
+
+vmap <leader>k zf
+nmap <leader>j za
+nmap <leader>k zc
+
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
-            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
             \ <SID>check_back_space() ? "\<TAB>" :
             \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -188,5 +215,8 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 au BufWritePre *.py undojoin | call CocAction('runCommand', 'python.sortImports') | call CocAction('format')
 au FileType python let b:delimitMate_nesting_quotes = ['`', "'", '"']
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au FileType python set foldnestmax=2
+au FileType pyton set foldmethod=indent
 
 command PluginUpdate :call dein#update()

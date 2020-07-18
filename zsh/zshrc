@@ -94,6 +94,7 @@ plugins=(vi-mode
          zsh-autosuggestions
          zsh-syntax-highlighting
          pipenv
+         podman
          virtualenv
          invoke)
 

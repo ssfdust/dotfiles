@@ -1,0 +1,58 @@
+snippet		classsch
+abbr		class ...Schema(MixinSchema)
+options		head
+	class ${1:schemaname}(MixinSchema):
+		"""
+		${2:desc}
+		"""
+		${3:column}
+
+snippet		classModel
+abbr		class ...Model(SurrogatePK, Model)
+options		head
+	class ${1:classname}(SurrogatePK, Model):  
+		"""
+		${2:desc}
+		"""
+
+		__tablename__ = "${0:tablename}"
+
+		${3:column}  
+
+		def __repr__(self):
+			return self.name
+
+snippet		fieldstr
+abbr		fields.Str(...)
+options		head
+	fields.Str(
+		required=${1:Flase},
+		error_messages={
+			"required": "${2:用户名}不能为空",
+			"null": "$2不能为空",
+		}
+	)
+
+snippet		fieldint
+abbr		fields.Str(...)
+options		head
+	fields.Int(
+		required=${1:Flase},
+		error_messages={
+			"required": "${2:用户名}不能为空",
+			"null": "$2不能为空",
+		}
+	)
+
+snippet     dbcol
+abbr        db.Column() item ...
+options     head
+	db.Column(db.${1:filed_type}, doc='${2:document}')
+
+snippet		routeclass
+abbr		@ns.route() class ...
+options		head
+	@ns.route('${1:path}')
+	class ${2:name}(Resource):
+		@jwt_required
+        ${0:pass}

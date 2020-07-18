@@ -28,11 +28,6 @@ endif
 " The public function. If you've set a pastebin_api_dev_key it'll try to use it
 " Otherwise it'll post anonymously
 function! PasteBin(line1, line2)
-  call PasteBinAuth(a:line1, a:line2)
-endfunction
-
-" Post as a specific user
-function! PasteBinAuth(line1, line2)
   let content = join(getline(a:line1, a:line2), "\n")
   let res_content = webapi#http#post('https://paste.ubuntu.com/', {
   \  'poster': 'anonymously',
@@ -51,11 +46,11 @@ endfunction
 
 " what to do with the return value - should be a url
 function! s:finished(url)
-  echom string(a:url)
   if a:url !~? '^https\?://'
     echoerr "PasteBin: an error occurred:" a:url
     return
   endif
+  let @+ = a:url
   if g:pastebin_browser_command == ''
     echo a:url
     return

@@ -1,2 +1,3 @@
 conky.conf
 tags
+log_py3_rplugin

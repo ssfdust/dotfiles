@@ -164,6 +164,9 @@ vmap <leader>k zf
 nmap <leader>j za
 nmap <leader>k zc
 
+nmap <leader>bb :Denite buffer<CR>
+nmap <leader>fl :Denite file/rec/git<CR>
+
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
             \ <SID>check_back_space() ? "\<TAB>" :
@@ -216,7 +219,5 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 au BufWritePre *.py undojoin | call CocAction('runCommand', 'python.sortImports') | call CocAction('format')
 au FileType python let b:delimitMate_nesting_quotes = ['`', "'", '"']
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-au FileType python set foldnestmax=2
-au FileType pyton set foldmethod=indent
 
 command PluginUpdate :call dein#update()

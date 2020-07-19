@@ -41,6 +41,8 @@ if dein#load_state('/home/ssfdust/.local/share/dein')
     call dein#add('tmhedberg/SimpylFold')
     call dein#add('Konfekt/FastFold')
     call dein#add('mattn/webapi-vim')
+    call dein#add('freitass/todo.txt-vim')
+    call dein#add('vimwiki/vimwiki')
     " call dein#add('mattn/pasteubuntu-vim')
 
     " Required:
@@ -53,9 +55,9 @@ filetype plugin indent on
 
 
 " If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+if dein#check_install()
+    call dein#install()
+endif
 
 "End dein Scripts-------------------------
 "
@@ -65,6 +67,7 @@ set foldmethod=manual
 set ts=4
 set sw=4
 set nu
+set rnu
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000
@@ -123,10 +126,12 @@ let g:vimsyn_folding = 'af'
 
 let g:javaScript_fold = 1
 let g:sh_fold_enabled= 7
+let g:todo_file = '~/Dropbox/todo/todo.txt'
 
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python'
 let g:mapleader = ' '
+let g:maplocalleader = ','
 
 let g:startify_lists = [
             \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
@@ -177,6 +182,11 @@ nmap <leader>bb :Denite buffer<CR>
 nmap <leader>fl :Denite file/rec/git<CR>
 nmap <leader>fr :Denite file/old<CR>
 
+nmap <F9> :AddTodo 
+nmap <F10> :OpenTodo<CR>
+
+cnoremap <expr> <C-X>dt strftime('%Y-%m-%d')
+
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
             \ <SID>check_back_space() ? "\<TAB>" :
@@ -223,6 +233,10 @@ function! s:show_documentation()
     endif
 endfunction
 
+function! s:add_new_todo(todo)
+    call system('todo.sh a "'. a:todo . '"')
+endfunction
+
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -231,3 +245,5 @@ au FileType python let b:delimitMate_nesting_quotes = ['`', "'", '"']
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 command PluginUpdate :call dein#update()
+command -nargs=1 AddTodo :call <SID>add_new_todo(<q-args>)
+command OpenTodo exe 'tabe' . g:todo_file

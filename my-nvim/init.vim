@@ -126,7 +126,11 @@ let g:vimsyn_folding = 'af'
 
 let g:javaScript_fold = 1
 let g:sh_fold_enabled= 7
-let g:todo_file = '~/Dropbox/todo/todo.txt'
+let g:todo_file = '~/Dropbox/notes/todo/todo.txt'
+
+let g:vimwiki_list = [
+            \  {'name': 'default', 'path': '~/Dropbox/notes/wiki/default', 'syntax': 'markdown', 'ext': '.md',
+            \ 'auto_generate_links': 0, 'auto_generate_tags': 0}]
 
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/usr/bin/python'
@@ -146,7 +150,7 @@ nmap <leader>ss <Plug>CtrlSFPrompt
 
 imap <C-s> <ESC>:w<CR>i
 nmap <C-s> :w<CR>
-nmap <leader>w <Plug>(choosewin)
+nmap <leader>cw <Plug>(choosewin)
 nmap <F3> :exe 'CocCommand explorer --toggle --position right --sources=buffer+,file+ '
             \ . (stridx(expand('%:p'), getcwd()) < 0? expand('%:p:h'): getcwd()) <CR><CR>
 

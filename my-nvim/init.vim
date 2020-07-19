@@ -65,6 +65,11 @@ set foldmethod=manual
 set ts=4
 set sw=4
 set nu
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000
+
 color onedark
 
 function! s:list_commits()
@@ -91,6 +96,7 @@ let g:choosewin_label = '123456789'
 let g:choosewin_tablabel = 'ABCDEFGHIJKL'
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 0
 " let g:airline_theme = 'sonokai'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = "\ue0b8"
@@ -139,7 +145,6 @@ nmap <leader>w <Plug>(choosewin)
 nmap <F3> :exe 'CocCommand explorer --toggle --position right --sources=buffer+,file+ '
             \ . (stridx(expand('%:p'), getcwd()) < 0? expand('%:p:h'): getcwd()) <CR><CR>
 
-
 nmap <silent> <F4> :Pydocstring<CR>
 nmap <silent> <F8> :PydocstringFormat<CR>
 nmap <silent> <F5> :ImportName<CR>
@@ -149,6 +154,10 @@ nmap <Leader><Leader>w <Plug>(easymotion-w)
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <leader>bn :bn<cr>
+nmap <leader>bp :bp<cr>
+nmap <leader>bd :bd<cr>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -166,6 +175,7 @@ nmap <leader>k zc
 
 nmap <leader>bb :Denite buffer<CR>
 nmap <leader>fl :Denite file/rec/git<CR>
+nmap <leader>fr :Denite file/old<CR>
 
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :

@@ -146,7 +146,11 @@ endfunction
 
 
 function! s:delete_action() abort
-    return ''
+    if denite#get_status("sources") =~# '^buffer'
+        return denite#do_map('do_action', 'delete')
+    else
+        return ''
+    endif
 endfunction
 
 

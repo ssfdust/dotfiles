@@ -42,7 +42,8 @@ let g:dein_plugins = [
             \ ['Raimondi/delimitMate'], 
             \ ['chr4/nginx.vim'], 
             \ ['mattn/webapi-vim'], 
-            \ ['airblade/vim-rooter']
+            \ ['airblade/vim-rooter'],
+            \ ['Yggdroot/indentLine'],
             \ ]
 
 let g:dein_home = expand('~/.local/share/dein')
@@ -50,6 +51,11 @@ let g:dein_home = expand('~/.local/share/dein')
 call manager#load_dein()
 
 color onedark
+
+" Indent Line
+let g:indentLine_color_term = 239
+let g:indentLine_bgcolor_term = 202
+let g:indentLine_char = '¦'
 
 " coc extension
 let g:coc_global_extensions = ['coc-python', 'coc-neosnippet', 'coc-explorer', 'coc-tag']

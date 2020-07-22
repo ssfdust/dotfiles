@@ -86,9 +86,9 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: MesloLGS Nerd Font Mono
+    family: JetBrainsMono Nerd Font
     # The `style` can be specified to pick a specific face.
-    style: RegularForPowerline
+    # style: RegularForPowerline
 
   # Bold font face
   bold:
@@ -115,14 +115,14 @@ font:
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
-    x: -1
+    x: 0
     y: 0
 
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
   # screens and make reading text a little easier.
   # On X11 it is possible to change the DPI for each instance of alacritty by using
   # `WINIT_HIDPI_FACTOR=1.0 alacritty` to scale the font.
-  # scale_with_dpi: false
+  scale_with_dpi: true
 
 # Display the time it takes to redraw each frame.
 debug.render_timer: false

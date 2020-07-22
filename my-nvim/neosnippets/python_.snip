@@ -24,18 +24,12 @@ options		head
 
 snippet		fieldstr
 abbr		fields.Str(...)
-options		head
-	fields.Str(
-		required=${1:Flase},
-		error_messages={
-			"required": "${2:用户名}不能为空",
-			"null": "$2不能为空",
-		}
-	)
+options		word
+	fields.Str($0)
 
 snippet		fieldint
 abbr		fields.Str(...)
-options		head
+options		word
 	fields.Int(
 		required=${1:Flase},
 		error_messages={

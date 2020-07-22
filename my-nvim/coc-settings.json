@@ -1,7 +1,12 @@
 {
-    "explorer.icon.enableNerdfont": true,
-    "python.formatting.provider": "black",
     "coc.source.tag.enable": true,
+    "python.formatting.provider": "black",
+    "python.jediEnabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": true,
+    "explorer.icon.enableNerdfont": true,
     "explorer.keyMappings": {
         "i": false, // cancel default mapkey
 

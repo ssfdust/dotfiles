@@ -51,51 +51,6 @@ if executable('rg')
     call denite#custom#var('grep', 'final_opts', [])
 endif
 
-" KEY MAPPINGS
-let s:insert_mode_mappings = [
-            \ ['jk', '<denite:enter_mode:normal>', 'noremap'],
-            \ ['<Tab>', '<denite:move_to_next_line>', 'noremap'],
-            \ ['<C-j>', '<denite:move_to_next_line>', 'noremap'],
-            \ ['<S-tab>', '<denite:move_to_previous_line>', 'noremap'],
-            \ ['<C-k>', '<denite:move_to_previous_line>', 'noremap'],
-            \ ['<C-t>', '<denite:do_action:tabopen>', 'noremap'],
-            \ ['<C-v>', '<denite:do_action:vsplit>', 'noremap'],
-            \ ['<C-s>', '<denite:do_action:split>', 'noremap'],
-            \ ['<Esc>', '<denite:enter_mode:normal>', 'noremap'],
-            \ ['<C-N>', '<denite:assign_next_matched_text>', 'noremap'],
-            \ ['<C-P>', '<denite:assign_previous_matched_text>', 'noremap'],
-            \ ['<Up>', '<denite:assign_previous_text>', 'noremap'],
-            \ ['<Down>', '<denite:assign_next_text>', 'noremap'],
-            \ ['<C-Y>', '<denite:redraw>', 'noremap'],
-            \ ]
-
-let s:normal_mode_mappings = [
-            \ ["'", '<denite:toggle_select_down>', 'noremap'],
-            \ ['<C-n>', '<denite:jump_to_next_source>', 'noremap'],
-            \ ['<C-p>', '<denite:jump_to_previous_source>', 'noremap'],
-            \ ['<Tab>', '<denite:move_to_next_line>', 'noremap'],
-            \ ['<C-j>', '<denite:move_to_next_line>', 'noremap'],
-            \ ['<S-tab>', '<denite:move_to_previous_line>', 'noremap'],
-            \ ['<C-k>', '<denite:move_to_previous_line>', 'noremap'],
-            \ ['gg', '<denite:move_to_first_line>', 'noremap'],
-            \ ['<C-t>', '<denite:do_action:tabopen>', 'noremap'],
-            \ ['<C-v>', '<denite:do_action:vsplit>', 'noremap'],
-            \ ['<C-s>', '<denite:do_action:split>', 'noremap'],
-            \ ['q', '<denite:quit>', 'noremap'],
-            \ ['r', '<denite:redraw>', 'noremap'],
-            \ ]
-
-" this is for old version of denite
-for s:m in s:insert_mode_mappings
-    call denite#custom#map('insert', s:m[0], s:m[1], s:m[2])
-endfor
-for s:m in s:normal_mode_mappings
-    call denite#custom#map('normal', s:m[0], s:m[1], s:m[2])
-endfor
-
-unlet s:m s:insert_mode_mappings s:normal_mode_mappings
-
-
 " Define mappings
 augroup spacevim_layer_denite
     autocmd!

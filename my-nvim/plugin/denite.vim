@@ -22,6 +22,10 @@ function! s:profile(opts) abort
     endfor
 endfunction
 
+function! s:cocopen(path) abort
+    exe 'CocCommand explorer --no-toggle --position right --sources=buffer+,file+ ' . a:path
+endfunction
+
 call s:profile(s:denite_options)
 
 " buffer source
@@ -30,7 +34,9 @@ call denite#custom#var(
             \ 'date_format', '%m-%d-%Y %H:%M:%S')
 
 " dein source customer open dir
-call denite#custom#source('dein', 'default_action', 'open')
+call denite#custom#action('directory', 'cocopen', {context -> s:cocopen(context['targets'][0]['action__path'])}) 
+
+call denite#custom#source('dein', 'default_action', 'cocopen')
 
 " denite command
     " For ripgrep

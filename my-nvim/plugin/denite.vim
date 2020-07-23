@@ -29,6 +29,9 @@ call denite#custom#var(
             \ 'buffer',
             \ 'date_format', '%m-%d-%Y %H:%M:%S')
 
+" dein source customer open dir
+call denite#custom#source('dein', 'default_action', 'open')
+
 " denite command
     " For ripgrep
     " Note: It is slower than ag

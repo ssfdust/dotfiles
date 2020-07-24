@@ -12,7 +12,7 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-let g:dein_home = expand('~/.local/share/dein')
+let g:dein_home = '~/.local/share/dein'
 
 call manager#load_dein()
 

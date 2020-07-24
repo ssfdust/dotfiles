@@ -102,6 +102,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+export SUDO_ASKPASS="$HOME/dotfiles/bin/askpass"
+
 export GOPATH="$HOME/Programming/development/go"
 export CARGO_HOME="$HOME/Programming/packages/cargo"
 export RUST_HOME="$HOME/Programming/packages/rust"

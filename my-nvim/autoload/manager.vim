@@ -1,4 +1,4 @@
-let s:dein_home = get(g:, "dein_home", expand('~/.local/share/dein'))
+let s:dein_home = expand(get(g:, "dein_home", '~/.local/share/dein'))
 
 let s:dein_runtime_path = s:dein_home . '/repos/github.com/Shougo/dein.vim'
 

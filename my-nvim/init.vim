@@ -99,7 +99,7 @@ let g:todo_file = '~/Dropbox/notes/todo/todo.txt'
 let g:vimwiki_list = [
             \ {
                 \ 'name': 'default',
-                \ 'path': '~/Dropbox/notes/wiki/default',
+                \ 'path': '~/Dropbox/notes/wiki/修行',
                 \ 'syntax': 'markdown',
                 \ 'ext': '.md',
                 \ 'auto_generate_links': 0,

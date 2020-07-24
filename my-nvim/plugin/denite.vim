@@ -23,7 +23,7 @@ function! s:profile(opts) abort
 endfunction
 
 function! s:cocopen(path) abort
-    exe 'CocCommand explorer --no-toggle --position right --sources=buffer+,file+ ' . a:path
+    exe 'CocCommand explorer --no-toggle --position left --sources=buffer+,file+ ' . a:path
 endfunction
 
 call s:profile(s:denite_options)

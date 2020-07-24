@@ -169,6 +169,7 @@ normalized_name = 'airline-themes'
 repo = 'vimwiki/vimwiki'
 merged = 1
 on_ft = ['vimwiki', 'markdown']
+on_path = ['~/Dropbox/notes/wiki']
 name = 'vimwiki'
 normalized_name = 'vimwiki'
 
@@ -192,3 +193,9 @@ lazy = 1
 on_ft = ['python', 'vim']
 name = 'vista.vim'
 normalized_name = 'vista'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+lazy = 0
+name = 'vim-gitgutter'
+normalized_name = 'gitgutter'

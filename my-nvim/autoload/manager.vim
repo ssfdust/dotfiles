@@ -17,14 +17,7 @@ function! manager#load_dein() abort
         " Add or remove your plugins here like this:
         "
         " General
-        " * UI
-        for plugin_lst in get(g:, "dein_plugins", [])
-            if len(plugin_lst) == 1
-                call dein#add(plugin_lst[0])
-            elseif len(plugin_lst) == 2
-                call dein#add(plugin_lst[0], plugin_lst[1])
-            endif
-        endfor
+        call dein#load_toml(manager#get_dein_toml(), {'lazy': 1})
 
         " Required:
         call dein#end()
@@ -37,5 +30,14 @@ function! manager#load_dein() abort
     " If you want to install not installed plugins on startup.
     if dein#check_install()
         call dein#install()
+    endif
+endfunction
+
+function manager#get_dein_toml() abort
+    let dein_toml = fnamemodify($MYVIMRC, ':h') . '/dein.toml'   
+    if file_readable(dein_toml)
+        return dein_toml
+    else
+        return get(g:, 'dein_toml', '')
     endif
 endfunction

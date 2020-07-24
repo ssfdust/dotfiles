@@ -1,0 +1,194 @@
+[[plugins]]
+repo = 'Raimondi/delimitMate'
+lazy = 0
+merged = 1
+on_ft = ['python', 'vim']
+name = 'delimitMate'
+normalized_name = 'delimitMate'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+merged = 1
+lazy = 0
+name = 'denite.nvim'
+normalized_name = 'denite'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+merged = 1
+lazy = 0
+name = 'neosnippet-snippets'
+normalized_name = 'neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+merged = 1
+on_ft = ['python']
+name = 'neosnippet.vim'
+normalized_name = 'neosnippet'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+merged = 0
+name = 'indentLine'
+on_ft = ['python']
+normalized_name = 'indentLine'
+
+[[plugins]]
+repo = 'airblade/vim-rooter'
+merged = 1
+lazy = 0
+name = 'vim-rooter'
+normalized_name = 'rooter'
+
+[[plugins]]
+repo = 'antoyo/vim-licenses'
+merged = 1
+on_ft = ['python']
+name = 'vim-licenses'
+normalized_name = 'licenses'
+
+[[plugins]]
+repo = 'chr4/nginx.vim'
+merged = 1
+lazy = 0
+name = 'nginx.vim'
+normalized_name = 'nginx'
+
+[[plugins]]
+repo = 'dyng/ctrlsf.vim'
+merged = 1
+name = 'ctrlsf.vim'
+normalized_name = 'ctrlsf'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+merged = 1
+lazy = 0
+name = 'vim-easymotion'
+normalized_name = 'easymotion'
+
+[[plugins]]
+repo = 'freitass/todo.txt-vim'
+lazy = 0
+merged = 1
+name = 'todo.txt-vim'
+normalized_name = 'todo'
+
+[[plugins]]
+repo = 'heavenshell/vim-pydocstring'
+merged = 1
+lazy = 0
+name = 'vim-pydocstring'
+normalized_name = 'pydocstring'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+merged = 1
+lazy = 0
+name = 'onedark.vim'
+normalized_name = 'onedark'
+
+[[plugins]]
+repo = 'ludovicchabant/vim-gutentags'
+lazy = 0
+merged = 1
+name = 'vim-gutentags'
+normalized_name = 'gutentags'
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+merged = 0
+lazy = 0
+name = 'webapi-vim'
+normalized_name = 'webapi'
+
+[[plugins]]
+repo = 'mgedmin/python-imports.vim'
+merged = 1
+name = 'python-imports.vim'
+normalized_name = 'python-imports'
+
+[[plugins]]
+repo = 'mhinz/vim-startify'
+merged = 1
+lazy = 0
+name = 'vim-startify'
+normalized_name = 'startify'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merged = 1
+lazy = 0
+rev = 'release'
+name = 'coc.nvim'
+normalized_name = 'coc'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+merged = 1
+lazy = 0
+name = 'vim-markdown'
+normalized_name = 'markdown'
+
+[[plugins]]
+repo = 'ssfdust/pytest.vim'
+merged = 1
+lazy = 0
+name = 'pytest.vim'
+normalized_name = 'pytest'
+
+[[plugins]]
+repo = 'terryma/vim-multiple-cursors'
+merged = 1
+lazy = 0
+name = 'vim-multiple-cursors'
+normalized_name = 'multiple-cursors'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+merged = 1
+lazy = 0
+name = 'vim-fugitive'
+normalized_name = 'fugitive'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+lazy = 0
+merged = 1
+name = 'vim-airline'
+normalized_name = 'airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+merged = 0
+name = 'vim-airline-themes'
+normalized_name = 'airline-themes'
+
+[[plugins]]
+repo = 'vimwiki/vimwiki'
+merged = 1
+on_ft = ['vimwiki', 'markdown']
+name = 'vimwiki'
+normalized_name = 'vimwiki'
+
+[[plugins]]
+repo = 'wsdjeg/dein-ui.vim'
+merged = 0
+lazy = 0
+name = 'dein-ui.vim'
+normalized_name = 'dein-ui'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+lazy = 0
+merged = 1
+name = 'vim-toml'
+normalized_name = 'toml'
+
+[[plugins]]
+repo = 'liuchengxu/vista.vim'
+lazy = 1
+on_ft = ['python', 'vim']
+name = 'vista.vim'
+normalized_name = 'vista'

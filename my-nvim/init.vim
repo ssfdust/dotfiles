@@ -94,7 +94,7 @@ let g:vimsyn_folding = 'af'
 
 let g:javaScript_fold = 1
 let g:sh_fold_enabled= 7
-let g:todo_file = '~/Dropbox/notes/todo/todo.txt'
+let g:todo_file = '~/Dropbox/todo/todo.txt'
 
 let g:vimwiki_list = [
             \ {

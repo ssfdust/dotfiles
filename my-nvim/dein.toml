@@ -23,7 +23,7 @@ normalized_name = 'neosnippet-snippets'
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 merged = 1
-on_ft = ['python']
+on_ft = ['python', 'todo']
 name = 'neosnippet.vim'
 normalized_name = 'neosnippet'
 
@@ -58,6 +58,7 @@ normalized_name = 'nginx'
 [[plugins]]
 repo = 'dyng/ctrlsf.vim'
 merged = 1
+lazy = 0
 name = 'ctrlsf.vim'
 normalized_name = 'ctrlsf'
 

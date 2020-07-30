@@ -17,8 +17,12 @@ bb_update() {
     if [ -d "$HOME/Update_pkg/dropbox/src" ]; then
         rm -rf "$HOME/Update_pkg/dropbox/src"
     fi
-    sudo bb-wrapper -Sy
-    sudo bb-wrapper -Su --aur --build-dir ~/Update_pkg
+    sudo pacman -Sy
+    sudo bb-wrapper -Su --aur --build-dir ~/Update_pkg --noconfirm --needed
+}
+
+bb_vcs(){
+    sudo bb-wrapper -Su --aur --build-dir ~/Update_pkg --build-vcs
 }
 
 _pacman_get_command () {

@@ -450,7 +450,6 @@ function! PasteBin(line1, line2)
           \ }
           \ ).content
     let url = webapi#json#decode(res_content)['url']
-    echom url
     call s:finished(url)
   else
     let content = join(getline(a:line1, a:line2), "\n")

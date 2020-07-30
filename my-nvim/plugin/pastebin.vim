@@ -232,6 +232,7 @@ let g:pastebin_formats = {
             \  'make': 'make',
             \  'mako': 'mako',
             \  'maql': 'maql',
+            \  'markdown': 'markdown',
             \  'mask': 'mask',
             \  'mason': 'mason',
             \  'mathematica': 'mathematica',
@@ -405,6 +406,7 @@ let g:pastebin_formats = {
             \  'vgl': 'vgl',
             \  'vhdl': 'vhdl',
             \  'vim': 'vim',
+            \  'vimwiki': 'vimwiki',
             \  'wdiff': 'wdiff',
             \  'whiley': 'whiley',
             \  'x10': 'x10',
@@ -416,9 +418,41 @@ let g:pastebin_formats = {
             \  'zephir': 'zephir'
             \  }
 
+function s:parse_rentry_header() abort
+  let headers = webapi#http#get('https://rentry.co')['header']
+  let csrf = ''
+  for header in headers
+    let csrf = matchstr(header, 'csrftoken=\zs[^;]*\ze;')
+    if csrf !=# ''
+      break
+    endif
+  endfor
+  return csrf
+endfunction
+
 " The public function. If you've set a pastebin_api_dev_key it'll try to use it
 " Otherwise it'll post anonymously
 function! PasteBin(line1, line2)
+  if s:GetPasteFormat() ==# 'vimwiki' || s:GetPasteFormat() ==# 'markdown'
+    let content = join(getline(a:line1, a:line2), "\n")
+    let csrf = s:parse_rentry_header()
+    let res_content = webapi#http#post(
+          \ 'https://rentry.co/api/new', 
+          \ {
+          \   'csrfmiddlewaretoken': csrf,
+          \   'url': '',
+          \   'edit_code': '',
+          \   'text': content
+          \ },
+          \ {
+          \   'Referer': 'https://rentry.co',
+          \   'Cookie': 'csrftoken=' . csrf
+          \ }
+          \ ).content
+    let url = webapi#json#decode(res_content)['url']
+    echom url
+    call s:finished(url)
+  else
     let content = join(getline(a:line1, a:line2), "\n")
     let res_content = webapi#http#post('https://paste.ubuntu.com/', {
                 \  'poster': 'anonymously',
@@ -428,6 +462,7 @@ function! PasteBin(line1, line2)
                 \  }).content
     let url = matchstr(res_content, '<a class="pturl" href="\zs\([/a-zA-Z0-9]\+\)\ze\/plain\/">Download as text<\/a>')
     call s:finished("https://paste.ubuntu.com" . url)
+  endif
 endfunction
 
 " Get the (valid) format/type of this paste.

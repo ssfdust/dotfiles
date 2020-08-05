@@ -23,7 +23,7 @@ normalized_name = 'neosnippet-snippets'
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
 merged = 1
-on_ft = ['python', 'todo']
+on_ft = ['python', 'todo', 'gitignore']
 name = 'neosnippet.vim'
 normalized_name = 'neosnippet'
 
@@ -107,6 +107,7 @@ normalized_name = 'webapi'
 [[plugins]]
 repo = 'mgedmin/python-imports.vim'
 merged = 1
+on_ft = ['python']
 name = 'python-imports.vim'
 normalized_name = 'python-imports'
 
@@ -200,3 +201,21 @@ repo = 'airblade/vim-gitgutter'
 lazy = 0
 name = 'vim-gitgutter'
 normalized_name = 'gitgutter'
+
+[[plugins]]
+repo = 'arcticicestudio/nord-vim'
+lazy = 0
+name = 'nord-vim'
+normalized_name = 'nord'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+lazy = 0
+name = 'gruvbox'
+normalized_name = 'gruvbox'
+
+# [[plugins]]
+# repo = 'altercation/vim-colors-solarized'
+# lazy = 0
+# name = 'vim-colors-solarized'
+# normalized_name = 'colors-solarized'

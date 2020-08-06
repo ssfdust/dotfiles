@@ -209,10 +209,10 @@ name = 'nord-vim'
 normalized_name = 'nord'
 
 [[plugins]]
-repo = 'morhetz/gruvbox'
+repo = 'sainnhe/gruvbox-material'
 lazy = 0
-name = 'gruvbox'
-normalized_name = 'gruvbox'
+name = 'gruvbox-material'
+normalized_name = 'gruvbox-material'
 
 # [[plugins]]
 # repo = 'altercation/vim-colors-solarized'

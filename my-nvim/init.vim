@@ -11,13 +11,12 @@ set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000
 set undoreload=10000
-set background=light
 
 let g:dein_home = '~/.local/share/dein'
 
 call manager#load_dein()
 
-color gruvbox
+color gruvbox-material
 
 " Indent Line
 let g:indentLine_color_term = 239

@@ -96,6 +96,7 @@ plugins=(vi-mode
          pipenv
          podman
          virtualenv
+         rvm
          invoke)
 
 source $ZSH/oh-my-zsh.sh

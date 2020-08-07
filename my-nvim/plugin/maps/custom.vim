@@ -1,18 +1,20 @@
-tmap <Esc> <C-\><C-n>
-nmap <leader>fvd :tabe $MYVIMRC<CR>
-nmap <leader>fdd :exe 'tabe ' . manager#get_dein_toml()<CR>
+tnoremap <Esc> <C-\><C-n>
+nnoremap <leader>fvd :tabe $MYVIMRC<CR>
+nnoremap <leader>fdd :exe 'tabe ' . manager#get_dein_toml()<CR>
 
-imap <C-s> <ESC>:w<CR>i
-nmap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>i
+nnoremap <C-s> :w<CR>
 
-nmap <leader>bn :bn<cr>
-nmap <leader>bp :bp<cr>
-nmap <leader>bd :bd<cr>
+nnoremap <leader>bn :bn<cr>
+nnoremap <leader>bp :bp<cr>
+nnoremap <leader>bd :bd<cr>
 
-vmap <leader>k zf
-nmap <leader>j za
-nmap <leader>k zc
+vnoremap <leader>k zf
+nnoremap <leader>j za
+nnoremap <leader>k zc
 
 cnoremap <expr> <C-X>dt strftime('%Y-%m-%d')
 
-nmap gq :quit<CR>
+nnoremap gq :quit<CR>
+
+xnoremap <F5> :call chinese#count_ch()

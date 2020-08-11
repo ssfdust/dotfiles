@@ -1,3 +1,16 @@
+clean() {
+    echo "deleting last files..."
+    find ~/Update_pkg -maxdepth 1 -mtime +5 -exec rm \-rf \{\} \;
+    echo "clean git repos..."
+    pushd ~/Update_pkg
+    for directory in */ ;do
+        pushd $directory
+        git clean -xdf
+        popd
+    done
+    popd
+}
+
 bb_search() {
     sudo bb-wrapper -Ss $@ --aur | pkgparser
 }
@@ -11,16 +24,9 @@ bb_ins() {
 }
 
 bb_update() {
-    if [ -d "$HOME/Update_pkg/dropbox/pkg" ]; then
-        rm -rf "$HOME/Update_pkg/dropbox/pkg"
-    fi
-    if [ -d "$HOME/Update_pkg/dropbox/src" ]; then
-        rm -rf "$HOME/Update_pkg/dropbox/src"
-    fi
-    sudo pacman -Sy
-    sudo bb-wrapper -Su --aur --build-dir ~/Update_pkg --noconfirm --needed
+    clean
+    sudo bb-wrapper -Syu --aur --build-dir ~/Update_pkg --noconfirm --needed
 }
-
 bb_vcs(){
     sudo bb-wrapper -Su --aur --build-dir ~/Update_pkg --build-vcs
 }

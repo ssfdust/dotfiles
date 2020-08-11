@@ -1,7 +1,28 @@
+let s:header = [
+    \ '<head>',
+    \ '<style type="text/css">',
+    \ 'h1 {',
+    \ '  text-align:center;',
+    \ '}',
+    \ 'p {',
+    \ '  font-size:25pt;',
+    \ '}',
+    \ '</style>',
+    \ '</head>',
+    \ '',
+    \ '#  每日任务',
+    \ ''
+    \ ]
+
 function! chinese#ph_split() abort
-    exe ':silent g/^\r/d'
-    exe ':silent %s/ //g'
-    exe ':silent %s/\r//g'
+    for cmd in [':silent g/^\r/d', ':silent %s/ //g', ':silent %s/\r//g', ':%s/<br>//g']
+        try
+            exe cmd
+        catch /.*/
+            echo v:exception
+        finally
+        endtry
+    endfor
     let text = substitute(join(getline(1, '$')), ' ', '', 'g')
     let regexs = s:get_regex(text)
     let buffer = join(getline(1, '$'), "\n")
@@ -20,6 +41,8 @@ function! chinese#ph_split() abort
     exe 'normal ggdG'
     call append(0, s:rtrim(content))
     exe 'normal Gddgg'
+    exe ':silent g/\v([^)])$/s//\1<br>/'
+    call append(0, s:header)
 endfunction
 
 function chinese#count_word() range

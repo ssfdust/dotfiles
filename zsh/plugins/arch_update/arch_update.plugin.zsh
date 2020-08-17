@@ -1,14 +1,20 @@
 clean() {
     echo "deleting last files..."
-    find ~/Update_pkg -maxdepth 1 -mtime +5 -exec rm \-rf \{\} \;
+    if [[ -d ~/Update_pkg ]];then
+        find ~/Update_pkg -maxdepth 1 -mtime +5 -exec rm \-rf \{\} \;
+    else
+        mkdir ~/Update_pkg
+    fi
     echo "clean git repos..."
-    pushd ~/Update_pkg
-    for directory in */ ;do
-        pushd $directory
-        git clean -xdf
+    if [ "`\ls -A ~/Update_pkg`" != "" ];then
+        pushd ~/Update_pkg
+        for directory in */;do
+            pushd $directory
+            git clean -xdf
+            popd
+        done
         popd
-    done
-    popd
+    fi
 }
 
 bb_search() {

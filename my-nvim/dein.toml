@@ -170,8 +170,7 @@ normalized_name = 'airline-themes'
 [[plugins]]
 repo = 'vimwiki/vimwiki'
 merged = 1
-on_ft = ['vimwiki', 'markdown']
-on_path = ['~/Dropbox/notes/wiki']
+lazy = 0
 name = 'vimwiki'
 normalized_name = 'vimwiki'
 

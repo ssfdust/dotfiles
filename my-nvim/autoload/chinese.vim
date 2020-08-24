@@ -1,4 +1,5 @@
-let s:header = [
+let s:template = {
+    \ 'md_header_template': [
     \ '<head>',
     \ '<style type="text/css">',
     \ 'h1 {',
@@ -12,7 +13,12 @@ let s:header = [
     \ '',
     \ '#  每日任务',
     \ ''
+    \ ],
+    \ 'md_tail_template': [
+    \ '',
+    \ '# 静坐'
     \ ]
+    \ }
 
 function! chinese#ph_split() abort
     for cmd in [':silent g/^\r/d', ':silent %s/ //g', ':silent %s/\r//g', ':%s/<br>//g']
@@ -42,7 +48,16 @@ function! chinese#ph_split() abort
     call append(0, s:rtrim(content))
     exe 'normal Gddgg'
     exe ':silent g/\v([^)])$/s//\1<br>/'
-    call append(0, s:header)
+    call append(0, s:get_template('md_header_template'))
+    call append('$', s:get_template('md_tail_template'))
+endfunction
+
+function s:get_template(key) abort
+    let template = get(g:, a:key, '')
+    if template != '' && file_readable(expand(template))
+        return readfile(expand(template))
+    endif
+    return s:template[a:key]
 endfunction
 
 function chinese#count_word() range

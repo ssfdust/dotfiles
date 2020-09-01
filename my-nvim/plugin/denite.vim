@@ -11,7 +11,7 @@ let s:denite_options = {
             \ 'highlight_matched_range' : 'MoreMsg',
             \ 'direction': 'rightbelow',
             \ 'statusline' : has('patch-7.4.1154') ? v:false : 0,
-            \ 'prompt' : '=>',
+            \ 'prompt' : '➭ ',
             \ }}
 
 function! s:profile(opts) abort

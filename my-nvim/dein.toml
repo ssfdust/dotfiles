@@ -219,6 +219,12 @@ lazy = 0
 name = 'fcitx.vim'
 normalized_name = 'fcitx'
 
+[[plugins]]
+repo = 'ap/vim-css-color'
+lazy = 0
+name = 'vim-css-color'
+normalized_name = 'css-color'
+
 # [[plugins]]
 # repo = 'altercation/vim-colors-solarized'
 # lazy = 0

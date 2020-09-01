@@ -34,22 +34,30 @@ function! chinese#ph_split() abort
     let buffer = join(getline(1, '$'), "\n")
     let total = 0
     let content = []
+    let toc = []
     for item in regexs
+        let idx = index(regexs, item) + 1
         let matched = matchstr(buffer, item)
         let cur_cnt = s:get_count(matched)
         let total += cur_cnt
         if matched != ''
-            let matched_lst = split(matched . '。(' . cur_cnt . '/' . total . ")\n", "\n") + ['']
-            call extend(content, matched_lst)
+            let matched_lst = split('<span id="content' . idx . '" ></span>' . matched . '。(' . cur_cnt . '/' . total . ")\n", "\n")
+            call map(matched_lst, '"　　" . v:val')
+            call extend(content, matched_lst + [''])
         endif
         let buffer = substitute(buffer, matched, '', '')
     endfor
+    for count in range(1, len(regexs))
+        call add(toc, '- [段落'.count . '](#content' . count .')')
+    endfor
+    let @r = join(toc, "\n")
     exe 'normal ggdG'
     call append(0, s:rtrim(content))
     exe 'normal Gddgg'
     exe ':silent g/\v([^)])$/s//\1<br>/'
     call append(0, s:get_template('md_header_template'))
     call append('$', s:get_template('md_tail_template'))
+    exe ':%s/{\[TOC\]}/\=@r/'
 endfunction
 
 function s:get_template(key) abort
@@ -91,6 +99,7 @@ function s:get_regex(text) abort
 endfunction
 
 function! s:get_unicode(text) abort
+    " 将字符串正则转为特殊字符正则
     let rv = split(a:text, '[^\u4E00-\u9FCC]')
     return join(rv, '\_[^\u4E00-\u9FCC]\{0,2}')
 endfunction

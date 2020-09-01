@@ -96,6 +96,7 @@ plugins=(vi-mode
          pipenv
          podman
          virtualenv
+         pyenv
          rvm
          invoke)
 
@@ -147,7 +148,8 @@ export GTAGSLABEL=pygments
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local/bin/"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local/bin/:$PATH"
 
 # virtualenvwrapper workon home
 export WORKON_HOME="/Development/.cache/virtualenv"
@@ -155,5 +157,25 @@ export WORKON_HOME="/Development/.cache/virtualenv"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 eval "$(starship init zsh)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+# source "$HOME/.local/bin/virtualenvwrapper.sh"
+#
+if [[ ! -o interactive ]]; then
+    return
+fi
 
-source "$HOME/.local/bin/virtualenvwrapper.sh"
+compctl -K _pyenv pyenv
+
+_pyenv() {
+  local words completions
+  read -cA words
+
+  if [ "${#words}" -eq 2 ]; then
+    completions="$(pyenv commands)"
+  else
+    completions="$(pyenv completions ${words[2,-2]})"
+  fi
+
+  reply=(${(ps:\n:)completions})
+}

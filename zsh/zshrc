@@ -152,7 +152,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local/bin/:$PATH"
 
 # virtualenvwrapper workon home
-export WORKON_HOME="/Development/.cache/virtualenv"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh

@@ -225,6 +225,18 @@ lazy = 0
 name = 'vim-css-color'
 normalized_name = 'css-color'
 
+[[plugins]]
+repo = 'kristijanhusak/vim-dadbod-ui'
+lazy = 0
+name = 'vim-dadbod-ui'
+normalized_name = 'dadbod-ui'
+
+[[plugins]]
+repo = 'tpope/vim-dadbod'
+name = 'vim-dadbod'
+lazy = 0
+normalized_name = 'dadbod'
+
 # [[plugins]]
 # repo = 'altercation/vim-colors-solarized'
 # lazy = 0

@@ -1,0 +1,125 @@
+# Example NeoMutt config file for the sidebar feature.
+
+# --------------------------------------------------------------------------
+# VARIABLES – shown with their default values
+# --------------------------------------------------------------------------
+# Should the Sidebar be shown?
+set sidebar_visible = no
+# How wide should the Sidebar be in screen columns?
+
+# Note: Some characters, e.g. Chinese, take up two columns each.
+set sidebar_width = 20
+# Should the mailbox paths be abbreviated?
+set sidebar_short_path = no
+# Number of top-level mailbox path subdirectories to truncate for display
+set sidebar_component_depth = 0
+# When abbreviating mailbox path names, use any of these characters as path
+# separators. Only the part after the last separators will be shown.
+# For file folders '/' is good. For IMAP folders, often '.' is useful.
+set sidebar_delim_chars = '/.'
+# If the mailbox path is abbreviated, should it be indented?
+set sidebar_folder_indent = no
+# Indent mailbox paths with this string.
+set sidebar_indent_string = '  '
+# Make the Sidebar only display mailboxes that contain new, or flagged,
+# mail.
+set sidebar_new_mail_only = no
+# Any mailboxes that are whitelisted will always be visible, even if the
+# sidebar_new_mail_only option is enabled.
+set sidebar_non_empty_mailbox_only = no
+# Only show mailboxes that contain some mail
+sidebar_whitelist '/home/user/mailbox1'
+sidebar_whitelist '/home/user/mailbox2'
+# When searching for mailboxes containing new mail, should the search wrap
+# around when it reaches the end of the list?
+set sidebar_next_new_wrap = no
+# Show the Sidebar on the right-hand side of the screen
+set sidebar_on_right = no
+# The character to use as the divider between the Sidebar and the other NeoMutt
+# panels.
+set sidebar_divider_char = '|'
+# Enable extended mailbox mode to calculate total, new, and flagged
+# message counts for each mailbox.
+set mail_check_stats
+# Display the Sidebar mailboxes using this format string.
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+# Sort the mailboxes in the Sidebar using this method:
+#       count    – total number of messages
+#       flagged  – number of flagged messages
+#       new      – number of new messages
+#       path     – mailbox path
+#       unsorted – do not sort the mailboxes
+set sidebar_sort_method = 'unsorted'
+# --------------------------------------------------------------------------
+# FUNCTIONS – shown with an example mapping
+# --------------------------------------------------------------------------
+# Move the highlight to the previous mailbox
+bind index,pager \Cp sidebar-prev
+# Move the highlight to the next mailbox
+bind index,pager \Cn sidebar-next
+# Open the highlighted mailbox
+bind index,pager \Co sidebar-open
+# Move the highlight to the previous page
+# This is useful if you have a LOT of mailboxes.
+bind index,pager <F3> sidebar-page-up
+# Move the highlight to the next page
+# This is useful if you have a LOT of mailboxes.
+bind index,pager <F4> sidebar-page-down
+# Move the highlight to the previous mailbox containing new, or flagged,
+# mail.
+bind index,pager <F5> sidebar-prev-new
+# Move the highlight to the next mailbox containing new, or flagged, mail.
+bind index,pager <F6> sidebar-next-new
+# Toggle the visibility of the Sidebar.
+bind index,pager B sidebar-toggle-visible
+# --------------------------------------------------------------------------
+# COLORS – some unpleasant examples are given
+# --------------------------------------------------------------------------
+color attachment color109 color235
+color bold       color229 color215
+color error      color167 color235
+color hdrdefault color246 color235
+color indicator  color223 color238
+color markers    color243 color235
+color normal     color223 color235
+color quoted     color248 color235
+color quoted1    color108 color235
+color quoted2    color248 color235
+color quoted3    color108 color235
+color quoted4    color248 color235
+color quoted5    color108 color235
+color search     color235 color208
+color signature  color108 color235
+color status     color235 color246
+color tilde      color243 color235
+color tree       color246 color235
+color underline  color223 color239
+
+color sidebar_divider   color246 color235
+color sidebar_new       color142 color235
+color sidebar_unread    color142 color235
+color sidebar_highlight color208 color235
+
+color index         brightcolor223 color235 ~N
+color index         color167       color235 ~D
+color index         color240       color235 ~D
+color index         color240       color235 ~D~N
+color index_flags   color167       color235 ~D
+color index_author  color240       color235 ~D
+color index_subject color240       color235 ~D
+color index_flags   color142       color235 ~N
+color index_author  color214       color235 '.*'
+color index_subject color142       color235 '.*'
+color index_number  color240       color235
+
+color header color214 color235 "^From:"
+color header color208 color235 "^(To:|Cc:)"
+color header color142 color235 "^Subject:"
+color header color108 color235 "^X-Spam-Status:"
+color header color108 color235 "^Received:"
+
+color compose header           color223 color235
+color compose security_encrypt color175 color235
+# --------------------------------------------------------------------------
+
+# vim: syntax=neomuttrc

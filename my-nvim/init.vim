@@ -30,6 +30,7 @@ let g:coc_global_extensions = [
             \ 'coc-explorer',
             \ 'coc-tag',
             \ 'coc-vimlsp',
+            \ 'coc-db'
             \ ]
 
 " vista

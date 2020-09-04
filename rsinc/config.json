@@ -1,0 +1,17 @@
+{
+ "BASE_L": "\/home\/light\/Dropbox",
+ "BASE_R": "dropbox:",
+ "CASE_INSENSATIVE": false,
+ "DEFAULT_DIRS": [
+  "\/home\/light\/Dropbox\/备份",
+  "\/home\/light\/Dropbox\/RimeSync",
+  "\/home\/light\/Dropbox\/notes",
+  "\/home\/light\/Dropbox\/todo",
+  "\/home\/light\/Dropbox\/华严"
+ ],
+ "FAST_SAVE": false,
+ "HASH_NAME": "DropboxHash",
+ "LOG_FOLDER": "\/home\/light\/.rsinc\/logs\/",
+ "MASTER": "\/home\/light\/.rsinc\/master.json",
+ "TEMP_FILE": "\/home\/light\/.rsinc\/rsinc.tmp"
+}

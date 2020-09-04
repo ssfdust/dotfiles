@@ -15,10 +15,24 @@ except ImportError:
     print("Please run `pip install python-crontab` first.")
 
 
+def get_cron_cmd() -> str:
+    prefix = []
+    http_proxy = os.environ.get("HTTP_PROXY")
+    https_proxy = os.environ.get("HTTPS_PROXY")
+    if http_proxy:
+        prefix.append(f"HTTP_PROXY={http_proxy}")
+    if https_proxy:
+        prefix.append(f"HTTPS_PROXY={https_proxy}")
+    pre_str = "{} ".format(" ".join(prefix)) if prefix else ""
+    rsinc = Path(which("rsinc"))
+    return f"{pre_str}/usr/bin/flock -n /tmp/rsinc.lock {rsinc} -Da"
+
+
 def create_cront() -> None:
     with CronTab(user=True) as cron:
         if not any(cron.find_command("rsinc")):
-            job = cron.new(command="rsinc -Da")
+            cmd = get_cron_cmd()
+            job = cron.new(command=cmd)
             job.minutes.every(5)
 
 
@@ -64,8 +78,9 @@ def check_rclone_config() -> bool:
 def mksymbollink() -> None:
     rsinc_dir = Path(Path.home(), "dotfiles/rsinc").absolute()
     config_path = Path(Path.home(), ".rsinc").absolute()
-    cmd = f"ln -sf {rsinc_dir} {config_path}"
-    os.system(cmd)
+    if not config_path.exists():
+        cmd = f"ln -sf {rsinc_dir} {config_path}"
+        os.system(cmd)
 
 
 def main() -> None:

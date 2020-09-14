@@ -1,4 +1,10 @@
 # Example NeoMutt config file for the sidebar feature.
+#
+#
+folder-hook 'gmail.com' 'source ~/.config/neomutt/accounts/gmail'
+folder-hook 'qq.com' 'source ~/.config/neomutt/accounts/qq'
+macro index <f11> '<change-folder>imaps://imap.gmail.com<enter>'
+macro index <f12> '<change-folder>imaps://imap.qq.com<enter>'
 
 # --------------------------------------------------------------------------
 # VARIABLES – shown with their default values
@@ -69,7 +75,7 @@ bind index,pager <F4> sidebar-page-down
 # mail.
 bind index,pager <F5> sidebar-prev-new
 # Move the highlight to the next mailbox containing new, or flagged, mail.
-bind index,pager <F6> sidebar-next-new
+# bind index,pager <F6> sidebar-next-new
 # Toggle the visibility of the Sidebar.
 bind index,pager B sidebar-toggle-visible
 # --------------------------------------------------------------------------
@@ -122,4 +128,6 @@ color compose header           color223 color235
 color compose security_encrypt color175 color235
 # --------------------------------------------------------------------------
 
+auto_view text/html
+alternative_order text/plain text/enriched text/html
 # vim: syntax=neomuttrc

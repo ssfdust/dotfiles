@@ -116,6 +116,35 @@ let g:vimwiki_list = [
                 \ 'auto_generate_tags': 0
             \ },
             \ {
+                \ 'name': 'huayen',
+                \ 'path': '~/Dropbox/notes/wiki/华藏工程',
+                \ 'syntax': 'markdown',
+                \ 'ext': '.md',
+                \ 'path_html': expand('~/vimwiki_html/'),
+                \ 'custom_wiki2html': 'vimwiki_markdown',
+                \ 'template_path': '~/Dropbox/notes/wiki/vimwiki-template/templates/',
+                \ 'template_default': 'def_template',
+                \ 'template_ext': '.html',
+                \ 'html_filename_parameterization': 1,
+                \ 'auto_generate_links': 0,
+                \ 'auto_generate_tags': 0
+            \ },
+            \ {
+                \ 'name': 'development',
+                \ 'path': '~/Dropbox/notes/wiki/开发文档',
+                \ 'nested_syntaxes': {'python': 'python', 'c++': 'cpp'},
+                \ 'syntax': 'markdown',
+                \ 'ext': '.md',
+                \ 'path_html': expand('~/vimwiki_html/'),
+                \ 'custom_wiki2html': 'vimwiki_markdown',
+                \ 'template_path': '~/Dropbox/notes/wiki/vimwiki-template/templates/',
+                \ 'template_default': 'def_template',
+                \ 'template_ext': '.html',
+                \ 'html_filename_parameterization': 1,
+                \ 'auto_generate_links': 0,
+                \ 'auto_generate_tags': 0
+            \ },
+            \ {
                 \ 'name': 'daily',
                 \ 'path': '~/Dropbox/notes/wiki/日常',
                 \ 'syntax': 'markdown',

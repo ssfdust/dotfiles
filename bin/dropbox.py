@@ -13,6 +13,7 @@ try:
     from crontab import CronTab
 except ImportError:
     print("Please run `pip install python-crontab` first.")
+    sys.exit(-1)
 
 
 def get_cron_cmd() -> str:

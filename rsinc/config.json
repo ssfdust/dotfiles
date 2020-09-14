@@ -1,19 +1,19 @@
 {
- "BASE_L": "\/home\/light\/Dropbox",
+ "BASE_L": "\/home\/ssfdust\/Dropbox",
  "BASE_R": "dropbox:",
  "CASE_INSENSATIVE": false,
  "DEFAULT_DIRS": [
-  "\/home\/light\/Dropbox\/备份",
-  "\/home\/light\/Dropbox\/RimeSync",
-  "\/home\/light\/Dropbox\/notes",
-  "\/home\/light\/Dropbox\/todo",
-  "\/home\/light\/Dropbox\/应用\/tests",
-  "\/home\/light\/Dropbox\/应用\/KeeWeb",
-  "\/home\/light\/Dropbox\/华严"
+  "\/home\/ssfdust\/Dropbox\/备份",
+  "\/home\/ssfdust\/Dropbox\/RimeSync",
+  "\/home\/ssfdust\/Dropbox\/notes",
+  "\/home\/ssfdust\/Dropbox\/todo",
+  "\/home\/ssfdust\/Dropbox\/应用\/tests",
+  "\/home\/ssfdust\/Dropbox\/应用\/KeeWeb",
+  "\/home\/ssfdust\/Dropbox\/华严"
  ],
  "FAST_SAVE": false,
  "HASH_NAME": "DropboxHash",
- "LOG_FOLDER": "\/home\/light\/.rsinc\/logs\/",
- "MASTER": "\/home\/light\/.rsinc\/master.json",
- "TEMP_FILE": "\/home\/light\/.rsinc\/rsinc.tmp"
+ "LOG_FOLDER": "\/home\/ssfdust\/.rsinc\/logs\/",
+ "MASTER": "\/home\/ssfdust\/.rsinc\/master.json",
+ "TEMP_FILE": "\/home\/ssfdust\/.rsinc\/rsinc.tmp"
 }

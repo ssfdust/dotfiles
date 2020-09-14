@@ -1,6 +1,7 @@
 conky.conf
 tags
 logs
+accounts
 log_py3_rplugin
 .netrwhist
 rsinc/master.json

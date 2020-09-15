@@ -140,6 +140,7 @@ export EDITOR='nvim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+export GPG_TTY=$(tty)
 
 export GTAGSLABEL=pygments
 

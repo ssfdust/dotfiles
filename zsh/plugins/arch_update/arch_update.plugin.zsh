@@ -1,7 +1,7 @@
 clean() {
     echo "deleting last files..."
     if [[ -d ~/Update_pkg ]];then
-        find ~/Update_pkg -maxdepth 1 -mtime +5 -exec rm \-rf \{\} \;
+        find ~/Update_pkg -mindepth 1 -maxdepth 1 -mtime +5 -exec rm \-rf \{\} \;
     else
         mkdir ~/Update_pkg
     fi

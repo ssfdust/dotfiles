@@ -1,0 +1,3 @@
+virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
+virtual-mailboxes "all" "notmuch://?query=tag"
+virtual-mailboxes "archive" "notmuch://?query=tag:archive"

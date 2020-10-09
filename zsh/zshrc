@@ -109,7 +109,6 @@ export SUDO_ASKPASS="$HOME/dotfiles/bin/askpass"
 export GOPATH="$HOME/Programming/development/go"
 export CARGO_HOME="$HOME/Programming/packages/cargo"
 export RUST_HOME="$HOME/Programming/packages/rust"
-export PATH=$HOME/.bin:$HOME/.rvm/bin:$GOPATH/bin:$CARGO_HOME/bin:/usr/local/bin:$PATH
 export PYTHON_HOST_PROG='/usr/bin/python2'
 export PYTHON3_HOST_PROG='/usr/bin/python3'
 
@@ -150,7 +149,7 @@ export GTAGSLABEL=pygments
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local/bin/:$PATH"
+export PATH="$PYENV_ROOT/bin:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
 
 # virtualenvwrapper workon home
 

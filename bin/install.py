@@ -5,7 +5,7 @@ import shutil
 
 HOME_TARGETS = ["password-store"]
 
-CONFIG_TARGETS = ["neomutt"]
+CONFIG_TARGETS = ["neomutt", "msmtp", "mbsync"]
 
 COPY_TARGETS = ["gnupg"]
 

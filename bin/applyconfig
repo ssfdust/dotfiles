@@ -1,0 +1,77 @@
+#!/bin/env python
+import socket
+from pathlib import Path
+import json
+
+import argparse
+
+
+basedir = Path(__file__).parent
+
+template_path = basedir / "iptables.rules"
+
+ip_domain = "whatismyip.akamai.com"
+
+domain_template = "-A V2RAY -d {}/32 -j RETURN\n"
+route_template = "-A V2RAY -d {} -j RETURN\n"
+redirect = "-A V2RAY -p tcp -j REDIRECT --to-ports 9999\n"
+
+
+def resolve_domain(domain):
+    ip_list = []
+    ais = socket.getaddrinfo(domain, 0, 0, 0, 0)
+    for result in ais:
+        ip_list.append(result[-1][0])
+    return list(set(ip_list))
+
+
+def get_domian_rules(domain):
+    return [domain_template.format(ip) for ip in resolve_domain(domain)]
+
+
+def get_iptables_template():
+    with template_path.open() as f:
+        return f.readlines()
+
+
+def find_domain_index(lines):
+    return [i for i, v in enumerate(lines) if "# nslookup" in v][0]
+
+
+def insert_domain_rules(rules, lines):
+    idx = find_domain_index(lines)
+    for rule in rules:
+        lines.insert(idx, rule)
+
+
+def insert_chnroutes(lines):
+    with open("/usr/share/chnroutes2/chnroutes.txt") as f:
+        routes = [route_template.format(t[:-1]) for t in f.readlines() if not t.startswith("#")]
+        routes.append(redirect)
+        for route in routes:
+            lines.insert(-1, route)
+
+def fresh_rules(domain):
+    lines = get_iptables_template()
+    for domain_ in [domain, ip_domain]:
+        domain_rules = get_domian_rules(domain_)
+        insert_domain_rules(domain_rules, lines)
+    insert_chnroutes(lines)
+    with open("/etc/iptables/iptables.rules", "w") as f:
+        f.writelines(lines)
+
+
+def main():
+    parser = argparse.ArgumentParser(description='refresh iptables rules with chnroutes')
+    parser.add_argument('path', help='the target domain')
+    path = parser.parse_args().path
+    with open(path) as f:
+        with open("/etc/v2ray/config.json", "w") as c:
+            config = json.load(f)
+            json.dump(config, c, indent=4)
+            domain = config["outbounds"][0]["settings"]["vnext"][0]["address"]
+            fresh_rules(domain)
+
+
+if __name__ == '__main__':
+    main()

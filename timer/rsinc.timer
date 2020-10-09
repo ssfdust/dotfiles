@@ -1,0 +1,9 @@
+[Unit]
+Description=Run rsinc every 5 minutes.
+
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec=5min
+
+[Install]
+WantedBy=timers.target

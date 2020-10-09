@@ -1,0 +1,16 @@
+[Unit]
+Description=Sync emails
+After=network.target
+Wants=network-online.target
+
+[Service]
+Restart=on-failure
+Type=oneshot
+ExecStart=/usr/bin/gmi sync
+ExecStart=/usr/bin/mbsync -c /home/ssfdust/.config/mbsync/mbsyncrc -Va
+TimeoutStartSec=150
+WorkingDirectory=/home/ssfdust/.local/share/mail
+User=ssfdust
+
+[Install]
+WantedBy=multi-user.target 

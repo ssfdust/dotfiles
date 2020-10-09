@@ -1,16 +1,18 @@
 # Example NeoMutt config file for the sidebar feature.
 #
-#
+
 bind index,pager i noop
 set virtual_spoolfile=yes
 set folder = ~/.local/share/mail
+set pager_stop = no
+set mailcap_path = ~/dotfiles/neomutt/mailcaps
 source ~/dotfiles/neomutt/mailboxes
 
 # --------------------------------------------------------------------------
 # VARIABLES – shown with their default values
 # --------------------------------------------------------------------------
 # Should the Sidebar be shown?
-set sidebar_visible = no
+set sidebar_visible = yes
 # How wide should the Sidebar be in screen columns?
 
 # Note: Some characters, e.g. Chinese, take up two columns each.
@@ -48,7 +50,7 @@ set sidebar_divider_char = '|'
 # message counts for each mailbox.
 set mail_check_stats
 # Display the Sidebar mailboxes using this format string.
-set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+set sidebar_format = '%D%?F? [%F]?%* %?N?%N/?%S'
 # Sort the mailboxes in the Sidebar using this method:
 #       count    – total number of messages
 #       flagged  – number of flagged messages
@@ -114,6 +116,16 @@ bind index,pager <F5> sidebar-prev-new
 bind index,pager <F6> sidebar-next-new
 # Toggle the visibility of the Sidebar.
 bind index,pager B sidebar-toggle-visible
+# Turn mail
+macro compose K "| pandoc -o /tmp/neomutt-alternative.html<enter>\
+<attach-file>/tmp/neomutt-alternative.html<enter>\
+<tag-entry><previous-entry><tag-entry><group-alternatives>"
+
+macro index,pager H "<pipe-message>htmail-decode<return>" "render html mail using htmail-view"
+
+# quick view attachment
+bind index,pager V  noop        ## Unbinds V from version
+macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 # --------------------------------------------------------------------------
 # COLORS – some unpleasant examples are given
 # --------------------------------------------------------------------------
@@ -163,7 +175,13 @@ color header color108 color235 "^Received:"
 color compose header           color223 color235
 color compose security_encrypt color175 color235
 # --------------------------------------------------------------------------
+# Folder HOOK
+# --------------------------------------------------------------------------
+folder-hook gmail "set sendmail='/usr/bin/gmi send -t -C ~/.local/share/mail'"
+folder-hook gmail "set signature=~/dotfiles/neomutt/gmail.signature"
+folder-hook qq "set sendmail='/usr/bin/msmtp -a qq'"
+folder-hook qq "set signature=~/dotfiles/neomutt/qq.signature"
 
-# alternative_order text/plain text/enriched text/html
-set implicit_autoview = yes
+auto_view text/html
+alternative_order text/plain text/enriched text/html
 # vim: syntax=neomuttrc

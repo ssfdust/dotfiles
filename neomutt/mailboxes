@@ -1,3 +1,6 @@
-virtual-mailboxes "inbox" "notmuch://?query=tag:inbox"
-virtual-mailboxes "all" "notmuch://?query=tag"
+virtual-mailboxes "all" "notmuch://?query=tag:/.*/"
+virtual-mailboxes "gmail" "notmuch://?query=to:ssfdust@gmail.com"
+virtual-mailboxes "gmail-sent" "notmuch://?query=from:ssfdust@gmail.com"
+virtual-mailboxes "qq" "notmuch://?query=to:413690141@qq.com"
+virtual-mailboxes "qq-sent" "notmuch://?query=from:413690141@qq.com"
 virtual-mailboxes "archive" "notmuch://?query=tag:archive"

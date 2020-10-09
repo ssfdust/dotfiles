@@ -1,0 +1,15 @@
+[Unit]
+Description=Two Way Sync for Dropbox
+After=network.target
+Wants=network-online.target
+StartLimitIntervalSec=360
+
+[Service]
+Restart=on-failure
+Type=oneshot
+ExecStart=/home/ssfdust/.local/bin/rsinc -Da
+TimeoutStartSec=500
+User=ssfdust
+
+[Install]
+WantedBy=multi-user.target 

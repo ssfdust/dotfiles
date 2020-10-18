@@ -15,6 +15,10 @@ source ~/dotfiles/neomutt/mailboxes
 # Should the Sidebar be shown?
 set sidebar_visible = yes
 # How wide should the Sidebar be in screen columns?
+#
+# Set format
+set index_format = " %Z %<[y?%<[m?%<[d?%[     %H:%M]&%[    %a %d]>&%[    %b %d]>&%[%d/%m/%Y]> %-30.30F %<M?(%2M)&    > %?GS?%GS& ?%?GE?%GE& ?%?GA?%GA& ? %g %s"
+set attach_format = "%u%D%I %t%4n %T%.100d%> [%.15m/%.15M, %.6e%?C?, %C?, %s] "
 
 # Note: Some characters, e.g. Chinese, take up two columns each.
 set sidebar_width = 20
@@ -128,7 +132,23 @@ bind index,pager V  noop        ## Unbinds V from version
 macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 
 macro index u "<modify-tags-then-hide>-trash<enter><sidebar-open>"
+macro index t* "<modify-tags-then-hide>+flagged<enter><sidebar-open>"
 macro index d "<modify-tags-then-hide>+trash<enter><sidebar-open>"
+macro index t- "<modify-tags-then-hide>-flagged<enter><sidebar-open>"
+
+# --------------------------------------------------------------------------
+# Tags
+# --------------------------------------------------------------------------
+tag-transforms "flagged" "@" \
+               "encrypted"  "" \
+               "signed"     "✎" \
+               "neomutt-users" "users" \
+               "neomutt-devel" "devel" \
+               "github-issues" "gh"
+tag-formats "attachment" "GA" \
+            "encrypted"  "GE" \
+            "signed"     "GS"
+
 # --------------------------------------------------------------------------
 # COLORS – some unpleasant examples are given
 # --------------------------------------------------------------------------

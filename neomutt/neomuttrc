@@ -2,6 +2,7 @@
 #
 
 bind index,pager i noop
+set rfc2047_parameters
 set virtual_spoolfile=yes
 set folder = ~/.local/share/mail
 set pager_stop = no
@@ -58,6 +59,8 @@ set sidebar_format = '%D%?F? [%F]?%* %?N?%N/?%S'
 #       path     – mailbox path
 #       unsorted – do not sort the mailboxes
 set sidebar_sort_method = 'unsorted'
+
+# Set trash tag
 # --------------------------------------------------------------------------
 # FUNCTIONS – shown with an example mapping
 # --------------------------------------------------------------------------
@@ -83,7 +86,6 @@ bind index                      \Ce next-line
 bind index                      \Cy previous-line
 
 bind pager,index                d   noop
-bind pager,index                dd  delete-message
 
 # Mail & Reply
 bind pager,index                gr  group-reply
@@ -91,8 +93,6 @@ bind index                      \Cm list-reply # Doesn't work currently
 
 # Threads
 bind browser,pager,index        N   search-opposite
-bind pager,index                dT  delete-thread
-bind pager,index                dt  delete-subthread
 bind pager,index                gt  next-thread
 bind pager,index                gT  previous-thread
 bind index                      za  collapse-thread
@@ -126,6 +126,9 @@ macro index,pager H "<pipe-message>htmail-decode<return>" "render html mail usin
 # quick view attachment
 bind index,pager V  noop        ## Unbinds V from version
 macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
+
+macro index u "<modify-tags-then-hide>-trash<enter><sidebar-open>"
+macro index d "<modify-tags-then-hide>+trash<enter><sidebar-open>"
 # --------------------------------------------------------------------------
 # COLORS – some unpleasant examples are given
 # --------------------------------------------------------------------------

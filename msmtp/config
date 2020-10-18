@@ -6,7 +6,7 @@ logfile /home/ssfdust/.config/msmtp/msmtp.log
 
 account qq
 host smtp.qq.com
-port 597
+port 587
 from 413690141@qq.com
 user 413690141@qq.com
 passwordeval "pass mutt-wizard-qq"

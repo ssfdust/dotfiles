@@ -4,10 +4,11 @@ After=network.target
 Wants=network-online.target
 
 [Service]
-Restart=on-failure
+Restart=no
 Type=oneshot
 ExecStart=/usr/bin/gmi sync
 ExecStart=/usr/bin/mbsync -c /home/ssfdust/.config/mbsync/mbsyncrc -Va
+ExecStart=/usr/bin/notmuch new
 TimeoutStartSec=150
 WorkingDirectory=/home/ssfdust/.local/share/mail
 User=ssfdust

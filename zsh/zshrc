@@ -151,30 +151,10 @@ export GTAGSLABEL=pygments
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$HOME/.rvm/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
 
-# virtualenvwrapper workon home
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-eval "$(starship init zsh)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-# source "$HOME/.local/bin/virtualenvwrapper.sh"
-#
-if [[ ! -o interactive ]]; then
-    return
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
-
-compctl -K _pyenv pyenv
-
-_pyenv() {
-  local words completions
-  read -cA words
-
-  if [ "${#words}" -eq 2 ]; then
-    completions="$(pyenv commands)"
-  else
-    completions="$(pyenv completions ${words[2,-2]})"
-  fi
-
-  reply=(${(ps:\n:)completions})
-}
+if command -v starship 1>/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi

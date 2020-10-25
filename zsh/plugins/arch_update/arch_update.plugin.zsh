@@ -34,7 +34,7 @@ bb_update() {
     sudo bb-wrapper -Syu --aur --build-dir ~/Update_pkg --noconfirm --needed
 }
 bb_vcs(){
-    sudo bb-wrapper -Syu --aur --build-dir ~/Update_pkg --build-vcs
+    sudo bb-wrapper -Syu --aur --build-dir ~/Update_pkg --noconfirm --build-vcs
 }
 
 _pacman_get_command () {

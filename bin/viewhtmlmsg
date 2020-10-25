@@ -1,0 +1,107 @@
+#!/usr/bin/python3
+
+'''viewhtml - unpack html message and display with browser'''
+
+import os
+import sys
+import re
+import tempfile
+import urllib.parse
+import time
+import webbrowser
+import subprocess
+import email.parser
+import email.iterators
+import email.utils
+
+class HTMLViewerError(Exception): pass
+
+def load_message(content):
+  msg = email.parser.BytesParser().parsebytes(content)
+  if not msg['message-id']:
+    raise HTMLViewerError('no message-id found')
+  return msg
+
+def visit_file(file, app=None):
+  if app is not None:
+    subprocess.check_call([app, file])
+  else:
+    webbrowser.open(file)
+
+def viewhtml(content, safe, wait, app):
+  msg = load_message(content)
+  htmls = tuple(email.iterators.typed_subpart_iterator(msg, subtype='html'))
+  if not htmls:
+    raise HTMLViewerError('no HTML parts found')
+  htmlmsg = htmls[0]
+
+  with tempfile.TemporaryDirectory(prefix='viewhtmlmsg.') as htmldir:
+    htmlfile = os.path.join(htmldir, 'index.html')
+    charset = htmlmsg.get_param('charset')
+    html = htmlmsg.get_payload(decode=True)
+    if charset:
+      charsetmeta = b'<meta charset="%s">' % charset.encode('ascii')
+      if b'<head>' in html:
+        html = html.replace(b'<head>', b'<head>%s' % charsetmeta)
+      else:
+        html = b'<head>%s</head>%s' % (charsetmeta, html)
+    for idx, part in enumerate(msg.walk()):
+      fn = (part.get_filename() or part.get_param('filename') or
+          part.get_param('name', 'prefix_%d' % idx))
+      if part['content-id']:
+        # safe ascii filename w/o spaces
+        fn = urllib.parse.unquote(fn)
+        fn = fn.encode('ascii', 'replace')
+        fn = fn.replace(b' ', b'_').replace(b'?', b'-')
+        cid = email.utils.unquote(part['content-id']).encode('ascii')
+        html = html.replace(b'cid:%s' % cid, fn)
+        fn = fn.decode('ascii')
+      fpay = part.get_payload(decode=True)
+      if fpay:
+        with open(os.path.join(htmldir, fn), 'wb') as fp:
+          fp.write(fpay)
+    if safe:
+      spat = br'(src|background)\s*=\s*["\']??https??://[^"\'>]*["\'>]'
+      html = re.sub(spat, br'\1="#"', html)
+    with open(htmlfile, 'wb') as fp:
+      fp.write(html)
+
+    visit_file(htmlfile, app)
+    if wait:
+      time.sleep(wait)
+
+def main():
+  import argparse
+
+  parser = argparse.ArgumentParser(description=__doc__,)
+  parser.set_defaults(safe=False, wait=None, app=None)
+  parser.add_argument('-s', '--safe', action='store_true', default=False,
+            help='view html w/o loading remote files')
+  parser.add_argument('-w', '--wait', type=int, default=5,
+            help='remove temporary files after WAIT seconds '
+                 '(0 for keeping files)')
+  parser.add_argument('-b', '--browser', dest='app',
+            help='prefer browser APP over $BROWSER environment')
+  parser.add_argument('--fork', action='store_true',
+            help='fork immediately')
+
+  args = parser.parse_args()
+  del parser
+
+  content = sys.stdin.buffer.read()
+
+  if args.fork and os.fork() > 0:
+    return
+
+  try:
+    viewhtml(
+      content,
+      args.safe, args.wait, args.app,
+    )
+  except HTMLViewerError as ex:
+    sys.exit(str(ex))
+  except KeyboardInterrupt:
+    sys.exit(130)
+
+if __name__ == '__main__':
+  main()

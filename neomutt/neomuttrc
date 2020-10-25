@@ -7,7 +7,12 @@ set virtual_spoolfile=yes
 set folder = ~/.local/share/mail
 set pager_stop = no
 set mailcap_path = ~/dotfiles/neomutt/mailcaps
+set query_command="notmuch-addrlookup --mutt '%s'"
 source ~/dotfiles/neomutt/mailboxes
+
+# --------------------------------------------------------------------------
+# Tags - Configure tag options
+# --------------------------------------------------------------------------
 
 # --------------------------------------------------------------------------
 # VARIABLES – shown with their default values
@@ -17,8 +22,8 @@ set sidebar_visible = yes
 # How wide should the Sidebar be in screen columns?
 #
 # Set format
-set index_format = " %Z %<[y?%<[m?%<[d?%[     %H:%M]&%[    %a %d]>&%[    %b %d]>&%[%d/%m/%Y]> %-30.30F %<M?(%2M)&    > %?GS?%GS& ?%?GE?%GE& ?%?GA?%GA& ? %g %s"
 set attach_format = "%u%D%I %t%4n %T%.100d%> [%.15m/%.15M, %.6e%?C?, %C?, %s] "
+set index_format = " %Z %<[y?%<[m?%<[d?%[     %H:%M]&%[    %a %d]>&%[    %b %d]>&%[%d/%m/%Y]> %-30.30F %<M?(%2M)&    > %?GS?%GS& ?%?GE?%GE& ?%?GA?%GA& ?%?GF?%GF& ? %s"
 
 # Note: Some characters, e.g. Chinese, take up two columns each.
 set sidebar_width = 20
@@ -135,19 +140,33 @@ macro index u "<modify-tags-then-hide>-trash<enter><sidebar-open>"
 macro index t* "<modify-tags-then-hide>+flagged<enter><sidebar-open>"
 macro index d "<modify-tags-then-hide>+trash<enter><sidebar-open>"
 macro index t- "<modify-tags-then-hide>-flagged<enter><sidebar-open>"
+macro pager \eh "<pipe-entry>viewhtmlmsg<enter>" "View html message"
+
+macro compose m \
+"<enter-command>set pipe_decode<enter>\
+<pipe-message>pandoc -f markdown+link_attributes -t plain -o /tmp/msg.txt<enter>\
+<pipe-message>pandoc -s -f markdown+link_attributes --self-contained -o /tmp/msg.html --resource-path ~/dotfiles/neomutt/templates/ --template email<enter>\
+<enter-command>unset pipe_decode<enter>\
+<attach-file>/tmp/msg.txt<enter>\
+<attach-file>/tmp/msg.html<enter>\
+<tag-entry><previous-entry><tag-entry><group-alternatives>" \
+"Convert markdown to HTML5 and plaintext alternative content types"
 
 # --------------------------------------------------------------------------
 # Tags
 # --------------------------------------------------------------------------
-tag-transforms "flagged" "@" \
+tag-transforms "flagged" " " \
                "encrypted"  "" \
+               "attachment" " " \
                "signed"     "✎" \
                "neomutt-users" "users" \
                "neomutt-devel" "devel" \
                "github-issues" "gh"
 tag-formats "attachment" "GA" \
+            "flagged"  "GF" \
             "encrypted"  "GE" \
             "signed"     "GS"
+bind index,pager \` modify-labels
 
 # --------------------------------------------------------------------------
 # COLORS – some unpleasant examples are given
@@ -204,6 +223,7 @@ folder-hook gmail "set sendmail='/usr/bin/gmi send -t -C ~/.local/share/mail'"
 folder-hook gmail "set signature=~/dotfiles/neomutt/gmail.signature"
 folder-hook qq "set sendmail='/usr/bin/msmtp -a qq'"
 folder-hook qq "set signature=~/dotfiles/neomutt/qq.signature"
+
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html

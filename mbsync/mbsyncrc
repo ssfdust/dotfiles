@@ -24,3 +24,29 @@ MaxMessages 500
 ExpireUnread no
 # End profile
 
+IMAPStore juminfo-remote
+Host imap.qiye.aliyun.com
+Port 993
+User xuweikai@juminfo.com
+PassCmd "pass juminfo"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore juminfo-local
+Subfolders Verbatim
+Path /home/ssfdust/.local/share/mail/juminfo/
+Inbox /home/ssfdust/.local/share/mail/juminfo/INBOX
+Flatten .
+
+Channel juminfo
+Expunge Both
+Master :juminfo-remote:
+Slave :juminfo-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 500
+ExpireUnread no
+# End profile
+

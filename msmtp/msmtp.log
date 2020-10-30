@@ -1,4 +1,0 @@
-Oct 09 10:28:05 host=smtp.qq.com tls=on auth=on user=413690141@qq.com from=413690141@qq.com recipients=2933512646@qq.com errormsg='cannot connect to smtp.qq.com, port 597: Connection timed out' exitcode=EX_TEMPFAIL
-Oct 09 13:55:48 host=smtp.qq.com tls=on auth=on user=413690141@qq.com from=413690141@qq.com recipients=ssfdust@gmail.com errormsg='cannot connect to smtp.qq.com, port 597: Connection timed out' exitcode=EX_TEMPFAIL
-Oct 09 14:03:24 host=smtp.qq.com tls=on auth=on user=413690141@qq.com from=413690141@qq.com recipients=ssfdust@gmail.com mailsize=113 smtpstatus=250 smtpmsg='250 OK: queued as.' exitcode=EX_OK
-Oct 09 14:06:26 host=smtp.qq.com tls=on auth=on user=413690141@qq.com from=413690141@qq.com recipients=2933512646@qq.com mailsize=7280 smtpstatus=250 smtpmsg='250 OK: queued as.' exitcode=EX_OK

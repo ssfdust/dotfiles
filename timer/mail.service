@@ -9,6 +9,7 @@ Type=oneshot
 ExecStart=/usr/bin/gmi sync
 ExecStart=/usr/bin/mbsync -c /home/ssfdust/.config/mbsync/mbsyncrc -Va
 ExecStart=/usr/bin/notmuch new
+ExecStart=/home/ssfdust/dotfiles/bin/notice-notmuch.sh --show-none
 TimeoutStartSec=150
 WorkingDirectory=/home/ssfdust/.local/share/mail
 User=ssfdust

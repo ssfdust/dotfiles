@@ -10,3 +10,11 @@ port 587
 from 413690141@qq.com
 user 413690141@qq.com
 passwordeval "pass mutt-wizard-qq"
+
+account juminfo
+host smtp.qiye.aliyun.com
+tls_starttls off
+port 465
+from xuweikai@juminfo.com
+user xuweikai@juminfo.com
+passwordeval "pass juminfo"

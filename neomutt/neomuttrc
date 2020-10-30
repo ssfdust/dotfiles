@@ -223,6 +223,8 @@ folder-hook gmail "set sendmail='/usr/bin/gmi send -t -C ~/.local/share/mail'"
 folder-hook gmail "set signature=~/dotfiles/neomutt/gmail.signature"
 folder-hook qq "set sendmail='/usr/bin/msmtp -a qq'"
 folder-hook qq "set signature=~/dotfiles/neomutt/qq.signature"
+folder-hook juminfo "set sendmail='/usr/bin/msmtp -a juminfo'"
+folder-hook juminfo "set signature=~/dotfiles/neomutt/qq.signature"
 
 
 auto_view text/html

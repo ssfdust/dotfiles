@@ -16,8 +16,7 @@
 set -e
 SEARCH="tag:unread"
 
-echo 111
-whoami
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 # set some other things you might want to change
 
 # The number of subjects to show in the notification

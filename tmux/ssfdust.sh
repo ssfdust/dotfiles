@@ -28,12 +28,12 @@ if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
 		#"ifstat 30 255" \
 		"ifstat_sys 30 255" \
 		"lan_ip 24 255 ${TMUX_POWERLINE_SEPARATOR_RIGHT_THIN}" \
-		"wan_ip 24 255" \
-		#"vcs_branch 29 88" \
-		#"vcs_compare 60 255" \
-		#"vcs_staged 64 255" \
-		#"vcs_modified 9 255" \
-		#"vcs_others 245 0" \
+		"wan_ip 245 0" \
+		# "vcs_branch 29 88" \
+		# "vcs_compare 60 255" \
+		# "vcs_staged 64 255" \
+		# "vcs_modified 9 255" \
+		# "vcs_others 245 0" \
 	)
 fi
 
@@ -42,7 +42,7 @@ if [ -z $TMUX_POWERLINE_RIGHT_STATUS_SEGMENTS ]; then
 		#"earthquake 3 0" \
 		#"pwd 89 211" \
 		#"macos_notification_count 29 255" \
-		#"mailcount 9 255" \
+		"mailcount 9 255" \
 		#"now_playing 234 37" \
 		#"cpu 240 136" \
 		#"load 237 167" \

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+SEARCH="tag:unread"
+UNREAD_COUNT=$(notmuch count --output=messages "$SEARCH")
+echo new 0 $UNREAD_COUNT

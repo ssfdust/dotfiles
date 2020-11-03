@@ -9,11 +9,6 @@ import subprocess
 import sys
 import re
 from pathlib import Path
-try:
-    from crontab import CronTab
-except ImportError:
-    print("Please run `pip install python-crontab` first.")
-    sys.exit(-1)
 
 
 def get_cron_cmd() -> str:
@@ -101,8 +96,6 @@ def main() -> None:
     os.system("rclone sync dropbox: ~/Dropbox")
     print("link configs...")
     mksymbollink()
-    print("Making cron job ...")
-    create_cront()
 
 
 if __name__ == "__main__":

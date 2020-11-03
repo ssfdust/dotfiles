@@ -61,7 +61,7 @@ let g:rooter_patterns = ['.git', 'pyproject.toml']
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#branch#vcs_priority = ["git", "mercurial"]
 let g:airline#extensions#fugitiveline#enabled = 1
 let g:airline#extensions#keymap#enabled = 0

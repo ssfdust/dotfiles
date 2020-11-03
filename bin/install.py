@@ -5,12 +5,12 @@ import shutil
 
 HOME_TARGETS = ["password-store"]
 
-CONFIG_TARGETS = ["neomutt", "msmtp", "mbsync"]
+CONFIG_TARGETS = ["neomutt", "msmtp", "mbsync", "alacritty"]
 
 COPY_TARGETS = ["gnupg"]
 
 
-dotspath = Path(__file__).parent.parent.absolute()
+dotspath = Path(__file__).absolute().parent.parent
 
 
 def create_symbolink(src, dst):

@@ -78,6 +78,7 @@ plugins=(vi-mode
          docker
          python
          common-aliases
+         vgl
          arch_update
          history-substring-search
          history
@@ -134,6 +135,7 @@ alias ls="exa"
 #else
 #  export EDITOR='mvim'
 #fi
+export LANG="en_US.UTF-8"
 export EDITOR='nvim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -149,6 +151,10 @@ export GTAGSLABEL=pygments
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$HOME/.poetry/bin:$HOME/.yarn/bin:$HOME/.local/bin:$HOME/dotfiles/bin:$PATH"
+
+if [[ "$(is_vgl_enabled)" = "enabled" ]];then
+    export LD_PRELOAD=/usr/lib64/libdlfaker.so:/usr/lib64/libvglfaker.so
+fi
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"

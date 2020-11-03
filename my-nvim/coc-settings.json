@@ -7,7 +7,7 @@
     "python.linting.enabled": true,
     "python.linting.mypyEnabled": true,
     "explorer.icon.enableNerdfont": true,
-    "explorer.keyMappings": {
+    "explorer.keyMappings.global": {
         "i": false,
         "gk": "expandablePrev",
         "gj": "expandableNext",

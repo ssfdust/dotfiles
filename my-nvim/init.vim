@@ -12,6 +12,11 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
+" Set encodings
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set enc=utf8
+set fencs=utf8,gbk,gb2312,gb18030
+
 let g:dein_home = '~/.local/share/dein'
 
 call manager#load_dein()

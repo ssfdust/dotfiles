@@ -5,7 +5,7 @@ import shutil
 
 HOME_TARGETS = ["password-store"]
 
-CONFIG_TARGETS = ["neomutt", "msmtp", "mbsync", "alacritty"]
+CONFIG_TARGETS = ["neomutt", "msmtp", "mbsync", "alacritty", "pueue"]
 
 COPY_TARGETS = ["gnupg"]
 
@@ -24,6 +24,7 @@ def link_targets(targets, template=""):
         if source_path.exists() and not target_path.exists():
             print(f"linking {source_path} to {target_path}")
             create_symbolink(source_path, target_path)
+
 
 def copy_targets(targets, template=""):
     for target in targets:

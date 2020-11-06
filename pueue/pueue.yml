@@ -1,0 +1,17 @@
+---
+shared:
+  port: "6924"
+  secret: your_secret
+  pueue_directory: /home/ssfdust/.local/share/pueue
+  use_unix_socket: false
+  unix_socket_path: /home/ssfdust/.local/share/pueue/pueue_ssfdust.socket
+client:
+  read_local_logs: true
+  show_confirmation_questions: false
+  max_status_lines: ~
+daemon:
+  default_parallel_tasks: 1
+  pause_on_failure: false
+  callback: ~
+  groups:
+    cpu: 1

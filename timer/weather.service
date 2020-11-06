@@ -1,0 +1,15 @@
+[Unit]
+Description=Save Weather Infomation To Local
+After=network.target
+Wants=network-online.target
+
+[Service]
+Restart=on-failure
+RestartSec=20
+Type=oneshot
+ExecStart=/usr/bin/python /home/ssfdust/dotfiles/bin/fetchweahter.py
+TimeoutStartSec=150
+User=ssfdust
+
+[Install]
+WantedBy=multi-user.target 

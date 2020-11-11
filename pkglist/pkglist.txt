@@ -109,9 +109,6 @@ kwin
 kwrited
 latte-dock
 less
-lib32-libglvnd
-lib32-nvidia-utils
-lib32-opencl-nvidia
 libglvnd
 libkscreen
 libksysguard
@@ -149,7 +146,6 @@ nmap
 npm
 ntfs-3g
 okular
-opencl-nvidia
 openssh
 openvpn
 opera

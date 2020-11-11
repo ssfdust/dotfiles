@@ -16,3 +16,4 @@ nnoremap <leader>k zc
 cnoremap <expr> <C-X>dt strftime('%Y-%m-%d')
 
 nnoremap gq :quit<CR>
+

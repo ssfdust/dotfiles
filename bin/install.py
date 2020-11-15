@@ -5,7 +5,7 @@ import shutil
 
 HOME_TARGETS = ["password-store", "xprofile", "xinitrc"]
 
-CONFIG_TARGETS = ["neomutt", "msmtp", "mbsync", "alacritty", "pueue", "dunst"]
+CONFIG_TARGETS = ["neomutt", "msmtp", "mbsync", "alacritty", "pueue", "dunst", "fontconfig"]
 
 COPY_TARGETS = ["gnupg"]
 

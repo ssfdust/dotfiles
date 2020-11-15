@@ -75,8 +75,8 @@ let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#denite#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = "\ue0b8"
-let g:airline_right_sep = "\ue0be"
+" let g:airline_left_sep = '\ue0b8'
+" let g:airline_right_sep = '\ue0be'
 
 let g:pytest_term_opts = 'tabe'
 

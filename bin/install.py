@@ -5,9 +5,11 @@ import shutil
 
 HOME_TARGETS = ["password-store", "xprofile", "xinitrc"]
 
-CONFIG_TARGETS = ["neomutt", "msmtp", "mbsync", "alacritty", "pueue", "dunst"]
+CONFIG_TARGETS = ["neomutt", "msmtp", "mbsync", "alacritty", "pueue", "dunst", "aria2"]
 
 COPY_TARGETS = ["gnupg"]
+
+LINK_ITEM_TARGETS = ["gnupg"]
 
 
 dotspath = Path(__file__).absolute().parent.parent
@@ -26,6 +28,17 @@ def link_targets(targets, template=""):
             create_symbolink(source_path, target_path)
 
 
+def link_item_targets(targets, template=""):
+    for target in targets:
+        source_path = Path(dotspath, target)
+        target_path = Path(Path.home(), template.format(target))
+        for src_file in source_path.iterdir():
+            target_file = target_path.joinpath(src_file.name)
+            if src_file.exists() and not target_file.exists():
+                print(f"linking {src_file} to {target_file}")
+                create_symbolink(src_file, target_file)
+
+
 def copy_targets(targets, template=""):
     for target in targets:
         source_path = Path(dotspath, target)
@@ -40,4 +53,4 @@ def copy_targets(targets, template=""):
 if __name__ == "__main__":
     link_targets(HOME_TARGETS, ".{}")
     link_targets(CONFIG_TARGETS, ".config/{}")
-    copy_targets(COPY_TARGETS, ".{}")
+    link_item_targets(LINK_ITEM_TARGETS, ".{}")

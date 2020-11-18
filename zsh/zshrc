@@ -111,6 +111,8 @@ export CARGO_HOME="$HOME/Programming/packages/cargo"
 export RUST_HOME="$HOME/Programming/packages/rust"
 export PYTHON_HOST_PROG='/usr/bin/python2'
 export PYTHON3_HOST_PROG='/usr/bin/python3'
+export EDITOR_CMD='cd develop/ScreenLFS/__PythonForProject/Zhengzhouwangluokongjiancehui;nvim'
+export RUNNER_CMD='cd develop/ScreenLFS/__PythonForProject/Zhengzhouwangluokongjiancehui;zsh'
 
 remoteip=45.76.106.238
 

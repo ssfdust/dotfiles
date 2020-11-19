@@ -1,6 +1,7 @@
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export LANG="en_US.UTF-8"
+export QT_LOGGING_RULES="phonon.kde.platformplugin=true"
+export QDBUS_DEBUG=1
 gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 /usr/lib/gsd-xsettings & 

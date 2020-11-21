@@ -3,5 +3,6 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export QT_LOGGING_RULES="phonon.kde.platformplugin=true"
 export QDBUS_DEBUG=1
+KDEWM=$HOME/dotfiles/bin/wm
 gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 /usr/lib/gsd-xsettings & 

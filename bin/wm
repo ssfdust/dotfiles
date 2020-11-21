@@ -2,16 +2,16 @@
 set -m
 /usr/bin/fusion-icon &
 sleep 2
-# # ksplashqml --window &
-# ct=0
-# while [[ $ct < 5 ]];do
-#     dbus-send --type=method_call --print-reply --dest=org.freedesktop.compiz  --reply-timeout=200 /org/freedesktop/compiz/core/screen0 org.freedesktop.compiz.list > /dev/null
-#     if [[ "$?" -eq "0" ]];then
-#         break
-#     else
-#         ct=$((ct+1))
-#     fi
-#     sleep 1
-# done
-# dbus-send --print-reply --type=method_call --dest=org.kde.KSplash --reply-timeout=2000 /KSplash org.kde.KSplash.setStage string:wm
+# ksplashqml --window &
+ct=0
+while [[ $ct < 5 ]];do
+    dbus-send --type=method_call --print-reply --dest=org.freedesktop.compiz  --reply-timeout=200 /org/freedesktop/compiz/core/screen0 org.freedesktop.compiz.list > /dev/null
+    if [[ "$?" -eq "0" ]];then
+        break
+    else
+        ct=$((ct+1))
+    fi
+    sleep 1
+done
+dbus-send --print-reply --type=method_call --dest=org.kde.KSplash --reply-timeout=2000 /KSplash org.kde.KSplash.setStage string:wm
 fg

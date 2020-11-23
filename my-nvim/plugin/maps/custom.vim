@@ -13,6 +13,8 @@ vnoremap <leader>k zf
 nnoremap <leader>j za
 nnoremap <leader>k zc
 
+nnoremap <leader>fy :call buffer#get_filepath()<CR>
+
 cnoremap <expr> <C-X>dt strftime('%Y-%m-%d')
 
 nnoremap gq :quit<CR>

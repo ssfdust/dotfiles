@@ -143,6 +143,7 @@ export EDITOR='nvim'
 # export ARCHFLAGS="-arch x86_64"
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export GPG_TTY=$(tty)
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 export GTAGSLABEL=pygments
 

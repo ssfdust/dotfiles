@@ -139,7 +139,7 @@ read_only_style = "bg:#ff3322 fg:#EEEEEE"
 truncation_length = 4
 truncate_to_repo = true
 # truncation_symbol = "…"
-# fish_style_pwd_dir_length = 3
+fish_style_pwd_dir_length = 3
 format = "([[](bg:#ff3322 fg:#464347)$read_only[](bg:#464347 fg:#ff3322)]($read_only_style))[[](bg:#6F6A70 fg:#464347)$path[](bg:#464347 fg:#6F6A70)]($style)"
 
 [directory.substitutions]
@@ -200,8 +200,8 @@ format = '[[](bg:#1A73E8 fg:#464347)$symbol$account(\($region\))[](bg:#464
 
 [git_branch]
 # disabled = true
-symbol = " "
-# symbol = " " # alternate
+# symbol = " "
+symbol = " " # alternate
 style = "bg:#96ab5f fg:#111111"
 # truncation_length = 4
 # truncation_symbol = ""

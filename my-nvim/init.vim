@@ -21,6 +21,8 @@ let g:dein_home = '~/.local/share/dein'
 
 call manager#load_dein()
 
+let g:gruvbox_material_transparent_background = 1
+
 color gruvbox-material
 
 " Indent Line

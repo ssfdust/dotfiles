@@ -1,8 +1,8 @@
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx5
+export QT_IM_MODULE=fcitx5
+export XMODIFIERS=@im=fcitx5
 export QT_LOGGING_RULES="phonon.kde.platformplugin=true"
-export QDBUS_DEBUG=1
+export QDBUS_DEBUG=0
 export KDEWM=$HOME/dotfiles/bin/wm
 gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 /usr/lib/gsd-xsettings & 

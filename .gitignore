@@ -6,3 +6,4 @@ log_py3_rplugin
 .netrwhist
 rsinc/master.json
 *.tmp
+*.log

@@ -143,12 +143,10 @@ milou
 mitmproxy
 mldonkey
 mypy
-mysql
 nano
 neofetch
 neomutt
 neovim
-nerd-fonts-complete
 netctl
 netease-cloud-music
 nethogs

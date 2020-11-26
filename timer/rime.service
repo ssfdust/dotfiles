@@ -9,7 +9,7 @@ Type=oneshot
 ExecStart=/usr/bin/find . -name LOCK -delete
 ExecStart=/usr/bin/rime_dict_manager -s
 TimeoutStartSec=150
-WorkingDirectory=/home/ssfdust/.config/fcitx/rime
+WorkingDirectory=/home/ssfdust/.local/share/fcitx5/rime
 User=ssfdust
 
 [Install]

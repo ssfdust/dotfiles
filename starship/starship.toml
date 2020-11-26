@@ -358,7 +358,7 @@ symbol = " "
 style = "bg:#EBD45B fg:#111111"
 # pyenv_version_name = true
 pyenv_prefix = "pyenv "
-python_binary = "python3"
+# python_binary = "python3"
 scan_for_pyfiles = true
 format = '[[](bg:#EBD45B fg:#464347)$symbol$pyenv_prefix$version(\($virtualenv\))[](bg:#464347 fg:#EBD45B)]($style)'
 

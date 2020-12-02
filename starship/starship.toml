@@ -226,7 +226,7 @@ am_or_rebase = "am/rebase"
 format = '\([[](bg:#E0B25D fg:#464347)$state($progress_current/$progress_total)[](bg:#464347 fg:#E0B25D)]($style)\)'
 
 [git_status]
-# disabled = true
+disabled = true
 style = "bg:#E0B25D fg:#000000"
 stashed = " ${count}"
 ahead = "ﲗ ${count}"

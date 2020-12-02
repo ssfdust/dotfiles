@@ -1,4 +1,5 @@
 IMAPStore qq-remote
+PipelineDepth 1
 Host imap.qq.com
 Port 993
 User 413690141@qq.com

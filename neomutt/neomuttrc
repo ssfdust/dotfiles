@@ -22,8 +22,8 @@ set sidebar_visible = yes
 # How wide should the Sidebar be in screen columns?
 #
 # Set format
-set attach_format = "%u%D%I %t%4n %T%.100d%> [%.15m/%.15M, %.6e%?C?, %C?, %s] "
-set index_format = " %Z %<[y?%<[m?%<[d?%[     %H:%M]&%[    %a %d]>&%[    %b %d]>&%[%d/%m/%Y]> %-30.30F %<M?(%2M)&    > %?GS?%GS& ?%?GE?%GE& ?%?GA?%GA& ?%?GF?%GF& ? %s"
+source ~/dotfiles/neomutt/powerline/colors/gruvbox-powerline.neomuttrc
+source ~/dotfiles/neomutt/powerline/powerline.neomuttrc
 
 # Note: Some characters, e.g. Chinese, take up two columns each.
 set sidebar_width = 20
@@ -136,10 +136,10 @@ macro index,pager H "<pipe-message>htmail-decode<return>" "render html mail usin
 bind index,pager V  noop        ## Unbinds V from version
 macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 
-macro index u "<modify-tags-then-hide>-trash<enter><sidebar-open>"
-macro index t* "<modify-tags-then-hide>+flagged<enter><sidebar-open>"
-macro index d "<modify-tags-then-hide>+trash<enter><sidebar-open>"
-macro index t- "<modify-tags-then-hide>-flagged<enter><sidebar-open>"
+macro index u "<modify-tags-then-hide>-trash<enter>"
+macro index t* "<modify-tags-then-hide>+flagged<enter>"
+macro index d "<modify-tags-then-hide>+trash<enter>"
+macro index t- "<modify-tags-then-hide>-flagged<enter>"
 macro pager \eh "<pipe-entry>viewhtmlmsg<enter>" "View html message"
 
 macro compose m \
@@ -155,67 +155,25 @@ macro compose m \
 # --------------------------------------------------------------------------
 # Tags
 # --------------------------------------------------------------------------
-tag-transforms "flagged" " " \
-               "encrypted"  "" \
-               "attachment" " " \
-               "signed"     "✎" \
-               "neomutt-users" "users" \
-               "neomutt-devel" "devel" \
-               "github-issues" "gh"
-tag-formats "attachment" "GA" \
-            "flagged"  "GF" \
-            "encrypted"  "GE" \
-            "signed"     "GS"
+# tag-transforms "flagged" "" \
+#                "encrypted"  "" \
+#                "attachment" "" \
+#                "trash" "" \
+#                "signed"     "✎" \
+#                "neomutt-users" "users" \
+#                "neomutt-devel" "devel" \
+#                "github-issues" "gh"
+# tag-formats "attachment" "GA" \
+#             "flagged"  "GF" \
+#             "trash"  "GT" \
+#             "encrypted"  "GE" \
+#             "signed"     "GS"
 bind index,pager \` modify-labels
 
 # --------------------------------------------------------------------------
 # COLORS – some unpleasant examples are given
 # --------------------------------------------------------------------------
-color attachment color109 color235
-color bold       color229 color215
-color error      color167 color235
-color hdrdefault color246 color235
-color indicator  color223 color238
-color markers    color243 color235
-color normal     color223 color235
-color quoted     color248 color235
-color quoted1    color108 color235
-color quoted2    color248 color235
-color quoted3    color108 color235
-color quoted4    color248 color235
-color quoted5    color108 color235
-color search     color235 color208
-color signature  color108 color235
-color status     color235 color246
-color tilde      color243 color235
-color tree       color246 color235
-color underline  color223 color239
 
-color sidebar_divider   color246 color235
-color sidebar_new       color142 color235
-color sidebar_unread    color142 color235
-color sidebar_highlight color208 color235
-
-color index         brightcolor223 color235 ~N
-color index         color167       color235 ~D
-color index         color240       color235 ~D
-color index         color240       color235 ~D~N
-color index_flags   color167       color235 ~D
-color index_author  color240       color235 ~D
-color index_subject color240       color235 ~D
-color index_flags   color142       color235 ~N
-color index_author  color214       color235 '.*'
-color index_subject color142       color235 '.*'
-color index_number  color240       color235
-
-color header color214 color235 "^From:"
-color header color208 color235 "^(To:|Cc:)"
-color header color142 color235 "^Subject:"
-color header color108 color235 "^X-Spam-Status:"
-color header color108 color235 "^Received:"
-
-color compose header           color223 color235
-color compose security_encrypt color175 color235
 # --------------------------------------------------------------------------
 # Folder HOOK
 # --------------------------------------------------------------------------

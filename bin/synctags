@@ -97,7 +97,6 @@ class Mover:
         for msg in db.messages(
             self.query, omit_excluded=exclude, exclude_tags=self.exclude_tags
         ):
-            print(msg.path, self.folder_path)
             safe_move(msg.path, self.folder_path)
 
 

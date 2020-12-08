@@ -7,10 +7,15 @@ set rnu
 set sw=4
 set ts=4
 set termguicolors
+
+" Allow
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1000
 set undoreload=10000
+
+" Allow jump without save
+set hidden
 
 " Set encodings
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -33,11 +38,14 @@ let g:indentLine_char = '¦'
 " coc extension
 let g:coc_global_extensions = [
             \ 'coc-python',
+            \ 'coc-json',
             \ 'coc-neosnippet',
             \ 'coc-explorer',
             \ 'coc-tag',
             \ 'coc-vimlsp',
-            \ 'coc-db'
+            \ 'coc-db',
+            \ 'coc-highlight',
+            \ 'coc-clangd'
             \ ]
 
 " vista

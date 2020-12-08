@@ -191,7 +191,7 @@ normalized_name = 'toml'
 [[plugins]]
 repo = 'liuchengxu/vista.vim'
 lazy = 1
-on_ft = ['python', 'vim']
+on_ft = ['python', 'vim', 'c']
 name = 'vista.vim'
 normalized_name = 'vista'
 
@@ -236,6 +236,14 @@ repo = 'tpope/vim-dadbod'
 name = 'vim-dadbod'
 lazy = 0
 normalized_name = 'dadbod'
+
+[[plugins]]
+repo = 'jackguo380/vim-lsp-cxx-highlight'
+name = 'vim-lsp-cxx-highlight'
+lazy = 1
+on_ft = ['c', 'cc', 'cpp', 'c++']
+normalized_name = 'lsp-cxx-highlight'
+
 
 # [[plugins]]
 # repo = 'altercation/vim-colors-solarized'

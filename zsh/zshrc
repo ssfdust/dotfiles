@@ -53,6 +53,7 @@ plugins=(vi-mode
          systemd
          colorize
          zsh_reload
+         scd
          cp
          archlinux
          docker

@@ -1,6 +1,3 @@
-# Example NeoMutt config file for the sidebar feature.
-#
-
 bind index,pager i noop
 set rfc2047_parameters
 set virtual_spoolfile=yes
@@ -8,17 +5,11 @@ set folder = ~/.local/share/mail
 set pager_stop = no
 set mailcap_path = ~/dotfiles/neomutt/mailcaps
 set query_command="notmuch-addrlookup --mutt '%s'"
-source ~/dotfiles/neomutt/mailboxes
-
-# --------------------------------------------------------------------------
-# Tags - Configure tag options
-# --------------------------------------------------------------------------
-
 # --------------------------------------------------------------------------
 # VARIABLES – shown with their default values
 # --------------------------------------------------------------------------
 # Should the Sidebar be shown?
-set sidebar_visible = yes
+set sidebar_visible = no
 # How wide should the Sidebar be in screen columns?
 #
 # Set format
@@ -26,7 +17,7 @@ source ~/dotfiles/neomutt/powerline/colors/gruvbox-powerline.neomuttrc
 source ~/dotfiles/neomutt/powerline/powerline.neomuttrc
 
 # Note: Some characters, e.g. Chinese, take up two columns each.
-set sidebar_width = 20
+set sidebar_width = 25
 # Should the mailbox paths be abbreviated?
 set sidebar_short_path = no
 # Number of top-level mailbox path subdirectories to truncate for display
@@ -45,10 +36,6 @@ set sidebar_new_mail_only = no
 # Any mailboxes that are whitelisted will always be visible, even if the
 # sidebar_new_mail_only option is enabled.
 set sidebar_non_empty_mailbox_only = no
-# Only show mailboxes that contain some mail
-sidebar_whitelist '/home/user/mailbox1'
-sidebar_whitelist '/home/user/mailbox2'
-# When searching for mailboxes containing new mail, should the search wrap
 # around when it reaches the end of the list?
 set sidebar_next_new_wrap = no
 # Show the Sidebar on the right-hand side of the screen
@@ -141,6 +128,7 @@ macro index t* "<modify-tags-then-hide>+flagged<enter>"
 macro index d "<modify-tags-then-hide>+trash<enter>"
 macro index t- "<modify-tags-then-hide>-flagged<enter>"
 macro pager \eh "<pipe-entry>viewhtmlmsg<enter>" "View html message"
+macro index,pager $ "<sync-mailbox><enter-command>unset wait_key<enter><shell-escape>synctags --move<enter><enter-command>set wait_key<enter>"
 
 macro compose m \
 "<enter-command>set pipe_decode<enter>\
@@ -151,39 +139,15 @@ macro compose m \
 <attach-file>/tmp/msg.html<enter>\
 <tag-entry><previous-entry><tag-entry><group-alternatives>" \
 "Convert markdown to HTML5 and plaintext alternative content types"
-
-# --------------------------------------------------------------------------
-# Tags
-# --------------------------------------------------------------------------
-# tag-transforms "flagged" "" \
-#                "encrypted"  "" \
-#                "attachment" "" \
-#                "trash" "" \
-#                "signed"     "✎" \
-#                "neomutt-users" "users" \
-#                "neomutt-devel" "devel" \
-#                "github-issues" "gh"
-# tag-formats "attachment" "GA" \
-#             "flagged"  "GF" \
-#             "trash"  "GT" \
-#             "encrypted"  "GE" \
-#             "signed"     "GS"
 bind index,pager \` modify-labels
-
-# --------------------------------------------------------------------------
-# COLORS – some unpleasant examples are given
-# --------------------------------------------------------------------------
 
 # --------------------------------------------------------------------------
 # Folder HOOK
 # --------------------------------------------------------------------------
-folder-hook gmail "set sendmail='/usr/bin/gmi send -t -C ~/.local/share/mail'"
-folder-hook gmail "set signature=~/dotfiles/neomutt/gmail.signature"
-folder-hook qq "set sendmail='/usr/bin/msmtp -a qq'"
-folder-hook qq "set signature=~/dotfiles/neomutt/qq.signature"
-folder-hook juminfo "set sendmail='/usr/bin/msmtp -a juminfo'"
-folder-hook juminfo "set signature=~/dotfiles/neomutt/qq.signature"
-
+source accounts/gmail.muttrc
+macro index,pager i1 '$<enter-command>source ~/dotfiles/neomutt/accounts/gmail.muttrc<enter><change-vfolder>[Gmail].INBOX<enter>;<check-stats>' "switch to Gmail"
+macro index,pager i2 '$<enter-command>source ~/dotfiles/neomutt/accounts/qq.muttrc<enter><change-vfolder>[QQ].INBOX<enter>;<check-stats>' "switch to QQ"
+macro index,pager i3 '$<enter-command>source ~/dotfiles/neomutt/accounts/juminfo.muttrc<enter><change-vfolder>[Juminfo].INBOX<enter>;<check-stats>' "switch to Juminfo"
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html

@@ -5,6 +5,7 @@
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
+    "clangd.semanticHighlighting": true,
     "python.linting.mypyEnabled": true,
     "explorer.icon.enableNerdfont": true,
     "explorer.keyMappings.global": {

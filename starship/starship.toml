@@ -53,7 +53,6 @@ format = """[](bg:#464347 fg:#AFD700)\
         $env_var\
         $custom\
         (↑ above input line ↑)\
-        $line_break\
         (↓ on input line ↓)\
         $battery\
         $shlvl\
@@ -71,7 +70,7 @@ vicmd_symbol = "[[](bg:#6f6a70 fg:#464347)[](bg:#464347 fg:#6f6a70)](bo
 format = "$symbol "
 
 [line_break]
-disabled = true
+disabled = false
 
 # Module configurations
 [aws]
@@ -355,11 +354,11 @@ format = "[[](bg:#1D222D fg:#464347)$symbol$version[](bg:#464347 fg:#1D222
 # disabled = true
 symbol = " "
 style = "bg:#EBD45B fg:#111111"
-# pyenv_version_name = true
-pyenv_prefix = "pyenv "
+pyenv_version_name = true
+pyenv_prefix = ""
 # python_binary = "python3"
 scan_for_pyfiles = true
-format = '[[](bg:#EBD45B fg:#464347)$symbol$pyenv_prefix$version(\($virtualenv\))[](bg:#464347 fg:#EBD45B)]($style)'
+format = '[[](bg:#EBD45B fg:#464347)$symbol$pyenv_prefix$version()[](bg:#464347 fg:#EBD45B)]($style)'
 
 [ruby]
 # disabled = true

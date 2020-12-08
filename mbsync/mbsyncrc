@@ -27,6 +27,7 @@ ExpireUnread no
 
 IMAPStore juminfo-remote
 Host imap.qiye.aliyun.com
+PipelineDepth 1
 Port 993
 User xuweikai@juminfo.com
 PassCmd "pass juminfo"

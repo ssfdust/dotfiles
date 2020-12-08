@@ -13,6 +13,21 @@ import subprocess
 import email.parser
 import email.iterators
 import email.utils
+import email.header
+
+def decode_multiline_header(s):
+  ret = []
+
+  for b, e in email.header.decode_header(re.sub(r'\n\s+', ' ', s)):
+    if e:
+      if e.lower() == 'gb2312':
+        e = 'gb18030'
+      b = b.decode(e)
+    elif isinstance(b, bytes):
+      b = b.decode('ascii')
+    ret.append(b)
+
+  return ''.join(ret)
 
 class HTMLViewerError(Exception): pass
 
@@ -48,11 +63,12 @@ def viewhtml(content, safe, wait, app):
     for idx, part in enumerate(msg.walk()):
       fn = (part.get_filename() or part.get_param('filename') or
           part.get_param('name', 'prefix_%d' % idx))
+      fn = decode_multiline_header(fn)
       if part['content-id']:
         # safe ascii filename w/o spaces
         fn = urllib.parse.unquote(fn)
         fn = fn.encode('ascii', 'replace')
-        fn = fn.replace(b' ', b'_').replace(b'?', b'-')
+        fn = fn.replace(b' ', b'_').replace(b'?', b'-').replace(b'/', b'-')
         cid = email.utils.unquote(part['content-id']).encode('ascii')
         html = html.replace(b'cid:%s' % cid, fn)
         fn = fn.decode('ascii')

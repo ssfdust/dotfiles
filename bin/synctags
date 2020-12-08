@@ -124,6 +124,8 @@ def main():
     args = parser.parse_args()
     if args.move:
         move_files_by_tag()
+        notmuch_("new", "--no-hooks")
+        notmuch_("tag", "-unread", "tag:trash and tag:unread")
     elif args.tag:
         tag_by_path()
 

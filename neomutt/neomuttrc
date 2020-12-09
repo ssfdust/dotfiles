@@ -123,10 +123,10 @@ macro index,pager H "<pipe-message>htmail-decode<return>" "render html mail usin
 bind index,pager V  noop        ## Unbinds V from version
 macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
 
-macro index u "<modify-tags-then-hide>-trash<enter>"
-macro index t* "<modify-tags-then-hide>+flagged<enter>"
-macro index d "<modify-tags-then-hide>+trash<enter>"
-macro index t- "<modify-tags-then-hide>-flagged<enter>"
+macro index u "<modify-tags>-trash<enter>"
+macro index t* "<modify-tags>+flagged<enter>"
+macro index d "<modify-tags>+trash<enter>"
+macro index t- "<modify-tags>-flagged<enter>"
 macro pager \eh "<pipe-entry>viewhtmlmsg<enter>" "View html message"
 macro index,pager $ "<sync-mailbox><enter-command>unset wait_key<enter><shell-escape>synctags --move<enter><enter-command>set wait_key<enter>"
 

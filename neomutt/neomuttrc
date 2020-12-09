@@ -144,7 +144,7 @@ bind index,pager \` modify-labels
 # --------------------------------------------------------------------------
 # Folder HOOK
 # --------------------------------------------------------------------------
-source accounts/gmail.muttrc
+source ~/dotfiles/neomutt/accounts/gmail.muttrc
 macro index,pager i1 '$<enter-command>source ~/dotfiles/neomutt/accounts/gmail.muttrc<enter><change-vfolder>[Gmail].INBOX<enter>;<check-stats>' "switch to Gmail"
 macro index,pager i2 '$<enter-command>source ~/dotfiles/neomutt/accounts/qq.muttrc<enter><change-vfolder>[QQ].INBOX<enter>;<check-stats>' "switch to QQ"
 macro index,pager i3 '$<enter-command>source ~/dotfiles/neomutt/accounts/juminfo.muttrc<enter><change-vfolder>[Juminfo].INBOX<enter>;<check-stats>' "switch to Juminfo"

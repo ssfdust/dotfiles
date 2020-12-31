@@ -1,2 +1,2 @@
-nmap <silent>ght :GitGutterLineHighlightsToggle<CR>
-nmap <silent>ggf :GitGutterFold<CR>
+nmap <silent><leader>ght :GitGutterLineHighlightsToggle<CR>
+nmap <silent><leader>ggf :GitGutterFold<CR>

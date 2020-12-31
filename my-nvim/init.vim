@@ -92,6 +92,7 @@ let g:pytest_term_opts = 'tabe'
 
 let g:pydocstring_doq_path = '/usr/bin/doq'
 
+let g:gutentags_enabled = 0
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_ctags_exclude = ['.mypy_cache']
 

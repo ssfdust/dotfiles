@@ -2,7 +2,7 @@
 from pathlib import Path
 import requests
 
-URL = "https://wttr.in/nkg?format=%c+%f+%m+%w"
+URL = "https://wttr.in/Nanjing?format=%c+%f+%m+%w"
 
 
 def get_weather():

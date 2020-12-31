@@ -244,6 +244,11 @@ lazy = 1
 on_ft = ['c', 'cc', 'cpp', 'c++']
 normalized_name = 'lsp-cxx-highlight'
 
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+name = 'deol.nvim'
+lazy = 0
+normalized_name = 'deol'
 
 # [[plugins]]
 # repo = 'altercation/vim-colors-solarized'

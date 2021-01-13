@@ -1,2 +1,2 @@
-nnoremap <silent><C_S-o> :call chinese#ph_split()<CR>
-xnoremap <silent><C_S-c> :call chinese#count_word()<CR>
+nnoremap <silent><leader>os :call chinese#ph_split()<CR>
+xnoremap <silent><leader>oc :call chinese#count_word()<CR>

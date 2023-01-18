@@ -1,0 +1,63 @@
+---
+- hosts: all
+  roles:
+    - role: systemd
+      tags: systemd
+    - role: pamd
+      tags: pamd
+    - role: neovim
+      tags: neovim
+    - role: firefox
+      tags: firefox
+    - role: wofi
+      tags: wofi
+    - role: sddm
+      tags: sddm
+    - role: pacman
+      tags: pacman
+    - role: wayfire
+      tags: wayfire
+    - role: waybar
+      tags: waybar
+    - role: starship
+      tags: starship
+    - role: nushell
+      tags: nushell
+    - role: pueue
+      tags: pueue
+    - role: neomutt
+      tags: neomutt
+    - role: password-store
+      tags: password-store
+    - role: mycli
+      tags: mycli
+    - role: msmtp
+      tags: msmtp
+    - role: mbsync
+      tags: mbsync
+    - role: mako
+      tags: mako
+    - role: refind
+      tags: refind
+    - role: lf
+      tags: lf
+    - role: kitty
+      tags: kitty
+    - role: fontconfig
+      tags: fontconfig
+    - role: gnupg
+      tags: gnupg
+    - role: aria2
+      tags: aria2
+    - role: env
+      tags: env
+    - role: qt
+      tags: qt
+    - role: icons
+      tags: icons
+    - role: profile
+      tags: profile
+    - role: wlogout
+      tags: wlogout
+    - role: fcitx5
+      tags: fcitx5

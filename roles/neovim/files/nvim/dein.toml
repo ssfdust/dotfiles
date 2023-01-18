@@ -1,0 +1,201 @@
+#### DDU Section
+#### Count: 11
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+merged = 1
+lazy = 0
+name = 'ddu.vim'
+normalized_name = 'ddu'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+merged = 1
+lazy = 0
+name = 'denops.vim'
+normalized_name = 'denops'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+merged = 1
+lazy = 0
+name = 'ddu-ui-ff'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+merged = 1
+lazy = 0
+name = 'ddu-kind-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+merged = 1
+lazy = 0
+name = 'ddu-source-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+merged = 1
+lazy = 0
+name = 'ddu-source-file_rec'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_old'
+merged = 1
+lazy = 0
+name = 'ddu-source-file_old'
+
+[[plugins]]
+repo = 'shun/ddu-source-buffer'
+merged = 1
+lazy = 0
+name = 'ddu-source-buffer'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+merged = 1
+lazy = 0
+name = 'ddu-filter-matcher_substring'
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
+merged = 1
+lazy = 0
+name = 'ddu-commands.vim'
+normalized_name = 'ddu-commands'
+
+[[plugins]]
+repo = 'shun/ddu-source-rg'
+merged = 1
+lazy = 0
+name = "ddu-source-rg"
+normalized_name = "ddu-source-rg"
+
+### DDU END
+
+### Snippet Section
+### Count: 2
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+merged = 1
+lazy = 0
+name = 'neosnippet-snippets'
+normalized_name = 'neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+merged = 1
+on_ft = ['python', 'todo', 'gitignore']
+name = 'neosnippet.vim'
+normalized_name = 'neosnippet'
+
+### Snippet END
+
+### Extra Section
+### Count: 7
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+merged = 1
+lazy = 0
+name = 'vim-fugitive'
+normalized_name = 'fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-rooter'
+merged = 1
+lazy = 0
+name = 'vim-rooter'
+normalized_name = 'rooter'
+
+[[plugins]]
+repo = 'antoyo/vim-licenses'
+merged = 1
+on_ft = ['python']
+name = 'vim-licenses'
+normalized_name = 'licenses'
+
+[[plugins]]
+repo = 'lilydjwg/fcitx.vim'
+lazy = 0
+merged = 1
+name = 'fcitx.vim'
+normalized_name = 'fcitx'
+
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+name = 'deol.nvim'
+lazy = 0
+normalized_name = 'deol'
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+name = 'markdown-preview.nvim'
+normalized_name = 'markdown-preview'
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
+build = 'sh -c "cd app && yarn install"'
+### Extra END
+
+### LSP Section
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merged = 0
+lazy = 0
+rev = 'release'
+name = 'coc.nvim'
+normalized_name = 'coc'
+### LSP END
+
+### UI Section
+### Count: 7
+[[plugins]]
+repo = 'nvim-tree/nvim-web-devicons'
+merged = 1
+lazy = 0
+name = "nvim-web-devicons"
+normalized_name = "web-devicons"
+
+[[plugins]]
+repo = 'goolord/alpha-nvim'
+merged = 1
+lazy = 0
+name = 'alpha-nvim'
+normalized_name = 'alpha'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+lazy = 0
+merged = 1
+name = 'vim-airline'
+normalized_name = 'airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+merged = 0
+name = 'vim-airline-themes'
+normalized_name = 'airline-themes'
+
+[[plugins]]
+repo = 'sainnhe/gruvbox-material'
+lazy = 0
+name = 'gruvbox-material'
+normalized_name = 'gruvbox-material'
+
+[[plugins]]
+repo = 'ap/vim-css-color'
+lazy = 0
+name = 'vim-css-color'
+normalized_name = 'css-color'
+
+[[plugins]]
+repo = 'https://gitlab.com/ssfdust/neuleetcode.git'
+name = 'neuleetcode.vim'
+merged = 1
+lazy = 0
+normalized_name = 'neuleetcode'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+name = 'nvim-treesitter'
+merged = 0
+lazy = 0
+normalized_name = 'nvim-treesitter'
+###

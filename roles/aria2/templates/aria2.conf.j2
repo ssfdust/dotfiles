@@ -1,0 +1,393 @@
+# configuration for aria2 rpc server
+
+### Basic Options, see: https://aria2.github.io/manual/en/html/aria2c.html#basic-options
+dir=${HOME}/Downloads
+## Default: 5
+max-concurrent-downloads=5
+## Default: false
+check-integrity=true
+continue=true
+## see: deferred-input, save-session
+input-file=${HOME}/.aria2/rpc/aria2.session
+log=${HOME}/.aria2/rpc/aria2.log
+
+### HTTP/FTP/SFTP Options, see: https://aria2.github.io/manual/en/html/aria2c.html#http-ftp-sftp-options
+## see: <http, https, ftp>-proxy
+#all-proxy=<PROXY>
+## see: all-proxy
+#all-proxy-passwd=<PASSWD>
+## see: all-proxy
+#all-proxy-user=<USER>
+#no-proxy=<DOMAINS>
+## Default: get; options: get, tunnel
+#proxy-method=<METHOD>
+## Default: 60
+timeout=60
+## Default: 60
+connect-timeout=60
+## Default: 0
+lowest-speed-limit=0
+## Default: 1
+max-connection-per-server=8
+## Default: 5; see: min-split-size, max-connection-per-server
+split=5
+## Default: 20M; see: split
+min-split-size=10M
+## Default: default; options: default, inorder, random, geom; see: enable-http-pipelining, min-split-size
+stream-piece-selector=default
+## Default: 0; see: max-tries
+max-file-not-found=0
+## Default: 5; see: retry-wait
+max-tries=5
+## Default: $(HOME)/.netrc
+#netrc-path=<FILE>l
+## Default: false
+#no-netrc=[true|false]
+## see: force-sequential
+#out=<FILE>
+## Default: false
+#remote-time =[true|false]
+## Default: true
+reuse-uri=true
+## Default: 0
+retry-wait=5
+## see: server-stat-if
+server-stat-of=${HOME}/.aria2/rpc/aria2.serverstat
+## see: server-stat-of
+server-stat-if=${HOME}/.aria2/rpc/aria2.serverstat
+## Default: 86400 (24hours)
+server-stat-timeout=86400
+## Default: feedback; options: inorder, feedback, adaptive; see: server-stat-of, server-stat-if
+uri-selector=adaptive
+
+### HTTP Specific Options, see: https://aria2.github.io/manual/en/html/aria2c.html#http-specific-options
+## see: check-certificate
+#ca-certificate=<FILE>
+## see: private-key
+#certificate=<FILE>
+## see: certificate
+#private-key=<FILE> 
+## Default: true; see: ca-certificate
+check-certificate=true
+## Default: false
+http-accept-gzip=true
+## Default: false
+http-auth-challenge=false
+## Default: false
+#http-no-cache=[true|false]
+#http-user=<USER>
+#http-passwd=<PASSWD>
+## see: all-proxy
+#http-proxy=<PROXY>
+## see: http-proxy
+#http-proxy-passwd=<PASSWD> 
+## see: http-proxy
+#http-proxy-user=<USER> 
+## see: all-proxy
+#https-proxy=<PROXY> 
+## see: https-proxy
+#https-proxy-passwd=<PASSWD>
+## see: https-proxy
+#https-proxy-user=<USER>
+## see: parameterized-uri
+#referer=<REFERER>
+## Default: true
+enable-http-keep-alive=true
+## Default: false
+#enable-http-pipelining=[true|false]
+## see: save-cookies
+load-cookies=${HOME}/.aria2/rpc/aria2.cookies 
+## see: load-cookies
+save-cookies=${HOME}/.aria2/rpc/aria2.cookies
+## Default: false
+#use-head=[true|false]
+## Default: aria2/$VERSION, $VERSION is replaced by package version
+#user-agent=<USER_AGENT>
+
+### FTP/SFTP Specific Options, see: https://aria2.github.io/manual/en/html/aria2c.html#ftp-sftp-specific-options
+## Default: anonymous
+#ftp-user=<USER>
+## Default: ARIA2USER@
+#ftp-passwd=<PASSWD>
+## Default: true
+#ftp-pasv=[true|false]
+## see: all-proxy
+#ftp-proxy=<PROXY> 
+## see: ftp-proxy
+#ftp-proxy-passwd=<PASSWD>
+## see: ftp-proxy
+#ftp-proxy-user=<USER>
+## Default: binary; options: binary, ascii
+#ftp-type=<TYPE>
+## Default: true
+#ftp-reuse-connection=[true|false]
+
+### BitTorrent Specific Options, see: https://aria2.github.io/manual/en/html/aria2c.html#bittorrent-specific-options
+# BT 监听端口(TCP), 默认:6881-6999
+# 直通外网的设备，比如 VPS ，务必配置防火墙和安全组策略允许此端口入站
+# 内网环境的设备，比如 NAS ，除了防火墙设置，还需在路由器设置外网端口转发到此端口
+listen-port=51413
+
+# DHT 网络与 UDP tracker 监听端口(UDP), 默认:6881-6999
+# 因协议不同，可以与 BT 监听端口使用相同的端口，方便配置防火墙和端口转发策略。
+dht-listen-port=51413
+
+# 启用 IPv4 DHT 功能, PT 下载(私有种子)会自动禁用, 默认:true
+enable-dht=true
+
+# 启用 IPv6 DHT 功能, PT 下载(私有种子)会自动禁用，默认:false
+# 在没有 IPv6 支持的环境开启可能会导致 DHT 功能异常
+enable-dht6=false
+
+# 指定 BT 和 DHT 网络中的 IP 地址
+# 使用场景：在家庭宽带没有公网 IP 的情况下可以把 BT 和 DHT 监听端口转发至具有公网 IP 的服务器，在此填写服务器的 IP ，可以提升 BT 下载速率。
+#bt-external-ip=
+
+# IPv4 DHT 文件路径，默认：$HOME/.aria2/dht.dat
+dht-file-path=~/.aria2/dht.dat
+
+# IPv6 DHT 文件路径，默认：$HOME/.aria2/dht6.dat
+dht-file-path6=~/.aria2/dht6.dat
+
+# IPv4 DHT 网络引导节点
+dht-entry-point=dht.transmissionbt.com:6881
+
+# IPv6 DHT 网络引导节点
+dht-entry-point6=dht.transmissionbt.com:6881
+
+# 本地节点发现, PT 下载(私有种子)会自动禁用 默认:false
+bt-enable-lpd=true
+
+# 指定用于本地节点发现的接口，可能的值：接口，IP地址
+# 如果未指定此选项，则选择默认接口。
+#bt-lpd-interface=
+
+# 启用节点交换, PT 下载(私有种子)会自动禁用, 默认:true
+enable-peer-exchange=true
+
+# BT 下载最大连接数（单任务），运行时可修改。0 为不限制，默认:55
+# 理想情况下连接数越多下载越快，但在实际情况是只有少部分连接到的做种者上传速度快，其余的上传慢或者不上传。
+# 如果不限制，当下载非常热门的种子或任务数非常多时可能会因连接数过多导致进程崩溃或网络阻塞。
+# 进程崩溃：如果设备 CPU 性能一般，连接数过多导致 CPU 占用过高，因资源不足 Aria2 进程会强制被终结。
+# 网络阻塞：在内网环境下，即使下载没有占满带宽也会导致其它设备无法正常上网。因远古低性能路由器的转发性能瓶颈导致。
+bt-max-peers=128
+
+# BT 下载期望速度值（单任务），运行时可修改。单位 K 或 M 。默认:50K
+# BT 下载速度低于此选项值时会临时提高连接数来获得更快的下载速度，不过前提是有更多的做种者可供连接。
+# 实测临时提高连接数没有上限，但不会像不做限制一样无限增加，会根据算法进行合理的动态调节。
+bt-request-peer-speed-limit=10M
+
+# 全局最大上传速度限制, 运行时可修改, 默认:0 (无限制)
+# 设置过低可能影响 BT 下载速度
+max-overall-upload-limit=2M
+
+# 单任务上传速度限制, 默认:0 (无限制)
+max-upload-limit=0
+
+# 最小分享率。当种子的分享率达到此选项设置的值时停止做种, 0 为一直做种, 默认:1.0
+# 强烈建议您将此选项设置为大于等于 1.0
+seed-ratio=1.0
+
+# 最小做种时间（分钟）。设置为 0 时将在 BT 任务下载完成后停止做种。
+seed-time=0
+
+# 做种前检查文件哈希, 默认:true
+bt-hash-check-seed=true
+
+# 继续之前的BT任务时, 无需再次校验, 默认:false
+bt-seed-unverified=false
+
+# BT tracker 服务器连接超时时间（秒）。默认：60
+# 建立连接后，此选项无效，将使用 bt-tracker-timeout 选项的值
+bt-tracker-connect-timeout=10
+
+# BT tracker 服务器超时时间（秒）。默认：60
+bt-tracker-timeout=10
+
+# BT 服务器连接间隔时间（秒）。默认：0 (自动)
+#bt-tracker-interval=0
+
+# BT 下载优先下载文件开头或结尾
+bt-prioritize-piece=head=32M,tail=32M
+
+# 保存通过 WebUI(RPC) 上传的种子文件(.torrent)，默认:true
+# 所有涉及种子文件保存的选项都建议开启，不保存种子文件有任务丢失的风险。
+# 通过 RPC 自定义临时下载目录可能不会保存种子文件。
+rpc-save-upload-metadata=true
+
+# 下载种子文件(.torrent)自动开始下载, 默认:true，可选：false|mem
+# true：保存种子文件
+# false：仅下载种子文件
+# mem：将种子保存在内存中
+follow-torrent=true
+
+# 种子文件下载完后暂停任务，默认：false
+# 在开启 follow-torrent 选项后下载种子文件或磁力会自动开始下载任务进行下载，而同时开启当此选项后会建立相关任务并暂停。
+pause-metadata=false
+
+# 保存磁力链接元数据为种子文件(.torrent), 默认:false
+bt-save-metadata=true
+
+# 加载已保存的元数据文件(.torrent)，默认:false
+bt-load-saved-metadata=true
+
+# 删除 BT 下载任务中未选择文件，默认:false
+bt-remove-unselected-file=true
+
+# BT强制加密, 默认: false
+# 启用后将拒绝旧的 BT 握手协议并仅使用混淆握手及加密。可以解决部分运营商对 BT 下载的封锁，且有一定的防版权投诉与迅雷吸血效果。
+# 此选项相当于后面两个选项(bt-require-crypto=true, bt-min-crypto-level=arc4)的快捷开启方式，但不会修改这两个选项的值。
+bt-force-encryption=true
+
+# BT加密需求，默认：false
+# 启用后拒绝与旧的 BitTorrent 握手协议(\19BitTorrent protocol)建立连接，始终使用混淆处理握手。
+#bt-require-crypto=true
+
+# BT最低加密等级，可选：plain（明文），arc4（加密），默认：plain
+#bt-min-crypto-level=arc4
+
+# 分离仅做种任务，默认：false
+# 从正在下载的任务中排除已经下载完成且正在做种的任务，并开始等待列表中的下一个任务。
+bt-detach-seed-only=true
+
+### Metalink Specific Options, see: https://aria2.github.io/manual/en/html/aria2c.html#metalink-specific-options
+#...
+
+### RPC Options, see: https://aria2.github.io/manual/en/html/aria2c.html#rpc-options
+## Default: false; see: rpc-secret, rpc-listen-port
+enable-rpc=true 
+## Default: false
+#pause=[true|false]
+## Default: false
+pause-metadata=true
+## Default: false
+rpc-allow-origin-all=true
+## see: rpc-private-key, rpc-secure
+#rpc-certificate=<FILE>
+## Default: false
+rpc-listen-all=false
+## Default: 6800
+#rpc-listen-port=<PORT>
+## Default: 2M
+#rpc-max-request-size=<SIZE>
+## deprecated; see: prc-secret
+#rpc-user=<USER>
+## deprecated; see: prc-secret
+#rpc-passwd=<PASSWD>
+## see: rpc-secure, rpc-certificate
+#rpc-private-key=<FILE>
+## Default: true
+#rpc-save-upload-metadata=[true|false]
+rpc-secret={{ aria2_rpc_secret }}
+## see: rpc-certificate, rpc-private-key
+#rpc-secure=[true|false]
+
+
+### Advanced Options, see: https://aria2.github.io/manual/en/html/aria2c.html#advanced-options
+## Default: false; see: auto-file-renaming
+allow-overwrite=true
+## Default: false
+#allow-piece-length-change=[true|false]
+## Default: true; see: max-resume-failure-tries
+always-resume=true
+## Default: true
+async-dns=true
+#async-dns-server=<IPADDRESS>[,...]
+## Default: true
+auto-file-renaming=true
+## Default: 60; value range: 0-600
+auto-save-interval=60
+## Default: false; see: out, allow-overwrite
+#conditional-get=[true|false]
+## Default: notice; options: debug, info, notice, warn or error; see: log-level
+console-log-level=notice
+## Default: false
+content-disposition-default-utf8=true
+## Default: false
+#daemon=[true|false]
+## Default: false; see: save-session
+deferred-input=false
+## Default: false
+#disable-ipv6=[true|false]
+## Default: 16M
+disk-cache=16M
+## Default: default; options: default, full, hide
+download-result=default
+#dscp=<DSCP>
+#rlimit-nofile=<NUM>
+## Default: true
+enable-color=true
+## Default: false; see: file-allocation
+#enable-mmap=[true|false]
+## Default: system dependent; options: epoll, kqueue, port, poll, select
+#event-poll=<POLL>
+## Default: prealloc; options: none, prealloc, trunc, falloc
+file-allocation=falloc
+## Default: false
+#force-save=[true|false]
+## Default: true
+save-not-found=true
+## Default: false; see: check-integrity
+#hash-check-only=[true|false]
+## Default: true
+human-readable=true
+## see: disable-ipv6
+#interface=<INTERFACE>
+## Default: true; see: max-download-result
+keep-unfinished-download-result=true
+## Default: 1000; see keep-unfinished-download-result
+max-download-result=1000
+## Default: 9223372036854775807; see: enable-mmap
+#max-mmap-limit=<SIZE>
+## Default: 0; see: always-resume
+#max-resume-failure-tries=<N>
+## Default: TLSv1; options: SSLv3, TLSv1, TLSv1.1, TLSv1.2
+#min-tls-version=<VERSION>
+## see: interface
+#multiple-interface=<INTERFACES>
+## Default: debug; options: debug, info, notice, warn or error; see: console-log-level
+log-level=info
+## see: on-download-complete
+#on-bt-download-complete=<COMMAND>
+## see: on-download-stop
+#on-download-complete=<COMMAND> 
+## see: on-download-stop
+#on-download-error=<COMMAND>
+#on-download-pause=<COMMAND>
+#on-download-start=<COMMAND>
+## see: on-download-complte, on-download-error
+#on-download-stop=<COMMAND>
+## Default: false; see: max-concurrent-downloads
+optimize-concurrent-downloads=true
+## Default: 1M; see: split, enable-http-pipelining
+piece-length=1M
+## Default: true
+#show-console-readout=[true|false]
+## Default: false
+#stderr=[true|false]
+## Default: 60
+summary-interval=60
+## Default: false
+force-sequential=false
+## Default: 0; see: max-download-limit
+max-overall-download-limit=0
+## Default: 0; see: max-overall-download-limit
+max-download-limit=0
+## Default: 5M; see: file-allocation
+no-file-allocation-limit=5M
+## Default: false
+parameterized-uri=false
+## Default: false
+quiet=false
+## Default: true
+realtime-chunk-checksum=true
+## see: allow-overwrite
+remove-control-file=false
+## see: input-file
+save-session=${HOME}/.aria2/rpc/aria2.session
+## Default: 0; see: save-session
+save-session-interval=60
+## Default: 0
+#socket-recv-buffer-size=<SIZE>
+## Default: true
+truncate-console-readout=true

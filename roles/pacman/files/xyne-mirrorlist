@@ -1,0 +1,39 @@
+# -----------------------------------------------------------------------------
+# This is the list of mirrors where you can find my (Xyne's) repos. Each mirror
+# is kindly hosted by contributors from the Arch community (thank you!).  To
+# use my repo and this list, add the following to /etc/pacman.conf:
+#
+# [xyne-x86_64]
+# SigLevel = Required
+# Include = /etc/pacman.d/xyne-mirrorlist
+#
+# There is also [xyne-any] for non-x86_64 users.
+#
+# The line "SigLevel = Required" ensures that both the database and all
+# packages in the repo will be signed with my key, which is included in the
+# Arch Linux keyring. The allows you to trust the repo without having to trust
+# each server in the mirrorlist.
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# The original site, hosted since 2008 or 2009 by Dusty. The URL should be
+#
+# Server = https://xyne.archlinux.ca/repos/xyne
+#
+# but the paid hosting service occasionally messes around with cross-domain
+# ".db" extension filters which block access to the files so the following
+# workaround is provided:
+
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# The first mirror, hosted since 2019 by
+# Bryan L. Gay / LinuxNinja
+# Draconian Rose, LLC
+# 2001 Duncan Dr NW Unit 894
+# Kennesaw, GA 30156
+# 1-678-718-8800
+
+Server = https://xyne.dev/repos/xyne
+# -----------------------------------------------------------------------------
+

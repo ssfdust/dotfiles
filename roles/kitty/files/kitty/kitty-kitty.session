@@ -1,0 +1,20 @@
+new_tab nu
+layout splits
+cd /home/ssfdust
+title nu
+launch  /usr/bin/nu
+title nu
+launch  /usr/bin/nu
+new_tab nu
+layout splits
+cd /home/ssfdust/Documents/openvpn
+title nu
+launch  /usr/bin/nu
+focus
+title ssfdust@RedLotus:~
+launch  /usr/bin/nu
+new_tab nu
+layout splits
+cd /home/ssfdust
+title nu
+launch  /usr/bin/nu

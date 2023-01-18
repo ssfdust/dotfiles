@@ -1,0 +1,53 @@
+IMAPStore qq-remote
+PipelineDepth 1
+Host imap.qq.com
+Port 993
+User 413690141@qq.com
+PassCmd "pass mutt-wizard-qq"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore qq-local
+Subfolders Verbatim
+Path /home/ssfdust/.local/share/mail/qq/
+Inbox /home/ssfdust/.local/share/mail/qq/INBOX
+Flatten .
+
+Channel qq
+Expunge Both
+Master :qq-remote:
+Slave :qq-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 500
+ExpireUnread no
+# End profile
+
+IMAPStore juminfo-remote
+Host imap.qiye.aliyun.com
+PipelineDepth 1
+Port 993
+User xuweikai@juminfo.com
+PassCmd "pass juminfo"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore juminfo-local
+Subfolders Verbatim
+Path /home/ssfdust/.local/share/mail/juminfo/
+Inbox /home/ssfdust/.local/share/mail/juminfo/INBOX
+Flatten .
+
+Channel juminfo
+Expunge Both
+Master :juminfo-remote:
+Slave :juminfo-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 500
+ExpireUnread no
+# End profile

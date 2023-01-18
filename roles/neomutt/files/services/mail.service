@@ -1,0 +1,19 @@
+[Unit]
+Description=Sync emails
+After=network.target
+Wants=network-online.target
+
+[Service]
+Restart=no
+Type=oneshot
+Environment="DISPLAY=:0" "XAUTHORITY=%h/.Xauthority"
+ExecStart=/usr/bin/gmi sync -C %h/.local/share/mail/gmail
+ExecStart=/usr/bin/mbsync -c %h/.config/mbsync/mbsyncrc -Va
+ExecStart=/usr/bin/notmuch new
+ExecStart=%h/dotfiles/bin/notice-notmuch.sh
+ExecStartPost=%h/dotfiles/bin/synctags --tag
+TimeoutStartSec=150
+WorkingDirectory=%h/.local/share/mail
+
+[Install]
+WantedBy=multi-user.target 

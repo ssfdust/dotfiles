@@ -1,0 +1,148 @@
+{
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar at the bottom of your screen
+    "height": 25, // Waybar height
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["custom/firefox", "custom/tg", "custom/dingtalk","custom/keepassxc","custom/remmina",  "custom/arrow01","custom/mail", "custom/arrow02", "custom/weather", "custom/arrow03", "network#1", "custom/arrow04"],
+    "modules-center": ["clock#1", "custom/autostart"],
+    "modules-right": ["custom/arrow05", "network#2", "custom/arrow06","pulseaudio","custom/arrow07", "custom/date", "custom/arrow08","custom/arrow09", "tray","custom/arrow10"],
+    // Modules configuration
+    "tray": {
+        //"icon-size": 21,
+        "spacing":3 
+    },
+    "network#1": {
+        "interval": 1,
+        "format": "  {bandwidthUpBits}",
+        "format-wifi": " {bandwidthUpBits} ({signalStrength}%) ",
+        "format-ethernet": "  {bandwidthUpBits} <span></span>",
+        "format-disconnected": "No Signal <span></span>",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+    "network#2": {
+        "interval": 1,
+        "format": " {bandwidthDownBits}",
+        "format-disconnected": "No Signal",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50
+    },
+    "clock#1": {
+        "interval": 1,
+        "format": "{:%H:%M:%S}",
+        "locale": "en_US.UTF-8",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "custom/date": {
+        "format": " {} ",
+        "exec": "jq -r '\" \\(.current.lunar)\"' ~/.cache/weatherCN/weather.json"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "memory": {
+        "format": "{}% ",
+        "on-click": "termite -e htop"
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠"
+    },
+    "custom/firefox": {
+        "format": "",
+        "on-click": "firefox",
+        "tooltip": false
+    },
+    "custom/remmina": {
+        "format": "",
+        "on-click": "remmina",
+        "tooltip": false
+    },
+    "custom/tg": {
+        "format": "",
+        "on-click": "telegram-desktop",
+        "tooltip": false
+    },
+    "custom/dingtalk": {
+        "format": "",
+        "on-click": "dingtalk",
+        "tooltip": false
+    },
+    "custom/keepassxc": {
+        "format": "",
+        "on-click": "keepassxc",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/mail": {
+        "format": " {}",
+        "interval": 1,
+        "exec": "echo $(notmuch count --output=messages 'tag:unread')",
+        "on-click": "notice-notmuch.sh --show-unread && kitty @ --to tcp:localhost:50443 launch --type=overlay /usr/bin/neomutt"
+    },
+    "custom/weather": {
+        "format": "{} ",
+        "interval": 1,
+        "on-click": "display -title '天气预报' ~/.cache/weatherCN/weather.png",
+        //"max-length": 15,
+        "exec": "jq -r '.current | .weather + \" \" + .temperature + \" \" + .wind_level + \" \" + .wind_direction' ~/.cache/weatherCN/weather.json"
+    },
+    "custom/autostart" : {
+        "format": "",
+        "exec": "myautostart"
+    },
+    "custom/arrow01": {
+        "format": ""
+    },
+    "custom/arrow02": {
+        "format": ""
+    },
+    "custom/arrow03": {
+        "format": ""
+    },
+    "custom/arrow04": {
+        "format": ""
+    },
+    "custom/arrow05": {
+        "format": ""
+    },
+    "custom/arrow06": {
+        "format": ""
+    },
+    "custom/arrow07": {
+        "format": ""
+    },
+    "custom/arrow08": {
+        "format": ""
+    },
+    "custom/arrow09": {
+        "format": ""
+    },
+    "custom/arrow10": {
+        "format": ""
+    },
+}

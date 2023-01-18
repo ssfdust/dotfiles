@@ -1,0 +1,14 @@
+[Unit]
+Description=Save Weather Infomation To Local
+After=network.target
+Wants=network-online.target
+
+[Service]
+Restart=on-failure
+RestartSec=20
+Type=oneshot
+ExecStart=%h/.local/bin/weathercn 南京
+TimeoutStartSec=150
+
+[Install]
+WantedBy=multi-user.target 

@@ -1,0 +1,16 @@
+- stat:
+    path: "~/.config/mako"
+  register: link
+
+- name: remove symlink
+  file:
+    path: "~/.config/mako"
+    state: absent
+  when: link.stat.islnk is defined and link.stat.islnk
+
+- name: deploy mako
+  ansible.posix.synchronize:
+    src: mako
+    dest: ~/.config
+    delete: yes
+    recursive: yes

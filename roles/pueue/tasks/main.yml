@@ -1,0 +1,16 @@
+- stat:
+    path: "~/.config/pueue"
+  register: link
+
+- name: remove symlink
+  file:
+    path: "~/.config/pueue"
+    state: absent
+  when: link.stat.islnk is defined and link.stat.islnk
+
+- name: deploy pueue
+  ansible.posix.synchronize:
+    src: pueue
+    dest: ~/.config
+    delete: yes
+    recursive: yes

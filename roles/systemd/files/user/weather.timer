@@ -1,0 +1,9 @@
+[Unit]
+Description=Get weather information every 30 minutes.
+
+[Timer]
+OnBootSec=30
+OnUnitActiveSec=30min
+
+[Install]
+WantedBy=timers.target

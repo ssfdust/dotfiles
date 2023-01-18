@@ -1,0 +1,160 @@
+bind index,pager i noop
+set rfc2047_parameters
+set virtual_spoolfile=yes
+set folder = ~/.local/share/mail
+set pager_stop = no
+set mailcap_path = ~/.config/neomutt/mailcaps
+set query_command="notmuch-addrlookup --mutt '%s'"
+
+
+# --------------------------------------------------------------------------
+# aliases – custom aliases
+# --------------------------------------------------------------------------
+# Set aliases
+source ~/.config/neomutt/accounts/mail.alias
+set alias_file=~/.config/neomutt/accounts/mail.alias
+
+# --------------------------------------------------------------------------
+# variables – shown with their default values
+# --------------------------------------------------------------------------
+# Should the Sidebar be shown?
+set sidebar_visible = no
+# How wide should the Sidebar be in screen columns?
+#
+# Set format
+source ~/.config/neomutt/powerline/colors/gruvbox-powerline.neomuttrc
+source ~/.config/neomutt/powerline/powerline.neomuttrc
+# Set record
+set record = ~/.local/share/mail/sent
+# Note: Some characters, e.g. Chinese, take up two columns each.
+set sidebar_width = 25
+# Should the mailbox paths be abbreviated?
+set sidebar_short_path = no
+# Number of top-level mailbox path subdirectories to truncate for display
+set sidebar_component_depth = 0
+# When abbreviating mailbox path names, use any of these characters as path
+# separators. Only the part after the last separators will be shown.
+# For file folders '/' is good. For IMAP folders, often '.' is useful.
+set sidebar_delim_chars = '/.'
+# If the mailbox path is abbreviated, should it be indented?
+set sidebar_folder_indent = no
+# Indent mailbox paths with this string.
+set sidebar_indent_string = '  '
+# Make the Sidebar only display mailboxes that contain new, or flagged,
+# mail.
+set sidebar_new_mail_only = no
+# Any mailboxes that are whitelisted will always be visible, even if the
+# sidebar_new_mail_only option is enabled.
+set sidebar_non_empty_mailbox_only = no
+# around when it reaches the end of the list?
+set sidebar_next_new_wrap = no
+# Show the Sidebar on the right-hand side of the screen
+set sidebar_on_right = no
+# The character to use as the divider between the Sidebar and the other NeoMutt
+# panels.
+set sidebar_divider_char = '|'
+# Enable extended mailbox mode to calculate total, new, and flagged
+# message counts for each mailbox.
+set mail_check_stats
+# Display the Sidebar mailboxes using this format string.
+set sidebar_format = '%D%?F? [%F]?%* %?N?%N/?%S'
+# Sort the mailboxes in the Sidebar using this method:
+#       count    – total number of messages
+#       flagged  – number of flagged messages
+#       new      – number of new messages
+#       path     – mailbox path
+#       unsorted – do not sort the mailboxes
+set sidebar_sort_method = 'unsorted'
+
+# Set trash tag
+# --------------------------------------------------------------------------
+# FUNCTIONS – shown with an example mapping
+# --------------------------------------------------------------------------
+# Use vi key mappings
+# Moving around
+bind attach,browser,index       g   noop
+bind attach,browser,index       gg  first-entry
+bind attach,browser,index       G   last-entry
+bind pager                      g   noop
+bind pager                      gg  top
+bind pager                      G   bottom
+bind pager                      k   previous-line
+bind pager                      j   next-line
+
+# Scrolling
+bind attach,browser,pager,index \CF next-page
+bind attach,browser,pager,index \CB previous-page
+bind attach,browser,pager,index \Cu half-up
+bind attach,browser,pager,index \Cd half-down
+bind browser,pager              \Ce next-line
+bind browser,pager              \Cy previous-line
+bind index                      \Ce next-line
+bind index                      \Cy previous-line
+
+bind pager,index                d   noop
+
+# Mail & Reply
+bind pager,index                gr  group-reply
+bind index                      \Cm list-reply # Doesn't work currently
+
+# Threads
+bind browser,pager,index        N   search-opposite
+bind pager,index                gt  next-thread
+bind pager,index                gT  previous-thread
+bind index                      za  collapse-thread
+bind index                      zA  collapse-all # Missing :folddisable/foldenable
+# Move the highlight to the previous mailbox
+bind index,pager \Cp sidebar-prev
+# Move the highlight to the next mailbox
+bind index,pager \Cn sidebar-next
+# Open the highlighted mailbox
+bind index,pager \Co sidebar-open
+# Move the highlight to the previous page
+# This is useful if you have a LOT of mailboxes.
+bind index,pager <F3> sidebar-page-up
+# Move the highlight to the next page
+# This is useful if you have a LOT of mailboxes.
+bind index,pager <F4> sidebar-page-down
+# Move the highlight to the previous mailbox containing new, or flagged,
+# mail.
+bind index,pager <F5> sidebar-prev-new
+# Move the highlight to the next mailbox containing new, or flagged, mail.
+bind index,pager <F6> sidebar-next-new
+# Toggle the visibility of the Sidebar.
+bind index,pager B sidebar-toggle-visible
+# Convert markdown text into html mail
+macro compose x \
+"<enter-command>unset wait_key<enter><enter-command>set pipe_decode<enter>\
+| sed 's/^-- $/------/' | pandoc -s -f markdown_strict+link_attributes+fenced_code_blocks+backtick_code_blocks+fenced_code_attributes --embed-resources --standalone -o /tmp/msg.html --metadata title=Email --resource-path ~/.config/neomutt/templates/ --template html --highlight-style haddock -c ~/.config/neomutt/templates/markdown.css<enter>\
+<enter-command>unset pipe_decode<enter>\
+<attach-file>/tmp/msg.html<enter>\
+<toggle-unlink><toggle-disposition>\
+<tag-entry><previous-entry><tag-entry><group-alternatives>" \
+"Convert markdown to HTML5 and plaintext alternative content types"
+
+macro index,pager H "<pipe-message>htmail-decode<return>" "render html mail using htmail-view"
+
+# quick view attachment
+bind index,pager V  noop        ## Unbinds V from version
+macro index,pager V "<view-attachments><search>html<enter><view-mailcap><exit>"
+
+macro index u "<modify-tags>-trash<enter>"
+macro index t* "<modify-tags>+flagged<enter>"
+macro index d "<modify-tags>+trash<enter>"
+macro index t- "<modify-tags>-flagged<enter>"
+macro pager \eh "<pipe-entry>viewhtmlmsg<enter>" "View html message"
+macro index,pager $ "<sync-mailbox><enter-command>unset wait_key<enter><shell-escape>synctags --move<enter><enter-command>set wait_key<enter>"
+
+bind index,pager \` modify-labels
+
+# --------------------------------------------------------------------------
+# Folder HOOK
+# --------------------------------------------------------------------------
+source ~/.config/neomutt/accounts/gmail.muttrc
+macro index,pager i1 '$<enter-command>source ~/.config/neomutt/accounts/gmail.muttrc<enter><change-vfolder>[Gmail].INBOX<enter>;<check-stats>' "switch to Gmail"
+macro index,pager i2 '$<enter-command>source ~/.config/neomutt/accounts/qq.muttrc<enter><change-vfolder>[QQ].INBOX<enter>;<check-stats>' "switch to QQ"
+macro index,pager i3 '$<enter-command>source ~/.config/neomutt/accounts/juminfo.muttrc<enter><change-vfolder>[Juminfo].INBOX<enter>;<check-stats>' "switch to Juminfo"
+
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+# vim: syntax=neomuttrc

@@ -1,0 +1,27 @@
+- name: Get current user name
+  command: whoami
+  register: user
+
+- name: Create password pin
+  command: openssl passwd -1 {{ pin }}
+  register: passwd_pin
+
+- name: Create password pin file
+  copy:
+    dest: "/etc/unlock_pin"
+    content: "{{ user.stdout }}:{{ passwd_pin.stdout }}"
+    mode: 0644
+  become: yes
+
+- name: Update pamd rule's control in /etc/pam.d/swaylock
+  become: yes
+  community.general.pamd:
+    name: swaylock
+    type: auth
+    control: include
+    module_path: login
+    new_type: -auth
+    new_control: sufficient
+    new_module_path: pam_pwdfile.so
+    module_arguments: 'pwdfile=/etc/unlock_pin'
+    state: before

@@ -1,0 +1,68 @@
+- name: Create clash service directory
+  become: yes
+  file:
+    path: /etc/systemd/system/clash@.service.d
+    state: directory
+
+- name: Create clash config directory
+  become: yes
+  file:
+    owner: nobody
+    path: /etc/clash
+    state: directory
+
+- name: Copy proxy-routes service file
+  become: yes
+  copy:
+    src: system/proxy-routes.service
+    dest: /etc/systemd/system/proxy-routes.service
+
+- name: Copy clash override file
+  become: yes
+  copy:
+    src: system/clash.conf
+    dest: /etc/systemd/system/clash@.service.d/override.conf
+
+- name: Copy ssh-agent service file
+  become: yes
+  copy:
+    src: system/user/ssh-agent.service
+    dest: /etc/systemd/user/ssh-agent.service
+
+- name: Create gost client service file
+  become: yes
+  ansible.builtin.template:
+    src: gost-c.service.j2
+    dest: /etc/systemd/system/gost-c.service
+    mode: '0644'
+
+- name: Copy nftables initilize script
+  become: yes
+  copy:
+    src: system/bin/nftproxy.sh
+    dest: /usr/local/sbin/nftproxy.sh
+    mode: 0755
+
+- name: Restart clash
+  become: yes
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: clash@nobody
+    enabled: yes
+    state: restarted
+
+- name: Start Gost proxy
+  become: yes
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: gost-c
+    enabled: yes
+    state: started
+
+- name: Start transparent proxy
+  become: yes
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: proxy-routes
+    enabled: yes
+    state: started

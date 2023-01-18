@@ -1,0 +1,17 @@
+{
+    "qq": {
+        "trash": "Deleted Messages",
+        "inbox": "INBOX",
+        "spam": "Junk",
+        "sent": "Sent Messages",
+        "draft": "Drafts"
+    },
+    "juminfo": {
+        "trash": "Trash",
+        "inbox": "INBOX",
+        "spam": "Spam",
+        "sent": "Sent",
+        "draft": "Draft"
+    },
+    "gmail": {}
+}

@@ -1,0 +1,30 @@
+- name: Create directory
+  file:
+    state: directory
+    dest: "{{ item }}"
+  with_items:
+    - ~/.icons/default
+    - ~/.config/gtk-3.0/
+    - ~/.config/gtk-4.0/
+
+- name: Copy icon configurations
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: index.theme.template, dest: ~/.icons/default/index.theme }
+    - { src: settings.ini.template, dest: ~/.config/gtk-3.0/settings.ini }
+    - { src: settings.ini.template, dest: ~/.config/gtk-4.0/settings.ini }
+    - { src: gtkrc-2.0.template, dest: ~/.gtkrc-2.0 }
+
+- name: Apply cursor for gtk applications
+  shell: gsettings set org.gnome.desktop.interface cursor-theme "Pulse-Glass-Sapphire-Regular"
+
+- name: Apply icon theme for gtk applications
+  shell: |
+    gsettings set org.gnome.desktop.interface icon-theme We10X-blue
+    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+    gsettings set org.gnome.desktop.interface gtk-theme Arc-Darker-solid
+
+- name: Bring back minimize and maximize buttons in gtk
+  shell: gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"

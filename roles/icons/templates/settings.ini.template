@@ -1,0 +1,12 @@
+[Settings]
+gtk-application-prefer-dark-theme = true
+gtk-button-images = true
+gtk-cursor-theme-name = {{ cursor }}
+gtk-decoration-layout = icon:close,maximize,minimize
+gtk-theme-name = {{ theme }}
+gtk-enable-animations = true
+gtk-font-name = {{ font }},  {{ font_size }}
+gtk-icon-theme-name = {{ icons }}
+gtk-menu-images = true
+gtk-primary-button-warps-slider = false
+gtk-toolbar-style = 3

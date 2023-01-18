@@ -1,0 +1,3 @@
+gtk-icon-theme-name = "{{ icons }}"
+gtk-theme-name = "{{ theme }}"
+gtk-font-name = "{{ font }} {{ font_size}}"

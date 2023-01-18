@@ -1,0 +1,14 @@
+- name: Get firefox default profiles
+  find:
+    paths: ~/.mozilla/firefox
+    recurse: no
+    file_type: directory
+    patterns: '*.default*'
+  register: ret
+
+- ansible.posix.synchronize:
+    src: chrome
+    dest: "{{ item.path }}"
+    delete: true
+  with_items:
+    - "{{ ret.files }}"

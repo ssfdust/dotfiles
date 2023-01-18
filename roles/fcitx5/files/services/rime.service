@@ -1,0 +1,15 @@
+[Unit]
+Description=Sync rime configurations and database
+After=network.target
+Wants=network-online.target
+
+[Service]
+Restart=on-failure
+Type=oneshot
+ExecStart=/usr/bin/find . -name LOCK -delete
+ExecStart=/usr/bin/rime_dict_manager -s
+TimeoutStartSec=150
+WorkingDirectory=%h/.local/share/fcitx5/rime
+
+[Install]
+WantedBy=multi-user.target 

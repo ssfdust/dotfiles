@@ -1,0 +1,41 @@
+- name: copy gnupg
+  copy:
+    src: "{{ item }}"
+    dest: ~/.gnupg
+  with_fileglob:
+    - "gnupg/*"
+
+- name: fetch 
+  shell: |
+    gpg -K --with-keygrip ssfdust | awk 'BEGIN {found=0};/\[.*E.*\]/ {found=1};found == 1 && /Keygrip/ { print $3 }' > ~/.pam-gnupg
+    gpg -K --with-keygrip ssfdust | awk 'BEGIN {found=0};/\[.*E.*\]/ {found=1};found == 1 && /Keygrip/ { print $3 }' | tee ~/.gnupg/sshcontrol
+
+- name: Update pamd rule's control in /etc/pam.d/sddm
+  become: yes
+  community.general.pamd:
+    name: "{{ item.name }}"
+    type: "{{ item.type }}"
+    control: "{{ item.control }}"
+    module_path: "{{ item.module_path }}"
+    new_type: "{{ item.new_type }}"
+    new_control: "{{ item.new_control }}"
+    new_module_path: "{{ item.new_module_path }}"
+    state: after
+  with_items:
+    - { name: sddm, type: -session, control: optional, module_path: pam_kwallet5.so, new_type: -auth, new_control: optional, new_module_path: pam_gnupg.so }
+    - { name: sddm, type: -auth, control: optional, module_path: pam_gnupg.so, new_type: -session, new_control: optional, new_module_path: pam_gnupg.so }
+
+- name: Update pamd rule's control in /etc/pam.d/swaylock
+  become: yes
+  community.general.pamd:
+    name: "{{ item.name }}"
+    type: "{{ item.type }}"
+    control: "{{ item.control }}"
+    module_path: "{{ item.module_path }}"
+    new_type: "{{ item.new_type }}"
+    new_control: "{{ item.new_control }}"
+    new_module_path: "{{ item.new_module_path }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { name: swaylock, type: auth, control: include, module_path: login, new_type: -auth, new_control: optional, new_module_path: pam_gnupg.so, state: before }
+    - { name: swaylock, type: auth, control: include, module_path: login, new_type: -session, new_control: optional, new_module_path: pam_gnupg.so, state: after }

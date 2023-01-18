@@ -1,0 +1,4 @@
+- name: deploy profile
+  copy:
+    src: profile
+    dest: ~/.bash_profile

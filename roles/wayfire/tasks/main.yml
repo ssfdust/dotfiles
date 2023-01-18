@@ -1,0 +1,16 @@
+- stat:
+    path: "~/.config/wayfire"
+  register: link
+
+- name: remove symlink
+  file:
+    path: "~/.config/wayfire"
+    state: absent
+  when: link.stat.islnk is defined and link.stat.islnk
+
+- name: deploy wayfire
+  ansible.posix.synchronize:
+    src: wayfire
+    dest: ~/.config
+    delete: yes
+    recursive: yes

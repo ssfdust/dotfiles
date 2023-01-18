@@ -1,0 +1,202 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Hack Nerd Font;
+    font-size: 14px;
+    min-height: 0;
+}
+
+
+window#waybar {
+    background: shade(alpha(rgb(40, 40, 40), 0.8), 1.25);
+	color: rgba(148, 148, 148, 1);
+}
+
+label:disabled,
+button:disabled {
+  all: unset;
+  box-shadow: inherit;
+  background-image: none;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#custom-firefox {
+    padding: 0 8px 0px 4px;
+    background: #4a4a4a;
+    color: white;
+}
+
+
+#custom-tg {
+    padding: 0 8px 0px 4px;
+    background: #4a4a4a;
+    color: white;
+}
+
+#custom-wechat {
+    padding: 0 8px 0px 4px;
+    background: #4a4a4a;
+    color: white;
+}
+
+#custom-dingtalk {
+    padding: 0 8px 0px 4px;
+    background: #4a4a4a;
+    color: white;
+}
+
+#custom-dolphin {
+    padding: 0 8px 0px 4px;
+    background: #4a4a4a;
+    color: white;
+}
+
+#custom-keepassxc {
+    padding: 0 8px 0px 4px;
+    background: #4a4a4a;
+    color: white;
+}
+#custom-remmina {
+    padding: 0 8px 0px 4px;
+    background: #4a4a4a;
+    color: white;
+}
+
+#taskbar button.focused {
+    color: #ff8700;
+}
+
+#mode {
+    background: #282828;
+    color: #d05c5c;
+
+}
+
+#clock, #battery, #cpu, #memory, #backlight, #network, #pulseaudio, #custom-mpd, #tray, #mode, #idle_inhibitor {
+    padding: 0 10px;
+    margin: 0 0px;
+}
+
+#clock {
+    background-color: transparent;
+    font-size: 19px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#cpu {
+    background: #4e4e4e;
+}
+
+#memory {
+    background: #4e4e4e;
+}
+
+#custom-date {
+    background: #4e4e4e;
+}
+
+#network.1 {
+    background: #32302f;
+}
+#network.2 {
+    background: #32302f;
+}
+
+#network.disconnected {
+    background: #32302f;
+}
+
+#pulseaudio {
+    background: #3a3a3a;
+    color: rgba(148, 148, 148, 1);
+}
+
+#pulseaudio.muted {
+    background: #90b1b1;
+    color: #2a5c45;
+}
+
+#custom-mail {
+    padding: 2px;
+    color: rgba(148, 148, 148, 1);
+	background: #3a3a3a;
+}
+#custom-weather {
+    padding: 2px;
+    color: rgba(148, 148, 148, 1);
+	background: #3a3a3a;
+}
+
+#tray {
+    background-color: #949494;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#custom-arrow01 {
+	font-size: 20px;
+	color: #4a4a4a;
+	background: #3a3a3a;
+}
+
+#custom-arrow02 {
+	font-size: 20px;
+	background: #3a3a3a;
+	color: #949494
+}
+
+#custom-arrow03 {
+	font-size: 20px;
+	color: #3a3a3a;
+	background: #32302f;
+}
+
+#custom-arrow04 {
+	font-size: 20px;
+	background: transparent;
+	color: #32302f;
+}
+
+#custom-arrow05 {
+	font-size: 20px;
+	background: transparent;
+	color: #32302f;
+}
+
+#custom-arrow06 {
+	font-size: 20px;
+	color: #3a3a3a;
+	background: #32302f;
+}
+
+#custom-arrow07 {
+	font-size: 20px;
+	color: #4e4e4e;
+	background: #3a3a3a
+}
+
+#custom-arrow08 {
+	font-size: 20px;
+	background: #4e4e4e;
+	color: #949494
+}
+
+#custom-arrow09 {
+	font-size: 20px;
+	color: #949494;
+	background: #4e4e4e
+}
+
+#custom-arrow10 {
+	font-size: 20px;
+	color: #ff8700;
+	background: #949494
+}

@@ -1,0 +1,11 @@
+- name: Copy pacman configurations
+  become: true
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: pacman.conf, dest: /etc/pacman.conf }
+    - { src: powerpill.json, dest: /etc/powerpill/powerpill.json }
+    - { src: makepkg.conf, dest: /etc/makepkg.conf }
+    - { src: bauerbill.json, dest: /etc/bauerbill/bauerbill.json }
+    - { src: xyne-mirrorlist, dest: /etc/pacman.d/xyne-mirrorlist }

@@ -1,0 +1,6 @@
+filebrowser-bin
+caddy
+remmina
+spice-gtk
+dingtalk-bin
+wine-wechat-setup

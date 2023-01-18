@@ -1,0 +1,44 @@
+- stat:
+    path: "~/.aria2"
+  register: link
+
+- name: remove symlink
+  file:
+    path: "~/.aria2"
+    state: absent
+  when: link.stat.islnk is defined and link.stat.islnk
+
+- name: Create dir
+  file:
+    path: "~/.aria2"
+    state: directory
+
+- name: deploy aria2
+  template:
+    src: aria2.conf.j2
+    dest: ~/.aria2/aria2.conf
+
+- name: Download dht data
+  get_url:
+    url: https://github.com/P3TERX/aria2.conf/raw/master/dht.dat
+    dest: ~/.aria2/dht.dat
+
+- name: Download dht6 data
+  get_url:
+    url: https://github.com/P3TERX/aria2.conf/raw/master/dht6.dat
+    dest: ~/.aria2/dht6.dat
+
+- file:
+    path: ~/.aria2/aria2.session
+    state: touch
+
+- name: deploy aria2 service
+  copy:
+    src: services/aria2rpc.service
+    dest: ~/.config/systemd/user/
+
+- systemd:
+    name: aria2rpc
+    scope: user
+    enabled: yes
+    state: started

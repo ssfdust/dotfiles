@@ -1,0 +1,136 @@
+#!/usr/bin/python3
+import configparser
+import re
+import os
+import logging
+import json
+from argparse import ArgumentParser
+from pathlib import Path
+import shutil
+import subprocess
+from notmuch2 import Database
+
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
+
+db = Database(config=Database.CONFIG.SEARCH)
+
+MAILDIR = db.default_path()
+
+
+def get_tags(choice, terms):
+    terms_ = terms[:]
+    terms_.pop(terms_.index(choice))
+    parts = ["-new"]
+    parts.append("+{}".format(choice))
+    for ele in terms_:
+        parts.append("-{}".format(ele))
+    return parts
+
+
+def notmuch_(*args):
+    subprocess.run(["/usr/bin/notmuch", *args], timeout=5)
+
+
+def tag_by_path():
+    config = get_config()
+    for mail in config:
+        print(f"taging {mail}")
+        notmuch_("tag", f"+{mail}", f'path:"/{mail}/"')
+        for box, folder in config[mail].items():
+            print(f"taging by {box} in the folder {folder}")
+            terms = list(config[mail].keys())
+            tags = get_tags(box, terms)
+            tags.append(f'tag:new AND tag:"{mail}" AND folder:"/{folder}/"')
+            notmuch_("tag", *tags)
+
+
+def get_exclude_tags():
+    parser = configparser.ConfigParser()
+    cfgfname = os.getenv("NOTMUCH_CONFIG", "~/.notmuch-config")
+    cfg_path = Path(os.path.expanduser(cfgfname))
+    with open(cfg_path) as fp:
+        parser.read_file(fp)
+    try:
+        tags = parser.get("search", "exclude_tags").split(";")
+        return [tag.encode("utf-8") for tag in filter(lambda x: x, tags)]
+    except configparser.Error:
+        return []
+
+
+def get_config(path="~/.config/neomutt/tag.json"):
+    with Path(path).expanduser().open() as f:
+        return json.load(f)
+
+
+def build_query(mail, box, folder):
+    return f'tag:"{mail}" AND tag:"{box}" AND NOT folder:"/{folder}/"'
+
+
+def move_files_by_tag():
+    config = get_config()
+    exclude_tags = get_exclude_tags()
+    for mail in config:
+        for box, folder in config[mail].items():
+            mover = Mover(mail, box, folder, exclude_tags)
+            if box == "trash":
+                mover.execute(exclude=db.EXCLUDE.FALSE)
+            else:
+                mover.execute()
+
+
+class Mover:
+    def __init__(self, mail, box, folder, exclude_tags):
+        self.mail = mail
+        self.box = box
+        self.folder = folder
+        self.exclude_tags = exclude_tags
+        self.folder_path = Path(MAILDIR, mail, folder, "cur")
+        self.query = build_query(mail, box, folder)
+
+    def execute(self, exclude=Database.EXCLUDE.TRUE):
+        count = db.count_messages(
+            self.query, omit_excluded=exclude, exclude_tags=self.exclude_tags
+        )
+        print(f"{self.mail}: Moving {count} messages to the {self.folder} folder")
+        for msg in db.messages(
+            self.query, omit_excluded=exclude, exclude_tags=self.exclude_tags
+        ):
+            safe_move(msg.path, self.folder_path)
+
+
+def safe_move(src, dst):
+    """Move a message file while removing its UID-part"""
+    src_path = Path(src)
+    if src_path.exists():
+        secure_name = re.sub(r",.*", "", src_path.name)
+    else:
+        return 1
+    dst_path = Path(dst, secure_name)
+    if dst_path.exists():
+        os.remove(dst_path)
+    shutil.move(src_path, dst_path)
+
+
+def main():
+    parser = ArgumentParser()
+    parser.add_argument(
+        "--move", help="Move mails according to tags", action="store_true"
+    )
+    parser.add_argument(
+        "--tag", help="Tag mails according to paths", action="store_true"
+    )
+    args = parser.parse_args()
+    if args.move:
+        move_files_by_tag()
+        notmuch_("new", "--no-hooks")
+        notmuch_("tag", "-unread", "tag:trash and tag:unread")
+    elif args.tag:
+        tag_by_path()
+
+
+if __name__ == "__main__":
+    main()
+    db.close()

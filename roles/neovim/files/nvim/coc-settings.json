@@ -1,0 +1,9 @@
+{
+    "python.formatting.blackArgs": [],
+    "python.formatting.provider": "black",
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "pyright.disableDiagnostics": true,
+    "python.sortImports.path": "isort",
+    "pyright.organizeimports.provider":"isort"
+}

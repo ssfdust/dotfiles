@@ -1,0 +1,6 @@
+gost_listen: 2888
+gost_user: ssfdust
+gost_passwd: 123456
+gost_ip: 8.8.8.8
+gost_port: 443
+user_services: ""

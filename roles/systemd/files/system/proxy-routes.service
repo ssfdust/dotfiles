@@ -1,0 +1,13 @@
+[Unit]
+Description=Add routes for transparent proxy.
+Requires=clash@nobody.service
+After=clash@nobody.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/nftproxy.sh
+ExecStop=/usr/local/sbin/nftproxy.sh stop
+
+[Install]
+WantedBy=multi-user.target

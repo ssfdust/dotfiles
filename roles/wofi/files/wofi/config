@@ -1,0 +1,9 @@
+width=80%
+columns=2
+allow_images=true
+image_size=20px
+drun-display_generic=true
+dynamic_lines=true
+prompt=application
+no_actions=true
+insensitive=true

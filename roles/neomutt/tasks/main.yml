@@ -1,0 +1,30 @@
+- stat:
+    path: "~/.config/neomutt"
+  register: link
+
+- name: remove symlink
+  file:
+    path: "~/.config/neomutt"
+    state: absent
+  when: link.stat.islnk is defined and link.stat.islnk
+
+- name: deploy neomutt
+  ansible.posix.synchronize:
+    src: neomutt
+    dest: ~/.config
+    delete: no
+    recursive: yes
+
+- name: Initlize mail sync service
+  copy:
+    src: "{{ item }}"
+    dest: ~/.config/systemd/user
+  with_fileglob:
+    - "services/*"
+
+- name: Enable mail sync service
+  systemd:
+    daemon_reload: false
+    name: mail.timer
+    enabled: yes
+    scope: user

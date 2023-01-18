@@ -1,0 +1,31 @@
+- stat:
+    path: "~/.config/fcitx5"
+  register: link
+
+- name: remove symlink
+  file:
+    path: "~/.config/fcitx5"
+    state: absent
+  when: link.stat.islnk is defined and link.stat.islnk
+
+- name: deploy fcitx5
+  ansible.posix.synchronize:
+    src: fcitx5
+    dest: ~/.config
+    delete: false
+    recursive: yes
+
+- name: Initlize rime sync service
+  copy:
+    src: "{{ item }}"
+    dest: ~/.config/systemd/user
+  with_fileglob:
+    - "services/*"
+
+- name: Enable rime sync service
+  systemd:
+    daemon_reload: false
+    name: rime.timer
+    enabled: yes
+    scope: user
+    state: started

@@ -1,0 +1,80 @@
+text-color=#dfbf8eff
+progress-color=over #00000044
+margin=10,0
+padding=10
+border-size=0
+border-color=#9f9f9f
+border-radius=15
+default-timeout=5000
+format=<span font='7'>%a</span>\n<b>%s</b>\n%b
+group-by=summary
+icons=1
+icon-path=/home/ssfdust/.local/share/icons/BigSur-black-dark
+max-icon-size=48
+sort=-time
+layer=overlay
+font='FZLanTingYuan-R-GBK 8'
+background-color=#2c2c2ed0
+height=400
+
+[hidden]
+background-color=#bfbfbfff
+format=+ %h
+font=Noto Sans Bold 8
+
+[app-name=hud]
+# Used by keybindings to show adjusted value.
+font=Noto Sans 14
+width=100
+format=<b>%s</b>
+background-color=#555555ff
+text-color=#eeeeeeff
+default-timeout=1000
+group-by=none
+
+[category=mail]
+width=450
+height=400
+
+[app-name=test]
+width=500
+height=300
+margin=20
+
+[app-name=coredump-notify]
+background-color=#d09a9a
+
+[app-name=stdnotify urgency=high]
+background-color=#d09a9a
+
+[urgency=high]
+ignore-timeout=true
+default-timeout=0
+
+[!expiring]
+background-color=#555555ff
+text-color=#eeeeeeff
+
+[grouped]
+format=<span font='7'>%a</span>\n(%g) <b>%s</b>\n%b
+
+[group-index=0]
+margin=10,0,0,0
+
+[group-index=1]
+invisible=false
+icons=false
+format=
+width=280
+margin=0
+padding=4
+background-color=#a1b6c7d0
+
+[group-index=2]
+invisible=false
+icons=false
+format=
+width=260
+margin=0
+padding=4
+background-color=#91a6b7d0

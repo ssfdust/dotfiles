@@ -1,0 +1,20 @@
+defaults
+auth	on
+tls	on
+tls_trust_file	/etc/ssl/certs/ca-certificates.crt
+logfile /home/ssfdust/.config/msmtp/msmtp.log
+
+account qq
+host smtp.qq.com
+port 587
+from 413690141@qq.com
+user 413690141@qq.com
+passwordeval "pass mutt-wizard-qq"
+
+account juminfo
+host smtp.qiye.aliyun.com
+tls_starttls off
+port 465
+from xuweikai@juminfo.com
+user xuweikai@juminfo.com
+passwordeval "pass juminfo"

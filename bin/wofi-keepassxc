@@ -1,0 +1,11 @@
+#!/bin/nu
+let list = (pass keepass | keepassxc-cli search ~/CloudBox/Sync/apps/KeeWeb/main.kdbx "" -k ~/CloudBox/Sync/keys/main.key)
+let entry = ($list | wofi --dmenu)
+if ($entry != "") {
+    let items = (pass keepass | keepassxc-cli show -s ~/CloudBox/Sync/apps/KeeWeb/main.kdbx -k ~/CloudBox/Sync/keys/main.key $"($entry)" | lines | parse "{key}: {val}")
+    let item = ($items.key | to text | wofi -d)
+    if ($item != "") {
+        $items | where key == $"($item)" | get val.0 | wl-copy
+    }
+}
+

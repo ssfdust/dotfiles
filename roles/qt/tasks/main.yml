@@ -1,0 +1,16 @@
+- name: Create directories
+  file:
+    state: directory
+    path: "{{ item }}"
+  with_items:
+    - "~/.config/Kvantum"
+    - "~/.config/qt5ct"
+
+
+- name: Copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: kvantum.kvconfig, dest: ~/.config/Kvantum/kvantum.kvconfig }
+    - { src: qt5ct.conf, dest: ~/.config/qt5ct/qt5ct.conf }

@@ -14,3 +14,35 @@
     dest: ~/.config
     delete: yes
     recursive: yes
+
+- name: deploy wayvnc
+  ansible.posix.synchronize:
+    src: wayvnc
+    dest: ~/.config
+    recursive: yes
+
+- name: Create systemd directory
+  file:
+    state: directory
+    path: ~/.config/systemd/user
+
+- name: Search for the first drm card
+  find:
+    paths: /dev/dri/
+    file_type: any
+    recurse: no
+    patterns: "card*"
+  register: cards
+
+- name: Create wayfire headless session service file
+  template:
+    src: wayfire-headless.service.template
+    dest: ~/.config/systemd/user/wayfire-headless-session.service
+  vars:
+    drm_card: "{{ (cards.files | first)['path']  }}"
+
+- name: Enable wayfire headless service
+  systemd:
+    name: wayfire-headless-session.service
+    enabled: yes
+    scope: user

@@ -45,6 +45,10 @@ def tag_by_path():
             tags = get_tags(box, terms)
             tags.append(f'tag:new AND tag:"{mail}" AND folder:"/{folder}/"')
             notmuch_("tag", *tags)
+            if box == "sent":
+                tags = get_tags(box, terms)
+                tags.append(tag_sent())
+                notmuch_("tag", *tags)
 
 
 def get_exclude_tags():
@@ -79,6 +83,20 @@ def move_files_by_tag():
                 mover.execute(exclude=db.EXCLUDE.FALSE)
             else:
                 mover.execute()
+
+def parser_notmuch_emails(path):
+    parser = configparser.ConfigParser()
+    cfgfname = os.getenv("NOTMUCH_CONFIG", path)
+    cfg_path = Path(os.path.expanduser(cfgfname))
+    with open(cfg_path) as fp:
+        parser.read_file(fp)
+        primary_email = parser.get("user", "primary_email")
+        other_emails = parser.get("user", "other_email").split(';')
+        other_emails.insert(0, primary_email);
+        return filter(None, other_emails)
+
+def tag_sent(notmuch_cfg="~/.notmuch-config"):
+    return " OR ".join(map(lambda x: f"from:{x}", parser_notmuch_emails(notmuch_cfg)))
 
 
 class Mover:

@@ -30,6 +30,7 @@ fcitx5-gtk
 fcitx5-nord
 fcitx5-qt
 fcitx5-rime
+fd
 feh
 firefox
 firewalld
@@ -43,6 +44,7 @@ grim
 imagemagick
 isync
 jq
+kanshi
 kdialog
 keepassxc
 kitty

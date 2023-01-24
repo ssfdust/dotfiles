@@ -1,0 +1,10 @@
+[Unit]
+Descroption=Headless Wayfire Service
+
+[Service]
+Environment="WLR_BACKENDS=headless" "WLR_RENDER_DRM_DEVICE={{ drm_card }}"
+ExecStart=/usr/bin/wayfire
+Restart=on-failure
+
+[Install]
+Alias=sway.service

@@ -57,6 +57,8 @@
       tags: icons
     - role: profile
       tags: profile
+    - role: zellij
+      tags: zellij
     - role: wlogout
       tags: wlogout
     - role: fcitx5

@@ -1,0 +1,13 @@
+layout {
+    default_tab_template {
+        // the default zellij tab-bar and status bar plugins
+        pane focus=false
+        pane size=1 borderless=true focus=false {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab focus=true name="Editor"
+    tab focus=false name="Shell"
+    tab focus=false name="SSH"
+    tab focus=false name="Other"
+}

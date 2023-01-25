@@ -55,7 +55,12 @@ export def-env lf [...args] {
     let tmp = (mktemp)
     let fid = (mktemp)
 
-    ^lf -command $"$printf $id > "($fid)"" $"-last-dir-path=($tmp)" $args
+    with-env [
+        LF_ICONS (sed ~/.config/lf/diricons -e '/^[ \t]*#/d' -e '/^[ \t]*$/d' -e 's/[ \t]\+/=/g' -e 's/$/ /' |
+            str replace -a ' \n' :)
+    ] {
+        ^lf -command $"$printf $id > "($fid)"" $"-last-dir-path=($tmp)" $args
+    }
     let id = (open -r $fid)
     let archivemount_dir = $"/tmp/__lf_archivemount_($id)"
 

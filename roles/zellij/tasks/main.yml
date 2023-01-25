@@ -1,0 +1,16 @@
+- stat:
+    path: "~/.config/zellij"
+  register: link
+
+- name: remove symlink
+  file:
+    path: "~/.config/zellij"
+    state: absent
+  when: link.stat.islnk is defined and link.stat.islnk
+
+- name: deploy zellij
+  ansible.posix.synchronize:
+    src: zellij
+    dest: ~/.config
+    delete: yes
+    recursive: yes

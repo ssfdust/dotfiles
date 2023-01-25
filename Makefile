@@ -2,7 +2,7 @@ all: .prepared secrets.yml
 	ansible-playbook -K -e @secrets.yml install.yml
 
 headless: .prepared secrets.yml
-	ansible-playbook -K -e @secrets.yml --tags aria2,env,fcitx5,fontconfig,kitty,lf,mako,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,pamd,password-store,profile,pueue,refind,sddm,starship,systemd,waybar,wayfire,wlogout,wofi install.yml
+	ansible-playbook -K -e @secrets.yml --tags aria2,env,fcitx5,fontconfig,kitty,lf,mako,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,pamd,password-store,profile,pueue,refind,sddm,starship,systemd,waybar,wayfire,wlogout,wofi,zellij install.yml
 
 desktop: .prepared secrets
 	ansible-playbook -K -e @secrets.yml --tags firefox,gnupg,icons install.yml
@@ -84,6 +84,9 @@ wofi: .prepared
 qt: .prepared
 	ansible-playbook --tags qt install.yml
 
+zellij: .prepared
+	ansible-playbook --tags zellij install.yml
+
 icons: .prepared
 	ansible-playbook --tags icons install.yml
 
@@ -104,7 +107,6 @@ pamd: .prepared secrets.yml
 
 systemd: .prepared secrets.yml
 	ansible-playbook -e @secrets.yml -K --tags systemd install.yml
-
 
 .prepared:
 	ansible-galaxy collection install community.general ansible.posix

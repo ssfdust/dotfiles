@@ -6,3 +6,5 @@ dingtalk-bin
 wine-wechat-setup
 wayvnc
 lsof
+fuse-overlayfs
+buildah

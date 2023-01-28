@@ -82,7 +82,7 @@ normalized_name = "ddu-source-gtags"
 ### Snippet Section
 ### Count: 2
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'ssfdust/neosnippet-snippets'
 merged = 1
 lazy = 0
 name = 'neosnippet-snippets'

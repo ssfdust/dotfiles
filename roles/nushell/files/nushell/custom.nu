@@ -77,3 +77,13 @@ export def-env lf [...args] {
         rm -f $tmp
     }
 }
+
+# create zellij session named `x`
+export def zellijx [] {
+    let x_num = (do -s { zellij list-sessions } | complete | get stdout | lines | find --regex '^x$' | length)
+    if ($x_num == 1) {
+        zellij attach x
+    } else {
+        zellij -s x
+    }
+}

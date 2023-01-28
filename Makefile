@@ -85,7 +85,7 @@ qt: .prepared
 	ansible-playbook --tags qt install.yml
 
 zellij: .prepared
-	ansible-playbook --tags zellij install.yml
+	ansible-playbook -K --tags zellij install.yml
 
 icons: .prepared
 	ansible-playbook --tags icons install.yml

@@ -1,0 +1,13 @@
+#!/bin/sh
+/usr/bin/nvim \
+    -u NONE \
+    -c "let g:gruvbox_material_visual = 'reverse'" \
+    -c "set ignorecase" \
+    -c "set smartcase" \
+    -c "set nonumber nolist showtabline=0 foldcolumn=0 laststatus=0 termguicolors" \
+    -c "let g:gruvbox_material_transparent_background=1" \
+    -c "colorscheme gruvbox-material" \
+    -c "autocmd TermOpen * normal G" \
+    -c "map q :qa!<CR>" \
+    -c "set clipboard=unnamedplus" \
+    -c "te bash -c 'echo -n \"\$(cat "$1" && sleep 0.3)\" && sleep 1000'"

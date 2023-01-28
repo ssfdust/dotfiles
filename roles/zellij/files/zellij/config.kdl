@@ -122,7 +122,7 @@ keybinds {
         bind "d" { Detach; }
     }
     tmux {
-        bind "]" { SwitchToMode "Scroll"; }
+        bind "]" { EditScrollback; SwitchToMode "Normal"; }
         bind "Ctrl a" { Write 2; SwitchToMode "Normal"; }
         bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "\\" { NewPane "Right"; SwitchToMode "Normal"; }
@@ -331,7 +331,7 @@ copy_command "wl-copy"                    // wayland
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
 //
-scrollback_editor "/usr/bin/nvim"
+scrollback_editor "/usr/local/bin/zpager"
 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)

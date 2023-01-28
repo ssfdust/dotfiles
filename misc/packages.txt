@@ -21,6 +21,7 @@ buildah
 celluloid
 clash
 copyq
+ctags
 deno
 dmidecode
 dnsmasq
@@ -37,6 +38,7 @@ firewalld
 flameshot
 fortune-mod
 fzf
+global
 gnu-netcat
 gost
 gptfdisk

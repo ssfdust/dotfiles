@@ -1,5 +1,5 @@
 #### DDU Section
-#### Count: 11
+#### Count: 12
 [[plugins]]
 repo = 'Shougo/ddu.vim'
 merged = 1
@@ -69,6 +69,13 @@ merged = 1
 lazy = 0
 name = "ddu-source-rg"
 normalized_name = "ddu-source-rg"
+
+[[plugins]]
+repo = 'kaz-oji/ddu-source-gtags'
+merged = 1
+lazy = 0
+name = "ddu-source-gtags"
+normalized_name = "ddu-source-gtags"
 
 ### DDU END
 

@@ -8,6 +8,19 @@
     state: absent
   when: link.stat.islnk is defined and link.stat.islnk
 
+- name: Create directories for notmuch
+  file:
+    path: "~/.local/share/mail/{{ item }}"
+  with_items:
+    - "gmail"
+    - "qq"
+    - "juminfo"
+
+- name: Create notmuch config
+  template:
+    src: notmuch-config.template
+    dest: ~/.notmuch-config
+
 - name: deploy neomutt
   ansible.posix.synchronize:
     src: neomutt

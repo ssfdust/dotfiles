@@ -25,7 +25,7 @@ pueue: .prepared
 	ansible-playbook --tags pueue install.yml
 
 neomutt: .prepared
-	ansible-playbook --tags neomutt install.yml
+	ansible-playbook -e @secrets.yml --tags neomutt install.yml
 
 password-store: .prepared
 	ansible-playbook --tags password-store install.yml

@@ -92,6 +92,48 @@ function DDU.ddu_rg()
      })
 end
 
+--- Search with gtags
+--- Mode 0: Search definitions with gtags for word under cursor
+--- Mode 1: Search references with gtags for word under cursor
+--- Mode 2: Search definitions with gtags by inputing
+--- Mode 3: Search references with gtags by inputing
+function DDU.ddu_gtags(mode)
+    local keyword = ''
+    if (mode == 0 or mode ==1)
+    then
+        keyword = fn.expand('<cword>')
+    else
+        --- Mode 3 or 4
+        keyword = fn.input("Search key: ")
+    end
+
+    --- Search for definitions by default
+    local params = { input = keyword }
+    if (mode == 1 or mode == 3)
+    then
+        --- Search for references
+        params = { input = keyword, args = '-r' }
+    end
+    ddu_start({
+        name = 'gtags',
+        ui = 'ff',
+        sources = {
+            {
+                name = 'gtags',
+                params = params,
+            }
+        },
+        uiParams = {
+            ff = {
+                startFilter = vim.api.nvim_eval('v:true'),
+                previewFloating = vim.api.nvim_eval('v:true'),
+                split = 'floating'
+            }
+        },
+     })
+end
+
+
 local function find_ddu_bufnr()
     local ddu_bufnr = -1
     for somebufnr = 1, fn.bufnr('$'), 1 do
@@ -233,6 +275,10 @@ set_keymap('n', '<Leader>fh', ':Ddu file_old -ui-param-startFilter=v:true -name=
 set_keymap('n', '<Leader>bb', ':Ddu buffer -ui-param-startFilter=v:true -name=file -ui-param-previewFloating=v:true -ui-param-split=floating<CR>', { noremap = true, silent = true })
 set_keymap('n', '<Leader>fg', "<Cmd>lua require('plugins/ddu').ddu_rg()<CR>", { noremap = true, silent = true })
 set_keymap('n', '<Leader>pl', ':Ddu dein -ui-param-startFilter=v:true -name=file -ui-param-previewFloating=v:true -ui-param-split=floating<CR>', { noremap = true, silent = true })
+set_keymap('n', '<Leader>td', "<Cmd>lua require('plugins/ddu').ddu_gtags(0)<CR>", { noremap = true, silent = true })
+set_keymap('n', '<Leader>tr', "<Cmd>lua require('plugins/ddu').ddu_gtags(1)<CR>", { noremap = true, silent = true })
+set_keymap('n', '<Leader>tsd', "<Cmd>lua require('plugins/ddu').ddu_gtags(2)<CR>", { noremap = true, silent = true })
+set_keymap('n', '<Leader>tsr', "<Cmd>lua require('plugins/ddu').ddu_gtags(3)<CR>", { noremap = true, silent = true })
 
 -----------------------------------------------------------
 -- DDU End

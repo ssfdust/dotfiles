@@ -45,6 +45,11 @@ for i=1, 9 do
     map('n', '<leader>' .. i, "<Cmd>lua require('core/utils').switch_window(" .. i .. ")<CR>")
 end
 
+-- neo snippets
+map('i', '<C-k>', '<Plug>(neosnippet_expand_or_jump)')
+map('s', '<C-k>', '<Plug>(neosnippet_expand_or_jump)')
+map('s', '<C-k>', '<Plug>(neosnippet_expand_target)')
+
 -- Map write with sudo
 map('c', 'w!!', "<Cmd>lua require('core/utils').super_write()<CR>")
 

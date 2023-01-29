@@ -10,7 +10,6 @@ set dircounts
 
 set drawbox
 
-
 set previewer ~/.config/lf/previewer.sh
 set cleaner ~/.config/lf/cleaner.sh
 
@@ -35,6 +34,8 @@ set scrolloff 10
 
 # use enter for shell commands
 map <enter> shell
+
+map w $nu
 
 # execute current file (must be executable)
 map x $$f

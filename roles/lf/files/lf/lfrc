@@ -197,6 +197,10 @@ cmd open ${{
             esac
     esac
 }}
+
+cmd on-cd ${{
+    zoxide add -- "$PWD"
+}}
 map gyp yank-path
 map gyd yank-dirname
 map <enter> :open $fx

@@ -2,14 +2,14 @@ def __clean [] {
     echo $"deleting last files..."
     let pkgdir = (echo ~/.cache/updatepkgs | path expand)
     let current_pwd = (pwd)
-    if ( echo $pkgdir | path exists) == true {
+    if ( $pkgdir | path exists) == true {
         ^find ~/.cache/updatepkgs -mindepth 1 -maxdepth 1 -mtime +5 -exec rm -rf "{}" ';'
     } else {
         mkdir $pkgdir
     }
     echo $"clean git repos..."
-    let pkgdir_subdir_cnt = (ls -a $pkgdir | where type == Dir | length)
-    if $pkgdir_subdir_cnt > 0 {
+    let pkgdir_is_empty = (ls -a $pkgdir | is-empty)
+    if (not $pkgdir_is_empty) {
         ls -a $pkgdir | where type == dir | each { |it| cd $it.name;git clean -xdf }
     }
 }

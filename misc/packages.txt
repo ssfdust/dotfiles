@@ -44,6 +44,7 @@ gost
 gptfdisk
 grim
 imagemagick
+iptables-nft
 isync
 jq
 kanshi
@@ -111,6 +112,7 @@ vagrant
 waybar
 wf-recorder
 wireless_tools
+wireplumber
 wofi
 xdg-desktop-portal
 xdg-desktop-portal-gtk

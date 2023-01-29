@@ -11,6 +11,7 @@ keybinds {
         unbind "Ctrl t"
         unbind "Ctrl p"
         unbind "Ctrl n"
+        unbind "Ctrl o"
         bind "Ctrl a" { SwitchToMode "Tmux"; }
         bind "Ctrl y" { SwitchToMode "Locked"; }
     }

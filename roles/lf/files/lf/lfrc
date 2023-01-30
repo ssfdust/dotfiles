@@ -139,16 +139,7 @@ cmd goto_usb ${{
 }}
 map gu goto_usb
 
-cmd trash ${{
-    set -f
-    kioc="$(which kioclient5 2>/dev/null)"
-    if [ -n "$kioc" ]; then
-        kioclient5 move $fx Trash: 2>/dev/null
-    else
-        mkdir -p ~/.trash
-        mv -- $fx ~/.trash
-    fi
-}}
+cmd trash %trash-put $fx
 map <delete> trash
 
 cmd yank-dirname $dirname -- "$f" | head -c-1 | xclip -i -selection clipboard

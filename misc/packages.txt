@@ -104,6 +104,7 @@ swayidle
 swaylock-effects
 telegram-desktop
 telegram-qt
+trash-cli
 udiskie
 unarchiver
 unzip

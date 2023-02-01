@@ -9,3 +9,5 @@ lsof
 fuse-overlayfs
 buildah
 wl-clipboard-x11
+htop
+strace

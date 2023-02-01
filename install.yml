@@ -63,3 +63,5 @@
       tags: wlogout
     - role: fcitx5
       tags: fcitx5
+    - role: dbg
+      tags: dbg

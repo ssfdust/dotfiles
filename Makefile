@@ -2,7 +2,7 @@ all: .prepared secrets.yml
 	ansible-playbook -K -e @secrets.yml install.yml
 
 headless: .prepared secrets.yml
-	ansible-playbook -K -e @secrets.yml --tags aria2,env,fcitx5,fontconfig,kitty,lf,mako,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,pamd,password-store,profile,pueue,refind,sddm,starship,systemd,waybar,wayfire,wlogout,wofi,zellij,qt install.yml
+	ansible-playbook -K -e @secrets.yml --tags aria2,env,fcitx5,fontconfig,kitty,lf,mako,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,pamd,password-store,profile,pueue,refind,sddm,starship,systemd,waybar,wayfire,wlogout,wofi,zellij,qt,dbg install.yml
 
 desktop: .prepared secrets
 	ansible-playbook -K -e @secrets.yml --tags firefox,gnupg,icons install.yml
@@ -89,6 +89,9 @@ icons: .prepared
 
 neovim: .prepared
 	ansible-playbook --tags neovim install.yml
+
+dbg: .prepared
+	ansible-playbook --tags dbg install.yml
 
 refind: .prepared
 	ansible-playbook -K --tags refind install.yml

@@ -10,7 +10,10 @@
 
 - name: deploy neovim
   ansible.posix.synchronize:
-    src: nvim
+    src: "{{ item }}"
     dest: ~/.config
     delete: yes
     recursive: yes
+  with_items:
+    - nvim
+    - gtags

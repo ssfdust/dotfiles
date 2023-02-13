@@ -170,6 +170,8 @@ cmd open ${{
     case $(file --mime-type $f -b) in
         text/*)
             $EDITOR $fx;;
+        application/pdf)
+            mupdf -r 120 $fx;;
         *)
             case "$f" in
                 *.tar.bz|*.tar.bz2|*.tbz|*.tbz2|*.tar.gz|*.tgz|*.tar.xz|*.txz|*.zip|*.rar|*.iso)

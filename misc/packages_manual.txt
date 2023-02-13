@@ -11,3 +11,4 @@ buildah
 wl-clipboard-x11
 htop
 strace
+mupdf

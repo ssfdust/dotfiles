@@ -18,7 +18,7 @@ export def ps [
 export def ps_sort_mem [
     --bytes (-b) # Show memory size in bytes
 ] {
-    let sort_data = (ps -b | into df | group-by command | agg [ (col pid | max ) (col memory | sum ) (col virtual | sum) ] | sort-by memory)
+    let sort_data = (ps -b | group-by command | agg [ (col pid | max ) (col memory | sum ) (col virtual | sum) ] | sort-by memory)
     if $bytes {
         echo $sort_data
     } else {

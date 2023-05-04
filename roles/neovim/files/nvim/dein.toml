@@ -141,6 +141,33 @@ on_ft = ['markdown', 'pandoc.markdown', 'rmd']
 build = 'sh -c "cd app && yarn install"'
 ### Extra END
 
+### AI Section
+# [[plugins]]
+# repo = 'MunifTanjim/nui.nvim'
+# name = 'nui.nvim'
+# normalized_name = 'nui'
+# lazy = 0
+# 
+# [[plugins]]
+# repo = 'nvim-lua/plenary.nvim'
+# name = 'plenary.nvim'
+# normalized_name = 'plenary'
+# lazy = 0
+# 
+# [[plugins]]
+# repo = 'nvim-telescope/telescope.nvim'
+# name = 'telescope.nvim'
+# normalized_name = 'telescope'
+# lazy = 0
+# 
+# [[plugins]]
+# repo = 'jackMort/ChatGPT.nvim'
+# name = 'ChatGPT.nvim'
+# rev = '8820b99c'
+# normalized_name = 'ChatGPT'
+# lazy = 0
+### AI END
+
 ### LSP Section
 [[plugins]]
 repo = 'neoclide/coc.nvim'

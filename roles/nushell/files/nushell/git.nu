@@ -90,7 +90,6 @@ export alias gcb = git checkout -b
 export alias gcf = git config --list
 export alias gcl = git clone --recurse-submodules
 export alias gclean = git clean -id
-export alias gpristine = {git reset --hard; git clean -dffx}
 export alias gcm = git checkout (git_main_branch)
 export alias gcd = git checkout develop
 export alias gcmsg = git commit -m
@@ -182,7 +181,6 @@ export alias gpsup = git push --set-upstream origin (git_current_branch)
 export alias ghh = git help
 
 export alias gignore = git update-index --assume-unchanged
-export alias gignored = { git ls-files -v | grep "^[[:lower:]]" }
 
 export alias gk = ^gitk --all --branches
 export alias gke = ^gitk --all (git log -g --pretty=%h | lines)
@@ -214,7 +212,6 @@ export alias gp = git push
 export alias gpd = git push --dry-run
 export alias gpf = git push --force-with-lease
 export alias gpf! = git push --force
-export alias gpoat = { git push origin --all;git push origin --tags }
 export alias gpr = git pull --rebase
 export alias gpu = git push upstream
 export alias gpv = git push -v
@@ -270,7 +267,6 @@ export alias gsw = git switch
 export alias gswc = git switch -c
 
 export alias gts = git tag -s
-export alias gtv = { git tag | sort -V }
 # alias gtl = gtl(){ git tag --sort=-v:refname -n -l "${1}*" }; noglob gtl
 
 export alias gunignore = git update-index --no-assume-unchanged
@@ -293,6 +289,7 @@ export def gwip [] {
     do -i {git rm (git ls-files --deleted)}
     git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"
 }
+export def gpoat [] { git push origin --all;git push origin --tags }
 
 export alias gam = git am
 export alias gamc = git am --continue

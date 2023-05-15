@@ -35,8 +35,8 @@
       tags: msmtp
     - role: mbsync
       tags: mbsync
-    - role: mako
-      tags: mako
+    - role: swaync
+      tags: swaync
     - role: refind
       tags: refind
     - role: lf

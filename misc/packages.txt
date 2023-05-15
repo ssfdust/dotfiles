@@ -15,7 +15,6 @@ AUR/we10x-icon-theme-git
 AUR/wl-clipboard-rs
 AUR/wlogout-git
 arc-solid-gtk-theme
-bauerbill
 bind
 buildah
 celluloid
@@ -57,7 +56,6 @@ lf
 libreoffice-fresh
 libva-mesa-driver
 libvirt
-mako
 man-db
 mesa-vdpau
 msmtp
@@ -76,6 +74,7 @@ noto-fonts-emoji
 npm
 openssh
 pandoc-bin
+paru
 pass
 pkgfile
 plocate
@@ -83,7 +82,6 @@ plymouth-git
 plymouth-theme-arch-charge-big
 podman
 polkit-gnome
-powerpill
 proxychains-ng
 pulseaudio
 python-pip
@@ -102,6 +100,7 @@ slurp
 swaybg
 swayidle
 swaylock-effects
+swaync
 telegram-desktop
 telegram-qt
 trash-cli

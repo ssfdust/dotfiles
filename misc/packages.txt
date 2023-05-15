@@ -115,6 +115,7 @@ wf-recorder
 wireless_tools
 wireplumber
 wofi
+wtype
 xdg-desktop-portal
 xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr

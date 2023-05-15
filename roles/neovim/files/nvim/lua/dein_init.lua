@@ -7,13 +7,6 @@
 
 local set = vim.opt
 local fn = vim.fn
-local add = fn['dein#add']
-local begin = fn['dein#begin']
-local check_install = fn['dein#check_install']
-local install = fn['dein#install']
-local load_toml = fn['dein#load_toml']
-local call_hook = fn['dein#call_hook']
-local end_ = fn['dein#end']
 
 -- Automatically install dein
 local dein_home = fn.stdpath('data') .. '/dein'
@@ -21,18 +14,29 @@ local dein_runtime_path = dein_home .. '/repos/github.com/Shougo/dein.vim'
 local script_path = os.tmpname()
 
 if fn.empty(fn.glob(dein_home)) > 0 then
-    fn.system({
+    local download_cmd = {
         'curl',
         '-fsSL',
         'https://raw.githubusercontent.com/Shougo/dein-installer.vim/main/installer.sh',
         '-o',
         script_path
-    })
-    fn.system({
+    }
+    local execute_cmd = {
         'bash',
         script_path,
         '-uNC', dein_home
-    })
+    }
+
+    print("Download command: " .. table.concat(download_cmd, ' '))
+    fn.system(download_cmd)
+
+    if (fn.file_readable(script_path) == 1)
+    then
+        print("Execute command: " .. table.concat(execute_cmd, ' '))
+        fn.system(execute_cmd)
+    else
+        print("Installer download failed...")
+    end
     -- Delete the init.vim
     os.remove(fn.stdpath('config') .. '/init.vim')
 end
@@ -40,6 +44,14 @@ end
 -- 'path' would be init.lua's parent directory.
 -- That is, '~/.config/nvim'.
 function activate_dein()
+    -- Registe dein functions
+    local add = fn['dein#add']
+    local begin = fn['dein#begin']
+    local check_install = fn['dein#check_install']
+    local install = fn['dein#install']
+    local load_toml = fn['dein#load_toml']
+    local call_hook = fn['dein#call_hook']
+    local end_ = fn['dein#end']
     -- Neovim is always "nocompatible".
 
     -- Required:
@@ -71,12 +83,12 @@ end
 
 -- Load dein TOML configuration
 function _get_dein_toml()
-    local dein_toml = vim.fn.fnamemodify(os.getenv('MYVIMRC'), ':h') .. '/dein.toml'
-    if (vim.fn.file_readable(dein_toml) == 1)
+    local dein_toml = fn.fnamemodify(os.getenv('MYVIMRC'), ':h') .. '/dein.toml'
+    if (fn.file_readable(dein_toml) == 1)
     then
         return dein_toml
     else
-        return vim.fn.get(vim.g, 'dein_toml', '')
+        return fn.get(vim.g, 'dein_toml', '')
     end
 end
 

@@ -129,14 +129,6 @@
     },
     "buttons-grid": {
       "actions": [
-        {
-          "label": "直",
-          "command": "~/.config/rofi/rofi-wifi-menu.sh"
-        },
-        {
-          "label": "",
-          "command": "~/.config/rofi/rofi-bluetooth"
-        }
       ]
     }
   }

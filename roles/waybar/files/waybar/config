@@ -4,9 +4,9 @@
     "height": 25, // Waybar height
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["custom/firefox", "custom/tg", "custom/dingtalk","custom/keepassxc","custom/remmina",  "custom/arrow01","custom/mail", "custom/arrow02", "custom/weather", "custom/arrow03", "network#1", "custom/arrow04"],
+    "modules-left": ["custom/firefox", "custom/tg", "custom/dingtalk","custom/keepassxc","custom/remmina",  "custom/arrow01", "custom/mail", "custom/arrow02", "custom/weather", "custom/arrow03", "network#1", "custom/arrow04"],
     "modules-center": ["clock#1", "custom/autostart"],
-    "modules-right": ["custom/arrow05", "network#2", "custom/arrow06","pulseaudio","custom/arrow07", "custom/date", "custom/arrow08","custom/arrow09", "tray","custom/arrow10"],
+    "modules-right": ["custom/arrow05", "network#2", "custom/arrow06","pulseaudio","custom/arrow07", "custom/date", "custom/arrow08", "custom/notification", "custom/arrow09", "tray","custom/arrow10"],
     // Modules configuration
     "tray": {
         //"icon-size": 21,
@@ -35,10 +35,30 @@
         "max-length": 50
     },
     "clock#1": {
-        "interval": 1,
-        "format": "{:%H:%M:%S}",
-        "locale": "en_US.UTF-8",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "format": "{:%H:%M}  ",
+        "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+        "tooltip-format": "<span size='9pt'>{calendar}</span>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "on-click-right": "mode",
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
     },
     "custom/date": {
         "format": " {} ",
@@ -110,6 +130,12 @@
         "on-click": "display -title '天气预报' ~/.cache/weatherCN/weather.png",
         //"max-length": 15,
         "exec": "jq -r '.current | .weather + \" \" + .temperature + \" \" + .wind_level + \" \" + .wind_direction' ~/.cache/weatherCN/weather.json"
+    },
+    "custom/notification" : {
+        "format": " {}",
+        "interval": 1,
+        "exec": "swaync-client -c",
+        "on-click": "swaync-client -t -sw"
     },
     "custom/autostart" : {
         "format": "",

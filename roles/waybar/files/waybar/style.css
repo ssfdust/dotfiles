@@ -12,6 +12,15 @@ window#waybar {
 	color: rgba(148, 148, 148, 1);
 }
 
+tooltip {
+    background: rgba(40, 40, 40, 255);
+    border: 1px solid rgba(100, 114, 125, 0.5);
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
 label:disabled,
 button:disabled {
   all: unset;
@@ -127,6 +136,13 @@ button:disabled {
     color: rgba(148, 148, 148, 1);
 	background: #3a3a3a;
 }
+
+#custom-notification {
+    padding: 2px;
+    color: rgba(148, 148, 148, 1);
+	background: #4e4e4e;
+}
+
 #custom-weather {
     padding: 2px;
     color: rgba(148, 148, 148, 1);

@@ -31,7 +31,7 @@ export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
 LIMIT=3
 
 # the icon in the notification window
-NOTIFICATION_ICON='/home/ssfdust/.local/share/icons/We10X/scalable/apps/mail-client.svg'
+NOTIFICATION_ICON='mail-client'
 
 # the sort order of subjects
 #   corresponds to the --sort option of notmuch search

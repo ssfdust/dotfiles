@@ -13,6 +13,7 @@ local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 local patch_global = fn['ddu#custom#patch_global']
 local ddu_start = fn['ddu#start']
+local do_action = fn['ddu#ui#ff#do_action']
 
 -----------------------------------------------------------
 -- DDU Global Patches
@@ -159,11 +160,12 @@ end
 -- Move cursor by line number
 function DDU.move_ddu_win_cursor(lineno)
     local cur_win = focus_on_ddu_window()
-    print(cur_win)
     local cur_line = fn.line('.')
     local max_line = fn.line('$')
-    if cur_line + 1 <= max_line then
-        fn.cursor(cur_line + lineno, 1)
+    if (lineno == 1) then
+        do_action('cursorNext')
+    else
+        do_action('cursorPrevious')
     end
 end
 
@@ -265,6 +267,11 @@ autocmd('Filetype', {
   group = 'DDUCustom',
   pattern = { 'ddu-ff-filter' },
   callback = ff_filter_settings
+})
+autocmd('CursorHold', {
+  group = 'DDUCustom',
+  pattern = { 'ddu-ff*' },
+  command = 'call ddu#ui#ff#do_action("preview")'
 })
 
 -----------------------------------------------------------

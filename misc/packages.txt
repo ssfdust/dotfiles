@@ -24,6 +24,7 @@ ctags
 deno
 dmidecode
 dnsmasq
+fastfetch
 fcitx5
 fcitx5-configtool
 fcitx5-gtk
@@ -60,7 +61,6 @@ man-db
 mesa-vdpau
 msmtp
 mycli
-neofetch
 neomutt
 net-tools
 networkmanager
@@ -94,7 +94,7 @@ qt5-svg
 reflector
 ripgrep
 rsync
-sddm-git
+sddm
 skopeo
 slurp
 swaybg

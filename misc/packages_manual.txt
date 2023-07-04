@@ -12,3 +12,7 @@ wl-clipboard-x11
 htop
 strace
 mupdf
+cockpit
+cockpit-machines
+cockpit-storaged
+cockpit-podman

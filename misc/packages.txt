@@ -73,6 +73,7 @@ notmuch
 noto-fonts-emoji
 npm
 openssh
+pacman-contrib
 pandoc-bin
 paru
 pass
@@ -81,6 +82,7 @@ plocate
 plymouth-git
 plymouth-theme-arch-charge-big
 podman
+podman-compose
 polkit-gnome
 proxychains-ng
 pulseaudio
@@ -97,10 +99,13 @@ rsync
 sddm
 skopeo
 slurp
+sshfs
 swaybg
 swayidle
+swayimg
 swaylock-effects
 swaync
+tcpdump
 telegram-desktop
 telegram-qt
 trash-cli
@@ -108,8 +113,11 @@ udiskie
 unarchiver
 unzip
 usb_modeswitch
+usbutils
 vagrant
 waybar
+weston
+wget
 wf-recorder
 wireless_tools
 wireplumber

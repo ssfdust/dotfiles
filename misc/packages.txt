@@ -33,6 +33,7 @@ fcitx5-qt
 fcitx5-rime
 fd
 feh
+ffmpegthumbnailer
 firefox
 firewalld
 flameshot
@@ -108,7 +109,9 @@ swaync
 tcpdump
 telegram-desktop
 telegram-qt
+thunar
 trash-cli
+tumbler
 udiskie
 unarchiver
 unzip

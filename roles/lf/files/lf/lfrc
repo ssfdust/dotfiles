@@ -128,16 +128,16 @@ cmd fzf_jump ${{
 }}
 map f push :fzf_jump<space>
 
-cmd goto_usb ${{
-    target="$(awk '/run\/media/ {print $2}' /proc/mounts | fzf)"
+cmd fzf_mount ${{
+    target="$(grep -vP '(/systemd| /sys| /dev| /proc)' /proc/mounts | awk '{print $2}' | fzf --reverse --header='Jump to mount point')"
     if [ -d "$target" ]; then
         cmd="cd"
     else 
-        cmd="select"                                                       
+        cmd="select"
     fi
     lf -remote "send $id $cmd \"$target\""
 }}
-map gu goto_usb
+map gm fzf_mount
 
 cmd trash %trash-put $fx
 map <delete> trash

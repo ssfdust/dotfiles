@@ -1,1 +1,4 @@
 export $(/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
+alias zellijx='WAYLAND_DISPLAY=wayland-1 zellij -s x || WAYLAND_DISPLAY=wayland-1 zellij attach x'
+. "$HOME/.cargo/env"
+. "$HOME/.rye/env"

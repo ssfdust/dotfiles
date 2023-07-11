@@ -82,3 +82,12 @@ export def zellijx [] {
         zellij -s x
     }
 }
+
+# set preset passphrase to current gpg agent
+export def preset_gpg_agent [] {
+    let gpg_keygrip = (open ~/.pam-gnupg | lines | first)
+    let password = (echo "SETPROMPT Please enter your password:\nGETPIN\n" |
+                    pinentry-tty -T (tty) |
+                    sed -nr '0,/^D (.+)/s//\1/p')
+    echo $password | /usr/lib/gnupg/gpg-preset-passphrase --preset $gpg_keygrip
+}

@@ -32,7 +32,6 @@ fcitx5-nord
 fcitx5-qt
 fcitx5-rime
 fd
-feh
 ffmpegthumbnailer
 firefox
 firewalld

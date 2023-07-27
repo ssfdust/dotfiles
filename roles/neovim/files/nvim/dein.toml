@@ -176,6 +176,14 @@ lazy = 0
 rev = 'release'
 name = 'coc.nvim'
 normalized_name = 'coc'
+
+[[plugins]]
+repo = 'github/copilot.vim'
+merged = 0
+lazy = 0
+rev = 'release'
+name = 'copilot.vim'
+normalized_name = 'copilot'
 ### LSP END
 
 ### UI Section

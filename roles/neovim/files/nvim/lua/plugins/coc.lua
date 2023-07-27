@@ -17,6 +17,7 @@ vim.g.coc_global_extensions = {
    'coc-clangd',
    'coc-tsserver',
    'coc-toml',
+   'coc-copilot',
    'coc-gitignore',
    '@yaegassy/coc-nginx',
    'coc-rust-analyzer'

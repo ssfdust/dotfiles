@@ -12,12 +12,12 @@ export def git_main_branch [] {
             for branch in ["main" "trunk"] {
                 let git_ref = (do -i {git show-ref --verify $"refs/heads/($branch)"})
                 if ($git_ref != "") {
-                    echo $branch
-                } else {}
+                    return $branch
+                }
             }
         )
-        if (echo $main_branch | empty?) {echo master} else {echo $main_branch}
-    } else {}
+        if ($main_branch | is-empty) {echo master} else {echo $main_branch}
+    }
 }
 
 # check whether we are in a git repo

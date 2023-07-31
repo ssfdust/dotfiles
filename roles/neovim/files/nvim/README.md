@@ -10,5 +10,3 @@ Dependencies
 * fortune-mod
 * ripgrep
 * proxychains (option)
-
-

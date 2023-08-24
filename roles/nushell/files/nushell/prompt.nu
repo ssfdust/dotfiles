@@ -24,7 +24,7 @@ def get_right_prompt [] {
         })
         (ansi { fg: $TERM_FG bg: $TIME_BG})
         (char space)
-        (date now | date format '%I:%M:%S %p')
+        (date now | format date  '%I:%M:%S %p')
         (char space)
         ($R)
     ] | str collect)

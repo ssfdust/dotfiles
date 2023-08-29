@@ -8,7 +8,7 @@
     state: absent
   when: link.stat.islnk is defined and link.stat.islnk
 
-- name: deploy neovim
+- name: deploy wofi configuration
   ansible.posix.synchronize:
     src: wofi
     dest: ~/.config

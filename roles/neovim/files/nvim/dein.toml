@@ -9,7 +9,7 @@ normalized_name = 'ddu'
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
-merged = 1
+merged = 0
 lazy = 0
 name = 'denops.vim'
 normalized_name = 'denops'

@@ -15,6 +15,13 @@
     delete: yes
     recursive: yes
 
+- name: deploy wayfire binaries
+  ansible.posix.synchronize:
+    src: bin
+    dest: ~/.local
+    delete: yes
+    recursive: yes
+
 - name: deploy wayvnc
   ansible.posix.synchronize:
     src: wayvnc

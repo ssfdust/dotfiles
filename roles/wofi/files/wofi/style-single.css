@@ -1,0 +1,90 @@
+@define-color background rgba(56, 60, 74, 1);
+@define-color window rgba(124, 129, 140, 1);
+@define-color selection #1E1D2F;
+@define-color text_color #F28FAD;
+@define-color even rgba(64, 69, 82, 1);
+@define-color foreground rgba(217, 224, 238, 1);
+@define-color imgbg rgba(30, 29, 47, 1);
+
+* {
+    font-family: monospace;
+    font-size: 15px;
+}
+
+window {
+    margin: 0px;
+    border: 5px solid;
+    border-radius: 15px;
+    background-color: @window;
+}
+
+expander .entry {
+    margin-left: -15px;
+}
+
+#input {
+    margin: 0px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 0.5px solid @selection;
+    background-color: @background;
+    color: @foreground;
+}
+
+#inner-box {
+    border: 0px solid;
+    border-radius: 15px;
+    background-color: @background;
+}
+
+#outer-box {
+    margin: 0px;
+    border: 0px solid;
+    border-radius: 3px;
+    padding:4px;
+    background-color: @background;
+}
+
+#img {
+    background-color: @imgbg;
+    margin-right: 6px;
+    border-radius: 40px;
+    border: 6px solid @imgbg;
+}
+
+#scroll {
+    margin: 0px;
+    border: 0px solid;
+}
+
+#text {
+    padding: 0px;
+    color: @foreground;
+}
+
+#entry{
+    padding: 1px;
+    border: 5px solid @background;
+    border-radius: 15px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin: 0px;
+}
+
+#entry:nth-child(2n){
+    border: 5px solid @even;
+    border-radius: 15px;
+    background-color: @even;
+}
+
+#entry:selected {
+    border: 5px solid @selection;
+    border-radius: 15px;
+    outline: 0px;
+    background-color: @selection;
+}
+
+#text:selected {
+    color: @text_color;
+    outline: 0px;
+}

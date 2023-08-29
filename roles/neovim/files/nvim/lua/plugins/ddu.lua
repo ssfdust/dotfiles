@@ -277,11 +277,11 @@ autocmd('CursorHold', {
 -----------------------------------------------------------
 -- DDU Key Maps
 -----------------------------------------------------------
-set_keymap('n', '<Leader>ff', ':Ddu file_rec -ui-param-startFilter=v:true -name=file -ui-param-previewFloating=v:true -ui-param-split=floating<CR>', { noremap = true, silent = true })
-set_keymap('n', '<Leader>fh', ':Ddu file_old -ui-param-startFilter=v:true -name=file -ui-param-previewFloating=v:true -ui-param-split=floating<CR>', { noremap = true, silent = true })
-set_keymap('n', '<Leader>bb', ':Ddu buffer -ui-param-startFilter=v:true -name=file -ui-param-previewFloating=v:true -ui-param-split=floating<CR>', { noremap = true, silent = true })
+set_keymap('n', '<Leader>ff', ':Ddu file_rec -ui-param-ff-startFilter=v:true -name=file -ui-param-ff-previewFloating=v:true -ui-param-ff-split=floating<CR>', { noremap = true, silent = true })
+set_keymap('n', '<Leader>fh', ':Ddu file_old -ui-param-ff-startFilter=v:true -name=file -ui-param-ff-previewFloating=v:true -ui-param-ff-split=floating<CR>', { noremap = true, silent = true })
+set_keymap('n', '<Leader>bb', ':Ddu buffer -ui-param-ff-startFilter=v:true -name=file -ui-param-ff-previewFloating=v:true -ui-param-ff-split=floating<CR>', { noremap = true, silent = true })
 set_keymap('n', '<Leader>fg', "<Cmd>lua require('plugins/ddu').ddu_rg()<CR>", { noremap = true, silent = true })
-set_keymap('n', '<Leader>pl', ':Ddu dein -ui-param-startFilter=v:true -name=file -ui-param-previewFloating=v:true -ui-param-split=floating<CR>', { noremap = true, silent = true })
+set_keymap('n', '<Leader>pl', ':Ddu dein -ui-param-ff-startFilter=v:true -name=file -ui-param-ff-previewFloating=v:true -ui-param-ff-split=floating<CR>', { noremap = true, silent = true })
 set_keymap('n', '<Leader>td', "<Cmd>lua require('plugins/ddu').ddu_gtags(0)<CR>", { noremap = true, silent = true })
 set_keymap('n', '<Leader>tr', "<Cmd>lua require('plugins/ddu').ddu_gtags(1)<CR>", { noremap = true, silent = true })
 set_keymap('n', '<Leader>tsd', "<Cmd>lua require('plugins/ddu').ddu_gtags(2)<CR>", { noremap = true, silent = true })

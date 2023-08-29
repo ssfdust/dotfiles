@@ -8,9 +8,12 @@ import subprocess
 def format_appid(appid: str):
     # Remove the first part of the appid, which is the protocol
     # (e.g. org.kde.konsole -> konsole)
+    ret = ''
     if 'telegram' in appid:
-        return 'telegram'
-    return appid.split(".")[-1]
+        ret = 'telegram'
+    else:
+        ret = appid.split(".")[-1]
+    return ret[0].upper() + ret[1:]
 
 def get_msg_template(method: str):
     # Create generic message template

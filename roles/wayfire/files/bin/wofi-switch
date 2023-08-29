@@ -69,7 +69,7 @@ def main():
 
     windows_map = {}
     for view in sock.get_views():
-        if view['layer'] == 'workspace':
+        if view['layer'] == 'workspace' and view['state']['minimized'] == False:
             index = format_appid(view['app-id']) + ' - ' + view['title']
             windows_map[index] = view['id']
     indexs = "\n".join(windows_map.keys()).encode()

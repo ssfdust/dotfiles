@@ -26,7 +26,7 @@ map('n', '<leader>bn', '<Cmd>bn<CR>')
 map('n', '<leader>bp', '<Cmd>bp<CR>')
 map('n', '<leader>bd', '<Cmd>bd<CR>')
 
--- Ctrl-C for save
+-- Ctrl-S for save
 map('i', '<C-s>', '<Esc><Cmd>w<CR>i')
 map('n', '<C-s>', '<Cmd>w<CR>')
 
@@ -36,6 +36,9 @@ map('t', '<Esc>', '<C-\\><C-n>')
 
 -- Change directory to file path
 map('n', '<leader>cd', "<Cmd>lua require('core/utils').change_dir()<CR>", { noremap=false})
+
+-- Cancel search highlight
+map('n', '<leader><Esc>', '<Cmd>noh<CR>')
 
 -- Copy file path
 map('n', '<leader>fy', "<Cmd>lua require('core/utils').get_filepath()")

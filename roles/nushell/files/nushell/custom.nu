@@ -2,7 +2,7 @@
 export def ps [
     --bytes (-b) # Show memory size in bytes
 ] {
-    let ps_out = (^ps -ewwo pid,ppid,%cpu,user,label,rss=mem,vsz,etimes,command | lines | parse -r '(?P<pid>\d+)\s+(?P<ppid>\d+)\s+(?P<cpu>[0-9.%]+)\s+(?P<user>\w+)\s+(?P<selinux>[^\s]+)\s+(?P<memory>\d+)\s+(?P<virtual>\d+)\s+(?P<created>[^\s]+)\s+(?P<command>.*)' | into decimal pid created memory virtual | update memory { |r| $r.memory * 1024 } | update virtual { |r| $r.virtual * 1024 } | update created {|r| ((date now | format date "%s" | into decimal) - $r.created) | into string | into datetime -z l })
+    let ps_out = (^ps -ewwo pid,ppid,%cpu,user,label,rss=mem,vsz,etimes,command | lines | parse -r '(?P<pid>\d+)\s+(?P<ppid>\d+)\s+(?P<cpu>[0-9.%]+)\s+(?P<user>\w+)\s+(?P<selinux>[^\s]+)\s+(?P<memory>\d+)\s+(?P<virtual>\d+)\s+(?P<created>[^\s]+)\s+(?P<command>.*)' | into float pid created memory virtual | update memory { |r| $r.memory * 1024 } | update virtual { |r| $r.virtual * 1024 } | update created {|r| ((date now | format date "%s" | into float) - $r.created) | into string | into datetime -z l })
     let se_out = ($ps_out | get selinux | where $it != '-' | parse '{se_user}:{se_role}:{se_type}:{se_range}')
     let ps_out = ($ps_out | reject selinux)
     let ps_out = ($ps_out | select pid ppid cpu user | merge $se_out  | merge ($ps_out | reject pid ppid cpu user))

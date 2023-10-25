@@ -42,6 +42,7 @@
 @import url("tabs_separator.css");
 @import url("searchbox_text_align_left.css");
 @import url("tabs_take_full_bar_width.css");
+@import url("show_searchbar_dots_only_on_hover.css");
 
 /*=====================================================================
 ================= D A R K   T H E M E   C O L O R S ===================
@@ -546,7 +547,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
 =====================================================================*/
 
 /* Non active tabs have darker text */
-.tabbrowser-tab:not([visuallyselected="true"]):not([multiselected]):not(:hover)
+.tabbrowser-tab:not([selected]):not([multiselected]):not(:hover)
   .tab-label-container
   .tab-label {
   color: var(--firefoxcss-non-active-tabs) !important;
@@ -597,7 +598,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
   min-width: 150px !important;
 }
 
-.tabbrowser-tab:not([visuallyselected="true"]):not([multiselected]):not(:hover)
+.tabbrowser-tab:not([selected]):not([multiselected]):not(:hover)
   .tab-icon-image {
   opacity: 0.8 !important;
   transition: opacity 250ms ease !important;
@@ -632,7 +633,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
 #tabbrowser-tabs
   .tabbrowser-tab:hover
   > .tab-stack
-  > .tab-background:not([selected="true"]) {
+  > .tab-background:not([selected]) {
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
@@ -651,7 +652,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
 }
 
 /* Multiselect tabs */
-#tabbrowser-tabs .tabbrowser-tab .tab-background[multiselected="true"] {
+#tabbrowser-tabs .tabbrowser-tab .tab-background[multiselected] {
   border: 0 !important;
   border-radius: var(--firefoxcss-border-radius) !important;
   background-image: none !important;
@@ -1161,17 +1162,25 @@ toolbar
   opacity: 0 !important;
 }
 
+#page-action-buttons:not(:hover) #translations-button[translationsactive="true"]:not([open]) {
+  visibility:collapse !important;
+} 
+
 /* Create visual dots on both sides */
 /* left side identity-box dots modification */
 #identity-box::after,
 #page-action-buttons::before {
   position: relative;
   content: "•••";
-  opacity: 0.2;
   pointer-events: none;
   transition: opacity 100ms ease;
   align-self: center;
   font-size: 0.7em;
+}
+
+#identity-box::after,
+#page-action-buttons::before {
+  opacity: 0.2;
 }
 
 #identity-box::after {

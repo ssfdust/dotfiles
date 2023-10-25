@@ -5,9 +5,12 @@ After=podman-restart.service
 
 [Service]
 Type=oneshot
+Restart=on-failure
 RemainAfterExit=yes
 ExecStart=/usr/local/sbin/nftproxy.sh
 ExecStop=/usr/local/sbin/nftproxy.sh stop
+ExecStopPost=/usr/local/sbin/nftproxy.sh cleanup
+RestartSec=15s
 
 [Install]
 WantedBy=multi-user.target

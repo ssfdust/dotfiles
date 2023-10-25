@@ -1,7 +1,7 @@
 [Unit]
 Description=Add routes for transparent proxy.
-Requires=clash@nobody.service
-After=clash@nobody.service
+Requires=podman-restart.service
+After=podman-restart.service
 
 [Service]
 Type=oneshot

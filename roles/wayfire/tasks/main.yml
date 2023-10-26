@@ -15,6 +15,13 @@
     delete: yes
     recursive: yes
 
+- name: deploy xdg-desktop-portal configuration
+  ansible.posix.synchronize:
+    src: xdg-desktop-portal
+    dest: ~/.config
+    delete: yes
+    recursive: yes
+
 - name: deploy wayfire binaries
   ansible.posix.synchronize:
     src: bin

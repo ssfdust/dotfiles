@@ -106,6 +106,18 @@ cmd gotoz ${{
 }}
 map gz push :gotoz<space>
 
+cmd gotopaste ${{
+    filename="$(wl-paste | head -1)"
+    lf -remote "send $id select $filename"
+}}
+map gp gotopaste
+
+cmd upload_file ${{ 
+    url=$(curl -sSL --fail -F "file=@$fx" http://fars.ee | awk '/url/ {print $2}')
+    echo $url | xclip -i -selection clipboard
+}}
+map `u upload_file
+
 cmd fzf_plocate ${{
     res="$(plocate --regex $1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
     if [ -d "$res" ]; then

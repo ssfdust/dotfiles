@@ -112,6 +112,17 @@ cmd gotopaste ${{
 }}
 map gp gotopaste
 
+cmd gotofd ${{
+    res="$(fd -H -I $1 | fzf --reverse --header='Jump to target')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    else 
+        cmd="select"                                                       
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+map gfd push :gotofd<space>
+
 cmd upload_file ${{ 
     url=$(curl -sSL --fail -F "file=@$fx" http://fars.ee | awk '/url/ {print $2}')
     echo $url | xclip -i -selection clipboard

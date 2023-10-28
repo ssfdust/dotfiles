@@ -20,18 +20,21 @@ then
 
     # Tproxy转发
     nft add chain clash prerouting { type filter hook prerouting priority mangle \; }
-    nft add rule clash prerouting iif {nrpodman0, virbr0} counter return
+    nft add rule clash prerouting iifname { nrpodman0, virbr0 } counter return
     nft add rule clash prerouting ip daddr { 0.0.0.0/32, 10.0.0.0/8, 127.0.0.0/8, 172.0.0.0/8, 192.168.0.0/16, 255.255.255.255/32 } counter return
     nft add rule clash prerouting meta l4proto { tcp, udp } mark set 1 tproxy to 127.0.0.1:$port counter accept # 转发至 V2Ray 9999 端口
 
     # 转发53端口到1053
     nft add chain clash dns { type nat hook prerouting priority dstnat \; }
-    nft add rule clash dns iif {nrpodman0, virbr0} counter return
+    # for interfaces created by podman, all the dns traffic will be handled by
+    # aardvark, we skip them here. And if the network destination is not in the
+    # whitelist, it wiil be handled by clash at last.
+    nft add rule clash dns iifname { nrpodman0, virbr0, "podman*" } counter return
     nft add rule clash dns meta l4proto { tcp, udp } @th,16,16 53 counter redirect to :1053 # 取消dns转发
 
     # 转发本地流量到1053
     nft add chain clash dnsout { type nat hook output priority 0 \; }
-    nft add rule clash dnsout ip daddr { 117.50.11.11,52.80.66.66 } return
+    nft add rule clash dnsout ip daddr { 117.50.11.11, 52.80.66.66 } return
     nft add rule clash dnsout socket cgroupv2 level 2 "system.slice/system-clash.slice" counter return
     nft add rule clash dnsout socket cgroupv2 level 2 "system.slice/libvirtd.service" counter return || true
     nft add rule clash dnsout meta l4proto { tcp, udp } @th,16,16 53 counter redirect to :1053 # 取消dns转发

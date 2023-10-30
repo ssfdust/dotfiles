@@ -4,7 +4,7 @@ TMP_FILE="$HOME/.cache/lf/err.png"
 
 function check_cache {
     if [ ! -d "$HOME/.cache/lf" ]; then
-	mkdir -p "$HOME/.cache/lf"
+	    mkdir -p "$HOME/.cache/lf"
     fi
 }
 
@@ -36,35 +36,34 @@ function make_pdf {
 }
 
 check_cache
-draw_clear
 case $(file -b --mime-type "$1") in
     text/*)
-	cat "$1"
+	    cat "$1"
 	;;
     image/*)
-	draw_image "$1" "$2" "$3" "$4" "$5"
-	exit 1
+	    draw_image "$1" "$2" "$3" "$4" "$5"
+	    exit 1
 	;;
     video/*)
-	hash_filename "$1" "jpg"
-	make_video "$1" "$2" "$3"
-	draw_image "${TMP_FILE}" "$2" "$3" "$4" "$5"
-	exit 1
+	    hash_filename "$1" "jpg"
+	    make_video "$1" "$2" "$3"
+	    draw_image "${TMP_FILE}" "$2" "$3" "$4" "$5"
+	    exit 1
 	;;
     application/pdf)
-	hash_filename "$1" "png"
-	make_pdf "$1" "$2" "$3"
-	draw_image "${TMP_FILE}" "$2" "$3" "$4" "$5"
-	exit 1
+	    hash_filename "$1" "png"
+	    make_pdf "$1" "$2" "$3"
+	    draw_image "${TMP_FILE}" "$2" "$3" "$4" "$5"
+	    exit 1
 	;;
     application/gzip|application/x-xz)
-	tar tf "$1"
+	    tar tf "$1"
 	;;
     application/zip)
-	unzip -Z -1 "$1"
+	    unzip -Z -1 "$1"
 	;;
     application/x-sharedlib)
-	readelf -h "$1"
+	    readelf -h "$1"
 	;;
 esac
 

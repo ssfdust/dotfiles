@@ -11,7 +11,6 @@ set dircounts
 set drawbox
 
 set previewer ~/.config/lf/previewer.sh
-set cleaner ~/.config/lf/cleaner.sh
 
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to

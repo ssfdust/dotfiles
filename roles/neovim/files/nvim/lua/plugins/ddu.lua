@@ -61,9 +61,9 @@ function DDU.close_filter_window()
     then
         local winids = fn.win_findbuf(bufid)
         if (#winids > 0) then
-            winid = winids[0]
+            winid = winids[1]
         end
-        if (winid > 0) then
+        if (winid ~= nil and winid > 0) then
             fn.win_gotoid(winid)
             cmd(':q')
         end

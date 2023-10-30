@@ -1,2 +1,2 @@
 #!/bin/bash
-kdialog --password "Password required to proceed"
+zenity --password "Password required to proceed"

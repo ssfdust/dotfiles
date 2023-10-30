@@ -10,6 +10,7 @@ Utils = {}
 -- Super user write function
 function Utils.super_write()
     cmd("silent write! !sudo tee % >/dev/null")
+    cmd("edit!")
 end
 
 -- Switch between windows

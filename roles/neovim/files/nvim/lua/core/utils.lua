@@ -4,6 +4,7 @@
 
 local fn = vim.fn                -- Global vim functions
 local cmd = vim.cmd              -- Execute vim command
+local api = vim.api              -- Access vim API
 
 Utils = {}
 
@@ -11,6 +12,7 @@ Utils = {}
 function Utils.super_write()
     cmd("silent write! !sudo tee % >/dev/null")
     cmd("edit!")
+    api.nvim_input("<CR>")
 end
 
 -- Switch between windows

@@ -2,7 +2,7 @@ format = """[\uE0B6](fg:#1C4961)[$directory](bg:#1C4961)[\uE0B0](fg:#1C4961 bg:#
 
 right_format = ""
 
-add_newline = true
+add_newline = false
 
 [directory]
 style = "bg:#1C4961 fg:white"

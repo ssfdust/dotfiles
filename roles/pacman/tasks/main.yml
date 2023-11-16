@@ -6,4 +6,5 @@
   with_items:
     - { src: pacman.conf, dest: /etc/pacman.conf }
     - { src: makepkg.conf, dest: /etc/makepkg.conf }
+    - { src: pacman-aria2.conf, dest: /etc/pacman.d/pacman-aria2.conf }
     - { src: xyne-mirrorlist, dest: /etc/pacman.d/xyne-mirrorlist }

@@ -23,7 +23,7 @@ if (not ($env | default false __zoxide_hooked | get __zoxide_hooked)) {
 #
 
 # Jump to a directory using only keywords.
-def-env __zoxide_z [...rest:string] {
+def --env __zoxide_z [...rest:string] {
   # `z -` does not work yet, see https://github.com/nushell/nushell/issues/4769
   let arg0 = ($rest | append '~').0
   let path = if (([$rest] | first | length) <= 1) and ($arg0 == '-' or ($arg0 | path expand | path type) == dir) {
@@ -35,7 +35,7 @@ def-env __zoxide_z [...rest:string] {
 }
 
 # Jump to a directory using interactive search.
-def-env __zoxide_zi  [...rest:string] {
+def --env __zoxide_zi  [...rest:string] {
   cd $'(zoxide query -i -- $rest | str trim -r -c "\n")'
 }
 

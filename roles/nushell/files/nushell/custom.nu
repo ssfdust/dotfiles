@@ -51,7 +51,7 @@ export def list_uninst_from [path: string] {
 }
 
 # wrapped lf command
-export def-env lf [...args] {
+export def --env lf [...args] {
     let tmp = (mktemp)
     let fid = (mktemp)
 
@@ -75,7 +75,7 @@ export def-env lf [...args] {
 
 # create zellij session named `x`
 export def zellijx [] {
-    let x_num = (do -s { zellij list-sessions } | complete | get stdout | lines | find --regex '^x$' | length)
+    let x_num = (do -s { zellij list-sessions -n } | complete | get stdout | lines | find --regex '^x ' | length)
     if ($x_num == 1) {
         zellij attach x
     } else {

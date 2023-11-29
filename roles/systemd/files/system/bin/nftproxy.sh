@@ -20,7 +20,7 @@ then
 
     # Tproxy转发
     nft add chain clash prerouting { type filter hook prerouting priority mangle \; }
-    nft add rule clash prerouting iifname { nrpodman0, virbr0 } counter return
+    nft add rule clash prerouting iifname { nrpodman0, "virbr*" } counter return
     nft add rule clash prerouting ip daddr { 0.0.0.0/32, 10.0.0.0/8, 127.0.0.0/8, 172.0.0.0/8, 192.168.0.0/16, 255.255.255.255/32 } counter return
     nft add rule clash prerouting meta l4proto { tcp, udp } mark set 1 tproxy to 127.0.0.1:$port counter accept # 转发至 V2Ray 9999 端口
 
@@ -29,7 +29,7 @@ then
     # for interfaces created by podman, all the dns traffic will be handled by
     # aardvark, we skip them here. And if the network destination is not in the
     # whitelist, it wiil be handled by clash at last.
-    nft add rule clash dns iifname { nrpodman0, virbr0, "podman*" } counter return
+    nft add rule clash dns iifname { nrpodman0, "virbr*", "podman*" } counter return
     nft add rule clash dns meta l4proto { tcp, udp } @th,16,16 53 counter redirect to :1053 # 取消dns转发
 
     # 转发本地流量到1053

@@ -31,7 +31,16 @@ map('i', '<C-s>', '<Esc><Cmd>w<CR>i')
 map('n', '<C-s>', '<Cmd>w<CR>')
 
 -- Termnal
-map('n', '<leader>\'', '<Cmd>Deol -split=floating -toggle -winwidth=120 -winheight=30 -command=nu<CR>')
+-- If nu binary is not found, check if zsh is installed, otherwise use $SHELL
+-- Use if statement to avoid error when running on Windows
+if fn.executable('nu') == 1 then
+    shell = 'nu'
+elseif fn.executable('zsh') == 1 then
+    shell = 'zsh'
+else
+    shell = '$SHELL'
+end
+map('n', '<leader>\'', '<Cmd>Deol -split=floating -toggle -winwidth=120 -winheight=30 -command=' .. shell .. '<CR>')
 map('t', '<Esc>', '<C-\\><C-n>')
 
 -- Change directory to file path

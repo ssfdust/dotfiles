@@ -1,3 +1,19 @@
+- name: Create the `aur_builder` user
+  become: yes
+  ansible.builtin.user:
+    name: aur_lotus
+    create_home: yes
+    group: wheel
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_lotus ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    mode: 0644
+    validate: 'visudo -cf %s'
+
 - name: Copy pacman configurations
   become: true
   copy:

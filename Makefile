@@ -109,8 +109,8 @@ systemd: .prepared secrets.yml
 	ansible-playbook -e @secrets.yml -K --tags systemd install.yml
 
 update: .prepared
-	ansible-playbook update.yml
+	ansible-playbook -K update.yml
 
 .prepared:
-	ansible-galaxy collection install community.general ansible.posix
+	ansible-galaxy collection install community.general ansible.posix kewlfft.aur
 	touch .prepared

@@ -1,5 +1,21 @@
 - hosts: all
+  strategy: free
   tasks:
+    - name: Archlinux Upgrade
+      become: true
+      kewlfft.aur.aur:
+        use: paru
+        upgrade: true
+        update_cache: true
+      become_user: aur_lotus
+      when: ansible_distribution == "Archlinux"
+    - name: Fedora Upgrade
+      become: true
+      dnf:
+        name: '*'
+        allowerasing: true
+        state: latest
+      when: ansible_distribution == "Fedora"
     - name: Update neovim
       shell: |
         nvim --headless -c "call dein#update()" +TSUpdateSync -c qa

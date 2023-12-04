@@ -108,6 +108,9 @@ pamd: .prepared secrets.yml
 systemd: .prepared secrets.yml
 	ansible-playbook -e @secrets.yml -K --tags systemd install.yml
 
+update: .prepared
+	ansible-playbook update.yml
+
 .prepared:
 	ansible-galaxy collection install community.general ansible.posix
 	touch .prepared

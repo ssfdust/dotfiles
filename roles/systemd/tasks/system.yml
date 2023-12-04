@@ -11,6 +11,12 @@
     path: /etc/clash
     state: directory
 
+- name: Copy switch vt service file
+  become: yes
+  copy:
+    src: system/switch-vt.service
+    dest: /etc/systemd/system/switch-vt.service
+
 - name: Copy proxy-routes service file
   become: yes
   copy:

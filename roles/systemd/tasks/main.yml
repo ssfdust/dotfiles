@@ -1,2 +1,2 @@
-- import_tasks: user.yml
 - import_tasks: system.yml
+- import_tasks: user.yml

@@ -1,9 +1,0 @@
-# /etc/systemd/system/switch-vt.service
-[Unit]
-After=getty.target
-[Service]
-Type=idle
-RemainAfterExit=true
-ExecStart=/usr/bin/chvt 3
-[Install]
-WantedBy=multi-user.target

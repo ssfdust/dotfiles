@@ -11,12 +11,6 @@
     path: /etc/clash
     state: directory
 
-- name: Copy switch vt service file
-  become: yes
-  copy:
-    src: system/switch-vt.service
-    dest: /etc/systemd/system/switch-vt.service
-
 - name: Copy proxy-routes service file
   become: yes
   copy:
@@ -48,6 +42,17 @@
     src: system/bin/nftproxy.sh
     dest: /usr/local/sbin/nftproxy.sh
     mode: 0755
+
+- name: "Get current systemd default"
+  become: yes
+  command: "systemctl get-default"
+  changed_when: false
+  register: systemdefault
+
+- name: "Set default to multi-user target"
+  become: yes
+  command: "systemctl set-default multi-user.target"
+  when: "'multi-user' not in systemdefault.stdout"
 
 - name: Restart clash
   become: yes

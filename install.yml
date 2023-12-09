@@ -65,3 +65,5 @@
       tags: fcitx5
     - role: dbg
       tags: dbg
+    - role: hidpi
+      tags: hidpi

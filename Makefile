@@ -108,6 +108,9 @@ pamd: .prepared secrets.yml
 systemd: .prepared secrets.yml
 	ansible-playbook -e @secrets.yml -K --tags systemd install.yml
 
+hidpi: .prepared
+	ansible-playbook --tags hidpi -K install.yml
+
 update: .prepared
 	ansible-playbook -K update.yml
 

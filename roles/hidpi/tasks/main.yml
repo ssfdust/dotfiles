@@ -1,0 +1,45 @@
+- name: Install xsettingsd
+  become: true
+  package:
+    name: xsettingsd
+
+- name: Enable xsettingsd service
+  systemd:
+    daemon_reload: false
+    name: xsettingsd
+    enabled: yes
+    state: started
+    scope: user
+
+- name: Generate xsettingsd configuration
+  shell: echo '"Xft/DPI" 192' >~/.xsettingsd
+  args:
+    creates: ~/.xsettingsd
+
+- name: Create .Xresources if it doesn't exist
+  file:
+    path: ~/.Xresources
+    state: touch
+
+- name: Check if Xft.dpi configuration exists in .Xresources file
+  shell: grep -q '^Xft.dpi' ~/.Xresources
+  register: dpi_check
+  changed_when: false
+  ignore_errors: true
+
+- name: Add or modify Xft.dpi configuration
+  lineinfile:
+    path: ~/.Xresources
+    line: "{{ item }}"
+    state: present
+  when: dpi_check.rc != 0
+  with_items:
+    - "! Set Xft.dpi to control the DPI"
+    - "Xft.dpi: 192"
+
+- name: Modify the value of Xft.dpi configuration
+  lineinfile:
+    path: ~/.Xresources
+    regexp: '^Xft.dpi:'
+    line: 'Xft.dpi: 192'
+  when: dpi_check.rc == 0

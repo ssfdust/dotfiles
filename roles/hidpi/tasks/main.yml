@@ -12,9 +12,18 @@
     scope: user
 
 - name: Generate xsettingsd configuration
-  shell: echo '"Xft/DPI" 192' >~/.xsettingsd
+  shell: dump_xsettings >~/.xsettingsd
   args:
     creates: ~/.xsettingsd
+
+- name: modify xsettingsd configuration
+  lineinfile:
+    path: ~/.xsettingsd
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "Gdk/UnscaledDPI 98304"
+    - "Gdk/WindowScalingFactor 2"
 
 - name: Create .Xresources if it doesn't exist
   file:

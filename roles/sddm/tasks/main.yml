@@ -1,4 +1,0 @@
-- copy:
-    src: sddm.conf
-    dest: /etc
-  become: true

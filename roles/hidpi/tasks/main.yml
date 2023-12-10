@@ -1,7 +1,9 @@
 - name: Install xsettingsd
   become: true
   package:
-    name: xsettingsd
+    name:
+      - xsettingsd
+      - xorg-xrdb
 
 - name: Enable xsettingsd service
   systemd:
@@ -11,10 +13,14 @@
     state: started
     scope: user
 
-- name: Generate xsettingsd configuration
-  shell: dump_xsettings >~/.xsettingsd
-  args:
-    creates: ~/.xsettingsd
+- name: Create files if they don't exist
+  file:
+    path: "{{ item }}"
+    state: touch
+  with_items:
+    - "~/.Xresources"
+    - "~/.bash_profile"
+    - "~/.xsettingsd"
 
 - name: modify xsettingsd configuration
   lineinfile:
@@ -22,13 +28,9 @@
     line: "{{ item }}"
     state: present
   with_items:
-    - "Gdk/UnscaledDPI 98304"
-    - "Gdk/WindowScalingFactor 2"
-
-- name: Create .Xresources if it doesn't exist
-  file:
-    path: ~/.Xresources
-    state: touch
+    - '"Xft/DPI" 196'
+    - '"Gdk/UnscaledDPI" 98304'
+    - '"Gdk/WindowScalingFactor 2"'
 
 - name: Check if Xft.dpi configuration exists in .Xresources file
   shell: grep -q '^Xft.dpi' ~/.Xresources
@@ -52,3 +54,39 @@
     regexp: '^Xft.dpi:'
     line: 'Xft.dpi: 192'
   when: dpi_check.rc == 0
+
+- name: Add xwayland autostart configuration to wayfire.ini
+  blockinfile:
+    path: ~/.config/wayfire/wayfire.ini
+    marker: "# {mark} ANSIBLE BLOCK"
+    insertafter: '^\[autostart\]'
+    block: |
+      xrdb = xrdb -load ~/.Xresources \
+          && xprop -root \
+              -format _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c \
+              -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+
+- name: Modify hidpi for plymouth
+  become: true
+  community.general.ini_file:
+    path: /etc/plymouth/plymouthd.conf
+    section: Daemon
+    option: DeviceScale
+    value: 2
+
+- name: Update cursor size to hidpi
+  shell: gsettings set org.gnome.desktop.interface cursor-size 24
+
+- name: Modify sddm configuration
+  become: true
+  community.general.ini_file:
+    path: "/etc/sddm.conf.d/{{ item.section | lower }}.conf"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    no_extra_spaces: true
+  with_items:
+    - { section: "Theme", option: "CursorSize", value: "32" }
+    - section: "General"
+      option: "GreeterEnvironment"
+      value: "QT_SCREEN_SCALE_FACTORS=2,QT_FONT_DPI=192"

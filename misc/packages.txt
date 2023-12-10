@@ -1,4 +1,4 @@
-AUR/archivemount-git
+AUR/archivemount
 AUR/carapace-bin
 AUR/kvantum-theme-arc
 AUR/libpam_pwdfile
@@ -7,12 +7,9 @@ AUR/mkinitcpio-sd-zfs-git
 AUR/neovim-gruvbox-material-git
 AUR/notmuch-addrlookup-c
 AUR/pam-gnupg
-AUR/pulse-glass-tri-color
 AUR/refind-theme-darkmini-git
 AUR/sddm-sugar-candy-git
 AUR/siyuan-note-bin
-AUR/we10x-icon-theme-git
-AUR/wl-clipboard-rs
 AUR/wlogout-git
 arc-solid-gtk-theme
 bind
@@ -123,6 +120,7 @@ wget
 wf-recorder
 wireless_tools
 wireplumber
+wl-clipboard
 wofi
 wtype
 xdg-desktop-portal

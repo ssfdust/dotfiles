@@ -1,3 +1,11 @@
+- name: Install cursor packages
+  become: true
+  package:
+    name:
+      - sddm
+      - bibata-cursor-theme
+      - tela-circle-icon-theme-blue-git
+
 - name: Create directory
   file:
     state: directory
@@ -17,14 +25,34 @@
     - { src: settings.ini.template, dest: ~/.config/gtk-4.0/settings.ini }
     - { src: gtkrc-2.0.template, dest: ~/.gtkrc-2.0 }
 
-- name: Apply cursor for gtk applications
-  shell: gsettings set org.gnome.desktop.interface cursor-theme "Pulse-Glass-Sapphire-Regular"
-
 - name: Apply icon theme for gtk applications
   shell: |
-    gsettings set org.gnome.desktop.interface icon-theme We10X-blue
+    gsettings set org.gnome.desktop.interface cursor-theme "{{ cursor }}"
+    gsettings set org.gnome.desktop.interface icon-theme "{{ icons }}"
     gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-    gsettings set org.gnome.desktop.interface gtk-theme Arc-Darker-solid
+    gsettings set org.gnome.desktop.interface gtk-theme "{{ theme }}"
+
+- name: Create sddm configuration directory
+  become: true
+  file:
+    path: /etc/sddm.conf.d/
+    state: directory
+
+- name: Modify sddm configuration
+  become: true
+  community.general.ini_file:
+    path: "/etc/sddm.conf.d/{{ item.section | lower }}.conf"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    no_extra_spaces: true
+  with_items:
+    - { section: "General", option: "DisplayServer", value: "wayland" }
+    - { section: "Theme", option: "Current", value: "sugar-candy" }
+    - { section: "Theme", option: "CursorTheme", value: "{{ cursor }}" }
+    - section: "Wayland"
+      option: "CompositorCommand"
+      value: "weston --shell=fullscreen-shell.so"
 
 - name: Bring back minimize and maximize buttons in gtk
   shell: gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"

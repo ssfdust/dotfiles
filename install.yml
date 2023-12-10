@@ -11,8 +11,6 @@
       tags: firefox
     - role: wofi
       tags: wofi
-    - role: sddm
-      tags: sddm
     - role: pacman
       tags: pacman
     - role: wayfire

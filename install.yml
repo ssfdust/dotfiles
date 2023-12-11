@@ -45,8 +45,6 @@
       tags: aria2
     - role: env
       tags: env
-    - role: qt
-      tags: qt
     - role: icons
       tags: icons
     - role: profile

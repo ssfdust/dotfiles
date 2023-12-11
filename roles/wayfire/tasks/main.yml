@@ -2,16 +2,21 @@
   become: true
   package:
     name:
-      - arc-solid-gtk-theme
+      - arc-kde-git
+      - kvantum
       - ffmpegthumbnailer
       - grim
       - kanshi
       - kitty
+      - kvantum
       - network-manager-applet
       - xdg-desktop-portal
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
       - qt5ct
+      - qt5-graphicaleffects
+      - qt5-quickcontrols2
+      - qt5-svg
       - sddm
       - slurp
       - swayidle
@@ -74,3 +79,19 @@
     name: wayfire-headless-session.service
     enabled: yes
     scope: user
+
+- name: Create directories
+  file:
+    state: directory
+    path: "{{ item }}"
+  with_items:
+    - "~/.config/Kvantum"
+    - "~/.config/qt5ct"
+
+- name: Copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: qt5/kvantum.kvconfig, dest: ~/.config/Kvantum/kvantum.kvconfig }
+    - { src: qt5/qt5ct.conf, dest: ~/.config/qt5ct/qt5ct.conf }

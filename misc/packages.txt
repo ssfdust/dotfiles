@@ -1,6 +1,5 @@
 AUR/archivemount
 AUR/carapace-bin
-AUR/kvantum-theme-arc
 AUR/libpam_pwdfile
 AUR/lieer-git
 AUR/mkinitcpio-sd-zfs-git
@@ -78,9 +77,6 @@ pulseaudio
 python-pip
 python-pyqt5
 qemu-base
-qt5-graphicaleffects
-qt5-quickcontrols2
-qt5-svg
 reflector
 ripgrep
 rsync

@@ -2,7 +2,7 @@ all: .prepared secrets.yml
 	ansible-playbook -K -e @secrets.yml install.yml
 
 headless: .prepared secrets.yml
-	ansible-playbook -K -e @secrets.yml --tags aria2,env,fcitx5,fontconfig,kitty,lf,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,pamd,password-store,profile,pueue,refind,starship,systemd,waybar,wayfire,wlogout,zellij,qt,dbg install.yml
+	ansible-playbook -K -e @secrets.yml --tags aria2,env,fcitx5,fontconfig,kitty,lf,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,pamd,password-store,profile,pueue,refind,starship,systemd,waybar,wayfire,wlogout,zellij,dbg install.yml
 
 desktop: .prepared secrets
 	ansible-playbook -K -e @secrets.yml --tags firefox,gnupg,icons install.yml
@@ -67,13 +67,10 @@ fcitx5: .prepared
 	ansible-playbook --tags fcitx5 install.yml
 
 waybar: .prepared
-	ansible-playbook --tags waybar install.yml
+	ansible-playbook -K --tags waybar install.yml
 
 wayfire: .prepared
-	ansible-playbook --tags wayfire install.yml
-
-qt: .prepared
-	ansible-playbook --tags qt install.yml
+	ansible-playbook -K --tags wayfire install.yml
 
 zellij: .prepared
 	ansible-playbook -K --tags zellij install.yml

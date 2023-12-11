@@ -21,9 +21,9 @@
       shell: |
         nvim --headless -c "call dein#update()" +TSUpdateSync -c qa
         nvim --headless +CocUpdateSync -c qa
-    - name: Update galaxy
-      shell: |
-        ansible-galaxy collection install -U community.general ansible.posix
     - name: Update rust toolchain
       shell: |
         rustup update
+    - name: Update galaxy
+      shell: |
+        ansible-galaxy collection install -U community.general ansible.posix

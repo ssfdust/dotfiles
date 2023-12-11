@@ -7,19 +7,12 @@
       - udiskie
       - jq
 
-- stat:
-    path: "~/.config/waybar"
-  register: link
-
-- name: remove symlink
-  file:
-    path: "~/.config/waybar"
-    state: absent
-  when: link.stat.islnk is defined and link.stat.islnk
-
-- name: deploy waybar
+- name: "deploy {{ item }}"
   ansible.posix.synchronize:
-    src: waybar
+    src: "{{ item }}"
     dest: ~/.config
     delete: yes
     recursive: yes
+  with_items:
+    - waybar
+    - swaync

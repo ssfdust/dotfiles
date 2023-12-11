@@ -1,26 +1,40 @@
-- stat:
-    path: "~/.config/wayfire"
-  register: link
+- name: Install wayfire related packages
+  become: true
+  package:
+    name:
+      - arc-solid-gtk-theme
+      - ffmpegthumbnailer
+      - grim
+      - kanshi
+      - kitty
+      - network-manager-applet
+      - xdg-desktop-portal
+      - xdg-desktop-portal-gtk
+      - xdg-desktop-portal-wlr
+      - qt5ct
+      - sddm
+      - slurp
+      - swayidle
+      - swayimg
+      - swaylock-effects
+      - thunar
+      - tumbler
+      - weston
+      - wf-recorder
+      - wl-clipboard
+      - wtype
+      - zenity
 
-- name: remove symlink
-  file:
-    path: "~/.config/wayfire"
-    state: absent
-  when: link.stat.islnk is defined and link.stat.islnk
-
-- name: deploy wayfire
+- name: "deploy {{ item }}"
   ansible.posix.synchronize:
-    src: wayfire
+    src: "{{ item }}"
     dest: ~/.config
     delete: yes
     recursive: yes
-
-- name: deploy xdg-desktop-portal configuration
-  ansible.posix.synchronize:
-    src: xdg-desktop-portal
-    dest: ~/.config
-    delete: yes
-    recursive: yes
+  with_items:
+    - wayfire
+    - xdg-desktop-portal
+    - wofi
 
 - name: deploy wayfire binaries
   ansible.posix.synchronize:

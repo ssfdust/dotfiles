@@ -50,6 +50,7 @@
     - { section: "General", option: "DisplayServer", value: "wayland" }
     - { section: "Theme", option: "Current", value: "sugar-candy" }
     - { section: "Theme", option: "CursorTheme", value: "{{ cursor }}" }
+    - { section: "Theme", option: "CursorSize", value: "24" }
     - section: "Wayland"
       option: "CompositorCommand"
       value: "weston --shell=fullscreen-shell.so"

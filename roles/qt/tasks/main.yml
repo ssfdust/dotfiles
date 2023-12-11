@@ -1,3 +1,10 @@
+- name: Install qt related packages
+  become: true
+  package:
+    name:
+      - kvantum
+      - arc-kde-git
+
 - name: Create directories
   file:
     state: directory
@@ -5,7 +12,6 @@
   with_items:
     - "~/.config/Kvantum"
     - "~/.config/qt5ct"
-
 
 - name: Copy files
   copy:

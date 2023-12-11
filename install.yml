@@ -9,8 +9,6 @@
       tags: neovim
     - role: firefox
       tags: firefox
-    - role: wofi
-      tags: wofi
     - role: pacman
       tags: pacman
     - role: wayfire
@@ -33,8 +31,6 @@
       tags: msmtp
     - role: mbsync
       tags: mbsync
-    - role: swaync
-      tags: swaync
     - role: refind
       tags: refind
     - role: lf

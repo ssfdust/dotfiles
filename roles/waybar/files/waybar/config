@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": ["custom/firefox", "custom/tg", "custom/dingtalk","custom/keepassxc","custom/remmina",  "custom/arrow01", "custom/mail", "custom/arrow02", "custom/weather", "custom/arrow03", "network#1", "custom/arrow04"],
-    "modules-center": ["clock#1", "custom/autostart"],
+    "modules-center": ["clock#1"],
     "modules-right": ["custom/arrow05", "network#2", "custom/arrow06","pulseaudio","custom/arrow07", "custom/date", "custom/arrow08", "custom/notification", "custom/arrow09", "tray","custom/arrow10"],
     // Modules configuration
     "tray": {
@@ -136,10 +136,6 @@
         "interval": 1,
         "exec": "swaync-client -c",
         "on-click": "swaync-client -t -sw"
-    },
-    "custom/autostart" : {
-        "format": "",
-        "exec": "myautostart"
     },
     "custom/arrow01": {
         "format": ""

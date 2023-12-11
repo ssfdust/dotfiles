@@ -70,7 +70,7 @@ fcitx5: .prepared
 	ansible-playbook --tags fcitx5 install.yml
 
 waybar: .prepared
-	ansible-playbook --tags waybar install.yml
+	ansible-playbook -K --tags waybar install.yml
 
 wayfire: .prepared
 	ansible-playbook --tags wayfire install.yml

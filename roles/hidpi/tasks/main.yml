@@ -21,6 +21,7 @@
     - "~/.Xresources"
     - "~/.bash_profile"
     - "~/.xsettingsd"
+    - "~/.config/environment.d/62-hidpi.conf"
 
 - name: modify xsettingsd configuration
   lineinfile:
@@ -31,12 +32,23 @@
     - '"Xft/DPI" 196'
     - '"Gdk/UnscaledDPI" 98304'
     - '"Gdk/WindowScalingFactor 2"'
+    - '"Gtk/CursorThemeSize" 48'
+    - '"Xcursor/size" 48'
 
 - name: Check if Xft.dpi configuration exists in .Xresources file
   shell: grep -q '^Xft.dpi' ~/.Xresources
   register: dpi_check
   changed_when: false
   ignore_errors: true
+
+- name: Create hidpi.conf for qt support
+  lineinfile:
+    path: ~/.config/environment.d/62-hidpi.conf
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "QT_AUTO_SCREEN_SCALE_FACTOR=1"
+    - "QT_ENABLE_HIGHDPI_SCALING=1"
 
 - name: Add or modify Xft.dpi configuration
   lineinfile:
@@ -86,7 +98,7 @@
     value: "{{ item.value }}"
     no_extra_spaces: true
   with_items:
-    - { section: "Theme", option: "CursorSize", value: "32" }
+    - { section: "Theme", option: "CursorSize", value: "48" }
     - section: "General"
       option: "GreeterEnvironment"
       value: "QT_SCREEN_SCALE_FACTORS=2,QT_FONT_DPI=192"

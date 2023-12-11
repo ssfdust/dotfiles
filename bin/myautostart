@@ -1,3 +1,0 @@
-#!/bin/bash
-pgrep firewall-applet > /dev/null || firewall-applet &
-systemctl --user start app-org.fcitx.Fcitx5@autostart.service app-copyq@autostart.service app-Flameshot@autostart.service app-org.keepassxc.KeePassXC@autostart.service

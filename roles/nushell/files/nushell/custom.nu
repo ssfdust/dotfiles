@@ -52,8 +52,8 @@ export def list_uninst_from [path: string] {
 
 # wrapped lf command
 export def --env lf [...args] {
-    let tmp = (mktemp)
-    let fid = (mktemp)
+    let tmp = (^mktemp)
+    let fid = (^mktemp)
 
     ^lf -command $"$printf $id > "($fid)"" $"-last-dir-path=($tmp)" $args
     let id = (open -r $fid)

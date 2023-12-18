@@ -1,6 +1,9 @@
 - name: Install wayfire related packages
   become: true
-  package:
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --skipreview --mflags='-sr --noconfirm'
     name:
       - arc-kde-git
       - kvantum

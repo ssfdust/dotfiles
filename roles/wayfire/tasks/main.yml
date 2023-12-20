@@ -14,6 +14,7 @@
       - kvantum
       - network-manager-applet
       - xdg-desktop-portal
+      - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
       - qt5ct
       - qt5-graphicaleffects

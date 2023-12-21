@@ -17,7 +17,6 @@ dmidecode
 dnsmasq
 fastfetch
 fd
-firefox
 firewalld
 fortune-mod
 fzf
@@ -41,13 +40,11 @@ mycli
 neomutt
 net-tools
 networkmanager
-flameshot
 nfs-utils
 nftables
 nmap
 nodejs
 notmuch
-noto-fonts-emoji
 npm
 openssh
 p7zip
@@ -73,8 +70,6 @@ rsync
 skopeo
 sshfs
 tcpdump
-telegram-desktop
-telegram-qt
 trash-cli
 unarchiver
 unzip

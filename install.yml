@@ -13,10 +13,18 @@
       tags: wayfire
     - role: starship
       tags: starship
+    - role: lf
+      tags: lf
     - role: nushell
       tags: nushell
     - role: pueue
       tags: pueue
+    - role: profile
+      tags: profile
+    - role: zellij
+      tags: zellij
+    - role: dbg
+      tags: dbg
     - role: neomutt
       tags: neomutt
     - role: password-store
@@ -29,23 +37,11 @@
       tags: mbsync
     - role: refind
       tags: refind
-    - role: lf
-      tags: lf
-    - role: kitty
-      tags: kitty
-    - role: fontconfig
-      tags: fontconfig
     - role: gnupg
       tags: gnupg
     - role: env
       tags: env
     - role: icons
       tags: icons
-    - role: profile
-      tags: profile
-    - role: zellij
-      tags: zellij
-    - role: dbg
-      tags: dbg
     - role: hidpi
       tags: hidpi

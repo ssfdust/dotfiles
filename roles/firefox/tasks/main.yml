@@ -1,3 +1,13 @@
+- name: Install firefox
+  package:
+    name:
+      - firefox
+
+- name: Initilize firefox profiles
+  shell: |
+    test -d ~/.mozilla/firefox \
+        || (timeout 15 firefox --headless --first-startup || true)
+
 - name: Get firefox default profiles
   find:
     paths: ~/.mozilla/firefox
@@ -6,9 +16,17 @@
     patterns: '*.default*'
   register: ret
 
-- ansible.posix.synchronize:
+- name: Copy theme to profiles
+  ansible.posix.synchronize:
     src: chrome
     dest: "{{ item.path }}"
     delete: true
+  with_items:
+    - "{{ ret.files }}"
+
+- name: Create preference js file
+  copy:
+    content: 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);'
+    dest: "{{ item.path }}/user.js"
   with_items:
     - "{{ ret.files }}"

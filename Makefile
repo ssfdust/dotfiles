@@ -2,7 +2,7 @@ all: .prepared secrets.yml
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key install.yml
 
 headless: .prepared secrets.yml
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key -e @secrets.yml --tags env,fontconfig,kitty,lf,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,password-store,profile,pueue,refind,starship,systemd,wayfire,zellij,dbg install.yml
+	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key -e @secrets.yml --tags env,lf,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,password-store,profile,pueue,refind,starship,systemd,wayfire,zellij,dbg install.yml
 
 desktop: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key -e @secrets.yml --tags firefox,gnupg,icons install.yml
@@ -36,12 +36,6 @@ firefox: .prepared
 
 lf: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags lf install.yml
-
-kitty: .prepared
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags kitty install.yml
-
-fontconfig: .prepared
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags fontconfig install.yml
 
 gnupg: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags gnupg install.yml

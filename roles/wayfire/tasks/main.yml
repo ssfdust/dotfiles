@@ -6,45 +6,46 @@
     extra_args: --skipreview --mflags='-sr --noconfirm'
     name:
       - arc-kde-git
-      - kvantum
-      - ffmpegthumbnailer
-      - grim
-      - kanshi
-      - kitty
-      - kvantum
-      - network-manager-applet
-      - xdg-desktop-portal
-      - xdg-desktop-portal-gtk
-      - xdg-desktop-portal-wlr
-      - qt5ct
-      - qt5-graphicaleffects
-      - qt5-quickcontrols2
-      - qt5-svg
-      - slurp
-      - sddm
-      - swayidle
-      - swayimg
-      - thunar
-      - tumbler
-      - weston
-      - wf-recorder
-      - wl-clipboard
-      - wtype
-      - zenity
-      - waybar
-      - swaync
-      - udiskie
-      - jq
       - fcitx5
       - fcitx5-configtool
       - fcitx5-gtk
       - fcitx5-nord
       - fcitx5-qt
       - fcitx5-rime
-      - wlogout-git
+      - ffmpegthumbnailer
+      - flameshot
+      - grim
+      - jq
+      - kanshi
+      - kitty
+      - kvantum
+      - kvantum
+      - network-manager-applet
+      - noto-fonts-emoji
+      - qt5ct
+      - qt5-graphicaleffects
+      - qt5-quickcontrols2
+      - qt5-svg
+      - sddm
+      - slurp
+      - swayidle
+      - swayimg
+      - swaync
       - telegram-desktop
       - telegram-qt
-      - flameshot
+      - thunar
+      - tumbler
+      - udiskie
+      - waybar
+      - weston
+      - wf-recorder
+      - wl-clipboard
+      - wlogout-git
+      - wtype
+      - xdg-desktop-portal
+      - xdg-desktop-portal-gtk
+      - xdg-desktop-portal-wlr
+      - zenity
 
 - name: "deploy {{ item }}"
   ansible.posix.synchronize:
@@ -53,13 +54,15 @@
     delete: yes
     recursive: yes
   with_items:
-    - wayfire
-    - xdg-desktop-portal
-    - waybar
-    - swaync
-    - wofi
     - fcitx5
+    - fontconfig
+    - kitty
+    - swaync
+    - waybar
+    - wayfire
     - wlogout
+    - wofi
+    - xdg-desktop-portal
 
 - name: deploy wayfire binaries
   ansible.posix.synchronize:

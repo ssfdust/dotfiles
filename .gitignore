@@ -3,6 +3,7 @@ secrets.yml
 temp.yml
 collections/
 .prepared
+.secrets
 
 ### Tags ###
 # Ignore tags created by etags, ctags, gtags (GNU global) and cscope

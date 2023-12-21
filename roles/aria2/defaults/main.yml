@@ -1,1 +1,0 @@
-aria2_rpc_secret: "{{ lookup('pipe', \"date | md5sum | awk '{print $1}'\") }}"

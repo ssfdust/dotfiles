@@ -1,3 +1,16 @@
+- name: Install gnupg related packages
+  become: true
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --skipreview --mflags='-sr --noconfirm'
+    name:
+      - sddm
+      - gnupg
+      - pam-gnupg
+      - libpam_pwdfile
+      - swaylock-effects
+
 - name: copy gnupg
   copy:
     src: "{{ item }}"
@@ -39,3 +52,27 @@
   with_items:
     - { name: swaylock, type: auth, control: include, module_path: login, new_type: -auth, new_control: optional, new_module_path: pam_gnupg.so, state: before }
     - { name: swaylock, type: auth, control: include, module_path: login, new_type: -session, new_control: optional, new_module_path: pam_gnupg.so, state: after }
+
+- name: Create password pin
+  command: openssl passwd -1 {{ pin }}
+  register: passwd_pin
+
+- name: Create password pin file
+  copy:
+    dest: "/etc/unlock_pin"
+    content: "{{ ansible_user_id }}:{{ passwd_pin.stdout }}"
+    mode: 0644
+  become: yes
+
+- name: Update pamd rule's control in /etc/pam.d/swaylock
+  become: yes
+  community.general.pamd:
+    name: swaylock
+    type: auth
+    control: include
+    module_path: login
+    new_type: -auth
+    new_control: sufficient
+    new_module_path: pam_pwdfile.so
+    module_arguments: 'pwdfile=/etc/unlock_pin'
+    state: before

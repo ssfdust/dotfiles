@@ -1,7 +1,3 @@
-- name: Get current user name
-  command: whoami
-  register: user
-
 - name: Create password pin
   command: openssl passwd -1 {{ pin }}
   register: passwd_pin
@@ -9,7 +5,7 @@
 - name: Create password pin file
   copy:
     dest: "/etc/unlock_pin"
-    content: "{{ user.stdout }}:{{ passwd_pin.stdout }}"
+    content: "{{ ansible_user }}:{{ passwd_pin.stdout }}"
     mode: 0644
   become: yes
 

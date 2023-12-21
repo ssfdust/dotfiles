@@ -1,10 +1,14 @@
 - name: Install cursor packages
   become: true
-  package:
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --skipreview --mflags='-sr --noconfirm'
     name:
       - sddm
       - bibata-cursor-theme
       - tela-circle-icon-theme-blue-git
+      - sddm-sugar-candy-git
 
 - name: Create directory
   file:

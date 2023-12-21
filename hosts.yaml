@@ -2,3 +2,4 @@ all:
   hosts:
     desktop:
       ansible_connection: local
+      ansible_become_pass: '{{ become_pass }}'

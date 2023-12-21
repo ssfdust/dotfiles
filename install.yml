@@ -3,8 +3,6 @@
   roles:
     - role: systemd
       tags: systemd
-    - role: pamd
-      tags: pamd
     - role: neovim
       tags: neovim
     - role: firefox
@@ -13,8 +11,6 @@
       tags: pacman
     - role: wayfire
       tags: wayfire
-    - role: waybar
-      tags: waybar
     - role: starship
       tags: starship
     - role: nushell
@@ -41,8 +37,6 @@
       tags: fontconfig
     - role: gnupg
       tags: gnupg
-    - role: aria2
-      tags: aria2
     - role: env
       tags: env
     - role: icons
@@ -51,10 +45,6 @@
       tags: profile
     - role: zellij
       tags: zellij
-    - role: wlogout
-      tags: wlogout
-    - role: fcitx5
-      tags: fcitx5
     - role: dbg
       tags: dbg
     - role: hidpi

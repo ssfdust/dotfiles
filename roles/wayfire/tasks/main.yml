@@ -20,11 +20,10 @@
       - qt5-graphicaleffects
       - qt5-quickcontrols2
       - qt5-svg
-      - sddm
       - slurp
+      - sddm
       - swayidle
       - swayimg
-      - swaylock-effects
       - thunar
       - tumbler
       - weston
@@ -32,6 +31,20 @@
       - wl-clipboard
       - wtype
       - zenity
+      - waybar
+      - swaync
+      - udiskie
+      - jq
+      - fcitx5
+      - fcitx5-configtool
+      - fcitx5-gtk
+      - fcitx5-nord
+      - fcitx5-qt
+      - fcitx5-rime
+      - wlogout-git
+      - telegram-desktop
+      - telegram-qt
+      - flameshot
 
 - name: "deploy {{ item }}"
   ansible.posix.synchronize:
@@ -42,7 +55,11 @@
   with_items:
     - wayfire
     - xdg-desktop-portal
+    - waybar
+    - swaync
     - wofi
+    - fcitx5
+    - wlogout
 
 - name: deploy wayfire binaries
   ansible.posix.synchronize:
@@ -83,6 +100,9 @@
     enabled: yes
     scope: user
 
+- name: Set thunar as the default file browser
+  shell: xdg-mime default thunar.desktop inode/directory
+
 - name: Create directories
   file:
     state: directory
@@ -98,3 +118,18 @@
   with_items:
     - { src: qt5/kvantum.kvconfig, dest: ~/.config/Kvantum/kvantum.kvconfig }
     - { src: qt5/qt5ct.conf, dest: ~/.config/qt5ct/qt5ct.conf }
+
+- name: Initlize rime sync service
+  copy:
+    src: "{{ item }}"
+    dest: ~/.config/systemd/user
+  with_fileglob:
+    - "services/*"
+
+- name: Enable rime sync service
+  systemd:
+    daemon_reload: false
+    name: rime.timer
+    enabled: yes
+    scope: user
+    state: started

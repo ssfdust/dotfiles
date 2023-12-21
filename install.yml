@@ -41,7 +41,5 @@
       tags: gnupg
     - role: env
       tags: env
-    - role: icons
-      tags: icons
     - role: hidpi
       tags: hidpi

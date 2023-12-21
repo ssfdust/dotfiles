@@ -1,0 +1,33 @@
+- name: Set thunar as the default file browser
+  shell: xdg-mime default thunar.desktop inode/directory
+
+- name: Create directories
+  file:
+    state: directory
+    path: "{{ item }}"
+  with_items:
+    - "~/.config/Kvantum"
+    - "~/.config/qt5ct"
+
+- name: Copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: qt5/kvantum.kvconfig, dest: ~/.config/Kvantum/kvantum.kvconfig }
+    - { src: qt5/qt5ct.conf, dest: ~/.config/qt5ct/qt5ct.conf }
+
+- name: Initlize rime sync service
+  copy:
+    src: "{{ item }}"
+    dest: ~/.config/systemd/user
+  with_fileglob:
+    - "services/*"
+
+- name: Enable rime sync service
+  systemd:
+    daemon_reload: false
+    name: rime.timer
+    enabled: yes
+    scope: user
+    state: started

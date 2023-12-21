@@ -1,0 +1,98 @@
+- name: Install wayfire related packages
+  become: true
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --skipreview --mflags='-sr --noconfirm'
+    name:
+      - arc-kde-git
+      - fcitx5
+      - fcitx5-configtool
+      - fcitx5-gtk
+      - fcitx5-nord
+      - fcitx5-qt
+      - fcitx5-rime
+      - ffmpegthumbnailer
+      - flameshot
+      - grim
+      - jq
+      - kanshi
+      - kitty
+      - kvantum
+      - network-manager-applet
+      - noto-fonts-emoji
+      - qt5ct
+      - qt5-graphicaleffects
+      - qt5-quickcontrols2
+      - qt5-svg
+      - sddm
+      - slurp
+      - swayidle
+      - swayimg
+      - swaync
+      - telegram-desktop
+      - telegram-qt
+      - thunar
+      - tumbler
+      - udiskie
+      - waybar
+      - weston
+      - wf-recorder
+      - wl-clipboard
+      - wlogout-git
+      - wtype
+      - xdg-desktop-portal
+      - xdg-desktop-portal-gtk
+      - xdg-desktop-portal-wlr
+      - zenity
+
+- name: "deploy {{ item }}"
+  ansible.posix.synchronize:
+    src: "{{ item }}"
+    dest: ~/.config
+    delete: yes
+    recursive: yes
+  with_items:
+    - fcitx5
+    - fontconfig
+    - kitty
+    - swaync
+    - waybar
+    - wayfire
+    - wayvnc
+    - wlogout
+    - wofi
+    - xdg-desktop-portal
+
+- name: deploy wayfire binaries
+  ansible.posix.synchronize:
+    src: bin
+    dest: ~/.local
+    delete: yes
+    recursive: yes
+
+- name: Create systemd directory
+  file:
+    state: directory
+    path: ~/.config/systemd/user
+
+- name: Search for the first drm card
+  find:
+    paths: /dev/dri/
+    file_type: any
+    recurse: no
+    patterns: "card*"
+  register: cards
+
+- name: Create wayfire headless session service file
+  template:
+    src: wayfire-headless.service.template
+    dest: ~/.config/systemd/user/wayfire-headless-session.service
+  vars:
+    drm_card: "{{ (cards.files | first)['path']  }}"
+
+- name: Enable wayfire headless service
+  systemd:
+    name: wayfire-headless-session.service
+    enabled: yes
+    scope: user

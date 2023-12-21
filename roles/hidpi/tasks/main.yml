@@ -19,7 +19,6 @@
     state: touch
   with_items:
     - "~/.Xresources"
-    - "~/.bash_profile"
     - "~/.xsettingsd"
     - "~/.config/environment.d/62-hidpi.conf"
 

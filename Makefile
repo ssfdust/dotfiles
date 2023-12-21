@@ -1,11 +1,10 @@
-all: .prepared secrets.yml
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key install.yml
+HEADLESSTAGS := env,lf,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,password-store,profile,pueue,refind,starship,systemd,wayfire,zellij,dbg
 
-headless: .prepared secrets.yml
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key -e @secrets.yml --tags env,lf,mbsync,msmtp,mycli,neomutt,neovim,nushell,pacman,password-store,profile,pueue,refind,starship,systemd,wayfire,zellij,dbg install.yml
+all: .prepared secrets.yml
+	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags $(HEADLESSTAGS) install.yml
 
 desktop: .prepared
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key -e @secrets.yml --tags firefox,gnupg,icons install.yml
+	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags gnupg install.yml
 
 starship: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags starship install.yml
@@ -31,9 +30,6 @@ msmtp: .prepared
 mbsync: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags mbsync install.yml
 
-firefox: .prepared
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags firefox install.yml
-
 lf: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags lf install.yml
 
@@ -51,9 +47,6 @@ wayfire: .prepared
 
 zellij: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags zellij install.yml
-
-icons: .prepared
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags icons install.yml
 
 neovim: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags neovim install.yml
@@ -76,9 +69,9 @@ hidpi: .prepared
 update: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key update.yml
 
-.secrets:
-	./tools/create_secrets
-
 .prepared: .secrets
 	ansible-galaxy collection install community.general ansible.posix kewlfft.aur
 	touch .prepared
+
+.secrets:
+	./tools/create_secrets

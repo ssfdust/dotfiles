@@ -64,6 +64,17 @@
     - wofi
     - xdg-desktop-portal
 
+- name: Copy environment files to ~/.config/environment.d
+  copy:
+    src: "environment.d/{{ item }}"
+    dest: "~/.config/environment.d/{{ item }}"
+  with_items:
+    - 60-fcitx.conf
+    - 60-kitty.conf
+    - 60-wayfire.conf
+    - 60-wayland.conf
+    - 61-de.conf
+
 - name: deploy wayfire binaries
   ansible.posix.synchronize:
     src: bin

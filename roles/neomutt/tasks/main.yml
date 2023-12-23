@@ -1,13 +1,3 @@
-- stat:
-    path: "~/.config/neomutt"
-  register: link
-
-- name: remove symlink
-  file:
-    path: "~/.config/neomutt"
-    state: absent
-  when: link.stat.islnk is defined and link.stat.islnk
-
 - name: Create directories for notmuch
   file:
     path: "~/.local/share/mail/{{ item }}"

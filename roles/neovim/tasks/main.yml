@@ -1,13 +1,17 @@
-- stat:
-    path: "~/.config/nvim"
-  register: link
-
-- name: remove symlink
-  file:
-    path: "~/.config/nvim"
-    state: absent
-  when: link.stat.islnk is defined and link.stat.islnk
-
+- name: Install neovim packages
+  become: true
+  package:
+    name:
+      - neovim
+      - deno
+      - nodejs
+      - npm
+      - gcc
+      - python-neovim
+      - fortune-mod
+      - global
+      - python-pygments
+      - ctags
 - name: deploy neovim
   ansible.posix.synchronize:
     src: "{{ item }}"
@@ -17,3 +21,16 @@
   with_items:
     - nvim
     - gtags
+- name: Copy environment files to ~/.config/environment.d
+  copy:
+    src: "environment.d/{{ item }}"
+    dest: "~/.config/environment.d/{{ item }}"
+  with_items:
+    - 60-gtags.conf
+- name: Initilize neovim configuration
+  shell: |
+    nvim --headless -c qa
+    nvim --headless -c "call coc#rpc#request('installExtensions', g:coc_global_extensions)" -c qa
+    nvim --headless +TSUpdateSync +CocUpdateSync -c qa
+  args:
+    creates: "~/.config/coc"

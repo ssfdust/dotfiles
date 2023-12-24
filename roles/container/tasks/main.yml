@@ -23,7 +23,6 @@
     daemon_reload: true
     name: "{{ item }}"
     enabled: yes
-    state: started
   with_items:
     - "podman-restart"
     - podman

@@ -27,3 +27,4 @@
   with_items:
     - "podman-restart"
     - podman
+- import_tasks: cockpit.yml

@@ -1,0 +1,11 @@
+- name: Create cockpit.conf
+  become: true
+  template:
+    src: cockpit.conf.j2
+    dest: /etc/cockpit/cockpit.conf
+
+- name: Restart cockpit service
+  become: true
+  systemd:
+    name: cockpit.service
+    state: restarted

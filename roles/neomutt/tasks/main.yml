@@ -1,3 +1,29 @@
+- name: Install terminal related packages
+  become: true
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --skipreview --mflags='-sr --noconfirm'
+    name:
+      - isync
+      - lieer-git
+      - msmtp
+      - neomutt
+      - notmuch
+      - notmuch-addrlookup-c
+      - pandoc-bin
+
+- name: "deploy {{ item }}"
+  ansible.posix.synchronize:
+    src: "{{ item }}"
+    dest: ~/.config
+    delete: yes
+    recursive: yes
+  with_items:
+    - neomutt
+    - msmtp
+    - mbsync
+
 - name: Create directories for notmuch
   file:
     path: "~/.local/share/mail/{{ item }}"
@@ -10,13 +36,6 @@
   template:
     src: notmuch-config.template
     dest: ~/.notmuch-config
-
-- name: deploy neomutt
-  ansible.posix.synchronize:
-    src: neomutt
-    dest: ~/.config
-    delete: no
-    recursive: yes
 
 - name: Initlize mail sync service
   copy:

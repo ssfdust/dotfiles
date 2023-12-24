@@ -1,4 +1,0 @@
-Jan 24 22:29:58 host=smtp.qiye.aliyun.com tls=on auth=on user=xuweikai@juminfo.com from=xuweikai@juminfo.com recipients=dingting@juminfo.com mailsize=3912494 smtpstatus=250 smtpmsg='250 Data Ok: queued as freedom' exitcode=EX_OK
-Mar 21 09:04:40 host=smtp.qiye.aliyun.com tls=on auth=on user=xuweikai@juminfo.com from=xuweikai@juminfo.com recipients=tangjun@jumnfo.org mailsize=66850 smtpstatus=250 smtpmsg='250 Data Ok: queued as freedom' exitcode=EX_OK
-Mar 21 09:06:21 host=smtp.qiye.aliyun.com tls=on auth=on user=xuweikai@juminfo.com from=xuweikai@juminfo.com recipients=tangjun@juminfo.com mailsize=66861 smtpstatus=250 smtpmsg='250 Data Ok: queued as freedom' exitcode=EX_OK
-Apr 23 15:19:35 host=smtp.qiye.aliyun.com tls=on auth=on user=xuweikai@juminfo.com from=xuweikai@juminfo.com recipients=tangjun@juminfo.com,luhaijun@juminfo.com mailsize=67006 smtpstatus=250 smtpmsg='250 Data Ok: queued as freedom' exitcode=EX_OK

@@ -81,7 +81,7 @@ button:disabled {
 
 }
 
-#clock, #battery, #cpu, #memory, #backlight, #network, #pulseaudio, #custom-mpd, #tray, #mode, #idle_inhibitor {
+#clock, #battery, #cpu, #memory, #backlight, #network, #wireplumber, #custom-mpd, #tray, #mode, #idle_inhibitor {
     padding: 0 10px;
     margin: 0 0px;
 }
@@ -121,12 +121,12 @@ button:disabled {
     background: #32302f;
 }
 
-#pulseaudio {
+#wireplumber {
     background: #3a3a3a;
     color: rgba(148, 148, 148, 1);
 }
 
-#pulseaudio.muted {
+#wireplumber.muted {
     background: #90b1b1;
     color: #2a5c45;
 }

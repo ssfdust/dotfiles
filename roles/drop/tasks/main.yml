@@ -1,0 +1,7 @@
+- name: Drop some packages
+  become: true
+  package:
+    name:
+      - pulseaudio
+      - caddy
+    state: absent

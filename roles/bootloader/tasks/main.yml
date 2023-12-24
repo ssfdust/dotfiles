@@ -1,0 +1,24 @@
+- name: Install bootloader related packages
+  become: true
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --skipreview --mflags='-sr --noconfirm'
+    name:
+      - refind
+      - plymouth-git
+      - plymouth-theme-arch-charge-big
+      - refind-theme-darkmini-git
+- name: Look for refind directory
+  find:
+    paths: /boot
+    recurse: yes
+    file_type: directory
+    patterns: refind
+  register: ret
+
+- name: Copy refind configuration
+  become: yes
+  copy:
+    src: refind.conf
+    dest: "{{ ret.files[0].path }}/refind.conf"

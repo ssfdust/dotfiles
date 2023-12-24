@@ -1,4 +1,0 @@
-- name: deploy env
-  ansible.posix.synchronize:
-    src: environment.d
-    dest: ~/.config

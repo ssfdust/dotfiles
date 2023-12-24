@@ -6,6 +6,8 @@
     extra_args: --skipreview --mflags='-sr --noconfirm'
     name:
       - arc-kde-git
+      - celluloid
+      - copyq
       - fcitx5
       - fcitx5-configtool
       - fcitx5-gtk
@@ -15,18 +17,27 @@
       - ffmpegthumbnailer
       - flameshot
       - grim
+      - imagemagick
       - jq
       - kanshi
+      - keepassxc
       - kitty
       - kvantum
+      - libreoffice-fresh
       - network-manager-applet
       - noto-fonts-emoji
+      - pipewire-alsa
+      - pipewire-audio
+      - polkit-gnome
       - qt5ct
       - qt5-graphicaleffects
       - qt5-quickcontrols2
       - qt5-svg
+      - remmina
       - sddm
+      - siyuan-note-bin
       - slurp
+      - spice-gtk
       - swayidle
       - swayimg
       - swaync
@@ -38,6 +49,7 @@
       - waybar
       - weston
       - wf-recorder
+      - wireplumber
       - wl-clipboard
       - wlogout-git
       - wtype
@@ -52,6 +64,8 @@
     dest: ~/.config
     delete: yes
     recursive: yes
+    rsync_opts:
+      - "--update"
   with_items:
     - fcitx5
     - fontconfig

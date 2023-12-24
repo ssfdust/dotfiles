@@ -1,43 +1,25 @@
 ---
 - hosts: desktop
   roles:
-    - role: systemd
-      tags: systemd
-    - role: neovim
-      tags: neovim
     - role: pacman
       tags: pacman
-    - role: wayfire
-      tags: wayfire
-    - role: starship
-      tags: starship
-    - role: lf
-      tags: lf
-    - role: nushell
-      tags: nushell
-    - role: pueue
-      tags: pueue
-    - role: profile
-      tags: profile
-    - role: zellij
-      tags: zellij
-    - role: dbg
-      tags: dbg
+    - role: bootloader
+      tags: bootloader
+    - role: systemd
+      tags: systemd
+    - role: container
+      tags: container
+    - role: terminal
+      tags: terminal
+    - role: neovim
+      tags: neovim
     - role: neomutt
       tags: neomutt
-    - role: password-store
-      tags: password-store
-    - role: mycli
-      tags: mycli
-    - role: msmtp
-      tags: msmtp
-    - role: mbsync
-      tags: mbsync
-    - role: refind
-      tags: refind
+    - role: wayfire
+      tags: wayfire
     - role: gnupg
       tags: gnupg
-    - role: env
-      tags: env
     - role: hidpi
       tags: hidpi
+    - role: drop
+      tags: drop

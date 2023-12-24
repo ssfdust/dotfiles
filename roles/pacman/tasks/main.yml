@@ -24,3 +24,11 @@
     - { src: makepkg.conf, dest: /etc/makepkg.conf }
     - { src: pacman-aria2.conf, dest: /etc/pacman.d/pacman-aria2.conf }
     - { src: xyne-mirrorlist, dest: /etc/pacman.d/xyne-mirrorlist }
+
+- name: Install base archlinux package manager
+  package:
+    name:
+      - aria2
+      - pacman-contrib
+      - paru
+      - pkgfile

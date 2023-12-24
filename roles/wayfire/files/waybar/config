@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["custom/firefox", "custom/tg", "custom/dingtalk","custom/keepassxc","custom/remmina",  "custom/arrow01", "custom/mail", "custom/arrow02", "custom/weather", "custom/arrow03", "network#1", "custom/arrow04"],
     "modules-center": ["clock#1"],
-    "modules-right": ["custom/arrow05", "network#2", "custom/arrow06","pulseaudio","custom/arrow07", "custom/date", "custom/arrow08", "custom/notification", "custom/arrow09", "tray","custom/arrow10"],
+    "modules-right": ["custom/arrow05", "network#2", "custom/arrow06", "wireplumber", "custom/arrow07", "custom/date", "custom/arrow08", "custom/notification", "custom/arrow09", "tray","custom/arrow10"],
     // Modules configuration
     "tray": {
         //"icon-size": 21,
@@ -102,21 +102,13 @@
         "on-click": "keepassxc",
         "tooltip": false
     },
-    "pulseaudio": {
-        "scroll-step": 5,
+    "wireplumber": {
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
+        "format-icons": ["", "", ""],
         "format-muted": "",
-        "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "on-click": "pavucontrol"
+        "on-click": "helvum",
+        "max-volume": 150,
+        "scroll-step": 5
     },
     "custom/mail": {
         "format": " {}",

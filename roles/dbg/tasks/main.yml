@@ -1,9 +1,0 @@
-- name: Create gdb configuration directory
-  file:
-    path: ~/.config/gdb
-    state: directory
-
-- name: Update gdbinit
-  uri:
-    url: https://raw.githubusercontent.com/gdbinit/Gdbinit/master/gdbinit
-    dest: ~/.config/gdb/gdbinit 

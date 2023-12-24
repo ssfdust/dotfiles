@@ -2,16 +2,17 @@
   become: true
   package:
     name:
-      - neovim
+      - jq
+      - ctags
       - deno
+      - fortune-mod
+      - gcc
+      - global
+      - neovim
       - nodejs
       - npm
-      - gcc
       - python-neovim
-      - fortune-mod
-      - global
       - python-pygments
-      - ctags
 - name: deploy neovim
   ansible.posix.synchronize:
     src: "{{ item }}"

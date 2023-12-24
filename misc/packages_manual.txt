@@ -1,17 +1,6 @@
-filebrowser-bin
-caddy
-remmina
-spice-gtk
 dingtalk-bin
 wine-wechat-setup
-wayvnc
-lsof
 fuse-overlayfs
-buildah
-wl-clipboard-x11
-htop
-strace
-mupdf
 cockpit
 cockpit-machines
 cockpit-storaged

@@ -1,0 +1,20 @@
+- name: Install podman packages
+  become: true
+  package:
+    name:
+      - buildah
+      - podman
+      - podman-compose
+      - skopeo
+- name: Switch to nju repo
+  become: true
+  replace:
+    path: "{{ item.path }}"
+    regexp: "{{ item.orig }}"
+    replace: "{{ item.new }}"
+  with_items:
+    - { orig: 'docker\.io', new: 'docker.nju.edu.cn', path: "/etc/containers/registries.conf.d/000-shortnames.conf" }
+    - { orig: 'quay\.io', new: 'quay.nju.edu.cn', path: "/etc/containers/registries.conf.d/000-shortnames.conf" }
+    - { orig: 'docker\.io', new: 'docker.nju.edu.cn', path: "/etc/containers/registries.conf" }
+    - { orig: 'quay\.io', new: 'quay.nju.edu.cn', path: "/etc/containers/registries.conf" }
+

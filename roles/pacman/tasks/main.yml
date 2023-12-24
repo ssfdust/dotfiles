@@ -28,6 +28,7 @@
 - name: Install base archlinux package manager
   package:
     name:
+      - archlinuxcn-keyring
       - aria2
       - pacman-contrib
       - paru

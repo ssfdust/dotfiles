@@ -1,0 +1,75 @@
+- name: Install base system packages
+  become: true
+  package:
+    name:
+      - bind
+      - dmidecode
+      - firewalld
+      - gnu-netcat
+      - gptfdisk
+      - iptables-nft
+      - libva-mesa-driver
+      - syncthing
+      - man-db
+      - mesa-vdpau
+      - net-tools
+      - networkmanager
+      - nfs-utils
+      - nftables
+      - openssh
+      - python-pyqt5
+      - reflector
+      - usb_modeswitch
+      - usbutils
+      - wireless_tools
+
+- name: Set a hostname
+  become: true
+  hostname:
+    name: "{{ hostname }}"
+    use: systemd
+
+- name: Write hostname to /etc/hostname
+  become: true
+  copy:
+    content: "{{ hostname }}"
+    dest: /etc/hostname
+
+- name: Update system locale
+  become: true
+  shell: |
+    sed -i.bak \
+        -e 's/#[ ]*\(en_US\)/\1/' \
+        -e 's/#[ ]*\(zh_CN\)/\1/' \
+        /etc/locale.gen
+    locale-gen
+
+- name: Create locale configuration
+  become: true
+  copy:
+    content: "LANG=en_US.UTF-8"
+    dest: /etc/locale.conf
+
+- name: Set system timezone
+  become: true
+  community.general.timezone:
+    name: Asia/Shanghai
+
+- name: Enable system services
+  become: true
+  systemd:
+    name: "{{ item }}"
+    enabled: true
+  with_items:
+    - NetworkManager
+    - sddm-plymouth
+    - firewalld
+    - libvirtd
+    - plocate-updatedb.timer
+    - nfsv4-server
+
+- name: Disable system resolved services
+  become: true
+  systemd:
+    name: "systemd-resolved"
+    enabled: false

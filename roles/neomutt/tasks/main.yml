@@ -24,6 +24,13 @@
     - msmtp
     - mbsync
 
+- name: Copy accounts to neomutt
+  ansible.posix.synchronize:
+    src: "~/CloudBox/Sync/accounts"
+    dest: ~/.config/neomutt
+    delete: yes
+    recursive: yes
+
 - name: Create directories for notmuch
   file:
     path: "~/.local/share/mail/{{ item }}"

@@ -1,4 +1,3 @@
-# bootloader
 # virtualization
 dnsmasq
 libvirt
@@ -6,28 +5,3 @@ qemu-base
 vagrant
 # zfs
 mkinitcpio-sd-zfs-git
-# proxy
-clash
-gost
-proxychains-ng
-yacd
-# system
-bind
-dmidecode
-firewalld
-gnu-netcat
-gptfdisk
-iptables-nft
-libva-mesa-driver
-man-db
-mesa-vdpau
-net-tools
-networkmanager
-nfs-utils
-nftables
-openssh
-python-pyqt5
-reflector
-usb_modeswitch
-usbutils
-wireless_tools

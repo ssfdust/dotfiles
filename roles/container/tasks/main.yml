@@ -13,8 +13,17 @@
     regexp: "{{ item.orig }}"
     replace: "{{ item.new }}"
   with_items:
-    - { orig: 'docker\.io', new: 'docker.nju.edu.cn', path: "/etc/containers/registries.conf.d/000-shortnames.conf" }
-    - { orig: 'quay\.io', new: 'quay.nju.edu.cn', path: "/etc/containers/registries.conf.d/000-shortnames.conf" }
+    - { orig: 'docker\.io', new: 'docker.nju.edu.cn', path: "/etc/containers/registries.conf.d/00-shortnames.conf" }
+    - { orig: 'quay\.io', new: 'quay.nju.edu.cn', path: "/etc/containers/registries.conf.d/00-shortnames.conf" }
     - { orig: 'docker\.io', new: 'docker.nju.edu.cn', path: "/etc/containers/registries.conf" }
     - { orig: 'quay\.io', new: 'quay.nju.edu.cn', path: "/etc/containers/registries.conf" }
-
+- name: Enable podman services
+  become: true
+  systemd:
+    daemon_reload: true
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  with_items:
+    - "podman-restart"
+    - podman

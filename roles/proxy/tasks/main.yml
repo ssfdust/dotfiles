@@ -1,3 +1,15 @@
+- name: Install proxy related packages
+  become: true
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --skipreview --mflags='-sr --noconfirm'
+    name:
+      - clash
+      - gost
+      - proxychains-ng
+      - yacd
+
 - name: Create clash service directory
   become: yes
   file:
@@ -5,11 +17,19 @@
     state: directory
 
 - name: Create clash config directory
-  become: yes
+  become: true
   file:
     owner: nobody
     path: /etc/clash
     state: directory
+
+- name: Copy clash config
+  become: true
+  copy:
+    src: ~/CloudBox/Sync/apps/clash/config.yaml
+    dest: /etc/clash/config.yaml
+    owner: nobody
+    group: nobody
 
 - name: Copy proxy-routes service file
   become: yes
@@ -22,12 +42,6 @@
   copy:
     src: system/clash.conf
     dest: /etc/systemd/system/clash@.service.d/override.conf
-
-- name: Copy ssh-agent service file
-  become: yes
-  copy:
-    src: system/user/ssh-agent.service
-    dest: /etc/systemd/user/ssh-agent.service
 
 - name: Create gost client service file
   become: yes

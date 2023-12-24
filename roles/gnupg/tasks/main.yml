@@ -6,6 +6,7 @@
     extra_args: --skipreview --mflags='-sr --noconfirm'
     name:
       - sddm
+      - gcr
       - gnupg
       - pam-gnupg
       - libpam_pwdfile
@@ -18,7 +19,17 @@
   with_fileglob:
     - "gnupg/*"
 
-- name: fetch 
+- name: Check whether gnupg keys exists
+  shell: gpg -K ssfdust
+  ignore_errors: true
+  register: gpg_ret
+
+- name: Import gnupg keys
+  shell: |
+    gpg --batch --pinentry-mode loopback --passphrase "{{ become_pass }}" --import ~/CloudBox/Sync/keys/private-key.asc
+    gpg --batch --pinentry-mode loopback --passphrase "{{ become_pass }}" --import ~/CloudBox/Sync/keys/public-key.asc
+
+- name: Generate pam configuration and sshcontrol configuration 
   shell: |
     gpg -K --with-keygrip ssfdust | awk 'BEGIN {found=0};/\[.*E.*\]/ {found=1};found == 1 && /Keygrip/ { print $3 }' > ~/.pam-gnupg
     gpg -K --with-keygrip ssfdust | awk 'BEGIN {found=0};/\[.*E.*\]/ {found=1};found == 1 && /Keygrip/ { print $3 }' | tee ~/.gnupg/sshcontrol
@@ -52,6 +63,9 @@
   with_items:
     - { name: swaylock, type: auth, control: include, module_path: login, new_type: -auth, new_control: optional, new_module_path: pam_gnupg.so, state: before }
     - { name: swaylock, type: auth, control: include, module_path: login, new_type: -session, new_control: optional, new_module_path: pam_gnupg.so, state: after }
+
+- name: Reload gpg agent
+  shell: gpg-connect-agent reloadagent /bye
 
 - name: Create password pin
   command: openssl passwd -1 {{ pin }}

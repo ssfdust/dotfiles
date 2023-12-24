@@ -17,17 +17,34 @@
     - { src: qt5/kvantum.kvconfig, dest: ~/.config/Kvantum/kvantum.kvconfig }
     - { src: qt5/qt5ct.conf, dest: ~/.config/qt5ct/qt5ct.conf }
 
-- name: Initlize rime sync service
+- name: Create fcitx5 data directory
+  file:
+    path: ~/.local/share/fcitx5
+    state: directory
+  register: fcitx_data_dir
+
+- name: Initlize fcitx5 rime data
+  ansible.posix.synchronize:
+    src: ~/CloudBox/Sync/RimeSync/Rime/
+    dest: ~/.local/share/fcitx5/rime
+    delete: yes
+    recursive: yes
+  when: fcitx_data_dir.changed
+
+- name: gnitlize user services
   copy:
     src: "{{ item }}"
     dest: ~/.config/systemd/user
   with_fileglob:
     - "services/*"
 
-- name: Enable rime sync service
+- name: Enable user timer
   systemd:
     daemon_reload: false
-    name: rime.timer
+    name: "{{ item }}"
     enabled: yes
     scope: user
     state: started
+  with_items:
+    - "rime.timer"
+    - "weather.timer"

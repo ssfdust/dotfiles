@@ -9,6 +9,15 @@
       - plymouth-git
       - plymouth-theme-arch-charge-big
       - refind-theme-darkmini-git
+
+- name: Install refind bootloader to bios
+  become: true
+  shell: refind-install
+
+- name: Set plymouth theme
+  become: true
+  shell: plymouth-set-default-theme -R arch-charge-big
+
 - name: Look for refind directory
   find:
     paths: /boot
@@ -18,7 +27,7 @@
   register: ret
 
 - name: Copy refind configuration
-  become: yes
+  become: true
   copy:
     src: refind.conf
     dest: "{{ ret.files[0].path }}/refind.conf"

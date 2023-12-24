@@ -5,8 +5,10 @@
       tags: pacman
     - role: bootloader
       tags: bootloader
-    - role: systemd
-      tags: systemd
+    - role: system
+      tags: system
+    - role: proxy
+      tags: proxy
     - role: container
       tags: container
     - role: terminal

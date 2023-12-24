@@ -82,11 +82,16 @@
   community.general.ini_file:
     path: /etc/plymouth/plymouthd.conf
     section: Daemon
+    no_extra_spaces: true
     option: DeviceScale
     value: 2
 
 - name: Update cursor size to hidpi
   shell: gsettings set org.gnome.desktop.interface cursor-size 24
+
+- name: Regenerate initrd for plymouthd
+  become: true
+  shell: mkinitcpio -P
 
 - name: Modify sddm configuration
   become: true

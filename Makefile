@@ -1,7 +1,8 @@
-HEADLESSTAGS := pacman,bootloader,systemd,terminal,neovim,neomutt,wayfire,gnupg,drop
+HEADLESSTAGS := pacman,bootloader,system,proxy,terminal,neovim,neomutt,wayfire,container,gnupg,drop
+HOSTNAME := RedLotusX
 
 all: .prepared secrets.yml
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags $(HEADLESSTAGS) install.yml
+	ansible-playbook -e hostname=$(HOSTNAME) -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags $(HEADLESSTAGS) install.yml
 
 bootstrap: .prepared secrets.yml
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags pacman,bootloader install.yml
@@ -12,8 +13,11 @@ pacman: .prepared
 bootloader: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags bootloader install.yml
 
-systemd: .prepared
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags systemd install.yml
+system: .prepared
+	ansible-playbook -e hostname=$(HOSTNAME) -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags system install.yml
+
+proxy: .prepared
+	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags proxy install.yml
 
 terminal: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags terminal install.yml
@@ -26,6 +30,9 @@ neomutt: .prepared
 
 gnupg: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags gnupg install.yml
+
+container: .prepared
+	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags container install.yml
 
 wayfire: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags wayfire install.yml

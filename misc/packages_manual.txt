@@ -1,7 +1,3 @@
 dingtalk-bin
 wine-wechat-setup
 fuse-overlayfs
-cockpit
-cockpit-machines
-cockpit-storaged
-cockpit-podman

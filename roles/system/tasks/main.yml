@@ -3,13 +3,16 @@
   package:
     name:
       - bind
+      - cockpit
+      - cockpit-machines
+      - cockpit-podman
+      - cockpit-storaged
       - dmidecode
       - firewalld
       - gnu-netcat
       - gptfdisk
       - iptables-nft
       - libva-mesa-driver
-      - syncthing
       - man-db
       - mesa-vdpau
       - net-tools
@@ -19,6 +22,7 @@
       - openssh
       - python-pyqt5
       - reflector
+      - syncthing
       - usb_modeswitch
       - usbutils
       - wireless_tools
@@ -73,3 +77,5 @@
   systemd:
     name: "systemd-resolved"
     enabled: false
+
+- import_tasks: cockpit.yml

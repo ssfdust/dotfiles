@@ -1,0 +1,30 @@
+- name: Create systemd override directory
+  become: true
+  file:
+    state: directory
+    path: "{{ item }}"
+  with_items:
+    - /etc/systemd/system/cockpit.service.d
+    - /etc/systemd/system/cockpit.socket.d
+
+- name: Copy override configuration
+  become: true
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - src: cockpit-override.conf
+      dest: /etc/systemd/system/cockpit.service.d/override.conf
+    - src: cockpit-socket-override.conf
+      dest: /etc/systemd/system/cockpit.socket.d/override.conf
+
+- name: Restart cockpit service
+  become: true
+  systemd:
+    daemon-reload: true
+    name: "{{ item }}"
+    state: "restarted"
+    enabled: true
+  with_items:
+    - cockpit.service
+    - cockpit.socket

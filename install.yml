@@ -21,6 +21,8 @@
       tags: wayfire
     - role: gnupg
       tags: gnupg
+    - role: virtualization
+      tags: virtualization
     - role: hidpi
       tags: hidpi
     - role: drop

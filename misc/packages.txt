@@ -1,7 +1,1 @@
-# virtualization
-dnsmasq
-libvirt
-qemu-base
-vagrant
-# zfs
 mkinitcpio-sd-zfs-git

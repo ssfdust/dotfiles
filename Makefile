@@ -1,4 +1,4 @@
-HEADLESSTAGS := pacman,bootloader,system,proxy,terminal,neovim,neomutt,wayfire,container,gnupg,drop
+HEADLESSTAGS := pacman,bootloader,system,proxy,terminal,neovim,neomutt,wayfire,container,gnupg,virtualization,drop
 HOSTNAME := RedLotusX
 
 all: .prepared secrets.yml
@@ -36,6 +36,9 @@ container: .prepared
 
 wayfire: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags wayfire install.yml
+
+virtualization: .prepared
+	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags virtualization install.yml
 
 drop: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags drop install.yml

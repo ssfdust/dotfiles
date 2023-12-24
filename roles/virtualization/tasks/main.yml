@@ -1,0 +1,13 @@
+- name: Install virtualization related packages
+  become: true
+  package:
+    name:
+      - dnsmasq
+      - guestfs-tools
+      - libvirt
+      - qemu-base
+      - vagrant
+
+- name: Install libvirt plugin
+  shell: |
+    vagrant plugin install vagrant-libvirt

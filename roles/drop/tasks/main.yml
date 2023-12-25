@@ -4,4 +4,6 @@
     name:
       - pulseaudio
       - caddy
+      - wf-shell-git
+      - wcm-git
     state: absent

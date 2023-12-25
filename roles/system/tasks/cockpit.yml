@@ -25,6 +25,7 @@
     name: "{{ item }}"
     state: "restarted"
     enabled: true
+  ignore_errors: true
   with_items:
     - cockpit.service
     - cockpit.socket

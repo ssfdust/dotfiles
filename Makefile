@@ -1,10 +1,10 @@
 HEADLESSTAGS := pacman,bootloader,system,proxy,terminal,neovim,neomutt,wayfire,container,gnupg,virtualization,drop
 HOSTNAME := RedLotusX
 
-all: .prepared secrets.yml
+all: .prepared
 	ansible-playbook -e hostname=$(HOSTNAME) -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags $(HEADLESSTAGS) install.yml
 
-bootstrap: .prepared secrets.yml
+bootstrap: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags pacman,bootloader install.yml
 
 pacman: .prepared

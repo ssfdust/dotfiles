@@ -26,10 +26,13 @@
     - { src: xyne-mirrorlist, dest: /etc/pacman.d/xyne-mirrorlist }
 
 - name: Install base archlinux package manager
+  become: true
   package:
     name:
       - archlinuxcn-keyring
       - aria2
+      - git
+      - git-lfs
       - pacman-contrib
       - paru
       - pkgfile

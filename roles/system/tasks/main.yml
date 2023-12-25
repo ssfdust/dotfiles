@@ -71,6 +71,7 @@
     - libvirtd
     - plocate-updatedb.timer
     - nfsv4-server
+  ignore_errors: true
 
 - name: Disable system resolved services
   become: true

@@ -61,3 +61,13 @@
 
 - name: Bring back minimize and maximize buttons in gtk
   shell: gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+
+- name: Copy fonts to user directory
+  ansible.posix.synchronize:
+    src: "fonts/"
+    dest: ~/.local/share/fonts/
+    delete: yes
+    recursive: yes
+
+- name: update font cache
+  shell: fc-cache

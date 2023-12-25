@@ -26,4 +26,8 @@
   with_items:
     - "podman-restart"
     - podman
+- name: "Set subuid and subgid for {{ ansible_user_id }}"
+  become: true
+  shell: |
+    usermod --add-subuids 100000-165535 --add-subgids 100000-165535 {{ ansible_user_id }}
 - import_tasks: cockpit.yml

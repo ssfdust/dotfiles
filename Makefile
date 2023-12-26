@@ -49,9 +49,6 @@ hidpi: .prepared
 update: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key update.yml
 
-.prepared: .secrets
-	ansible-galaxy collection install community.general ansible.posix kewlfft.aur
-	touch .prepared
-
-.secrets:
+.prepared:
 	./tools/create_secrets
+	touch .prepared

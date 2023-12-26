@@ -8,6 +8,26 @@
       - qemu-base
       - vagrant
 
+- name: Check whether libvirt plugin is installed
+  shell: |
+    vagrant plugin list
+  register: vagrant_plugins
+
 - name: Install libvirt plugin
   shell: |
     vagrant plugin install vagrant-libvirt
+  when: '"vagrant-libvirt" not in vagrant_plugins.stdout'
+
+- name: List available networks
+  become: true
+  community.libvirt.virt_net:
+    command: list_nets
+  register: virt_nets
+
+- name: Create trusted vagrant network
+  become: true
+  community.libvirt.virt_net:
+    command: define
+    name: vagrant-trusted
+    xml: '{{ lookup("template", "vagrant-trusted.xml.j2") }}'
+  when: '"vagrant-trusted" not in virt_nets.list_nets'

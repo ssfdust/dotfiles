@@ -28,6 +28,7 @@
 - name: Install base archlinux package manager
   become: true
   package:
+    upgrade_cache: true
     name:
       - archlinuxcn-keyring
       - aria2

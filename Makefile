@@ -1,4 +1,4 @@
-HEADLESSTAGS := pacman,bootloader,system,proxy,terminal,neovim,neomutt,wayfire,container,gnupg,virtualization,drop
+HEADLESSTAGS := proxy,pacman,bootloader,system,terminal,neovim,neomutt,wayfire,container,gnupg,virtualization,drop
 HOSTNAME := RedLotusX
 
 all: .prepared
@@ -51,4 +51,5 @@ update: .prepared
 
 .prepared:
 	./tools/create_secrets
+	ansible-galaxy collection install kewlfft.aur
 	touch .prepared

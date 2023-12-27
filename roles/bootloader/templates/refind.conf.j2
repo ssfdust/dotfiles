@@ -1,0 +1,31 @@
+timeout 20
+
+use_graphics_for windows,linux
+scanfor manual
+default_selection 1
+resolution max
+
+menuentry "Arch Linux" {
+    icon     /EFI/refind/themes/darkmini/icons/os_arch.png
+    loader   /vmlinuz-{{ 'linux-lts' if linux_lts else 'linux' }}
+    initrd   /initramfs-{{ 'linux-lts' if linux_lts else 'linux' }}.img
+    options  "root={{ boot_part }} splash vt.global_cursor_default=0 quiet rw intel_iommu=on module_blacklist=br_netfilter systemd.unit=graphical.target"
+    submenuentry "Boot using fallback initramfs" {
+        options  "root={{ boot_part }} vt.global_cursor_default=0 intel_iommu=on rw systemd.journald.forward_to_console=1 systemd.debug_shell"
+        initrd /initramfs-{{ 'linux-lts' if linux_lts else 'linux' }}-fallback.img
+    }
+}
+
+menuentry "Arch Linux (Terminal)" {
+    icon     /EFI/refind/themes/darkmini/icons/os_arch.png
+    loader   /vmlinuz-{{ 'linux-lts' if linux_lts else 'linux' }}
+    initrd   /initramfs-{{ 'linux-lts' if linux_lts else 'linux' }}.img
+    options  "root={{ boot_part }} systemd.log_level=5 quiet pci=noaer intel_iommu=on rw module_blacklist=br_netfilter"
+}
+
+menuentry "Windows 10" {
+    icon \EFI\refind\themes\darkmini\icons\os_win.png
+    loader \EFI\Microsoft\Boot\bootmgfw.efi
+}
+
+include themes/darkmini/theme-mini.conf

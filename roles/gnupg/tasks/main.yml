@@ -12,6 +12,11 @@
       - libpam_pwdfile
       - swaylock-effects
 
+- name: Ensure gnupg configuration directory exists
+  file:
+    path: ~/.gnupg
+    state: directory
+
 - name: copy gnupg
   copy:
     src: "{{ item }}"

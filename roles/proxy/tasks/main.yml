@@ -1,14 +1,9 @@
 - name: Install proxy related packages
   become: true
-  become_user: aur_lotus
-  kewlfft.aur.aur:
-    use: paru
-    extra_args: --skipreview --mflags='-sr --noconfirm'
+  package:
     name:
       - clash
       - gost
-      - proxychains-ng
-      - yacd
 
 - name: Create clash service directory
   become: yes
@@ -20,6 +15,7 @@
   become: true
   file:
     owner: nobody
+    group: nobody
     path: /etc/clash
     state: directory
 
@@ -30,6 +26,16 @@
     dest: /etc/clash/config.yaml
     owner: nobody
     group: nobody
+
+- name: Download the mmdb file
+  become: true
+  get_url:
+    url: https://cdn.jsdelivr.net/gh/Dreamacro/maxmind-geoip@release/Country.mmdb
+    dest: /etc/clash/Country.mmdb
+    owner: nobody
+    group: nobody
+  retries: 15
+  delay: 10
 
 - name: Copy proxy-routes service file
   become: yes

@@ -8,6 +8,13 @@
       - qemu-base
       - vagrant
 
+- name: Add user to libvirt group
+  become: true
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: libvirt
+    append: true
+
 - name: Check whether libvirt plugin is installed
   shell: |
     vagrant plugin list
@@ -18,16 +25,9 @@
     vagrant plugin install vagrant-libvirt
   when: '"vagrant-libvirt" not in vagrant_plugins.stdout'
 
-- name: List available networks
+- name: Create vagrant-trusted network
   become: true
-  community.libvirt.virt_net:
-    command: list_nets
-  register: virt_nets
-
-- name: Create trusted vagrant network
-  become: true
-  community.libvirt.virt_net:
-    command: define
-    name: vagrant-trusted
-    xml: '{{ lookup("template", "vagrant-trusted.xml.j2") }}'
-  when: '"vagrant-trusted" not in virt_nets.list_nets'
+  copy:
+    src: vagrant-trusted.xml
+    dest: /etc/libvirt/qemu/networks/vagrant-trusted.xml
+    mode: '600'

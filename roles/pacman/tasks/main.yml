@@ -14,6 +14,14 @@
     mode: 0644
     validate: 'visudo -cf %s'
 
+- name: Install base archlinux package manager dependancies
+  become: true
+  package:
+    update_cache: true
+    name:
+      - aria2
+      - git-lfs
+
 - name: Copy pacman configurations
   become: true
   copy:
@@ -25,15 +33,22 @@
     - { src: pacman-aria2.conf, dest: /etc/pacman.d/pacman-aria2.conf }
     - { src: xyne-mirrorlist, dest: /etc/pacman.d/xyne-mirrorlist }
 
-- name: Install base archlinux package manager
+- name: refresh keyrings
+  become: true
+  shell: |
+    pacman-key --lsign-key "farseerfc@archlinux.org"
+
+- name: Install base archlinux keyring
   become: true
   package:
     update_cache: true
     name:
       - archlinuxcn-keyring
-      - aria2
-      - git
-      - git-lfs
+
+- name: Install base archlinux package manager
+  become: true
+  package:
+    name:
       - pacman-contrib
       - paru
       - pkgfile

@@ -26,8 +26,41 @@
     patterns: refind
   register: ret
 
+- name: get root boot parition
+  register: root_part
+  shell: |
+    awk '
+    {
+        if ($2 == "/") {
+            if ($1 ~ "zroot") {
+                printf("ZFS=%s", $1)
+            } else if ($1 ~ "/dev/") {
+                diskname = substr($1, 6, length($1) - 5)
+                cmd = "ls /dev/disk/by-partuuid/"
+                while ( cmd | getline partuuid ) {
+                    "readlink -f /dev/disk/by-partuuid/" partuuid | getline disk
+                    if (disk == $1) {
+                        printf("PARTUUID=%s", partuuid)
+                    }
+                }
+            } else if ($1 ~ "/dev/mapper/") {
+                print $1
+            }
+        }
+    }
+    ' /proc/mounts
+
+- name: Check if lts kernel exists
+  find:
+    pattern: '*linux-lts*'
+    path: /boot
+  register: search_lts
+
 - name: Copy refind configuration
   become: true
-  copy:
-    src: refind.conf
+  template:
+    src: refind.conf.j2
     dest: "{{ ret.files[0].path }}/refind.conf"
+  vars:
+    boot_part: "{{ root_part.stdout }}"
+    linux_lts: "{{ search_lts.matched > 0 }}"

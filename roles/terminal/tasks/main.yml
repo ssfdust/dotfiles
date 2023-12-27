@@ -48,6 +48,11 @@
     - starship
     - zellij
 
+- name: Ensure ~/.config/environment.d directory exists
+  file:
+    path: ~/.config/environment.d
+    state: directory
+
 - name: Copy environment files to ~/.config/environment.d
   copy:
     src: "environment.d/{{ item }}"

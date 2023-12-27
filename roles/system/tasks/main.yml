@@ -1,3 +1,11 @@
+- name: Remove iptables
+  become: true
+  package:
+    name:
+      - iptables
+    state: absent
+    force: true
+
 - name: Install base system packages
   become: true
   package:
@@ -20,18 +28,13 @@
       - nfs-utils
       - nftables
       - openssh
+      - plocate
       - python-pyqt5
       - reflector
       - syncthing
       - usb_modeswitch
       - usbutils
       - wireless_tools
-
-- name: Set a hostname
-  become: true
-  hostname:
-    name: "{{ hostname }}"
-    use: systemd
 
 - name: Write hostname to /etc/hostname
   become: true
@@ -56,14 +59,15 @@
 
 - name: Set system timezone
   become: true
-  community.general.timezone:
-    name: Asia/Shanghai
+  shell: |
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 - name: Enable system services
   become: true
   systemd:
     name: "{{ item }}"
     enabled: true
+    state: "started"
   with_items:
     - NetworkManager
     - sddm-plymouth
@@ -73,10 +77,41 @@
     - nfsv4-server
   ignore_errors: true
 
+- name: Check zfs module
+  shell: lsmod | grep -q zfs
+  ignore_errors: true
+  register: zfs_chk
+
 - name: Disable system resolved services
   become: true
   systemd:
     name: "systemd-resolved"
     enabled: false
+    state: "stopped"
+
+- name: Update modules in mkinitcpio.conf
+  become: true
+  replace:
+    path: /etc/mkinitcpio.conf
+    regexp: "^MODULES=.*$"
+    replace: "MODULES=(i915{{ ' spl zfs' if zfs_chk.rc == 0 else '' }})"
+
+- name: Update hooks in mkinitcpio.conf
+  become: true
+  replace:
+    path: /etc/mkinitcpio.conf
+    regexp: "^HOOKS=.*$"
+    replace: "HOOKS=(base systemd sd-plymouth modconf block keyboard{{ ' sd-zfs' if zfs_chk.rc == 0 else '' }} filesystems)"
+  register: hooks_update
+
+- name: Regenerate initramfs
+  become: true
+  shell: mkinitcpio -P
+  when: hooks_update.changed
+
+- name: Ensure user systemd configuration directory
+  file:
+    path: ~/.config/systemd/user
+    state: directory
 
 - import_tasks: cockpit.yml

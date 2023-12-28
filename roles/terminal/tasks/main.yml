@@ -16,6 +16,7 @@
       - mycli
       - neovim-gruvbox-material-git
       - nmap
+      - nushell
       - p7zip
       - pass
       - plocate
@@ -24,6 +25,7 @@
       - rye
       - sshfs
       - strace
+      - starship
       - tcpdump
       - trash-cli
       - unarchiver

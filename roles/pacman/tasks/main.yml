@@ -3,7 +3,7 @@
   ansible.builtin.user:
     name: aur_lotus
     create_home: yes
-    group: wheel
+    group: users
 
 - name: Allow the `aur_builder` user to run `sudo pacman` without a password
   become: yes

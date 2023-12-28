@@ -1,4 +1,5 @@
 - name: Install firefox
+  become: true
   package:
     name:
       - firefox

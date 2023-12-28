@@ -59,6 +59,22 @@
       option: "CompositorCommand"
       value: "weston --shell=fullscreen-shell.so"
 
+- name: Modify sddm theme configuration
+  become: true
+  replace:
+    path: /usr/share/sddm/themes/sugar-candy/theme.conf
+    regexp: "{{ item.pattern }}"
+    replace: "{{ item.data }}"
+  with_items:
+    - data: 'Background="Backgrounds/Colorful Dune.jpg"'
+      pattern: "^Background=.*$"
+    - data: 'FormPosition="center"'
+      pattern: "^FormPosition=.*$"
+    - data: 'FullBlur="true"'
+      pattern: "^FullBlur=.*$"
+    - data: 'PartialBlur="false"'
+      pattern: "^PartialBlur=.*$"
+
 - name: Bring back minimize and maximize buttons in gtk
   shell: gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
 

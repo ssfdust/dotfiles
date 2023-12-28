@@ -1,4 +1,4 @@
-HEADLESSTAGS := proxy,pacman,bootloader,system,terminal,neovim,neomutt,wayfire,container,gnupg,virtualization,drop
+HEADLESSTAGS := proxy,pacman,bootloader,system,terminal,neovim,neomutt,container,gnupg,virtualization,wayfire,drop
 HOSTNAME := RedLotusX
 
 all: .prepared

@@ -35,7 +35,6 @@
       - qt5-svg
       - remmina
       - sddm
-      - siyuan-note-bin
       - slurp
       - spice-gtk
       - swayidle
@@ -56,6 +55,7 @@
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
       - zenity
+      - siyuan-note-bin
 
 - name: "deploy {{ item }}"
   ansible.posix.synchronize:

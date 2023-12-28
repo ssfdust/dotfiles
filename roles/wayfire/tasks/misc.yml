@@ -45,6 +45,7 @@
     enabled: yes
     scope: user
     state: started
+  ignore_errors: true
   with_items:
     - "rime.timer"
     - "weather.timer"

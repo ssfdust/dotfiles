@@ -5,7 +5,7 @@ all: .prepared
 	ansible-playbook -e hostname=$(HOSTNAME) -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags $(HEADLESSTAGS) install.yml
 
 bootstrap: .prepared
-	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags pacman,bootloader install.yml
+	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags proxy,pacman install.yml
 
 pacman: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags pacman install.yml

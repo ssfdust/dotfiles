@@ -6,6 +6,7 @@
     extra_args: --skipreview --mflags='-sr --noconfirm'
     name:
       - arc-kde-git
+      - arc-solid-gtk-theme
       - celluloid
       - copyq
       - fcitx5
@@ -58,6 +59,7 @@
       - xdg-desktop-portal
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
+      - xorg-xwayland
       - zenity
 
 - name: Install packages which may be failed

@@ -45,6 +45,15 @@
     src: notmuch-config.template
     dest: ~/.notmuch-config
 
+- name: Check if notmuch is needed to be initilized
+  stat:
+    path: ~/.local/share/mail/.notmuch
+  register: notmuch_db
+
+- name: Initlize notmuch
+  shell: notmuch new
+  when: not notmuch_db.stat.exists
+
 - name: Initlize mail sync service
   copy:
     src: "{{ item }}"

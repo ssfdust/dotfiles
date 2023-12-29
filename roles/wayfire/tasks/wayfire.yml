@@ -6,6 +6,7 @@
     extra_args: --skipreview --mflags='-sr --noconfirm'
     name:
       - arc-kde-git
+      - cairo-dock-wayland-git
       - celluloid
       - copyq
       - fcitx5
@@ -46,6 +47,7 @@
       - udiskie
       - waybar
       - weston
+      - wait-tray-ready-git
       - wf-recorder
       - wireplumber
       - wl-clipboard
@@ -55,7 +57,17 @@
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
       - zenity
+
+- name: Install packages which may be failed
+  become: true
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --skipreview --mflags='-sr --noconfirm'
+    name:
       - siyuan-note-bin
+  retries: 5
+  delay: 10
 
 - name: "deploy {{ item }}"
   ansible.posix.synchronize:

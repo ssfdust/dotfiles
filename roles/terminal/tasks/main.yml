@@ -86,3 +86,36 @@
     src: zpager
     dest: /usr/local/bin/zpager
     mode: 0o755
+
+- name: Create ssh configuration directory
+  file:
+    path: ~/.ssh
+    state: directory
+    mode: '700'
+
+- name: Ensure ssh configuration permission
+  file:
+    path: ~/.ssh/config
+    state: file
+    mode: '600'
+
+- name: Insert git ssh block
+  blockinfile:
+    path: ~/.ssh/config
+    marker: "# {mark} ANSIBLE BLOCK"
+    insertbefore: 'BOF'
+    block: |
+      Host github.com
+          HostName ssh.github.com
+          User git
+          Port 443
+          PreferredAuthentications publickey
+
+      Host gitlab.com
+          Hostname altssh.gitlab.com
+          User git
+          Port 443
+          PreferredAuthentications publickey
+
+      Host *
+        HostKeyAlgorithms=+ssh-rsa

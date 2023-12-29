@@ -1,0 +1,37 @@
+<gauge>
+	<name>MeeGo Battery</name>
+	<version>3</version>
+	<indicator type="images">
+		<file>0.svg</file>
+		<file>1.svg</file>
+		<file>2.svg</file>
+		<file>3.svg</file>
+		<file>4.svg</file>
+		<text_zone>
+			<x_center>0.</x_center>
+			<y_center>0.10</y_center>
+			<width>0.5</width>
+			<height>0.25</height>
+			<red>0.3</red>
+			<green>0.3</green>
+			<blue>0.3</blue>
+		</text_zone>
+		<label_zone>
+			<x_center>0</x_center>
+			<y_center>-0.16</y_center>
+			<width>0.46</width>
+			<height>0.22</height>
+			<red>0.4</red>
+			<green>0.4</green>
+			<blue>0.4</blue>
+			<alpha>1.0</alpha>
+		</label_zone>
+		<logo_zone>
+			<x_center>0.5</x_center>
+			<y_center>-0.35</y_center>
+			<width>0.25</width>
+			<height>0.25</height>
+			<alpha>1.0</alpha>
+		</logo_zone>
+	</indicator>
+</gauge>

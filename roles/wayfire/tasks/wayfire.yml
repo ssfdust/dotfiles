@@ -112,6 +112,14 @@
     delete: yes
     recursive: yes
 
+- name: deploy cairo dock
+  ansible.posix.synchronize:
+    src: cairo-dock
+    dest: ~/.config
+    recursive: yes
+    rsync_opts:
+      - "--update"
+
 - name: Create systemd directory
   file:
     state: directory

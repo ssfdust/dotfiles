@@ -35,6 +35,7 @@
       - syncthing
       - usb_modeswitch
       - usbutils
+      - ventoy-bin
       - wireless_tools
 
 - name: Write hostname to /etc/hostname

@@ -63,7 +63,7 @@
 
 - name: Enable mail sync service
   systemd:
-    daemon_reload: false
+    daemon_reload: true
     name: mail.timer
     enabled: yes
     scope: user

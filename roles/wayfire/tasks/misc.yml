@@ -40,7 +40,7 @@
 
 - name: Enable user timer
   systemd:
-    daemon_reload: false
+    daemon_reload: true
     name: "{{ item }}"
     enabled: yes
     scope: user

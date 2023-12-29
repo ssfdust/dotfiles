@@ -7,8 +7,6 @@
     name:
       - arc-kde-git
       - arc-solid-gtk-theme
-      - celluloid
-      - copyq
       - fcitx5
       - fcitx5-configtool
       - fcitx5-gtk
@@ -16,16 +14,12 @@
       - fcitx5-qt
       - fcitx5-rime
       - ffmpegthumbnailer
-      - flameshot
-      - gimp-devel
       - grim
       - imagemagick
       - jq
       - kanshi
-      - keepassxc
       - kitty
       - kvantum
-      - libreoffice-fresh
       - network-manager-applet
       - noto-fonts-emoji
       - pipewire-alsa
@@ -35,15 +29,12 @@
       - qt5-graphicaleffects
       - qt5-quickcontrols2
       - qt5-svg
-      - remmina
       - sddm
       - slurp
       - spice-gtk
       - swayidle
       - swayimg
       - swaync
-      - telegram-desktop
-      - thunar
       - tumbler
       - udiskie
       - wait-tray-ready-git
@@ -51,7 +42,6 @@
       - wayvnc
       - webp-pixbuf-loader
       - weston
-      - wf-recorder
       - wireplumber
       - wl-clipboard
       - wlogout-git
@@ -143,6 +133,7 @@
 
 - name: Enable wayfire headless service
   systemd:
+    daemon-reload: true
     name: wayfire-headless-session.service
     enabled: yes
     scope: user

@@ -2,3 +2,4 @@
 - import_tasks: firefox.yml
 - import_tasks: icons.yml
 - import_tasks: misc.yml
+- import_tasks: applications.yml

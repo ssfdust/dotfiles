@@ -5,6 +5,8 @@
       - dnsmasq
       - guestfs-tools
       - libvirt
+      - virglrenderer
+      - virt-viewer
       - qemu-base
       - vagrant
 

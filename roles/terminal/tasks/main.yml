@@ -20,6 +20,7 @@
       - p7zip
       - pass
       - plocate
+      - python-pexpect
       - ripgrep
       - rsync
       - rye
@@ -55,6 +56,23 @@
     path: ~/.config/environment.d
     state: directory
 
+- name: Check whether rye initialized
+  stat:
+    path: ~/.rye
+  register: rye_inited
+
+- name: Initilize rye
+  expect:
+    command: rye
+    timeout: 10800
+    responses:
+      "y/n": y
+  when: not rye_inited.stat.exists
+
+- name: Install weathercn package
+  shell: ~/.rye/shims/rye install py-weathercn
+  when: not rye_inited.stat.exists
+
 - name: Copy environment files to ~/.config/environment.d
   copy:
     src: "environment.d/{{ item }}"
@@ -71,7 +89,7 @@
     state: directory
 
 - name: Update gdbinit
-  uri:
+  get_url:
     url: https://raw.githubusercontent.com/gdbinit/Gdbinit/master/gdbinit
     dest: ~/.config/gdb/gdbinit 
 

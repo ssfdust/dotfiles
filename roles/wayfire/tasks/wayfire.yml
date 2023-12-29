@@ -17,6 +17,7 @@
       - fcitx5-rime
       - ffmpegthumbnailer
       - flameshot
+      - gimp-devel
       - grim
       - imagemagick
       - jq

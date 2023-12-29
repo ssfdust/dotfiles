@@ -6,7 +6,6 @@
     extra_args: --skipreview --mflags='-sr --noconfirm'
     name:
       - arc-kde-git
-      - cairo-dock-wayland-git
       - celluloid
       - copyq
       - fcitx5
@@ -45,13 +44,16 @@
       - thunar
       - tumbler
       - udiskie
-      - waybar
-      - weston
       - wait-tray-ready-git
+      - waybar
+      - wayvnc
+      - webp-pixbuf-loader
+      - weston
       - wf-recorder
       - wireplumber
       - wl-clipboard
       - wlogout-git
+      - wofi
       - wtype
       - xdg-desktop-portal
       - xdg-desktop-portal-gtk
@@ -65,6 +67,7 @@
     use: paru
     extra_args: --skipreview --mflags='-sr --noconfirm'
     name:
+      - cairo-dock-wayland-git
       - siyuan-note-bin
   retries: 5
   delay: 10

@@ -7,7 +7,7 @@ Wants=network-online.target
 Restart=on-failure
 RestartSec=20
 Type=oneshot
-ExecStart=%h/.local/bin/weathercn 南京
+ExecStart=%h/.rye/shims/weathercn 南京
 TimeoutStartSec=150
 
 [Install]

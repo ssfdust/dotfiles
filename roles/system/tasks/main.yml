@@ -21,6 +21,7 @@
       - gptfdisk
       - iptables-nft
       - libva-mesa-driver
+      - linux-firmware
       - man-db
       - mesa-vdpau
       - net-tools

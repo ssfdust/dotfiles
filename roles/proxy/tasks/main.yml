@@ -30,7 +30,7 @@
 - name: Download the mmdb file
   become: true
   get_url:
-    url: https://cdn.jsdelivr.net/gh/Dreamacro/maxmind-geoip@release/Country.mmdb
+    url: https://jsd.cdn.zzko.cn/gh/Dreamacro/maxmind-geoip@release/Country.mmdb
     dest: /etc/clash/Country.mmdb
     owner: nobody
     group: nobody

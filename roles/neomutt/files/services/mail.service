@@ -7,11 +7,12 @@ Wants=network-online.target
 Restart=no
 Type=oneshot
 Environment="DISPLAY=:0" "XAUTHORITY=%h/.Xauthority"
-ExecStart=/usr/bin/gmi sync -C %h/.local/share/mail/gmail
-ExecStart=/usr/bin/mbsync -c %h/.config/mbsync/mbsyncrc -Va
-ExecStart=/usr/bin/notmuch new
-ExecStart=%h/dotfiles/bin/notice-notmuch.sh
-ExecStartPost=%h/dotfiles/bin/synctags --tag
+ExecStart=/usr/bin/bash -c \
+            'gmi sync -C %h/.local/share/mail/gmail; \
+             mbsync -c %h/.config/mbsync/mbsyncrc -Va; \
+             notmuch new; \
+             %h/dotfiles/bin/notice-notmuch.sh; \
+             %h/dotfiles/bin/synctags --tag;'
 TimeoutStartSec=150
 WorkingDirectory=%h/.local/share/mail
 

@@ -18,6 +18,7 @@
       - dmidecode
       - firewalld
       - gnu-netcat
+      - go
       - gptfdisk
       - iptables-nft
       - libva-mesa-driver
@@ -32,6 +33,7 @@
       - plocate
       - python-pyqt5
       - reflector
+      - rust
       - syncthing
       - usb_modeswitch
       - usbutils
@@ -115,5 +117,8 @@
   file:
     path: ~/.config/systemd/user
     state: directory
+
+- name: initialize git lfs
+  shell: git lfs install
 
 - import_tasks: cockpit.yml

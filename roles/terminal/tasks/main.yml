@@ -111,17 +111,13 @@
     state: directory
     mode: '700'
 
-- name: Ensure ssh configuration permission
-  file:
-    path: ~/.ssh/config
-    state: file
-    mode: '600'
-
 - name: Insert git ssh block
   blockinfile:
+    create: true
     path: ~/.ssh/config
     marker: "# {mark} ANSIBLE BLOCK"
     insertbefore: 'BOF'
+    append_newline: true
     block: |
       Host github.com
           HostName ssh.github.com
@@ -137,3 +133,10 @@
 
       Host *
         HostKeyAlgorithms=+ssh-rsa
+
+- name: Ensure ssh configuration permission
+  file:
+    path: ~/.ssh/config
+    state: file
+    mode: '600'
+

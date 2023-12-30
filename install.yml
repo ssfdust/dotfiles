@@ -1,28 +1,28 @@
 ---
 - hosts: desktop
   roles:
-    - role: pacman
-      tags: pacman
-    - role: bootloader
-      tags: bootloader
-    - role: system
-      tags: system
     - role: proxy
       tags: proxy
+    - role: pacman
+      tags: pacman
+    - role: system
+      tags: system
+    - role: bootloader
+      tags: bootloader
     - role: container
       tags: container
+    - role: virtualization
+      tags: virtualization
     - role: terminal
       tags: terminal
+    - role: gnupg
+      tags: gnupg
     - role: neovim
       tags: neovim
     - role: neomutt
       tags: neomutt
     - role: wayfire
       tags: wayfire
-    - role: gnupg
-      tags: gnupg
-    - role: virtualization
-      tags: virtualization
     - role: hidpi
       tags: hidpi
     - role: drop

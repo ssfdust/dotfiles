@@ -67,3 +67,4 @@
     name: mail.timer
     enabled: yes
     scope: user
+  ignore_errors: true

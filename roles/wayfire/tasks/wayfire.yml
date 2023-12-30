@@ -133,7 +133,6 @@
 
 - name: Enable wayfire headless service
   systemd:
-    daemon-reload: true
     name: wayfire-headless-session.service
     enabled: yes
     scope: user

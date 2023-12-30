@@ -21,7 +21,7 @@
 - name: Restart cockpit service
   become: true
   systemd:
-    daemon-reload: true
+    daemon_reload: true
     name: "{{ item }}"
     state: "restarted"
     enabled: true

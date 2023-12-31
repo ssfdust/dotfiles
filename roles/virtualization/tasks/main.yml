@@ -14,7 +14,7 @@
   become: true
   package:
     name:
-      - virtualbox-host-modules-arch
+      - virtualbox-host-dkms
       - virtualbox
 
 - name: Add user to libvirt group

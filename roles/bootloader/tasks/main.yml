@@ -8,15 +8,25 @@
       - refind
       - plymouth-git
       - plymouth-theme-arch-charge-big
-      - refind-theme-darkmini-git
 
 - name: Install refind bootloader to bios
   become: true
   shell: refind-install
 
+- name: Install bootloader theme
+  become: true
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --skipreview --mflags='-sr --noconfirm'
+    name:
+      - refind-theme-darkmini-git
+
 - name: Set plymouth theme
   become: true
-  shell: plymouth-set-default-theme -R arch-charge-big
+  shell: |
+    grep -q arch-charge-big /etc/plymouth/plymouthd.conf \
+      || plymouth-set-default-theme -R arch-charge-big
 
 - name: Look for refind directory
   find:
@@ -34,17 +44,17 @@
         if ($2 == "/") {
             if ($1 ~ "zroot") {
                 printf("ZFS=%s", $1)
-            } else if ($1 ~ "/dev/") {
-                diskname = substr($1, 6, length($1) - 5)
-                cmd = "ls /dev/disk/by-partuuid/"
-                while ( cmd | getline partuuid ) {
-                    "readlink -f /dev/disk/by-partuuid/" partuuid | getline disk
-                    if (disk == $1) {
-                        printf("PARTUUID=%s", partuuid)
-                    }
-                }
             } else if ($1 ~ "/dev/mapper/") {
                 print $1
+            } else if ($1 ~ "/dev/") {
+                diskname = substr($1, 6, length($1) - 5)
+                cmd = "ls /dev/disk/by-uuid/"
+                while ( cmd | getline uuid ) {
+                    "readlink -f /dev/disk/by-uuid/" uuid | getline disk
+                    if (disk == $1) {
+                        printf("UUID=%s", uuid)
+                    }
+                }
             }
         }
     }

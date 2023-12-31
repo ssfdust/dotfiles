@@ -56,22 +56,19 @@
     path: ~/.config/environment.d
     state: directory
 
-- name: Check whether rye initialized
-  stat:
-    path: ~/.rye
-  register: rye_inited
-
 - name: Initilize rye
   expect:
     command: rye
     timeout: 10800
     responses:
       "y/n": y
-  when: not rye_inited.stat.exists
+  args:
+    creates: ~/.rye 
+  register: rye_stat
 
 - name: Install weathercn package
   shell: ~/.rye/shims/rye install py-weathercn
-  when: not rye_inited.stat.exists
+  when: rye_stat.changed
 
 - name: Copy environment files to ~/.config/environment.d
   copy:

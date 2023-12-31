@@ -10,6 +10,13 @@
       - qemu-base
       - vagrant
 
+- name: Install virtualbox packages
+  become: true
+  package:
+    name:
+      - virtualbox-host-modules-arch
+      - virtualbox
+
 - name: Add user to libvirt group
   become: true
   user:

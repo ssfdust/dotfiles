@@ -5,10 +5,10 @@
       tags: proxy
     - role: pacman
       tags: pacman
+    - role: bootloader # bootloader must before system
+      tags: bootloader # as mkinitcpio hook need plymouth module
     - role: system
       tags: system
-    - role: bootloader
-      tags: bootloader
     - role: container
       tags: container
     - role: virtualization

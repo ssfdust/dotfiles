@@ -71,7 +71,6 @@
   systemd:
     name: "{{ item }}"
     enabled: true
-    state: "started"
   with_items:
     - NetworkManager
     - sddm-plymouth
@@ -79,7 +78,6 @@
     - libvirtd
     - plocate-updatedb.timer
     - nfsv4-server
-  ignore_errors: true
 
 - name: Check zfs module
   shell: lsmod | grep -q zfs

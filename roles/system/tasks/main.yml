@@ -46,14 +46,18 @@
     content: "{{ hostname }}"
     dest: /etc/hostname
 
-- name: Update system locale
+- name: Update system locale configuration
   become: true
+  replace:
+    path: /etc/locale.gen
+    regexp: '#\s*(en_US|zh_CN)'
+    replace: '\1'
+  register: locale_update
+
+- name: Generate system locale
   shell: |
-    sed -i.bak \
-        -e 's/#[ ]*\(en_US\)/\1/' \
-        -e 's/#[ ]*\(zh_CN\)/\1/' \
-        /etc/locale.gen
     locale-gen
+  when: locale_update.changed
 
 - name: Create locale configuration
   become: true
@@ -117,6 +121,8 @@
     state: directory
 
 - name: initialize git lfs
-  shell: git lfs install
+  shell: |
+    git lfs install
+    [[ -d .git ]] && git lfs fetch && git lfs checkout
 
 - import_tasks: cockpit.yml

@@ -20,6 +20,7 @@
       - p7zip
       - pass
       - plocate
+      - pueue
       - python-pexpect
       - ripgrep
       - rsync

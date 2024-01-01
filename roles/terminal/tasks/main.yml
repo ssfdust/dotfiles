@@ -91,10 +91,15 @@
     url: https://raw.githubusercontent.com/gdbinit/Gdbinit/master/gdbinit
     dest: ~/.config/gdb/gdbinit 
 
-- name: deploy profile
+- name: deploy "{{ item.src }}"
   copy:
-    src: profile
-    dest: ~/.bash_profile
+    src: "{{ item. src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - src: profile
+      dest: ~/.bash_profile
+    - src: gitconfig
+      dest: ~/.gitconfig
 
 - name: Create zpager executable file
   become: true
@@ -138,3 +143,9 @@
     state: file
     mode: '600'
 
+- name: Enable pueued service
+  systemd:
+    name: pueued
+    enabled: yes
+    scope: user
+  ignore_errors: true

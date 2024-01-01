@@ -1,0 +1,13 @@
+[user]
+	email = ssfdust@gmail.com
+	name = ssfdust
+	signingkey = E7A5969F8907DF18
+[commit]
+	gpgSign = true
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

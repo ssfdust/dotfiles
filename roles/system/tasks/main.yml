@@ -55,6 +55,7 @@
   register: locale_update
 
 - name: Generate system locale
+  become: true
   shell: |
     locale-gen
   when: locale_update.changed

@@ -1,12 +1,7 @@
 - name: Install terminal related packages
   become: true
-  become_user: aur_lotus
-  kewlfft.aur.aur:
-    use: paru
-    extra_args: --skipreview --mflags='-sr --noconfirm'
+  package:
     name:
-      - archivemount
-      - carapace-bin
       - fastfetch
       - fd
       - fzf
@@ -14,7 +9,6 @@
       - lf
       - lsof
       - mycli
-      - neovim-gruvbox-material-git
       - nmap
       - nushell
       - p7zip
@@ -36,6 +30,17 @@
       - yarn
       - zellij
       - zoxide
+
+- name: Install terminal related packages from aur
+  become: true
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --removemake --skipreview --mflags='-sr --noconfirm'
+    name:
+      - archivemount
+      - carapace-bin
+      - neovim-gruvbox-material-git
 
 - name: "deploy {{ item }}"
   ansible.posix.synchronize:

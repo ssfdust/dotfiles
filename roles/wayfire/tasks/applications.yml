@@ -1,9 +1,6 @@
 - name: Install desktop applications
   become: true
-  become_user: aur_lotus
-  kewlfft.aur.aur:
-    use: paru
-    extra_args: --skipreview --mflags='-sr --noconfirm'
+  package:
     name:
       - celluloid
       - copyq

@@ -1,9 +1,6 @@
 - name: Install bootloader related packages
   become: true
-  become_user: aur_lotus
-  kewlfft.aur.aur:
-    use: paru
-    extra_args: --skipreview --mflags='-sr --noconfirm'
+  package:
     name:
       - refind
       - plymouth-git
@@ -18,7 +15,7 @@
   become_user: aur_lotus
   kewlfft.aur.aur:
     use: paru
-    extra_args: --skipreview --mflags='-sr --noconfirm'
+    extra_args: --removemake --skipreview --mflags='-sr --noconfirm'
     name:
       - refind-theme-darkmini-git
 

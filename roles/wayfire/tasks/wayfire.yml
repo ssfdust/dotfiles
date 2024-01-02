@@ -1,11 +1,7 @@
 - name: Install wayfire related packages
   become: true
-  become_user: aur_lotus
-  kewlfft.aur.aur:
-    use: paru
-    extra_args: --skipreview --mflags='-sr --noconfirm'
+  package:
     name:
-      - arc-kde-git
       - arc-solid-gtk-theme
       - fcitx5
       - fcitx5-configtool
@@ -37,14 +33,12 @@
       - swaync
       - tumbler
       - udiskie
-      - wait-tray-ready-git
       - waybar
       - wayvnc
       - webp-pixbuf-loader
       - weston
       - wireplumber
       - wl-clipboard
-      - wlogout-git
       - wofi
       - wtype
       - xdg-desktop-portal
@@ -58,9 +52,12 @@
   become_user: aur_lotus
   kewlfft.aur.aur:
     use: paru
-    extra_args: --skipreview --mflags='-sr --noconfirm'
+    extra_args: --removemake --skipreview --mflags='-sr --noconfirm'
     name:
+      - arc-kde-git
       - cairo-dock-wayland-git
+      - wait-tray-ready-git
+      - wlogout-git
       - siyuan-note-bin
   retries: 5
   delay: 10

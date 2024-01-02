@@ -78,11 +78,22 @@
     enabled: true
   with_items:
     - NetworkManager
-    - sddm-plymouth
     - firewalld
     - libvirtd
     - plocate-updatedb.timer
     - nfsv4-server
+
+- name: Check whether display manager enabled
+  stat:
+    path: /etc/systemd/system/display-manager.service
+  register: dm_stat
+
+- name: Enable display manager
+  become: true
+  systemd:
+    name: sddm-plymouth
+    enabled: true
+  when: not dm_stat.stat.exists
 
 - name: Check zfs module
   shell: lsmod | grep -q zfs

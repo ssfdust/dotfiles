@@ -36,7 +36,7 @@
   become_user: aur_lotus
   kewlfft.aur.aur:
     use: paru
-    extra_args: --removemake --skipreview --mflags='-sr --noconfirm'
+    extra_args: --removemake --skipreview --mflags='-sr --noconfirm' --batchinstall
     name:
       - archivemount
       - carapace-bin

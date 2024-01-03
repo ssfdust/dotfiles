@@ -2,6 +2,7 @@
   become: true
   package:
     name:
+      - aardvark-dns
       - buildah
       - podman
       - podman-compose

@@ -55,7 +55,8 @@
     extra_args: --removemake --skipreview --mflags='-sr --noconfirm' --batchinstall
     name:
       - arc-kde-git
-      - cairo-dock-wayland-git
+      - cairo-dock-core-wayland-git
+      - cairo-dock-plug-ins-wayland-git
       - wait-tray-ready-git
       - wlogout-git
       - siyuan-note-bin

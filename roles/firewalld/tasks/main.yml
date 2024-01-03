@@ -1,0 +1,21 @@
+- name: Enable nessary sevices
+  become: true
+  ansible.posix.firewalld:
+    service: "{{ item.service }}"
+    zone: "{{ item.zone }}"
+    permanent: true
+    state: enabled
+  with_items:
+    - service: http
+      zone: public
+    - service: https
+      zone: public
+    - service: nfs
+      zone: public
+- name: Add trusted interface
+  become: true
+  ansible.posix.firewalld:
+    zone: trusted
+    interface: waydroid0
+    permanent: true
+    state: enabled

@@ -23,6 +23,12 @@
     modprobe binder_linux
     waydroid init
 
+- name: Write waydroid module to modules-load.d of systemd
+  become: true
+  copy:
+    content: "binder_linux"
+    dest: /etc/modules-load.d/binder_linux.conf
+
 - name: Enable waydroid service
   become: true
   systemd:

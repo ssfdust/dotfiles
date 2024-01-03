@@ -46,6 +46,9 @@ drop: .prepared
 hidpi: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags hidpi install.yml
 
+firewalld: .prepared
+	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key --tags firewalld install.yml
+
 update: .prepared
 	ansible-playbook -e@./.secrets/passwords.yml --vault-pass-file ./.secrets/private_key update.yml
 

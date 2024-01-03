@@ -1,0 +1,37 @@
+- name: Install waydroid related packages
+  become: true
+  package:
+    name:
+      - waydroid
+      - lzip
+      - python-pyclip
+      - binder_linux-dkms
+      - waydroid-image
+
+- name: Install packages from aur
+  become: true
+  become_user: aur_lotus
+  kewlfft.aur.aur:
+    use: paru
+    extra_args: --removemake --skipreview --mflags='-sr --noconfirm' --batchinstall
+    name:
+      - python-inquirerpy
+
+- name: Init waydroid
+  become: true
+  shell: |
+    modprobe binder_linux
+    waydroid init
+
+- name: Enable waydroid service
+  become: true
+  systemd:
+    name: waydroid-container
+    enabled: true
+    state: started
+
+- name: Clone waydroid_script to /usr/local/share
+  become: true
+  git:
+    repo: https://github.com/casualsnek/waydroid_script
+    dest: /usr/local/share/waydroid_script

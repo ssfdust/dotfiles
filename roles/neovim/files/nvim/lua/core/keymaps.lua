@@ -40,7 +40,7 @@ elseif fn.executable('zsh') == 1 then
 else
     shell = '$SHELL'
 end
-map('n', '<leader>\'', '<Cmd>Deol -split=floating -toggle -winwidth=120 -winheight=30 -command=' .. shell .. '<CR>')
+map('n', '<leader>\'', '<Cmd>call deol#start({"split": "floating", "toggle": v:true, "winwidth": 108, "winheight": 25, "command": "' .. shell .. '"})<CR>')
 map('t', '<Esc>', '<C-\\><C-n>')
 
 -- Change directory to file path

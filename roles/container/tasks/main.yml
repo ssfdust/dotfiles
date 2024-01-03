@@ -35,3 +35,4 @@
   shell: |
     usermod --add-subuids 100000-165535 --add-subgids 100000-165535 {{ ansible_user_id }}
 - import_tasks: cockpit.yml
+- import_tasks: waydroid.yml

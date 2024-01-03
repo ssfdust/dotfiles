@@ -44,7 +44,7 @@
       - xdg-desktop-portal
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-wlr
-      - xorg-xwayland
+      - xorg-xwayland-lily
       - zenity
 
 - name: Install packages which may be failed

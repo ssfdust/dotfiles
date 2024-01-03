@@ -12,6 +12,23 @@
       zone: public
     - service: nfs
       zone: public
+    - service: vnc-server
+      zone: public
+    - service: syncthing
+      zone: public
+    - service: dns
+      zone: public
+- name: Enable ports
+  become: true
+  ansible.posix.firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  with_items:
+    - "6888/tcp"
+    - "7890/tcp"
+    - "6888/udp"
+    - "29418/tcp"
 - name: Add trusted interface
   become: true
   ansible.posix.firewalld:

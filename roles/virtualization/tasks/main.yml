@@ -9,6 +9,7 @@
       - virt-install
       - virt-viewer
       - qemu-base
+      - qemu-hw-usb-host
       - vagrant
 
 - name: Install virtualbox packages

@@ -6,6 +6,7 @@
       - guestfs-tools
       - libvirt
       - virglrenderer
+      - virt-install
       - virt-viewer
       - qemu-base
       - vagrant

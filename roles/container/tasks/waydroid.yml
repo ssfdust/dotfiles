@@ -6,7 +6,6 @@
       - lzip
       - python-pyclip
       - binder_linux-dkms
-      - waydroid-image
 
 - name: Install packages from aur
   become: true
@@ -20,21 +19,13 @@
 - name: Init waydroid
   become: true
   shell: |
-    modprobe binder_linux
-    waydroid init
+    modprobe binder_linux || true
 
 - name: Write waydroid module to modules-load.d of systemd
   become: true
   copy:
     content: "binder_linux"
     dest: /etc/modules-load.d/binder_linux.conf
-
-- name: Enable waydroid service
-  become: true
-  systemd:
-    name: waydroid-container
-    enabled: true
-    state: started
 
 - name: Clone waydroid_script to /usr/local/share
   become: true

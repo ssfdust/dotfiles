@@ -2,9 +2,11 @@
   become: true
   package:
     name:
+      - bpftrace
       - fastfetch
       - fd
       - fzf
+      - gdb
       - htop
       - lf
       - lsof
@@ -15,13 +17,14 @@
       - pass
       - plocate
       - pueue
+      - pwru
       - python-pexpect
       - ripgrep
       - rsync
       - rye
       - sshfs
-      - strace
       - starship
+      - strace
       - tcpdump
       - trash-cli
       - unarchiver

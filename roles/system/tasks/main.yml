@@ -20,6 +20,7 @@
       - gnu-netcat
       - go
       - gptfdisk
+      - gvfs-smb
       - iptables-nft
       - libva-mesa-driver
       - linux-firmware

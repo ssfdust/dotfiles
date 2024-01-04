@@ -57,11 +57,22 @@
     }
     ' /proc/mounts
 
-- name: Check if lts kernel exists
+- name: get root parition filesystem type
+  register: fs_type
+  shell: |
+    awk '
+    {
+        if ($2 == "/") {
+            printf("%s", $3)
+        }
+    }
+    ' /proc/mounts
+
+- name: Find the first kernel
   find:
-    pattern: '*linux-lts*'
+    pattern: '*vmlinuz-linux*'
     path: /boot
-  register: search_lts
+  register: linux_kernel_paths
 
 - name: Copy refind configuration
   become: true
@@ -70,4 +81,5 @@
     dest: "{{ ret.files[0].path }}/refind.conf"
   vars:
     boot_part: "{{ root_part.stdout }}"
-    linux_lts: "{{ search_lts.matched > 0 }}"
+    linux_kernel: "{{ linux_kernel_paths.files[0].path | basename | regex_replace('^vmlinuz-', '') }}"
+    fstype: "{{ fs_type.stdout }}"

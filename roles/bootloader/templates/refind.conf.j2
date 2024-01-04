@@ -7,20 +7,20 @@ resolution max
 
 menuentry "Arch Linux" {
     icon     /EFI/refind/themes/darkmini/icons/os_arch.png
-    loader   /vmlinuz-{{ 'linux-lts' if linux_lts else 'linux' }}
-    initrd   /initramfs-{{ 'linux-lts' if linux_lts else 'linux' }}.img
-    options  "root={{ boot_part }} splash vt.global_cursor_default=0 quiet rw intel_iommu=on module_blacklist=br_netfilter systemd.unit=graphical.target"
+    loader   /vmlinuz-{{ linux_kernel }}
+    initrd   /initramfs-{{ linux_kernel}}.img
+    options  "root={{ boot_part }} rootfstype={{ fstype }} splash vt.global_cursor_default=0 quiet rw intel_iommu=on module_blacklist=br_netfilter systemd.unit=graphical.target"
     submenuentry "Boot using fallback initramfs" {
-        options  "root={{ boot_part }} vt.global_cursor_default=0 intel_iommu=on rw systemd.journald.forward_to_console=1 systemd.debug_shell"
-        initrd /initramfs-{{ 'linux-lts' if linux_lts else 'linux' }}-fallback.img
+        options  "root={{ boot_part }} rootfstype={{ fstype }} vt.global_cursor_default=0 intel_iommu=on rw systemd.journald.forward_to_console=1 systemd.debug_shell"
+        initrd /initramfs-{{ linux_kernel }}-fallback.img
     }
 }
 
 menuentry "Arch Linux (Terminal)" {
     icon     /EFI/refind/themes/darkmini/icons/os_arch.png
-    loader   /vmlinuz-{{ 'linux-lts' if linux_lts else 'linux' }}
-    initrd   /initramfs-{{ 'linux-lts' if linux_lts else 'linux' }}.img
-    options  "root={{ boot_part }} systemd.log_level=5 quiet pci=noaer intel_iommu=on rw module_blacklist=br_netfilter"
+    loader   /vmlinuz-{{ linux_kernel }}
+    initrd   /initramfs-{{ linux_kernel }}.img
+    options  "root={{ boot_part }} rootfstype={{ fstype }} systemd.log_level=5 quiet pci=noaer intel_iommu=on rw module_blacklist=br_netfilter"
 }
 
 menuentry "Windows 10" {

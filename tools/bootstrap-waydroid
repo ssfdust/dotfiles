@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+import subprocess
+import time
+
+def main():
+    subprocess.call(["/usr/bin/sudo", "/usr/bin/pacman", "-S", "waydroid-image", "--needed", "--noconfirm"])
+    subprocess.call(["/usr/bin/sudo", "/usr/bin/waydroid", "init"])
+    subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "enable", "--now", "waydroid-container"])
+    subprocess.call(["/usr/bin/sudo", "/usr/bin/python", "/usr/local/share/waydroid_script/main.py"])
+    proc = subprocess.Popen(
+        ["/usr/bin/waydroid", "session", "start"], 
+        stdout=subprocess.PIPE, 
+        universal_newlines=True
+    )
+    info = proc.stdout.readline()
+    print(info)
+    subprocess.call(
+        ["/usr/bin/waydroid", "prop", "set", "persist.waydroid.multi_windows", "true"]
+    )
+    print("sleep for 5secs")
+    time.sleep(5)
+    subprocess.call(
+        ["/usr/bin/waydroid", "session", "stop"]
+    )
+
+
+if __name__ == '__main__':
+    main()

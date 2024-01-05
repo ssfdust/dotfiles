@@ -6,6 +6,7 @@ def main():
     subprocess.call(["/usr/bin/sudo", "/usr/bin/pacman", "-S", "waydroid-image", "--needed", "--noconfirm"])
     subprocess.call(["/usr/bin/sudo", "/usr/bin/waydroid", "init"])
     subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "enable", "--now", "waydroid-container"])
+    print("It is recommended to use libndk on AMD CPUs and libhoudini on Intel CPUs")
     subprocess.call(["/usr/bin/sudo", "/usr/bin/python", "/usr/local/share/waydroid_script/main.py"])
     proc = subprocess.Popen(
         ["/usr/bin/waydroid", "session", "start"], 

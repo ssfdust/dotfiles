@@ -3,6 +3,7 @@
   package:
     name:
       - celluloid
+      - chromium
       - copyq
       - flameshot
       - gimp-devel
@@ -13,3 +14,18 @@
       - thunar
       - wf-recorder
       - wireshark-qt
+
+- name: Create application configuration directory
+  file:
+    state: directory
+    path: ~/.config/xfce4
+
+- name: Copy configuration to destnation directory
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - src: xfce4/helpers.rc
+      dest: ~/.config/xfce4/helpers.rc
+    - src: chromium/chromium-flags.conf
+      dest: ~/.config/chromium-flags.conf

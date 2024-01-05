@@ -24,6 +24,7 @@
   shell: |
     grep -q arch-charge-big /etc/plymouth/plymouthd.conf \
       || plymouth-set-default-theme -R arch-charge-big
+  ignore_errors: true
 
 - name: Look for refind directory
   find:

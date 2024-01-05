@@ -1,4 +1,4 @@
-- name: Install terminal related packages
+- name: Install neomutt related packages
   become: true
   package:
     name:
@@ -8,7 +8,7 @@
       - notmuch
       - pandoc-bin
 
-- name: Install terminal related packages from aur
+- name: Install neomutt related packages from aur
   become: true
   become_user: aur_lotus
   kewlfft.aur.aur:

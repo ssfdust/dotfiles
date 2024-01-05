@@ -7,7 +7,7 @@ User=nobody
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/gost -L :{{ gost_listen }} -F https://{{ gost_user }}:{{ gost_passwd }}@{{ gost_ip }}:{{ gost_port }}
+ExecStart=/usr/bin/gost -L :{{ gost_listen }} -F socks://{{ gost_user }}:{{ gost_password }}@{{ gost_ip }}:{{ gost_port }}
 Restart=on-failure
 RestartPreventExitStatus=23
 

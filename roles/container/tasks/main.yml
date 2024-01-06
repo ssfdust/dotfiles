@@ -7,6 +7,13 @@
       - podman
       - podman-compose
       - skopeo
+- name: Search for shortnames configuration
+  find:
+    paths: /etc/containers/registries.conf.d
+    file_type: file
+    recurse: no
+    patterns: "*shortnames*"
+  register: shortnames
 - name: Switch to nju repo
   become: true
   replace:
@@ -14,8 +21,8 @@
     regexp: "{{ item.orig }}"
     replace: "{{ item.new }}"
   with_items:
-    - { orig: 'docker\.io', new: 'docker.nju.edu.cn', path: "/etc/containers/registries.conf.d/00-shortnames.conf" }
-    - { orig: 'quay\.io', new: 'quay.nju.edu.cn', path: "/etc/containers/registries.conf.d/00-shortnames.conf" }
+    - { orig: 'docker\.io', new: 'docker.nju.edu.cn', path: "{{ shortnames.files[0].path }}" }
+    - { orig: 'quay\.io', new: 'quay.nju.edu.cn', path: "{{ shortnames.files[0].path }}" }
     - { orig: "{{ registries_match }}", new: "{{ new_registries }}", path: "/etc/containers/registries.conf" }
   vars:
     registries_match: '^[#]*\s*unqualified-search-registries.*$'

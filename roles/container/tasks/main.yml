@@ -18,9 +18,8 @@
     - { orig: 'quay\.io', new: 'quay.nju.edu.cn', path: "/etc/containers/registries.conf.d/00-shortnames.conf" }
     - { orig: "{{ registries_match }}", new: "{{ new_registries }}", path: "/etc/containers/registries.conf" }
   vars:
-    registries_match: '[#]*\s*unqualified-search-registries.*'
-    new_registries: >-
-      unqualified-search-registries = ["docker.nju.edu.cn"]
+    registries_match: '^[#]*\s*unqualified-search-registries.*$'
+    new_registries: 'unqualified-search-registries = ["docker.nju.edu.cn"]'
 - name: Enable podman services
   become: true
   systemd:

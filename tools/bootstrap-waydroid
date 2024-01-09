@@ -6,14 +6,15 @@ def main():
     subprocess.call(["/usr/bin/sudo", "/usr/bin/pacman", "-S", "waydroid-image", "--needed", "--noconfirm"])
     subprocess.call(["/usr/bin/sudo", "/usr/bin/waydroid", "init"])
     subprocess.call(["/usr/bin/sudo", "/usr/bin/systemctl", "enable", "--now", "waydroid-container"])
-    print("It is recommended to use libndk on AMD CPUs and libhoudini on Intel CPUs")
+    input("It is recommended to use libndk on AMD CPUs and libhoudini on Intel CPUs, Press enter to confirm")
+
     subprocess.call(["/usr/bin/sudo", "/usr/bin/python", "/usr/local/share/waydroid_script/main.py"])
     proc = subprocess.Popen(
         ["/usr/bin/waydroid", "session", "start"], 
-        stdout=subprocess.PIPE, 
+        stderr=subprocess.PIPE, 
         universal_newlines=True
     )
-    info = proc.stdout.readline()
+    info = proc.stderr.readline()
     print(info)
     subprocess.call(
         ["/usr/bin/waydroid", "prop", "set", "persist.waydroid.multi_windows", "true"]

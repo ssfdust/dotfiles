@@ -1,3 +1,4 @@
 dingtalk-bin
 wine-wechat-setup
+wine-for-wechat
 fuse-overlayfs

@@ -29,14 +29,14 @@ def --env __zoxide_z [...rest:string] {
   let path = if (([$rest] | first | length) <= 1) and ($arg0 == '-' or ($arg0 | path expand | path type) == dir) {
     $arg0
   } else {
-    (zoxide query --exclude $env.PWD -- $rest | str trim -r -c "\n")
+    (zoxide query --exclude $env.PWD -- ...$rest | str trim -r -c "\n")
   }
   cd $path
 }
 
 # Jump to a directory using interactive search.
 def --env __zoxide_zi  [...rest:string] {
-  cd $'(zoxide query -i -- $rest | str trim -r -c "\n")'
+  cd $'(zoxide query -i -- ...$rest | str trim -r -c "\n")'
 }
 
 # =============================================================================

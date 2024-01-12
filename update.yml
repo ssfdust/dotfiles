@@ -7,7 +7,7 @@
         use: paru
         upgrade: true
         update_cache: true
-        extra_args: --skipreview --mflags='-sr --noconfirm'
+        extra_args: --removemake --skipreview --mflags='-sr --noconfirm'
       become_user: aur_lotus
       when: ansible_distribution == "Archlinux"
     - name: Fedora Upgrade
@@ -24,6 +24,4 @@
     - name: Update rust toolchain
       shell: |
         rustup update
-    - name: Update galaxy
-      shell: |
-        ansible-galaxy collection install -U community.general ansible.posix
+      when: ansible_distribution == "Fedora"

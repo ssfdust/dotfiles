@@ -5,7 +5,6 @@
       - waydroid
       - lzip
       - python-pyclip
-      - binder_linux-dkms
 
 - name: Install packages from aur
   become: true
@@ -15,6 +14,7 @@
     extra_args: --removemake --skipreview --mflags='-sr --noconfirm' --batchinstall
     name:
       - python-inquirerpy
+      - anbox-modules-dkms-git
 
 - name: Init waydroid
   become: true

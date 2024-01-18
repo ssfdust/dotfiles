@@ -64,5 +64,5 @@ $env.NU_PLUGIN_DIRS = [
 # $env.PATH = ($env.PATH | prepend '/some/path')
 source ~/.config/nushell/zoxide.nu
 
-# mkdir ~/.cache/carapace
-# carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
+mkdir ~/.cache/carapace
+carapace _carapace nushell | save --force ~/.cache/carapace/init.nu

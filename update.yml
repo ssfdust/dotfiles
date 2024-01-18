@@ -7,7 +7,7 @@
         use: paru
         upgrade: true
         update_cache: true
-        extra_args: --removemake --skipreview --mflags='-sr --noconfirm'
+        extra_args: --removemake --skipreview
       become_user: aur_lotus
       when: ansible_distribution == "Archlinux"
     - name: Fedora Upgrade

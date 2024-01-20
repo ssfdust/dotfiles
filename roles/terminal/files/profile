@@ -1,4 +1,13 @@
+function zellijx {
+    has_x_session=$(zellij list-sessions -n | grep -q "^x .*" && echo 1 || echo 0)
+    has_exited_x_session=$(zellij list-sessions -n | grep -q "^x .*EXITED" && echo 1 || echo 0)
+    if [[ $has_exited_x_session == 1 || $has_x_session == 0 ]]; then
+        zellij delete-session x >/dev/null 2>&1 || true
+        WAYLAND_DISPLAY=wayland-1 zellij -s x
+    elif [[ $has_x_session == 1 ]]; then
+        WAYLAND_DISPLAY=wayland-1 zellij attach x
+    fi
+}
+
 export $(/usr/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
-alias zellijx='WAYLAND_DISPLAY=wayland-1 zellij -s x || WAYLAND_DISPLAY=wayland-1 zellij attach x'
-. "$HOME/.cargo/env"
 . "$HOME/.rye/env"

@@ -17,7 +17,7 @@ export def ps [
                 }
     let se_out = ($ps_out | get selinux | where $it != '-' | parse '{se_user}:{se_role}:{se_type}:{se_range}')
     let ps_out = ($ps_out | reject selinux)
-    let ps_out = ($ps_out | select pid ppid cpu user | merge $se_out  | merge ($ps_out | reject pid ppid cpu user))
+    let ps_out = ($ps_out | select pid ppid cpu user | merge $se_out  | merge ($ps_out | reject pid ppid cpu user) | into int pid)
 
     if $bytes {
         echo $ps_out 

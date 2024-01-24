@@ -1,10 +1,16 @@
 # Show system process information
 export def ps [
     --bytes (-b) # Show memory size in bytes
+    --all (-a) # Show full command line
 ] {
     let parse_format = '(?P<pid>\d+)\s+(?P<ppid>\d+)\s+(?P<cpu>[0-9.%]+)\s+(?P<user>\w+)\s+(?P<selinux>[^\s]+)\s+(?P<memory>\d+)\s+(?P<virtual>\d+)\s+(?P<created>[^\s]+)\s+(?P<command>.*)'
     let now_time = date now | format date "%s" | into float
-    let ps_out = ^ps -ewwo pid,ppid,%cpu,user,label,rss=mem,vsz,etimes,command
+    let ps_out = if $all {
+        ^ps -ewwo pid,ppid,%cpu,user,label,rss=mem,vsz,etimes,command
+    } else {
+        ^ps -ewwo pid,ppid,%cpu,user,label,rss=mem,vsz,etimes,exe
+    }
+    let ps_out = $ps_out
                 | lines
                 | parse -r $parse_format
                 | into float pid created memory virtual
@@ -20,7 +26,7 @@ export def ps [
     let ps_out = ($ps_out | select pid ppid cpu user | merge $se_out  | merge ($ps_out | reject pid ppid cpu user) | into int pid)
 
     if $bytes {
-        echo $ps_out 
+        echo $ps_out
     } else {
         echo $ps_out | into filesize memory virtual
     }
@@ -30,7 +36,7 @@ export def ps [
 export def ps_sort_mem [
     --bytes (-b) # Show memory size in bytes
 ] {
-    let sort_data = (ps -b | group-by command | agg [ (col pid | max ) (col memory | sum ) (col virtual | sum) ] | sort-by memory)
+    let sort_data = (ps --all -b | group-by command | agg [ (col pid | max ) (col memory | sum ) (col virtual | sum) ] | sort-by memory)
     if $bytes {
         echo $sort_data
     } else {

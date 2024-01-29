@@ -132,6 +132,7 @@
     --panel-separator-color: var(--arrowpanel-border-color) !important;
     --panel-separator-zap-gradient: var(--panel-separator-color) !important;
     --lwt-sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
+    --urlbarView-highlight-background: hsl(240, 2%, 20%) !important;
   }
 }
 
@@ -403,60 +404,60 @@ Order of Toolbars
 about:config -> svg.context-properties.content.enabled -> true*/
 @media (prefers-color-scheme: dark) {
   #PanelUI-menu-button {
-    list-style-image: url(image/menu.svg) !important;
+    list-style-image: url(ASSETS/icons/menu.svg) !important;
   }
   :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
-    list-style-image: url(image/menu-private.svg) !important;
+    list-style-image: url(ASSETS/icons/menu-private.svg) !important;
   }
 
   #find-button {
-    list-style-image: url(image/search.svg) !important;
+    list-style-image: url(ASSETS/icons/search.svg) !important;
   }
 
   #privatebrowsing-button {
-    list-style-image: url(image/private.svg) !important;
+    list-style-image: url(ASSETS/icons/private.svg) !important;
   }
 
   #forward-button,
   menugroup > #context-forward,
   #search-container #searchbar .search-go-button,
   #urlbar-go-button {
-    list-style-image: url(image/right-arrow.svg) !important;
+    list-style-image: url(ASSETS/icons/right-arrow.svg) !important;
   }
 
   #back-button,
   menugroup > #context-back {
-    list-style-image: url(image/left-arrow.svg) !important;
+    list-style-image: url(ASSETS/icons/left-arrow.svg) !important;
   }
 }
 
 @media (prefers-color-scheme: light) {
   #PanelUI-menu-button {
-    list-style-image: url(image/menu-light.svg) !important;
+    list-style-image: url(ASSETS/icons/menu-light.svg) !important;
   }
 
   :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
-    list-style-image: url(image/menu-private-light.svg) !important;
+    list-style-image: url(ASSETS/icons/menu-private-light.svg) !important;
   }
 
   #find-button {
-    list-style-image: url(image/search-light.svg) !important;
+    list-style-image: url(ASSETS/icons/search-light.svg) !important;
   }
 
   #privatebrowsing-button {
-    list-style-image: url(image/private-light.svg) !important;
+    list-style-image: url(ASSETS/icons/private-light.svg) !important;
   }
 
   #forward-button,
   menugroup > #context-forward,
   #search-container #searchbar .search-go-button,
   #urlbar-go-button {
-    list-style-image: url(image/right-arrow-light.svg) !important;
+    list-style-image: url(ASSETS/icons/right-arrow-light.svg) !important;
   }
 
   #back-button,
   menugroup > #context-back {
-    list-style-image: url(image/left-arrow-light.svg) !important;
+    list-style-image: url(ASSETS/icons/left-arrow-light.svg) !important;
   }
 }
 
@@ -748,7 +749,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
   }
 
   #nav-bar {
-    padding-right: var(--firefoxcss-control-buttons-margin);
+    padding-right: var(--firefoxcss-control-buttons-margin) !important;
   }
 
   #navigator-toolbox:not([inFullscreen])
@@ -847,6 +848,15 @@ menupopup :-moz-any(menu, menuitem) {
       transparent
     ) !important;
   }
+  #context-navigation > .menuitem-iconic[_moz-menuactive] {
+    &:not([disabled]) {
+      background-color: transparent !important;
+      
+    }
+    &[disabled] {
+      background-color: transparent !important;
+    }
+  }
 }
 
 menupopup :-moz-any(menu:first-child, menuitem:first-child) {
@@ -878,7 +888,7 @@ menuseparator#context-sep-navigation {
 
 #context-navigation:not([hidden]) {
   background-color: var(--firefoxcss-context-menu-top-color) !important;
-  padding: 1px 4px 1px !important;
+  padding: 1px 0px 1px !important;
   border-top-left-radius: 8px !important;
   border-top-right-radius: 8px !important;
   margin-left: 0px !important;
@@ -890,10 +900,6 @@ menupopup#contentAreaContextMenu {
   --panel-padding: 0 0 5px !important;
 }
 
-.menupopup-arrowscrollbox {
-  overflow: hidden !important;
-}
-
 menupopup
   menuitem:is(#context-openlinkintab, #context-undo, #context-viewimage) {
   margin-top: 5px !important;
@@ -903,6 +909,22 @@ menupopup
   padding-block: 0px !important;
 }
 
+#context-navigation #context-back[disabled="true"] .menu-iconic-left .menu-iconic-icon{
+  opacity: 0.5 !important;
+}
+
+#context-navigation #context-forward[disabled="true"] .menu-iconic-left .menu-iconic-icon{
+  opacity: 0.5 !important;
+}
+
+#context-navigation > .menuitem-iconic {
+    & > .menu-iconic-left {
+      & > .menu-iconic-icon {
+         width: 42px !important;
+         height: 32px !important;
+      }
+    }
+  } 
 /*=====================================================================
 ===================== B O O K M A R K S   B A R =======================
 =====================================================================*/
@@ -1459,3 +1481,26 @@ toolbar
 #forward-button .toolbarbutton-icon{
   padding: 8.5px !important;
 }
+
+/* Container extension code */
+#TabsToolbar #tabbrowser-tabs .tabbrowser-tab:is([usercontextid],[pinned]) .tab-background:not([selected]) {
+  background: var(--identity-tab-color) !important;
+  opacity: 0.3 !important;
+}
+
+/* Container extension code */
+#tabbrowser-tabs .tab-context-line {
+  display:none !important;
+}
+
+/* #appcontent
+  > #tabbrowser-tabbox
+  > #tabbrowser-tabpanels
+  > .deck-selected
+  > .browserContainer
+  > .browserStack
+  > browser {
+  border-radius: 12px !important;
+  margin: 8px !important;
+  z-index: 3;
+} */

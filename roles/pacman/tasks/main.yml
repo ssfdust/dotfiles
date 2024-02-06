@@ -14,6 +14,14 @@
     mode: 0644
     validate: 'visudo -cf %s'
 
+- name: Copy pacman base configurations
+  become: true
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: pacman.conf, dest: /etc/pacman.conf }
+
 - name: Install base archlinux package manager dependancies
   become: true
   package:
@@ -22,13 +30,12 @@
       - aria2
       - git-lfs
 
-- name: Copy pacman configurations
+- name: Copy extra pacman configurations
   become: true
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
   with_items:
-    - { src: pacman.conf, dest: /etc/pacman.conf }
     - { src: makepkg.conf, dest: /etc/makepkg.conf }
     - { src: pacman-aria2.conf, dest: /etc/pacman.d/pacman-aria2.conf }
     - { src: xyne-mirrorlist, dest: /etc/pacman.d/xyne-mirrorlist }

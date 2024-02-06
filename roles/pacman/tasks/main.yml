@@ -52,3 +52,15 @@
       - pacman-contrib
       - paru
       - pkgfile
+
+- name: Configure auto clean for paru
+  become: true
+  lineinfile:
+    path: /etc/paru.conf
+    regexp: "{{ item.reg }}"
+    line: "{{ item.line }}"
+  with_items:
+    - reg: '^#.*RemoveMake$'
+      line: RemoveMake
+    - reg: '^#.*CleanAfter$'
+      line: CleanAfter

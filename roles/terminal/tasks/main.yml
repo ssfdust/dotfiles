@@ -11,6 +11,7 @@
       - lf
       - lshw
       - lsof
+      - mosh
       - mycli
       - nmap
       - nushell

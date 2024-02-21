@@ -46,6 +46,8 @@
       - archivemount
       - carapace-bin
       - neovim-gruvbox-material-git
+      - watchman-bin
+      - rs-git-fsmonitor-git
 
 - name: "deploy {{ item }}"
   ansible.posix.synchronize:

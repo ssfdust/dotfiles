@@ -10,6 +10,11 @@
         extra_args: --removemake --skipreview
       become_user: aur_lotus
       when: ansible_distribution == "Archlinux"
+    - name: Clean useless Archlinux packages
+      become: true
+      shell:
+        paru --clean
+      become_user: aur_lotus
     - name: Fedora Upgrade
       become: true
       dnf:

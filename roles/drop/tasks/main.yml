@@ -7,3 +7,9 @@
       - wf-shell-git
       - wcm-git
     state: absent
+
+- name: Drop sddm wayland configuration
+  become: true
+  file:
+    path: /etc/sddm.conf.d/wayland.conf
+    state: absent

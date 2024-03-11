@@ -1,4 +1,4 @@
-#3.4.99.alpha1
+#3.5.99.alpha1
 
 #[gtk-about]
 [Desktop Entry]
@@ -42,8 +42,8 @@ Terminal=false
 ShowOnViewport=0
 
 #f[0;100] Order you want for this launcher among the others:
-Order=9.375
+Order=17.25
 
 Icon Type=0
 Type=Application
-Origin=/usr/share/applications/wine-wechat.desktop
+Origin=/usr/share/applications/wechat-beta.desktop

@@ -42,3 +42,10 @@
     src: vagrant-trusted.xml
     dest: /etc/libvirt/qemu/networks/vagrant-trusted.xml
     mode: '600'
+
+- name: Enable vagrant-trusted network
+  become: true
+  file:
+    src: /etc/libvirt/qemu/networks/vagrant-trusted.xml
+    dest: /etc/libvirt/qemu/networks/autostart/vagrant-trusted.xml
+    state: link

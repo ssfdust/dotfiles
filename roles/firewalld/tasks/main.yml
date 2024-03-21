@@ -29,10 +29,20 @@
     - "7890/tcp"
     - "6888/udp"
     - "29418/tcp"
+- name: Remove virbr1 from libvirtd zone
+  become: true
+  ansible.posix.firewalld:
+    zone: libvirt
+    interface: "virbr1"
+    permanent: true
+    state: enabled
 - name: Add trusted interface
   become: true
   ansible.posix.firewalld:
     zone: trusted
-    interface: waydroid0
+    interface: "{{ item }}"
     permanent: true
     state: enabled
+  with_items:
+    - "waydroid0"
+    - "virbr1"

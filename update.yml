@@ -1,6 +1,12 @@
 - hosts: all
   strategy: free
   tasks:
+    - name: Get aur_lotus home directory
+      become: true
+      getent:
+        database: passwd
+        key: aur_lotus
+        split: ':'
     - name: Archlinux Upgrade
       become: true
       kewlfft.aur.aur:
@@ -13,7 +19,7 @@
     - name: Clean useless Archlinux packages
       become: true
       shell:
-        paru --clean
+        paru --clean --noconfirm
       become_user: aur_lotus
     - name: Fedora Upgrade
       become: true
@@ -22,6 +28,23 @@
         allowerasing: true
         state: latest
       when: ansible_distribution == "Fedora"
+    - name: Build wayfire packages
+      become: true
+      shell: |
+        if [ ! -d wayfire-pkgbuild ]; then
+          git clone https://github.com/ssfdust/wayfire-pkgbuild.git
+          cd wayfire-pkgbuild
+        else
+          cd wayfire-pkgbuild
+          git pull
+        fi
+        make image
+        make podman-miniex
+        rm -rf packages/*debug*
+        pacman -U --noconfirm packages/*.zst
+      args:
+        chdir: "{{ getent_passwd.aur_lotus[4] }}"
+      when: ansible_distribution == "Archlinux"
     - name: Update neovim
       shell: |
         nvim --headless -c "call dein#update()" +TSUpdateSync -c qa

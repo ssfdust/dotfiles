@@ -13,7 +13,7 @@ local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 local patch_global = fn['ddu#custom#patch_global']
 local ddu_start = fn['ddu#start']
-local do_action = fn['ddu#ui#ff#do_action']
+local do_action = fn['ddu#ui#do_action']
 
 -----------------------------------------------------------
 -- DDU Global Patches
@@ -176,7 +176,7 @@ local function ff_settings()
     set_keymap(
         'n', 
         '<CR>',
-        "<Cmd>call ddu#ui#ff#do_action('itemAction')<CR>" ..
+        "<Cmd>call ddu#ui#do_action('itemAction')<CR>" ..
         "<Cmd>lua require'plugins/ddu'.close_filter_window()<CR>",
         { noremap = true, buffer = ddu_bufnr }
     )
@@ -184,14 +184,14 @@ local function ff_settings()
     set_keymap(
         'n', 
         'gq',
-        "<Cmd>call ddu#ui#ff#do_action('quit')<CR>" ..
+        "<Cmd>call ddu#ui#do_action('quit')<CR>" ..
         "<Cmd>lua require'plugins/ddu'.close_filter_window()<CR>",
         { noremap = true, buffer = ddu_bufnr }
     )
     set_keymap(
         'n', 
         'q',
-        "<Cmd>call ddu#ui#ff#do_action('quit')<CR>" ..
+        "<Cmd>call ddu#ui#do_action('quit')<CR>" ..
         "<Cmd>lua require'plugins/ddu'.close_filter_window()<CR>",
         { noremap = true, buffer = ddu_bufnr }
     )
@@ -199,14 +199,14 @@ local function ff_settings()
     set_keymap(
         'n', 
         '<Space>',
-        "<Cmd>call ddu#ui#ff#do_action('toggleSelectItem')<CR>",
+        "<Cmd>call ddu#ui#do_action('toggleSelectItem')<CR>",
         { noremap = true, buffer = ddu_bufnr }
     )
     -- i to open filter window
     set_keymap(
         'n', 
         'i',
-        "<Cmd>call ddu#ui#ff#do_action('openFilterWindow')<CR>",
+        "<Cmd>call ddu#ui#do_action('openFilterWindow')<CR>",
         { noremap = true, buffer = ddu_bufnr }
     )
 end
@@ -230,26 +230,26 @@ local function ff_filter_settings()
     set_keymap(
         'n', 
         '<CR>',
-        "<Cmd>call ddu#ui#ff#do_action('itemAction')<CR>",
+        "<Cmd>call ddu#ui#do_action('itemAction')<CR>",
         { noremap = true, buffer = bufid }
     )
     set_keymap(
         'i', 
         '<CR>',
-        "<Esc><Cmd>call ddu#ui#ff#do_action('itemAction')<CR>",
+        "<Esc><Cmd>call ddu#ff#do_action('itemAction')<CR>",
         { noremap = true, buffer = bufid }
     )
     -- q or gq to quit
     set_keymap(
         'n', 
         'gq',
-        "<Cmd>call ddu#ui#ff#do_action('quit')<CR>",
+        "<Cmd>call ddu#ui#do_action('quit')<CR>",
         { noremap = true, buffer = bufid }
     )
     set_keymap(
         'n', 
         'q',
-        "<Cmd>call ddu#ui#ff#do_action('quit')<CR>",
+        "<Cmd>call ddu#ui#do_action('quit')<CR>",
         { noremap = true, buffer = bufid }
     )
 end
@@ -271,7 +271,7 @@ autocmd('Filetype', {
 autocmd('CursorHold', {
   group = 'DDUCustom',
   pattern = { 'ddu-ff*' },
-  command = 'call ddu#ui#ff#do_action("preview")'
+  command = 'call ddu#ui#do_action("preview")'
 })
 
 -----------------------------------------------------------

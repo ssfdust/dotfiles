@@ -96,7 +96,7 @@ export def zellijx [] {
     let has_exited_x_session = (do -s { zellij list-sessions -n } | complete | get stdout | lines | find --regex '^x .*EXITED' | length)
     let has_x_session = (do -s { zellij list-sessions -n } | complete | get stdout | lines | find --regex '^x ' | length)
     if ($has_x_session == 0 or $has_exited_x_session == 1) {
-        do -s { zellij delete-session x o+e> /dev/null }
+        do -sp { zellij delete-session x o+e> /dev/null }
         zellij -s x
     } else if ($has_x_session == 1) {
         zellij attach x

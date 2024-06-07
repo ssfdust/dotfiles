@@ -236,7 +236,7 @@ local function ff_filter_settings()
     set_keymap(
         'i', 
         '<CR>',
-        "<Esc><Cmd>call ddu#ff#do_action('itemAction')<CR>",
+        "<Esc><Cmd>call ddu#ui#do_action('itemAction')<CR>",
         { noremap = true, buffer = bufid }
     )
     -- q or gq to quit

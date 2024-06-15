@@ -3,6 +3,7 @@
   package:
     name:
       - clash-meta
+      - yacd-meta
       - clash-geoip
       - gost
 

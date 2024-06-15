@@ -6,10 +6,13 @@
       - caddy
       - wf-shell-git
       - wcm-git
+      - clash
     state: absent
 
 - name: Drop sddm wayland configuration
   become: true
   file:
-    path: /etc/sddm.conf.d/wayland.conf
+    path: "{{ item }}"
     state: absent
+  with_items:
+    - /etc/sddm.conf.d/wayland.conf

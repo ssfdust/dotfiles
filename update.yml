@@ -7,7 +7,13 @@
         database: passwd
         key: aur_lotus
         split: ':'
-    - name: Archlinux Upgrade
+    - name: Archlinux Official Packages Upgrade
+      become: true
+      package:
+        upgrade: true
+        update_cache: true
+      when: ansible_distribution == "Archlinux"
+    - name: Archlinux Aur Packages Upgrade
       become: true
       kewlfft.aur.aur:
         use: paru

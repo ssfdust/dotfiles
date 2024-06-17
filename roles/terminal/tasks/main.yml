@@ -120,6 +120,15 @@
     dest: /usr/local/bin/zpager
     mode: 0o755
 
+- name: Copy ssh server side configuration
+  become: true
+  copy:
+    src: ssh/sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0o644
+
 - name: Create ssh configuration directory
   file:
     path: ~/.ssh

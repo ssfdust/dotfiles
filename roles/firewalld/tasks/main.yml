@@ -18,6 +18,8 @@
       zone: public
     - service: dns
       zone: public
+    - service: mosh
+      zone: public
 - name: Enable ports
   become: true
   ansible.posix.firewalld:

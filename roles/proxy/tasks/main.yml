@@ -5,6 +5,7 @@
       - clash-meta
       - yacd-meta
       - clash-geoip
+      - frpc
       - gost
 
 - name: Create clash service directory
@@ -56,6 +57,14 @@
   ansible.builtin.systemd:
     daemon_reload: true
     name: clash-meta
+    enabled: yes
+    state: restarted
+
+- name: Start frpc
+  become: yes
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: frpc
     enabled: yes
     state: restarted
 

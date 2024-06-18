@@ -6,6 +6,7 @@
       - yacd-meta
       - clash-geoip
       - frpc
+      - networkmanager-openvpn
       - gost
 
 - name: Create clash service directory
@@ -74,4 +75,4 @@
     daemon_reload: true
     name: proxy-routes
     enabled: yes
-    state: started
+    state: restarted

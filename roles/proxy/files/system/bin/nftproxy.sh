@@ -33,18 +33,21 @@ then
     nft add rule clash dns iifname { podman0 } meta l4proto { tcp, udp } @th,16,16 53 counter redirect to :1053
     nft add rule clash dns iifname { nrpodman0, "podman*", "virbr*" } counter return
     nft add rule clash dns socket cgroupv2 level 2 "system.slice/libvirtd.service" counter return || true
+    nft add rule clash dns socket cgroupv2 level 2 "system.slice/NetworkManager.service" counter return
     nft add rule clash dns meta l4proto { tcp, udp } @th,16,16 53 counter redirect to :1053 # 取消dns转发
 
     # 转发本地流量到1053
     nft add chain clash dnsout { type nat hook output priority 0 \; }
     nft add rule clash dnsout ip daddr { 117.50.11.11, 52.80.66.66 } return
     nft add rule clash dnsout socket cgroupv2 level 2 "system.slice/clash-meta.service" counter return
+    nft add rule clash dnsout socket cgroupv2 level 2 "system.slice/NetworkManager.service" counter return
     nft add rule clash dnsout meta l4proto { tcp, udp } @th,16,16 53 counter redirect to :1053 # 取消dns转发
 
     # 代理网关本机
     nft add chain clash output { type route hook output priority mangle \; }
     nft add rule clash output ip daddr { 0.0.0.0/32, 10.0.0.0/8, 127.0.0.0/8, 172.0.0.0/8, 192.168.0.0/16, 224.0.0.0/4, 255.255.255.255/32 } counter return
     nft add rule clash output socket cgroupv2 level 2 "system.slice/clash-meta.service" counter return
+    nft add rule clash output socket cgroupv2 level 2 "system.slice/NetworkManager.service" counter return
     nft add rule clash output meta l4proto { tcp, udp } mark set 1 counter # 重路由至 prerouting
 
     # DIVERT 规则

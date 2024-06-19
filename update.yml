@@ -46,8 +46,7 @@
         fi
         make image
         make podman-miniex
-        rm -rf packages/*debug*
-        pacman -U --noconfirm packages/*.zst
+        ls -1 packages/* | grep -v debug | xargs pacman -U --noconfirm
       args:
         chdir: "{{ getent_passwd.aur_lotus[4] }}"
       when: ansible_distribution == "Archlinux"

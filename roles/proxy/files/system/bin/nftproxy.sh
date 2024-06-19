@@ -1,12 +1,32 @@
 #!/bin/sh
 set -e
 
-# port=$(jq '.inbounds[] | select(.tag == "transparent") | .port' /etc/clash/config.json)
-port=9999
+port=$(awk -F: '/tproxy/{sub(/ /,"",$2);print $2}' /etc/clash-meta/config.yaml)
 
 if [[ x"$port" == x"" ]];then
     exit 1
 fi
+
+mapfile -d '' PYSCRIPT <<'EOF'
+import gi
+gi.require_version('NM', '1.0')
+from gi.repository import NM
+def connection_is_wireguard(conn):
+    s_con = conn.get_setting(NM.SettingConnection)
+    return     s_con \
+           and s_con.get_connection_type() == NM.SETTING_WIREGUARD_SETTING_NAME \
+           and conn.get_setting(NM.SettingWireGuard)
+
+connections = NM.Client.new(None).get_connections()
+for conn in connections:
+    if connection_is_wireguard(conn):
+        wg_conn = conn.get_setting(NM.SettingWireGuard)
+        peer = wg_conn.get_peer(0)
+        endpoint = peer.get_endpoint()
+        if ":" in endpoint:
+            print(endpoint.split(":")[1])
+EOF
+wg_ports=($(python -c "$PYSCRIPT"))
 
 #代理局域网设备
 if [ $# -lt 1 ];
@@ -21,8 +41,10 @@ then
     # Tproxy转发
     nft add chain clash prerouting { type filter hook prerouting priority mangle \; }
     nft add rule clash prerouting iifname { nrpodman0, "virbr0" } counter return
-    nft add rule clash prerouting tcp dport 22 counter return
     nft add rule clash prerouting ip daddr { 0.0.0.0/32, 10.0.0.0/8, 127.0.0.0/8, 172.0.0.0/8, 192.168.0.0/16, 255.255.255.255/32 } counter return
+    for wg_port in "${wg_ports[@]}"; do
+        nft add rule clash prerouting udp dport ${wg_port} counter return
+    done
     nft add rule clash prerouting meta l4proto { tcp, udp } mark set 1 tproxy to 127.0.0.1:$port counter accept # 转发至 V2Ray 9999 端口
 
     # 转发53端口到1053
@@ -46,6 +68,9 @@ then
     # 代理网关本机
     nft add chain clash output { type route hook output priority mangle \; }
     nft add rule clash output ip daddr { 0.0.0.0/32, 10.0.0.0/8, 127.0.0.0/8, 172.0.0.0/8, 192.168.0.0/16, 224.0.0.0/4, 255.255.255.255/32 } counter return
+    for wg_port in "${wg_ports[@]}"; do
+        nft add rule clash output udp dport ${wg_port} counter return
+    done
     nft add rule clash output socket cgroupv2 level 2 "system.slice/clash-meta.service" counter return
     nft add rule clash output socket cgroupv2 level 2 "system.slice/NetworkManager.service" counter return
     nft add rule clash output meta l4proto { tcp, udp } mark set 1 counter # 重路由至 prerouting

@@ -16,6 +16,7 @@
       - kanshi
       - kitty
       - kvantum
+      - kvantum-qt5
       - network-manager-applet
       - noto-fonts-emoji
       - pipewire-alsa
@@ -25,6 +26,7 @@
       - qt5-graphicaleffects
       - qt5-quickcontrols2
       - qt5-svg
+      - qt6ct
       - sddm
       - slurp
       - spice-gtk

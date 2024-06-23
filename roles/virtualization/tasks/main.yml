@@ -11,6 +11,7 @@
       - qemu-base
       - qemu-hw-usb-host
       - vagrant
+      - virt-manager
 
 - name: Install virtualbox packages
   become: true

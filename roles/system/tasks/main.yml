@@ -9,6 +9,7 @@
 - name: Install base system packages
   become: true
   package:
+    update_cache: true
     name:
       - bind
       - cockpit
@@ -108,12 +109,17 @@
     enabled: false
     state: "stopped"
 
+- name: Search for the gpu kernel module
+  shell: |
+    lsmod | grep -Po '(i915|amdgpu|nouveau|nvidia|radeon)' | head -n 1
+  register: gpu_module
+
 - name: Update modules in mkinitcpio.conf
   become: true
   replace:
     path: /etc/mkinitcpio.conf
     regexp: "^MODULES=.*$"
-    replace: "MODULES=(i915{{ ' spl zfs' if zfs_chk.rc == 0 else '' }})"
+    replace: "MODULES=({{ gpu_module.stdout }} {{ 'spl zfs' if zfs_chk.rc == 0 else '' }})"
 
 - name: Update hooks in mkinitcpio.conf
   become: true

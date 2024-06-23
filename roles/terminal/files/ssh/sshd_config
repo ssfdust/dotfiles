@@ -68,11 +68,11 @@ X11Forwarding no
 #   - UsePAM: set to no to disable all PAM authentication, also disables PasswordAuthentication when set to no
 AuthenticationMethods publickey
 PasswordAuthentication no
-UsePAM no
 
 # PAM authentication enabled to make password authentication available
 # remove this if password authentication is not needed
-#UsePAM yes
+# Enable xdg related environment variables
+UsePAM yes
 
 # challenge-response authentication backend it not configured by default
 # therefore, it is set to "no" by default to avoid the use of an unconfigured backend

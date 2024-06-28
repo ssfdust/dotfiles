@@ -61,9 +61,17 @@
       - cairo-dock-plug-ins-wayland-git
       - wait-tray-ready-git
       - wlogout-git
+      - wayland-logout
       - siyuan-note-bin
   retries: 5
   delay: 10
+
+- name: Add user to seat group
+  become: true
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: seat
+    append: true
 
 - name: "deploy {{ item }}"
   ansible.posix.synchronize:

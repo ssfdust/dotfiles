@@ -1,6 +1,6 @@
 {
     "label" : "logout",
-    "action" : "pkill wayfire",
+    "action" : "wayland-logout",
     "text" : "Logout",
     "keybind" : "e"
 }
